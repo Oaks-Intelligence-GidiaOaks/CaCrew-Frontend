@@ -1,0 +1,19 @@
+@import "base.scss";
+
+.button{
+    background-color: $blue;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: 26px;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 15px;
+    @media (max-width: 991px) {
+        font-size: 12;
+    }
+}

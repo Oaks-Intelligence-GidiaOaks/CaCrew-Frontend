@@ -1,0 +1,106 @@
+@import "base.scss";
+
+.admin_info_left {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding-bottom: 190px;
+  padding-left: 109px;
+  padding-right: 109px;
+  padding-top: 100px;
+
+  .admin_info_left_title {
+    font-size: 35px;
+    line-height: 46px;
+    color: $blue;
+    width: 100%;
+    padding-bottom: 100px;
+
+    @media (max-width: 991px) {
+      font-size: 25px;
+    }
+  }
+
+  .admin_info_left_text_bold {
+    font-size: 48px;
+    color: $blue;
+    font-weight: 700;
+    line-height: 62px;
+    margin-bottom: 18px;
+    @media (max-width: 1200px) {
+      padding-left: 20px;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 21px;
+    }
+  }
+
+  .admin_info_left_text_light {
+    font-weight: 400;
+    color: #4c5563;
+    line-height: 26px;
+    font-size: 20px;
+    @media (max-width: 991px) {
+      font-size: 15px;
+    }
+  }
+
+  .admin_info_left_float {
+    position: absolute;
+    background: #0057ff;
+    filter: blur(100px);
+    height: 124px;
+    width: 128px;
+    right: 82px;
+    bottom: 100px;
+    border-radius: 50%;
+    animation: floatAnimation 15s infinite ease-in-out;
+  }
+
+  .admin_info_left_float_one {
+    @extend .admin_info_left_float;
+    left: 80px;
+    bottom: 50px;
+    background: #00ffc2;
+    animation: floatAnimation_one 10s infinite ease-in-out;
+  }
+
+  .admin_info_left_float_two {
+    @extend .admin_info_left_float;
+    top: 180px;
+    right: 40%;
+    background: #ff00f5;
+    animation: floatAnimation_two 12s infinite ease-in-out;
+  }
+}
+
+// Animations
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-70vh);
+  }
+
+  100% {
+    transform: translate(0%);
+  }
+}
+
+@keyframes floatAnimation_one {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-50vw);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
