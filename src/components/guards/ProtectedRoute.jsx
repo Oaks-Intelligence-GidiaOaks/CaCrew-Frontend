@@ -1,4 +1,4 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
   const isAuthenticated = localStorage.getItem("token") ? true : false;
@@ -10,7 +10,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
         isAuthenticated ? (
           <Component {...routeProps} />
         ) : (
-          <Redirect to="/login" />
+          <Navigate to="/login" />
         )
       }
     />
@@ -18,3 +18,4 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
 };
 
 export default ProtectedRoute;
+// state={{ from: routeProps.location }}

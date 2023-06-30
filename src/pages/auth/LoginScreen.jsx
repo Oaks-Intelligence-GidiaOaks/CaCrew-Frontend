@@ -1,11 +1,11 @@
 import React from "react";
 import Login from "components/auth/login/Login";
-import DashboardHeader from "components/dashboard/dashboard-header/DashboardHeader";
+import AuthHeader from "components/auth/auth-header/AuthHeader";
 
 const LoginScreen = () => {
   return (
     <>
-      <DashboardHeader text={"Don’t have an account?"} buttonText={"SignUp"} />
+      <AuthHeader text={"Don’t have an account?"} buttonText={"SignUp"} />
       <Login />
     </>
   );

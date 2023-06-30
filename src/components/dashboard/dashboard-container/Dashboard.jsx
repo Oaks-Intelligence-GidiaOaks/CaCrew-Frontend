@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Dasboard = () => {
+const Dasboard = ({component: Component}) => {
   return (
-    <div>Dasboard</div>
+    <div>
+      <Component />
+    </div>
   )
 }
 

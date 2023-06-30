@@ -44,7 +44,7 @@ const LoginForm = () => {
             {/* </Link> */}
             <div className="auth_form_sub_title center">
               Don’t have an account yet?{" "}
-              <Link style={{ color: "#005AE3", marginLeft: "6px" }}>
+              <Link to={"/register_company"} style={{ color: "#005AE3", marginLeft: "6px" }}>
                 Sign Up
               </Link>
             </div>

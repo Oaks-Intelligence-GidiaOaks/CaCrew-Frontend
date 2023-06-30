@@ -1,11 +1,11 @@
 import React from "react";
 import RegisterCompany from "components/auth/register-company/RegisterCompany";
-import DashboardHeader from "components/dashboard/dashboard-header/DashboardHeader";
+import AuthHeader from "components/auth/auth-header/AuthHeader";
 
 const RegisterCompanyScreen = () => {
   return (
     <>
-    <DashboardHeader text={"Already have an account?"} buttonText={"Login"}/>
+    <AuthHeader text={"Already have an account?"} buttonText={"Login"}/>
       <RegisterCompany />
     </>
   );

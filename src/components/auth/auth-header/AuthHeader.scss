@@ -1,0 +1,49 @@
+@import "base.scss";
+
+.auth_header {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  background-color: transparent;
+  padding-left: 109px;
+  padding-right: 109px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @media (max-width: 991px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .auth_header_logo {
+    font-size: 35px;
+    color: $blue;
+
+    @media (max-width: 991px) {
+      font-size: 25px;
+    }
+  }
+
+  .auth_header_logo_bold {
+    font-weight: 700;
+  }
+
+  .auth_header_textbtn_wrap {
+    .auth_header_text {
+      color: #4c5563;
+      font-size: 15px;
+      margin-right: 32px;
+      white-space: nowrap;
+
+      @media (max-width: 991px) {
+        font-size: 12px;
+        display: none;
+      }
+    }
+
+    .auth_header_btn {
+      background-color: #5f41b2;
+    }
+  }
+}
