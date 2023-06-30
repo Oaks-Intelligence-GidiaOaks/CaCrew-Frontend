@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "components/guards/ProtectedRoute";
 
 // Import contants
 import {
@@ -20,7 +21,7 @@ import RegisterAdminScreen from "pages/auth/RegisterAdminScreen";
 import IdentityDocumentScreen from "pages/auth/IdentityDocumentScreen";
 import CertificateScreen from "pages/auth/CertificateScreen";
 import LetterAuthScreen from "pages/auth/LetterAuthScreen";
-// import ProtectedRoute from "components/guards/ProtectedRoute";
+// Import dasboard pages
 import DashScreen from "pages/dasboard/DashScreen";
 
 const RoutesConfig = () => {
@@ -34,10 +35,13 @@ const RoutesConfig = () => {
       <Route path={IDENTITY_DOCUMENT} element={<IdentityDocumentScreen />} />
       <Route path={CERTIFICATE_DOCUMENT} element={<CertificateScreen />} />
       <Route path={LETTER_AUTH_DOCUMENT} element={<LetterAuthScreen />} />
-      <Route path={DASHBOARD} component={<DashScreen />} />
+      {/* <Route path={DASHBOARD} element={<DashScreen />} /> */}
 
       {/* Protected Routes */}
-      {/* <ProtectedRoute path={DASHBOARD} component={<DashScreen />} /> */}
+      <Route
+        path={DASHBOARD}
+        element={<ProtectedRoute component={DashScreen} />}
+      />
     </Routes>
   );
 };

@@ -39,6 +39,7 @@ const LoginForm = () => {
                 type="submit"
                 text={"Submit"}
                 className="auth_button_wrap"
+                loading={isLoading}
                 style={{ marginBottom: "52px" }}
               />
             {/* </Link> */}
