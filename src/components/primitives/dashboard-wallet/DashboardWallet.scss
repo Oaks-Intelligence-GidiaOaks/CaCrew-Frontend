@@ -1,0 +1,50 @@
+@import "base.scss";
+
+.dashboard_wallet {
+  width: 100%;
+  @media (max-width: 991px) {
+    margin-bottom: 20px;
+  }
+  .dashboard_wallet_heading {
+    color: #143b76;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    @media (max-width: 991px) {
+      font-size: 14px;
+    }
+  }
+  .dashboard_wallet_wrap {
+    border-radius: 8px;
+    border: 1px solid #dedede;
+    background: #fff;
+    padding: 27px;
+    height: 196px;
+    .dashboard_wallet_title_wrap {
+      .dashboard_wallet_title_icon_wrap {
+        align-items: center;
+        .dashboard_wallet_title {
+          color: #212121;
+          font-size: 14px;
+          font-weight: 500;
+          @media (max-width: 991px) {
+            font-size: 12px;
+          }
+        }
+        .dashboard_wallet_icon {
+          margin-left: 21px;
+          background: #f1f1f1;
+          padding: 4px;
+        }
+      }
+    }
+    .dashboard_wallet_value {
+      color: #4c5563;
+      font-size: 20px;
+      font-weight: 400;
+      @media (max-width: 991px) {
+        font-size: 14px;
+      }
+    }
+  }
+}

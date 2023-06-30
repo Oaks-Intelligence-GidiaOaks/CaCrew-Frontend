@@ -1,11 +1,22 @@
-import React from 'react'
+import React from "react";
+import "./Dashboard.scss";
+import DashboardHeader from "../dashboard-header/DashboardHeader";
+import DashboardSidebar from "../dashboard-sidebar/DashboardSidebar";
 
-const Dasboard = ({component: Component}) => {
+const Dasboard = ({ component: Component }) => {
   return (
-    <div>
-      <Component />
+    <div className="dashboard">
+      <DashboardHeader />
+      <div className="start dashboard_wrap">
+        <div className="dashboard_sidebar">
+          <DashboardSidebar />
+        </div>
+        <div className="dashboard_content">
+          <Component />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dasboard
+export default Dasboard;

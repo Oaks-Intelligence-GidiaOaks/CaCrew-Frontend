@@ -1,0 +1,21 @@
+@import "base.scss";
+
+.dashboard {
+  width: 100%;
+  .dashboard_wrap {
+    .dashboard_sidebar {
+      width: 20%;
+      position: sticky;
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+    .dashboard_content {
+      width: 80%;
+      padding: 30px;
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import "base.scss";
+
+.dashboard_home {
+  width: 100%;
+  .wallet_project_wrap {
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 64px;
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
+    .wallet_project_wrap_left {
+      width: 49%;
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+    }
+    .wallet_project_wrap_right {
+      width: 49%;
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+    }
+  }
+}
