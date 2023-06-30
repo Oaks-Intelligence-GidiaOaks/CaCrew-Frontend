@@ -1,12 +1,21 @@
 import React from "react";
-
+import { updateFormdata } from "redux/slices/register.slice";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Field } from "react-final-form";
-import Input from "components/primitives/input/Input";
+import Input from "components/widgets/input/Input";
 import Button from "components/widgets/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const RegisterAdminForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const state = useSelector((state) => state.formdata);
+
   const onSubmit = (values) => {
-    console.log(values);
+    dispatch(updateFormdata(values));
+    navigate("/identity_document");
+    console.log(state, "form");
   };
   return (
     <div className="auth_form">
@@ -15,24 +24,12 @@ const RegisterAdminForm = () => {
         render={({ handleSubmit, values, submitting, pristine, form }) => (
           <form onSubmit={handleSubmit} className="form">
             <div className="field">
-              <Field
-                name="name"
-                component={Input}
-                label={"Full Name"}
-              />
+              <Field name="name" component={Input} label={"Full Name"} />
             </div>
             <div className="field">
-              <Field
-                name="email"
-                component={Input}
-                label={"Email Address"}
-              />
+              <Field name="email" component={Input} label={"Email Address"} />
             </div>
-            <Field
-              name="phone_number"
-              component={Input}
-              label={"Phone"}
-            />
+            <Field name="phone_number" component={Input} label={"Phone"} />
 
             <div className="field">
               <Field
@@ -50,9 +47,11 @@ const RegisterAdminForm = () => {
                 password
               />
             </div>
-            <div className="auth_button_wrap">
-              <Button type="submit" text={"Create Account"} />
-            </div>
+            <Button
+              type="submit"
+              text={"Create Account"}
+              className="auth_button_wrap"
+            />
           </form>
         )}
       />

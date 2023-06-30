@@ -3,6 +3,7 @@ import "./Input.scss";
 import { info_circle, eye, calendar } from "assets/images";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { parseISO } from "date-fns";
 
 const Input = ({
   type = "text",
@@ -14,6 +15,10 @@ const Input = ({
   password,
 }) => {
   const [passwordType, setPasswordType] = useState("password");
+  const parseDate = (value) => {
+    console.log(value.target);
+    // return parseISO(value).toISOString();
+  };
 
   const togglePasswordType = () => {
     setPasswordType((prev) => (prev === "password" ? "text" : "password"));
@@ -29,7 +34,7 @@ const Input = ({
           {tooltip && (
             <>
               <img src={info_circle} alt="icon" />
-              <div className="tooltip_pop_up">{tooltip}</div>{" "}
+              <div className="tooltip_pop_up">{tooltip}</div>
             </>
           )}
         </div>
@@ -41,6 +46,7 @@ const Input = ({
             {...input}
             selected={input.value}
             onChange={input.onChange}
+            //  onChangeRaw={(date) => input.onChange(parseDate(date))} 
             dateFormat="dd/MM/yyyy"
           />
         ) : (

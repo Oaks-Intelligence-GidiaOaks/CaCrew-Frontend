@@ -10,4 +10,4 @@ const environment = {
 
 const currentEnvironment = process.env.REACT_APP_ENV || "development";
 
-export default environment[currentEnvironment]
+export default environment[currentEnvironment] 

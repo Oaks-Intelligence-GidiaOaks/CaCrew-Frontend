@@ -55,7 +55,7 @@
     right: 82px;
     bottom: 100px;
     border-radius: 50%;
-    animation: floatAnimation 15s infinite ease-in-out;
+    animation: floatAnimationinfo 15s infinite ease-in-out;
   }
 
   .admin_info_left_float_one {
@@ -63,20 +63,12 @@
     left: 80px;
     bottom: 50px;
     background: #00ffc2;
-    animation: floatAnimation_one 10s infinite ease-in-out;
-  }
-
-  .admin_info_left_float_two {
-    @extend .admin_info_left_float;
-    top: 180px;
-    right: 40%;
-    background: #ff00f5;
-    animation: floatAnimation_two 12s infinite ease-in-out;
+    animation: floatAnimationinfo_one 10s infinite ease-in-out;
   }
 }
 
 // Animations
-@keyframes floatAnimation {
+@keyframes floatAnimationinfo {
   0% {
     transform: translateY(0%);
   }
@@ -90,7 +82,7 @@
   }
 }
 
-@keyframes floatAnimation_one {
+@keyframes floatAnimationinfo_one {
   0% {
     transform: translateY(0%);
   }

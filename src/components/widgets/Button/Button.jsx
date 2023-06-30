@@ -2,9 +2,9 @@ import React from "react";
 import "./Button.scss";
 import { ThreeDots } from "react-loader-spinner";
 
-const Button = ({ text, loading, className, type }) => {
+const Button = ({ text, loading, className, type, ...rest }) => {
   return (
-    <button type={type} className={`button ${className} center`}>
+    <button {...rest} type={type} className={`button ${className} center`}>
       {loading ? (
         <ThreeDots
           height="15"
