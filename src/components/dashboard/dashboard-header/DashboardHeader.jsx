@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { avartar, cart, down, message, settings } from "assets/images";
 
 const DashboardHeader = () => {
+  const data = JSON.parse(localStorage.getItem("user"));
+
   return (
     <div className="dashboard_header between">
       <div className="dashboard_header_logo">
@@ -15,7 +17,7 @@ const DashboardHeader = () => {
           className="dashboard_header_textbtn_wrap center link"
         >
           <img src={avartar} alt="icon" className="dashboard_avartar" />
-          <div className="dashboard_header_text">{"text"}</div>
+          <div className="dashboard_header_text">{data?.name}</div>
           <img src={down} alt="icon" className="dashboard_down_icon" />
         </Link>
         <Link to={"/register_company"} className="link">

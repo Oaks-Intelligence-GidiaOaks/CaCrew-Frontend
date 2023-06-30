@@ -9,3 +9,4 @@ export const LETTER_AUTH_DOCUMENT = "/letter_document";
 
 // Dashboard routes
 export const DASHBOARD = "/dashboard"
+export const ORGANISATION = "/dashboard_organization"

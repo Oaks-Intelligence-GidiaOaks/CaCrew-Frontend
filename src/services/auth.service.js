@@ -23,12 +23,11 @@ export const userApi = createApi({
         body: userData,
       }),
       transformResponse: (response) => {
-        if (response) {
-          //   return response.token;
-          console.log(response.data, "rtk");
-        } else {
-          throw new Error(response.message);
-        }
+        // console.log(response, "rtk");
+        const { user, token } = response;
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token);
+        return { user, token };
       },
     }),
 

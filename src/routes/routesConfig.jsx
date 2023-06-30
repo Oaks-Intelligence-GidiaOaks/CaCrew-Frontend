@@ -11,6 +11,7 @@ import {
   CERTIFICATE_DOCUMENT,
   LETTER_AUTH_DOCUMENT,
   DASHBOARD,
+  ORGANISATION,
 } from "routes/constants";
 
 // Import auth pages
@@ -23,6 +24,7 @@ import CertificateScreen from "pages/auth/CertificateScreen";
 import LetterAuthScreen from "pages/auth/LetterAuthScreen";
 // Import dasboard pages
 import DashScreen from "pages/dasboard/DashScreen";
+import DashboardOrganisationScreen from "pages/dasboard/DashboardOrganisationScreen";
 
 const RoutesConfig = () => {
   return (
@@ -41,6 +43,10 @@ const RoutesConfig = () => {
       <Route
         path={DASHBOARD}
         element={<ProtectedRoute component={DashScreen} />}
+      />
+      <Route
+        path={ORGANISATION}
+        element={<ProtectedRoute component={DashboardOrganisationScreen} />}
       />
     </Routes>
   );

@@ -8,18 +8,16 @@ const DashboardSidebar = () => {
     <div className="dashboard_sidebar">
       <div className="dashboard_link_item_wrap center col">
         <NavLink
-          exact
           to={"/dashboard"}
-          activeClassName="active"
+          activeclassname="active"
           className={"link dashboard_link_item start"}
         >
           <img src={grid} alt="icon" className="dashboard_link_item_image" />
           Dashboard
         </NavLink>
         <NavLink
-          exact
-          to={"/organization"}
-          activeClassName="active"
+          to={"/dashboard_organization"}
+          activeclassname="active"
           className={"link dashboard_link_item start"}
         >
           <img src={staff} alt="icon" className="dashboard_link_item_image" />

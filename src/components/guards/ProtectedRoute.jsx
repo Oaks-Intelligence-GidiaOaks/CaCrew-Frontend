@@ -5,7 +5,7 @@ const ProtectedRoute = ({ component: Component }) => {
 
   return (
     <>
-    {!isAuthenticated ? <Component /> : <Navigate to={"/"} state={{ from: "/dashboard" }}/>}
+    {isAuthenticated ? <Component /> : <Navigate to={"/"} state={{ from: "/dashboard" }}/>}
     </>
   );
 };

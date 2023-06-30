@@ -6,14 +6,19 @@ import Button from "components/widgets/Button/Button";
 import { Link } from "react-router-dom";
 import { useLoginUserMutation } from "services/auth.service";
 import rtkQuery from "utils/rtkQuery";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const [loginUser, { isLoading, error }] = useLoginUserMutation();
+  const [loginUser, { isLoading, error, data }] = useLoginUserMutation();
+
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    const { data, errorData } = await rtkQuery(loginUser, values);
-    console.log(values, "login");
-    console.log(data, errorData, isLoading, error, "login");
+    await rtkQuery(loginUser, values);
+    console.log(data, isLoading, error, "login");
+    if (!error) {
+      navigate("/dashboard");
+    }
   };
   return (
     <div className="auth_form">
@@ -35,17 +40,20 @@ const LoginForm = () => {
               />
             </div>
             {/* <Link to={"/register_company"} className="auth_button_wrap"> */}
-              <Button
-                type="submit"
-                text={"Submit"}
-                className="auth_button_wrap"
-                loading={isLoading}
-                style={{ marginBottom: "52px" }}
-              />
+            <Button
+              type="submit"
+              text={"Submit"}
+              className="auth_button_wrap"
+              loading={isLoading}
+              style={{ marginBottom: "52px" }}
+            />
             {/* </Link> */}
             <div className="auth_form_sub_title center">
               Don’t have an account yet?{" "}
-              <Link to={"/register_company"} style={{ color: "#005AE3", marginLeft: "6px" }}>
+              <Link
+                to={"/register_company"}
+                style={{ color: "#005AE3", marginLeft: "6px" }}
+              >
                 Sign Up
               </Link>
             </div>
