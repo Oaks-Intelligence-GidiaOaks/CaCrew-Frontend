@@ -1,0 +1,29 @@
+@import "base.scss";
+
+.dashboard_project_create {
+  margin-top: 42px;
+  .dashboard_project_create_input_wrap {
+    align-items: flex-start;
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+    .dashboard_project_create_input_wrap {
+      width: 49%;
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+      .dashboard_project_create_field {
+        width: 100%;
+      }
+    }
+    .dashboard_project_create_upload_wrap {
+      width: 49%;
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+      .dashboard_project_create_upload_btn {
+        margin-top: 20px;
+      }
+    }
+  }
+}

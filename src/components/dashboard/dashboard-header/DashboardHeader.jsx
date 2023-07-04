@@ -2,9 +2,12 @@ import React from "react";
 import "./DashboardHeader.scss";
 import { Link } from "react-router-dom";
 import { avartar, cart, down, message, settings } from "assets/images";
+import { useGetUserQuery } from "services/user.service";
 
 const DashboardHeader = () => {
-  const data = JSON.parse(localStorage.getItem("user"));
+
+  const {data} = useGetUserQuery();
+  // console.log(isLoading, data, "headers");
 
   return (
     <div className="dashboard_header between">

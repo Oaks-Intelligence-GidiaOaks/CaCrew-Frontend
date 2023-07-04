@@ -1,30 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./LoginForm.scss";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
 import Button from "components/widgets/Button/Button";
 import { Link } from "react-router-dom";
-import { useLoginUserMutation } from "services/auth.service";
-import rtkQuery from "utils/rtkQuery";
+import { useLoginUserMutation, userApi } from "services/user.service";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import rtkMutation from "utils/rtkMutation";
+import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const LoginForm = () => {
-  const [loginUser, { isLoading, error, data }] = useLoginUserMutation();
+  const [loginUser, { isLoading, error, isSuccess }] = useLoginUserMutation();
 
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    await rtkQuery(loginUser, values);
-    console.log(data, isLoading, error, "login");
-    if (!error) {
-      navigate("/dashboard");
-    }
+    await rtkMutation(loginUser, values)
   };
+
+  isSuccess && navigate("/dashboard");
+
   return (
     <div className="auth_form">
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit, values, submitting, pristine, form }) => (
+        render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit} className="form">
             <div className="auth_form_title">Welcome Back</div>
             <div className="auth_form_sub_title">Log into your account</div>
@@ -40,6 +41,7 @@ const LoginForm = () => {
               />
             </div>
             {/* <Link to={"/register_company"} className="auth_button_wrap"> */}
+            {error && <div className="">{formatErrorResponse(error)}</div>}
             <Button
               type="submit"
               text={"Submit"}

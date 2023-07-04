@@ -1,0 +1,41 @@
+@import "base.scss";
+
+.dashboard_project_review {
+  margin-top: 43px;
+  width: 100%;
+  overflow-x: scroll;
+  .dashboard_project_table {
+    width: 100%;
+    min-width: 767px;
+
+    .dashboard_project_table_head {
+      border-radius: 6.436px;
+      background: #d0ddff;
+      padding: 12px 19px;
+      .dashboard_project_table_head_item {
+        color: #212121;
+        font-size: 11.263px;
+        // font-family: Inter;
+        font-weight: 500;
+        line-height: 16.09px;
+        width: 90px;
+      }
+    }
+
+    .dashboard_project_table_body {
+      padding: 12px 19px;
+      .dashboard_project_table_body_item {
+        text-align: left;
+        width: 90px;
+        color: #4c5563;
+        font-size: 11.263px;
+        // font-family: Inter;
+        font-weight: 400;
+        line-height: 16.09px;
+      }
+    }
+    .dashboard_project_table_body_bg{
+        background-color: #F8F8F8;
+    }
+  }
+}

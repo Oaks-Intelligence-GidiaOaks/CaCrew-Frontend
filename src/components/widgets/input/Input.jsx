@@ -3,7 +3,6 @@ import "./Input.scss";
 import { info_circle, eye, calendar } from "assets/images";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { parseISO } from "date-fns";
 
 const Input = ({
   type = "text",
@@ -13,12 +12,15 @@ const Input = ({
   input,
   meta,
   password,
+  select,
+  options,
+  textArea,
 }) => {
   const [passwordType, setPasswordType] = useState("password");
-  const parseDate = (value) => {
-    console.log(value.target);
-    // return parseISO(value).toISOString();
-  };
+  // const parseDate = (value) => {
+  // console.log(value.target);
+  // return parseISO(value).toISOString();
+  // };
 
   const togglePasswordType = () => {
     setPasswordType((prev) => (prev === "password" ? "text" : "password"));
@@ -39,14 +41,39 @@ const Input = ({
           )}
         </div>
       </div>
-      <div className="input_main_wrap">
-        {date ? (
+      <div className="input_main_wrap" style={{ height: textArea && "110px" }}>
+        {select ? (
+          <select
+            className="input_main"
+            onChange={input.value}
+            {...input}
+            style={{ width: "100%" }}
+          >
+            {options.map((option) => {
+              return (
+                <option key={option.value} value={option.value}>
+                  {option.name}
+                </option>
+              );
+            })}
+          </select>
+        ) : textArea ? (
+          <textarea
+            className="input_main"
+            {...input}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+            rows={4}
+          />
+        ) : date ? (
           <DatePicker
             className="datepicker"
             {...input}
             selected={input.value}
             onChange={input.onChange}
-            //  onChangeRaw={(date) => input.onChange(parseDate(date))} 
+            //  onChangeRaw={(date) => input.onChange(parseDate(date))}
             dateFormat="dd/MM/yyyy"
           />
         ) : (
@@ -68,6 +95,7 @@ const Input = ({
           </div>
         )}
       </div>
+      <div className="input_error">{meta?.error}</div>
     </div>
   );
 };

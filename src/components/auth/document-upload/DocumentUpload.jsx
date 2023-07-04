@@ -1,28 +1,25 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import "./DocumentUpload.scss";
-import { Form, Field } from "react-final-form";
-import { filesImg, fileImg, trash } from "assets/images";
+import { Form } from "react-final-form";
 import Button from "components/widgets/Button/Button";
 import { updateFormdata } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
-import rtkQuery from "utils/rtkQuery";
-import { useRegisterUserMutation } from "services/auth.service";
+import rtkMutation from "utils/rtkMutation";
+import { useRegisterUserMutation } from "services/user.service";
+import Upload from "components/widgets/upload/Upload";
 // import axios from "axios";
 
 const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
-  const [file, setFile] = useState(null);
-  const [progress, setProgress] = useState(0);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const fileRef = useRef(null);
 
   const [registerUser, { isLoading, error }] = useRegisterUserMutation();
   const state = useSelector((state) => state.formdata);
   const currentUrl = location.pathname;
-  console.log(currentUrl, "url");
+  console.log(state, "url");
 
   const handleSubmit = (value) => {
     const file = value[documentName];
@@ -47,36 +44,11 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
       };
       reader.readAsArrayBuffer(file);
       if (currentUrl === "/letter_document") {
-        rtkQuery(registerUser, state)
+        rtkMutation(registerUser, state)
         console.log(isLoading, error, "rtk Final");
 
       }
     }
-  };
-
-  // handle file change
-  const handleChange = (e) => {
-    const selectedFile = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(selectedFile);
-
-    fileReader.onload = () => {
-      setFile(() => selectedFile);
-    };
-
-    console.log(file);
-
-    setProgress(0);
-    setTimeout(() => {
-      setProgress(100);
-    }, 1000);
-  };
-
-  // handle file deletion
-  const handleDelete = () => {
-    fileRef.current.value = "";
-    setFile(null);
-    setProgress(0);
   };
 
   return (
@@ -88,56 +60,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
           onSubmit={handleSubmit}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <Field
-                name={documentName}
-                render={({ input }) => (
-                  <div className="upload center col">
-                    <div className="upload_image_wrap center">
-                      <img src={fileImg} alt="icon" />
-                    </div>
-                    <div className="upload_text_bold">
-                      Drag and drop files, or Browse
-                    </div>
-                    <div className="upload_text">
-                      Support jpg, png, pdf, docx
-                    </div>
-                    <input
-                      ref={fileRef}
-                      type="file"
-                      className="uplaod_input"
-                      onChange={(e) => {
-                        input.onChange(e.target.files[0]);
-                        handleChange(e);
-                      }}
-                    />
-                  </div>
-                )}
-              />
-              {file && (
-                <div className="upload_progress_wrap start">
-                  <img src={filesImg} alt="icon" />
-                  <div className="upload_progress">
-                    <div className="upload_progress_text">{file?.name}</div>
-                    <div className="upload_progress_size">
-                      {(file?.size / 1000).toFixed(2)} kb
-                    </div>
-                    <div className="upload_progress_inner_wrap center">
-                      <div className="upload_progress">
-                        <div
-                          className="upload_progress_track"
-                          style={{ width: `${progress}%` }}
-                        ></div>
-                      </div>
-                      <img
-                        src={trash}
-                        alt="icon"
-                        className="upload_progress_trash"
-                        onClick={handleDelete}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
+              <Upload documentName={documentName}/>
               <Button
                 type={"Submit"}
                 text={"Next"}

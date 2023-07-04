@@ -1,0 +1,63 @@
+import React, { useState } from "react";
+import "./DashboardProject.scss";
+import Button from "components/widgets/Button/Button";
+import DashboardProjectCreate from "components/primitives/dashboard-project-create/DashboardProjectCreate";
+import DashboardProjectReview from "components/primitives/dashboard-project-review/DashboardProjectReview";
+
+const DashboardProject = () => {
+  const [active, setActive] = useState("create");
+
+  const handleTabSwitch = (value) => {
+    setActive(value);
+  };
+
+  const tabItems = {
+    create: <DashboardProjectCreate />,
+    review: <DashboardProjectReview />,
+    complete: <DashboardProjectReview />,
+  }[active];
+
+  return (
+    <div className="dashboard_project">
+      <div className="dashboard_project_wrap between">
+        <div className="dashboard_project_btn_wrap">
+          <div className="dashboard_project_title">Projects</div>
+          <div className="dashboard_project_btns start">
+            <Button
+              text={"Create Project"}
+              className={`dashboard_project_btn ${
+                active === "create" && "dashboard_project_btn_active"
+              }`}
+              onClick={() => handleTabSwitch("create")}
+            />
+            <Button
+              text={"Project in Review"}
+              className={`dashboard_project_btn ${
+                active === "review" && "dashboard_project_btn_active"
+              }`}
+              onClick={() => handleTabSwitch("review")}
+            />
+            <Button
+              text={"Project Completed"}
+              className={`dashboard_project_btn ${
+                active === "complete" && "dashboard_project_btn_active"
+              }`}
+              onClick={() => handleTabSwitch("complete")}
+            />
+          </div>
+        </div>
+        <div className="dashboard_project_organisation">
+          <div className="dashboard_project_organisation_title">
+            Organization
+          </div>
+          <div className="dashboard_project_organisation_name">
+            Oaks Intelligence Limited
+          </div>
+        </div>
+      </div>
+      <div>{tabItems}</div>
+    </div>
+  );
+};
+
+export default DashboardProject;

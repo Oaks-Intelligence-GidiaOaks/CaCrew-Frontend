@@ -1,4 +1,4 @@
 export const formatErrorResponse = (error) => {
-  const message = error.response.data.message || error.message;
+  const message = error?.data?.message ?? error?.error;
   return message;
 };

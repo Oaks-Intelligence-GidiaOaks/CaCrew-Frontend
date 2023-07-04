@@ -2,8 +2,10 @@ import React from "react";
 import "./DashboardHomeCredit.scss";
 import { avartar } from "assets/images";
 import Button from "components/widgets/Button/Button";
+import { useGetUserQuery } from "services/user.service";
 
 const DashboardHomeCredit = () => {
+  const { data} = useGetUserQuery();
   return (
     <div className="dashboard_home_credit between">
       <img
@@ -13,7 +15,7 @@ const DashboardHomeCredit = () => {
       />
       <div className="dashboard_home_credit_detail_wrap end">
         <div className="dashboard_home_credit_detail_wrap_inner">
-          <div className="dashboard_home_credit_name">George Baskerville</div>
+          <div className="dashboard_home_credit_name">{data?.organization_id?.organization_name}</div>
           <div className="dashboard_home_credit_wallet_wrap start">
             <div className="dashboard_home_credit_wallet_wrap_inner">
               <div className="dashboard_home_credit_wallet_text">
