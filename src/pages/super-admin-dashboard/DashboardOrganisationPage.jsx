@@ -2,7 +2,7 @@ import Dasboard from 'components/dashboard/dashboard-container/Dashboard'
 import DashboardOrganisation from 'components/dashboard/dashboard-content/dashboard-organisation/DashboardOrganisation'
 import React from 'react'
 
-const DashboardOrganisationScreen = () => {
+const DashboardOrganisationPage = () => {
   return (
     <div>
         <Dasboard component={DashboardOrganisation}/>
@@ -10,4 +10,4 @@ const DashboardOrganisationScreen = () => {
   )
 }
 
-export default DashboardOrganisationScreen
+export default DashboardOrganisationPage

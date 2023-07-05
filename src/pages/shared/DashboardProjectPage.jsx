@@ -2,7 +2,7 @@ import React from 'react'
 import Dasboard from 'components/dashboard/dashboard-container/Dashboard'
 import DashboardProject from 'components/dashboard/dashboard-content/dashboard-project/DashboardProject'
 
-const DashboardProjectScreen = () => {
+const DashboardProjectPage = () => {
   return (
     <div>
         <Dasboard component={DashboardProject}/>
@@ -10,4 +10,4 @@ const DashboardProjectScreen = () => {
   )
 }
 
-export default DashboardProjectScreen
+export default DashboardProjectPage

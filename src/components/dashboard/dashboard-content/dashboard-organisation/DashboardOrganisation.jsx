@@ -7,6 +7,7 @@ import {
 // import { useDispatch } from "react-redux";
 import { formatErrorResponse } from "utils/formatErrorResponse";
 import { dots } from "assets/images";
+import { useGetUserQuery } from "services/user.service";
 
 // fixedCacheKey: organisationApi.reducerPath,
 // }
@@ -15,6 +16,7 @@ const DashboardOrganisation = () => {
   // const dispatch = useDispatch();
 
   const { isLoading, error, data } = useAllOrganisationQuery();
+  const { data: userData } = useGetUserQuery();
   // const [
   //   verifyOrganisation,
   //   { isLoading: isLoadingVerify, error: errorVerify, data: dataVerify },
@@ -42,7 +44,7 @@ const DashboardOrganisation = () => {
             Organization
           </div>
           <div className="dashboard_project_organisation_name">
-            Oaks Intelligence Limited
+            {userData?.organization_id?.organization_name}
           </div>
         </div>
       </div>

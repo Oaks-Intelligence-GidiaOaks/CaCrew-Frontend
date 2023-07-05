@@ -17,30 +17,35 @@ import {
 } from "routes/constants";
 
 // Import auth pages
-// import HomeScreen from "pages/auth/HomeScreen";
-import LoginScreen from "pages/auth/LoginScreen";
-import RegisterCompanyScreen from "pages/auth/RegisterCompanyScreen";
-import RegisterAdminScreen from "pages/auth/RegisterAdminScreen";
-import IdentityDocumentScreen from "pages/auth/IdentityDocumentScreen";
-import CertificateScreen from "pages/auth/CertificateScreen";
-import LetterAuthScreen from "pages/auth/LetterAuthScreen";
+
+import {
+  // auth pages
+  LoginPage,
+  RegisterCompanyPage,
+  RegisterAdminPage,
+  IdentityDocumentPage,
+  CertificatePage,
+  LetterAuthPage,
+  // shared dasboard pages
+  DashboardOrganisationPage,
+  DashboardProjectPage,
+  DashboardStaffPage,
+} from "pages";
+
 // Import dasboard pages
-import DashScreen from "pages/dasboard/DashScreen";
-import DashboardOrganisationScreen from "pages/dasboard/DashboardOrganisationScreen";
-import DashboardProjectScreen from "pages/dasboard/DashboardProjectScreen";
-import DashboardStaffScreen from "pages/dasboard/DashboardStaffScreen";
+import DashScreen from "pages/org-admin-dashboard/OrgAdminDashHomePage";
 
 const RoutesConfig = () => {
   return (
     <Routes>
       {/* Public Routes */}
       {/* <Route path={HOME} element={<HomeScreen />} /> */}
-      <Route path={LOGIN} element={<LoginScreen />} />
-      <Route path={REGISTER_COMPANY} element={<RegisterCompanyScreen />} />
-      <Route path={REGISTER_ADMIN} element={<RegisterAdminScreen />} />
-      <Route path={IDENTITY_DOCUMENT} element={<IdentityDocumentScreen />} />
-      <Route path={CERTIFICATE_DOCUMENT} element={<CertificateScreen />} />
-      <Route path={LETTER_AUTH_DOCUMENT} element={<LetterAuthScreen />} />
+      <Route path={LOGIN} element={<LoginPage />} />
+      <Route path={REGISTER_COMPANY} element={<RegisterCompanyPage />} />
+      <Route path={REGISTER_ADMIN} element={<RegisterAdminPage />} />
+      <Route path={IDENTITY_DOCUMENT} element={<IdentityDocumentPage />} />
+      <Route path={CERTIFICATE_DOCUMENT} element={<CertificatePage />} />
+      <Route path={LETTER_AUTH_DOCUMENT} element={<LetterAuthPage />} />
       {/* <Route path={DASHBOARD} element={<DashScreen />} /> */}
 
       {/* Protected Routes */}
@@ -50,15 +55,15 @@ const RoutesConfig = () => {
       />
       <Route
         path={ORGANISATION}
-        element={<ProtectedRoute component={DashboardOrganisationScreen} />}
+        element={<ProtectedRoute component={DashboardOrganisationPage} />}
       />
       <Route
         path={PROJECT}
-        element={<ProtectedRoute component={DashboardProjectScreen} />}
+        element={<ProtectedRoute component={DashboardProjectPage} />}
       />
       <Route
         path={STAFF}
-        element={<ProtectedRoute component={DashboardStaffScreen} />}
+        element={<ProtectedRoute component={DashboardStaffPage} />}
       />
     </Routes>
   );

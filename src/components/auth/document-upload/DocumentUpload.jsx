@@ -43,7 +43,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
         navigate(path);
       };
       reader.readAsArrayBuffer(file);
-      if (currentUrl === "/letter_document") {
+      if (currentUrl === "/letter-document") {
         rtkMutation(registerUser, state)
         console.log(isLoading, error, "rtk Final");
 

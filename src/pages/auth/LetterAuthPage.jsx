@@ -2,7 +2,7 @@ import React from "react";
 import DocumentUpload from "components/auth/document-upload/DocumentUpload";
 import AuthHeader from "components/auth/auth-header/AuthHeader";
 
-const LetterAuthScreen = () => {
+const LetterAuthPage = () => {
   return (
     <>
       <AuthHeader text={"Already have an account?"} buttonText={"Login"} />
@@ -14,4 +14,4 @@ const LetterAuthScreen = () => {
   );
 };
 
-export default LetterAuthScreen;
+export default LetterAuthPage;

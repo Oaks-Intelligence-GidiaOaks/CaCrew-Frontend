@@ -35,13 +35,13 @@ const DashboardSidebar = () => {
           Dashboard
         </NavLink>
         <NavLink
-          to={"/dashboard_organization"}
+          to={"/dashboard-organization"}
           activeclassname="active"
           className={"link dashboard_link_item start"}
         >
           <img
             src={
-              pathname === "/dashboard_organization" ? staffwhite : staffblue
+              pathname === "/dashboard-organization" ? staffwhite : staffblue
             }
             alt="icon"
             className="dashboard_link_item_image"
@@ -49,24 +49,24 @@ const DashboardSidebar = () => {
           Organistion
         </NavLink>
         <NavLink
-          to={"/dashboard_project"}
+          to={"/dashboard-project"}
           activeclassname="active"
           className={"link dashboard_link_item start"}
         >
           <img
-            src={pathname === "/dashboard_project" ? projectwhite : projectblue}
+            src={pathname === "/dashboard-project" ? projectwhite : projectblue}
             alt="icon"
             className="dashboard_link_item_image"
           />
           Projects
         </NavLink>
         <NavLink
-          to={"/dashboard_staff"}
+          to={"/dashboard-staff"}
           activeclassname="active"
           className={"link dashboard_link_item start"}
         >
           <img
-            src={pathname === "/dashboard_staff" ? staffwhite : staffblue}
+            src={pathname === "/dashboard-staff" ? staffwhite : staffblue}
             alt="icon"
             className="dashboard_link_item_image"
           />

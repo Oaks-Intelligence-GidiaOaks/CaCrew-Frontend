@@ -2,7 +2,7 @@ import React from "react";
 import RegisterCompany from "components/auth/register-company/RegisterCompany";
 import AuthHeader from "components/auth/auth-header/AuthHeader";
 
-const RegisterCompanyScreen = () => {
+const RegisterCompanyPage = () => {
   return (
     <>
     <AuthHeader text={"Already have an account?"} buttonText={"Login"}/>
@@ -11,4 +11,4 @@ const RegisterCompanyScreen = () => {
   );
 };
 
-export default RegisterCompanyScreen;
+export default RegisterCompanyPage;

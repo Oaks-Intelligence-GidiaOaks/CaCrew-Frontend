@@ -10,7 +10,7 @@ const AuthHeader = ({text, buttonText}) => {
         <span className="auth_header_logo_bold">Ca</span>Crew
       </div>
       <Link
-        to={"/register_company"}
+        to={"/register-company"}
         className="auth_header_textbtn_wrap center link"
       >
         <div className="auth_header_text">{text}</div>

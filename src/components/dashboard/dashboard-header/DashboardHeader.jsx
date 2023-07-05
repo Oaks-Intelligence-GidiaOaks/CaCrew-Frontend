@@ -16,7 +16,7 @@ const DashboardHeader = () => {
       </div>
       <div className="dashboard_logowrap center">
         <Link
-          to={"/register_company"}
+          to={"/register-company"}
           className="dashboard_header_textbtn_wrap center link"
         >
           <img src={avartar} alt="icon" className="dashboard_avartar" />
