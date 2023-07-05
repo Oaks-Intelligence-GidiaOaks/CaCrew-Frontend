@@ -131,10 +131,9 @@ const DashboardStaff = () => {
                       name="role"
                       label="Staff Level"
                       select
-                      options={[
-                        { value: "OrgAdmin", name: "Admin User" },
-                        { value: "Staff", name: "Staff" },
-                      ]}
+                      options={
+                        { "Admin User": "OrgAdmin", "Staff": "Staff" }
+                      }
                     />
                   </div>
                   {error && <div>{formatErrorResponse(error)}</div>}

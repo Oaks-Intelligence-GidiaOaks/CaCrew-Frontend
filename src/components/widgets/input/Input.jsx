@@ -49,10 +49,11 @@ const Input = ({
             {...input}
             style={{ width: "100%" }}
           >
-            {options.map((option) => {
+            <option value="">Select an option</option>
+            {Object.entries(options).map((option) => {
               return (
-                <option key={option.value} value={option.value}>
-                  {option.name}
+                <option key={option[1]} value={option[1]}>
+                  {option[0]}
                 </option>
               );
             })}

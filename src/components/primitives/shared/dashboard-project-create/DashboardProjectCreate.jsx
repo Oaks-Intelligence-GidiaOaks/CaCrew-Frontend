@@ -32,7 +32,7 @@ const DashboardProjectCreate = () => {
                   component={Input}
                   label={"Add asignee"}
                   select
-                  options={["Chinedu", "Uduak"]}
+                  options={{Chinedu: "Chinedu", Uduak: "Uduak"}}
                 />
               </div>
               <div className="dashboard_project_create_field">
@@ -41,7 +41,7 @@ const DashboardProjectCreate = () => {
                   component={Input}
                   label={"Project Location"}
                   select
-                  options= {["Nigeria", "USA", "South Georgia", "France"]}
+                  options= {{Nigeria: "Nigeria" , USA: "USA"}}
                 />
               </div>
               <div className="dashboard_project_create_field">

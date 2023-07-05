@@ -29,7 +29,7 @@ const DashboardStaffCard = ({ data }) => {
           <div className="dashboard_staff_card_detail_namepos">
             <div className="dashboard_staff_card_detail_name">{data?.name}</div>
             <div className="dashboard_staff_card_detail_position">
-              {data?.role === ("SuperAdmin" || "OrgAdmin")
+              {(data?.role === "SuperAdmin" || data?.role === "OrgAdmin")
                 ? "Admin"
                 : data?.designation}
             </div>
