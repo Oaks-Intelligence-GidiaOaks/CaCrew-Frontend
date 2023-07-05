@@ -1,6 +1,5 @@
 import React from "react";
-import RegisterCompany from "components/auth/register-company/RegisterCompany";
-import AuthHeader from "components/auth/auth-header/AuthHeader";
+import { AuthHeader, RegisterCompany } from "containers";
 
 const RegisterCompanyPage = () => {
   return (

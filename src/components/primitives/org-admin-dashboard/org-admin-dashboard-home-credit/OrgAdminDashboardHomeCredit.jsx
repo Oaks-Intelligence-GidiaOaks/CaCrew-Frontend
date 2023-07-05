@@ -1,7 +1,7 @@
 import React from "react";
 import "./OrgAdminDashboardHomeCredit.scss";
 import { avartar } from "assets/images";
-import Button from "components/widgets/Button/Button";
+import Button from "components/widgets/button/Button";
 import { useGetUserQuery } from "services/user.service";
 
 const OrgAdminDashboardHomeCredit = () => {

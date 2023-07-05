@@ -1,11 +1,10 @@
-import Dasboard from "components/dashboard/dashboard-container/Dashboard";
 import React from "react";
-import DashboardHome from "components/dashboard/dashboard-content/dashboard-home/DashboardHome";
+import { OrgAdminDashboardHome, Dashboard } from "containers";
 
 const OrgAdminDashboardHomePage = () => {
   return (
     <div>
-      <Dasboard component={DashboardHome} />
+      <Dashboard component={OrgAdminDashboardHome} />
     </div>
   );
 };

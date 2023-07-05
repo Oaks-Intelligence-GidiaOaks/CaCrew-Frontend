@@ -1,8 +1,8 @@
 import React from "react";
-import "./DashboardBanner.scss";
+import "./OrgVerifyDashboardBanner.scss";
 import { checklist } from "assets/images";
 
-const DashboardBanner = () => {
+const OrgVerifyDashboardBanner = () => {
   return (
     <div className="between dashboard_banner">
       <div>
@@ -18,4 +18,4 @@ const DashboardBanner = () => {
   );
 };
 
-export default DashboardBanner;
+export default OrgVerifyDashboardBanner;

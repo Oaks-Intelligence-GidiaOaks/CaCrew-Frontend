@@ -3,7 +3,7 @@ import "./Modal.scss";
 import { useNavigate } from "react-router-dom";
 import { ModalContext } from "context/modalContext";
 import { eye, info_circle } from "assets/images";
-import Button from "components/widgets/Button/Button";
+import Button from "components/widgets/button/Button";
 
 const Modal = () => {
   const { isModalOPen, modalContent, closeModal, promptMessage, promptLink } =

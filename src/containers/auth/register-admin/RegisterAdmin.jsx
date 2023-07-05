@@ -1,5 +1,5 @@
 import React from "react";
-import { RegisterAdminForm, AdminInfoLeft } from "components/primitives";
+import { RegisterAdminForm, AdminInfoLeft } from "components";
 
 const RegisterAdmin = () => {
   return (

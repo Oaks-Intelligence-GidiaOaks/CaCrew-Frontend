@@ -1,7 +1,7 @@
 import React from "react";
 import "./AuthHeader.scss";
 import { Link } from "react-router-dom";
-import Button from "components/widgets/Button/Button";
+import Button from "components/widgets/button/Button";
 
 const AuthHeader = ({text, buttonText}) => {
   return (

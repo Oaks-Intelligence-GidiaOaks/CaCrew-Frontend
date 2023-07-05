@@ -1,11 +1,10 @@
-import Dasboard from 'components/dashboard/dashboard-container/Dashboard'
-import DashboardStaff from 'components/dashboard/dashboard-content/dashboard-staff/DashboardStaff'
+import { Dashboard, DashboardStaff } from 'containers'
 import React from 'react'
 
 const DashboardStaffPage = () => {
   return (
     <div>
-        <Dasboard component={DashboardStaff}/>
+        <Dashboard component={DashboardStaff}/>
     </div>
   )
 }

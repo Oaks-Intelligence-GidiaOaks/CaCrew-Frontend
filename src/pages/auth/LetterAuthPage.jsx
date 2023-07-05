@@ -1,6 +1,5 @@
 import React from "react";
-import DocumentUpload from "components/auth/document-upload/DocumentUpload";
-import AuthHeader from "components/auth/auth-header/AuthHeader";
+import { DocumentUpload, AuthHeader } from "containers";
 
 const LetterAuthPage = () => {
   return (

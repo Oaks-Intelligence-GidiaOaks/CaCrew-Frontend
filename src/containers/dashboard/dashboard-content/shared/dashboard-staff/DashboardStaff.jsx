@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./DashboardStaff.scss";
-import Button from "components/widgets/Button/Button";
+import Button from "components/widgets/button/Button";
 import { close, search } from "assets/images";
-import { DashboardStaffCard } from "components/primitives";
+import { DashboardStaffCard } from "components";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
 import { useAllStaffsQuery, useAddStaffMutation } from "services/staff.service";

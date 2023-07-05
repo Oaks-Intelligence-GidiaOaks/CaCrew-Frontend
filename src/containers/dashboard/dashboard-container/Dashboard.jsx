@@ -3,7 +3,7 @@ import "./Dashboard.scss";
 import DashboardHeader from "../dashboard-header/DashboardHeader";
 import DashboardSidebar from "../dashboard-sidebar/DashboardSidebar";
 
-const Dasboard = ({ component: Component }) => {
+const Dashboard = ({ component: Component }) => {
   return (
     <div className="dashboard">
       <DashboardHeader />
@@ -19,4 +19,4 @@ const Dasboard = ({ component: Component }) => {
   );
 };
 
-export default Dasboard;
+export default Dashboard;

@@ -1,6 +1,5 @@
 import React from "react";
-import RegisterAdmin from "components/auth/register-admin/RegisterAdmin";
-import AuthHeader from "components/auth/auth-header/AuthHeader";
+import { AuthHeader, RegisterAdmin } from "containers";
 
 const RegisterAdminPage = () => {
   return (

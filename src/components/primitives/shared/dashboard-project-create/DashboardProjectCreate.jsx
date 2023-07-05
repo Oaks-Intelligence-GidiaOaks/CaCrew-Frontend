@@ -3,7 +3,7 @@ import "./DashboardProjectCreate.scss";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
 import Upload from "components/widgets/upload/Upload";
-import Button from "components/widgets/Button/Button";
+import Button from "components/widgets/button/Button";
 
 const DashboardProjectCreate = () => {
   const onSubmit = (values) => {

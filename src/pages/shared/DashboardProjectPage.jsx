@@ -1,11 +1,10 @@
 import React from 'react'
-import Dasboard from 'components/dashboard/dashboard-container/Dashboard'
-import DashboardProject from 'components/dashboard/dashboard-content/dashboard-project/DashboardProject'
+import { Dashboard, DashboardProject } from 'containers'
 
 const DashboardProjectPage = () => {
   return (
     <div>
-        <Dasboard component={DashboardProject}/>
+        <Dashboard component={DashboardProject}/>
     </div>
   )
 }

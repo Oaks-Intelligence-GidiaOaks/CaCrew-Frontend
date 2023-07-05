@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
-import Button from "components/widgets/Button/Button";
+import Button from "components/widgets/button/Button";
 import { useNavigate } from "react-router-dom";
 import { updateFormdata } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";
