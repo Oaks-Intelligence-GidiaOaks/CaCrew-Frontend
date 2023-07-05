@@ -13,3 +13,8 @@ export {default as DashboardStaffPage} from "pages/shared/DashboardStaffPage"
 
 // Super admin pages exports
 export {default as DashboardOrganisationPage} from "pages/super-admin-dashboard/DashboardOrganisationPage"
+
+// Organisation admin pages exports
+export {default as OrgAdminDashboardHomePage} from "pages/org-admin-dashboard/OrgAdminDashboardHomePage"
+
+

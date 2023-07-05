@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./DashboardProject.scss";
 import Button from "components/widgets/Button/Button";
-import DashboardProjectCreate from "components/primitives/dashboard-project-create/DashboardProjectCreate";
-import DashboardProjectReview from "components/primitives/dashboard-project-review/DashboardProjectReview";
+import { DashboardProjectCreate, DashboardProjectReview } from "components/primitives";
 
 const DashboardProject = () => {
   const [active, setActive] = useState("create");

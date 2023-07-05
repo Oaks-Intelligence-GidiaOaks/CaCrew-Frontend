@@ -1,6 +1,6 @@
 import React from "react";
-import AuthLeftSide from "components/primitives/auth-left-side/AuthLeftSide";
-import RegisterCompanyForm from "components/primitives/register-company-form/RegisterCompanyForm";
+import AuthLeftSide from "components/primitives/auth/auth-left-side/AuthLeftSide";
+import RegisterCompanyForm from "components/primitives/auth/register-company-form/RegisterCompanyForm";
 
 const RegisterCompany = () => {
   return (

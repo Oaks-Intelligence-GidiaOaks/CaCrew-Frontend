@@ -27,13 +27,15 @@ import {
   CertificatePage,
   LetterAuthPage,
   // shared dasboard pages
-  DashboardOrganisationPage,
   DashboardProjectPage,
   DashboardStaffPage,
+  // super admin dasboard pages
+  DashboardOrganisationPage,
+  // organisation admin dasboard pages
+  OrgAdminDashboardHomePage,
 } from "pages";
 
 // Import dasboard pages
-import DashScreen from "pages/org-admin-dashboard/OrgAdminDashHomePage";
 
 const RoutesConfig = () => {
   return (
@@ -51,7 +53,7 @@ const RoutesConfig = () => {
       {/* Protected Routes */}
       <Route
         path={DASHBOARD}
-        element={<ProtectedRoute component={DashScreen} />}
+        element={<ProtectedRoute component={OrgAdminDashboardHomePage} />}
       />
       <Route
         path={ORGANISATION}

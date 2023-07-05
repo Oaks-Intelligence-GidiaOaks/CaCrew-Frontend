@@ -1,25 +1,27 @@
-// import React from 'react'
-import DashboardHomeChart from "components/primitives/dashboard-home-chart/DashboardHomeChart";
+import React from "react";
 import "./DashboardHome.scss";
-import DashboardBanner from "components/primitives/dashboard-banner/DashboardBanner";
-import DashboardHomeCredit from "components/primitives/dashboard-home-credit/DashboardHomeCredit";
-import DashboardHomeProject from "components/primitives/dashboard-home-project/DashboardHomeProject";
-import DashboardWallet from "components/primitives/dashboard-wallet/DashboardWallet";
+import {
+  OrgAdminDashboardHomeCredit,
+  OrgAdminDashboardHomeProject,
+  DashboardWallet,
+  DashboardBanner,
+  OrgAdminDashboardHomeChart,
+} from "components/primitives";
 
 const DashboardHome = () => {
   return (
     <div className="dashboard_home start col">
       <DashboardBanner />
-      <DashboardHomeCredit />
+      <OrgAdminDashboardHomeCredit />
       <div className="between wallet_project_wrap">
         <div className="wallet_project_wrap_left">
           <DashboardWallet />
         </div>
         <div className="wallet_project_wrap_right">
-          <DashboardHomeProject />
+          <OrgAdminDashboardHomeProject />
         </div>
       </div>
-      <DashboardHomeChart />
+      <OrgAdminDashboardHomeChart />
     </div>
   );
 };

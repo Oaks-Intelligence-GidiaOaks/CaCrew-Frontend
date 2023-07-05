@@ -1,6 +1,6 @@
 @import "base.scss";
 
-.dashboard_home_credit {
+.org_admin_dashboard_home_credit {
   border-radius: 8px;
   background: #f8f8f8;
   margin-top: 18px;
@@ -13,7 +13,7 @@
   @media (max-width: 767px) {
     flex-direction: column;
   }
-  .dashboard_home_credit_avartar {
+  .org_admin_dashboard_home_credit_avartar {
     width: 80px;
     height: 80px;
     flex-shrink: 0;
@@ -26,15 +26,15 @@
       margin-left: 0px;
     }
   }
-  .dashboard_home_credit_detail_wrap {
+  .org_admin_dashboard_home_credit_detail_wrap {
     align-items: center;
     width: 100%;
     @media (max-width: 991px) {
       flex-wrap: wrap;
       justify-content: center;
     }
-    .dashboard_home_credit_detail_wrap_inner {
-      .dashboard_home_credit_name {
+    .org_admin_dashboard_home_credit_detail_wrap_inner {
+      .org_admin_dashboard_home_credit_name {
         color: #143b76;
         font-size: 24px;
         font-weight: 500;
@@ -45,13 +45,13 @@
           justify-content: center;
         }
       }
-      .dashboard_home_credit_wallet_wrap {
-        .dashboard_home_credit_wallet_wrap_inner {
+      .org_admin_dashboard_home_credit_wallet_wrap {
+        .org_admin_dashboard_home_credit_wallet_wrap_inner {
           margin: 0 17px;
           @media (max-width: 767px) {
             margin: 0 10px;
           }
-          .dashboard_home_credit_wallet_text {
+          .org_admin_dashboard_home_credit_wallet_text {
             color: #4c5563;
             font-size: 11px;
             font-weight: 400;
@@ -61,23 +61,23 @@
               //   font-size: 12px;
             }
           }
-          .dashboard_home_credit_wallet_value {
-            @extend .dashboard_home_credit_wallet_text;
+          .org_admin_dashboard_home_credit_wallet_value {
+            @extend .org_admin_dashboard_home_credit_wallet_text;
             color: #212121;
           }
         }
       }
     }
-    .dashboard_home_credit_btn_wrap {
+    .org_admin_dashboard_home_credit_btn_wrap {
       @media (max-width: 991px) {
         margin-top: 30px;
       }
-      .dashboard_home_credit_btn_pending {
+      .org_admin_dashboard_home_credit_btn_pending {
         opacity: 0.8;
         cursor: not-allowed;
       }
 
-      .dashboard_home_credit_btn_one {
+      .org_admin_dashboard_home_credit_btn_one {
         margin-right: 15px;
         margin-bottom: 15px;
         color: #fff;
@@ -92,12 +92,12 @@
           font-size: 12px;
         }
       }
-      .dashboard_home_credit_btn_two {
-        @extend .dashboard_home_credit_btn_one;
+      .org_admin_dashboard_home_credit_btn_two {
+        @extend .org_admin_dashboard_home_credit_btn_one;
         background-color: #5f41b2;
       }
-      .dashboard_home_credit_btn_three {
-        @extend .dashboard_home_credit_btn_one;
+      .org_admin_dashboard_home_credit_btn_three {
+        @extend .org_admin_dashboard_home_credit_btn_one;
         background-color: #fff;
         margin-bottom: 0px;
         color: #4c5563;

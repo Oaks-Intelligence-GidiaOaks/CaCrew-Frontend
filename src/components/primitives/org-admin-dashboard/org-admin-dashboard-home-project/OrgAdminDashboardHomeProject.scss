@@ -1,8 +1,8 @@
 @import "base.scss";
 
-.dashboard_home_project {
+.org_admin_dashboard_home_project {
   width: 100%;
-  .dashboard_home_project_heading {
+  .org_admin_dashboard_home_project_heading {
     color: #143b76;
     font-size: 20px;
     font-weight: 500;
@@ -12,15 +12,15 @@
       font-size: 14px;
     }
   }
-  .dashboard_home_project_wrap {
+  .org_admin_dashboard_home_project_wrap {
     border-radius: 8px;
     border: 1px solid #dedede;
     background: #fff;
     height: 196px;
-    .dashboard_home_project_wrap_heading_wrap {
+    .org_admin_dashboard_home_project_wrap_heading_wrap {
       border-bottom: 1px solid #dedede;
       padding: 17px;
-      .dashboard_home_project_wrap_heading {
+      .org_admin_dashboard_home_project_wrap_heading {
         color: #212121;
         font-size: 15px;
         font-weight: 400;
@@ -29,9 +29,9 @@
         }
       }
     }
-    .dashboard_home_project_empty {
+    .org_admin_dashboard_home_project_empty {
       height: 70%;
-      .dashboard_home_project_empty_text {
+      .org_admin_dashboard_home_project_empty_text {
         color: #212121;
         font-size: 16px;
         font-weight: 500;

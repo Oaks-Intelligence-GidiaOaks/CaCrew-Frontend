@@ -1,6 +1,6 @@
 import "./Login.scss";
-import AuthLeftSide from "components/primitives/auth-left-side/AuthLeftSide";
-import LoginForm from "components/primitives/login-form/LoginForm";
+import AuthLeftSide from "components/primitives/auth/auth-left-side/AuthLeftSide";
+import LoginForm from "components/primitives/auth/login-form/LoginForm";
 
 const Login = () => {
   return (

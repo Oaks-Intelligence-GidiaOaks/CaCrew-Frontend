@@ -4,7 +4,7 @@ import RoutesConfig from "./routes/routesConfig";
 import { Provider } from "react-redux";
 import store, { persistor } from "redux/store";
 import { ModalContextProvider } from "context/modalContext";
-import Modal from "components/primitives/modal/Modal";
+import Modal from "components/primitives/shared/modal/Modal";
 import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
