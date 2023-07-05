@@ -18,7 +18,7 @@ const RegisterCompanyForm = () => {
     const formatDate = convertToDateFormat(date_of_incorporation)
     dispatch(updateFormdata(otherValues));
     dispatch(updateFormdata({date_of_incorporation: formatDate}));
-    navigate("/register_admin");
+    navigate("/register-admin");
     console.log(formatDate, otherValues, "valuesDispatch");
   };
   return (

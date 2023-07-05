@@ -8,7 +8,7 @@ const IdentityDocumentPage = () => {
       <DocumentUpload
         title={"Upload Identity Document of Contact Person"}
         documentName="admin_identity_document"
-        path={"/certificate_document"}
+        path={"/certificate-document"}
       />
     </>
   );

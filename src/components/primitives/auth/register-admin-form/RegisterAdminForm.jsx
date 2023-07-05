@@ -14,7 +14,7 @@ const RegisterAdminForm = () => {
 
   const onSubmit = (values) => {
     dispatch(updateFormdata(values));
-    navigate("/identity_document");
+    navigate("/identity-document");
     console.log(state, "form");
   };
   return (

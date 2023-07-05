@@ -8,10 +8,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import rtkMutation from "utils/rtkMutation";
 import { useRegisterUserMutation } from "services/user.service";
 import Upload from "components/widgets/upload/Upload";
+import fileTypeReader from "utils/fileTypeReader";
 // import axios from "axios";
 
 const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,14 +27,12 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
       const reader = new FileReader();
       const object = {};
       reader.onload = () => {
-        // Get array buffer result from file
-        const fileDataBuffer = reader.result;
-        // Initialize a decoder to decode buffer object into string
-        const decoder = new TextDecoder("UTF-8");
-        // Add properties to object
+        // Get string result from file
+        const fileDataString = reader.result;
+        // Add to properties
         object.name = file.name;
         object.type = file.type;
-        object.buffer = decoder.decode(fileDataBuffer);
+        object.string = fileDataString; // store the string result
         object.path = URL.createObjectURL(file);
         // Replace form value with object
         value[documentName] = object;
@@ -42,11 +40,11 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
         dispatch(updateFormdata(value));
         navigate(path);
       };
-      reader.readAsArrayBuffer(file);
+      // Check the file type and use different methods to read the file
+      fileTypeReader(file, reader)
       if (currentUrl === "/letter-document") {
-        rtkMutation(registerUser, state)
+        rtkMutation(registerUser, state);
         console.log(isLoading, error, "rtk Final");
-
       }
     }
   };
@@ -60,7 +58,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
           onSubmit={handleSubmit}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <Upload documentName={documentName}/>
+              <Upload documentName={documentName} />
               <Button
                 type={"Submit"}
                 text={"Next"}
