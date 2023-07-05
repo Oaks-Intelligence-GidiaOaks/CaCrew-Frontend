@@ -1,5 +1,3 @@
-// auth
-
 // primitives
 export { default as OrgAdminDashboardHomeChart } from "components/primitives/org-admin-dashboard/org-admin-dashboard-home-chart/OrgAdminDashboardHomeChart";
 export { default as OrgAdminDashboardHomeCredit } from "components/primitives/org-admin-dashboard/org-admin-dashboard-home-credit/OrgAdminDashboardHomeCredit";
