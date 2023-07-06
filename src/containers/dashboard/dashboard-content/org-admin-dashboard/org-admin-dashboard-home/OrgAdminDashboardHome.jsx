@@ -5,7 +5,8 @@ import {
   OrgAdminDashboardHomeProject,
   DashboardWallet,
   OrgVerifyDashboardBanner,
-  OrgAdminDashboardHomeChart,
+  CarbonCreditChart,
+  ChartFilter,
 } from "components";
 
 const OrgAdminDashboardHome = () => {
@@ -21,7 +22,14 @@ const OrgAdminDashboardHome = () => {
           <OrgAdminDashboardHomeProject />
         </div>
       </div>
-      <OrgAdminDashboardHomeChart />
+      <div className="dashboard_home_chart_wrap">
+        <ChartFilter />
+        <div className="dashboard_home_chart">
+          <div className="dashboard_home_chart_width">
+            <CarbonCreditChart />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

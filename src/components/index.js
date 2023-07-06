@@ -1,5 +1,5 @@
 // primitives
-export { default as OrgAdminDashboardHomeChart } from "components/primitives/org-admin-dashboard/org-admin-dashboard-home-chart/OrgAdminDashboardHomeChart";
+export { default as CarbonCreditChart } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";
 export { default as OrgAdminDashboardHomeCredit } from "components/primitives/org-admin-dashboard/org-admin-dashboard-home-credit/OrgAdminDashboardHomeCredit";
 export { default as OrgAdminDashboardHomeProject } from "components/primitives/org-admin-dashboard/org-admin-dashboard-home-project/OrgAdminDashboardHomeProject";
 export { default as OrgVerifyDashboardBanner } from "components/primitives/org-admin-dashboard/org-verify-dashboard-banner/OrgVerifyDashboardBanner";
@@ -21,3 +21,4 @@ export { default as Button } from "components/widgets/button/Button";
 export { default as Input } from "components/widgets/input/Input";
 export { default as Upload } from "components/widgets/upload/Upload";
 
+export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";

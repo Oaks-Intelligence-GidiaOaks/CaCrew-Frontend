@@ -1,0 +1,70 @@
+@import "base.scss";
+
+.carbon_chart {
+  height: 250px;
+  border-radius: 8px;
+  background: #fff;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.filter_chart {
+  width: 100%;
+  margin-bottom: 40px;
+  .filter_chart_text_wrap {
+    width: 100%;
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+    .filter_chart_text {
+      align-items: center;
+      @media (max-width: 767px) {
+        margin-bottom: 20px;
+      }
+      .filter_chart_text_title {
+        color: #143b76;
+        font-size: 20px;
+        font-weight: 500;
+        @media (max-width: 991px) {
+          font-size: 14px;
+        }
+      }
+
+      .filter_chart_text_history {
+        color: #4c5563;
+        font-size: 15px;
+        font-weight: 400;
+        margin-left: 40px;
+        border-radius: 4px;
+        border: 1px solid #dedede;
+        padding: 4px 24px;
+
+        @media (max-width: 991px) {
+          font-size: 12px;
+          padding: 4px 14px;
+        }
+      }
+    }
+
+    .filter_chart_wrap {
+      cursor: pointer;
+      .filter_chart_item {
+        border-radius: 4px;
+        border: 1px solid #dedede;
+        height: 37px;
+        width: 40px;
+        color: #4c5563;
+        font-size: 15px;
+        font-weight: 400;
+        margin-left: 10px;
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+      }
+      .filter_chart_item_active {
+        @extend .filter_chart_item;
+        background-color: #dedede;
+      }
+    }
+  }
+}

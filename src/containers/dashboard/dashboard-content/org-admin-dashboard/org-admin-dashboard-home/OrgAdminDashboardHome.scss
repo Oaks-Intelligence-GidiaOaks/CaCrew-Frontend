@@ -22,4 +22,19 @@
       }
     }
   }
+  .dashboard_home_chart_wrap {
+    margin-top: 40px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #dedede;
+    padding: 28px;
+    .dashboard_home_chart {
+      overflow-x: scroll;
+      .dashboard_home_chart_width {
+        @media (max-width: 476px) {
+          width: 500px;
+        }
+      }
+    }
+  }
 }
