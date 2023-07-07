@@ -33,10 +33,10 @@ export const userApi = createApi({
       }),
       transformResponse: (response) => {
         console.log(response, "rtk");
-        const { accessToken, data } = response;
-        // localStorage.setItem("user", JSON.stringify(user));
+        const { accessToken, user } = response;
+        localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", accessToken);
-        return { data };
+        return user;
       },
     }),
 

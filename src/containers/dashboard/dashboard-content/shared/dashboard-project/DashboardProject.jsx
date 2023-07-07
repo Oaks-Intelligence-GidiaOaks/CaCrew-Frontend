@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./DashboardProject.scss";
 import Button from "components/widgets/button/Button";
 import { DashboardProjectCreate, DashboardProjectReview } from "components";
+import { useAllProjectsQuery } from "services/project.service";
+
 
 const DashboardProject = () => {
   const [active, setActive] = useState("create");
@@ -10,9 +12,12 @@ const DashboardProject = () => {
     setActive(value);
   };
 
+  const {data, isSuccess, errpr} = useAllProjectsQuery()
+
+
   const tabItems = {
     create: <DashboardProjectCreate />,
-    review: <DashboardProjectReview />,
+    review: <DashboardProjectReview data={data}/>,
     complete: <DashboardProjectReview />,
   }[active];
 

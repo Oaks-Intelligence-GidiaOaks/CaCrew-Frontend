@@ -2,6 +2,7 @@ const fileTypeReader = (file, reader) => {
   switch (file.type) {
     case "image/jpeg":
     case "image/png":
+    case "image/jpg":
     case "application/pdf":
       reader.readAsDataURL(file);
       break;

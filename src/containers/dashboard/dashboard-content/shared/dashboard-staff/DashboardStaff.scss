@@ -77,38 +77,13 @@
       }
 
       .dashboard_staff_banner_input_wrap {
-        border-radius: 3.218px;
-        border: 0.804px solid #dedede;
-        background: #fff;
-        position: relative;
-        padding: 8px;
-        margin-right: 26px;
         width: 300px;
+        margin-right: 28px;
         @media (max-width: 991px) {
           margin-bottom: 40px;
         }
         @media (max-width: 767px) {
           width: 100%;
-        }
-
-        .dashboard_staff_banner_input {
-          border: none;
-          outline: none;
-          height: 100%;
-          padding-left: 25px;
-          width: 100%;
-          &::placeholder {
-            font-family: DM Sans;
-            font-size: 12px;
-          }
-          @media (max-width: 991px) {
-            width: 100%;
-          }
-        }
-        .dashboard_staff_banner_img {
-          position: absolute;
-          left: 10px;
-          top: 30%;
         }
       }
       .dashboard_staff_banner_btn {

@@ -180,7 +180,7 @@ function LineChart(props) {
   );
 }
 
-export const ChartFilter = () => {
+export const ChartFilter = ({title}) => {
   const [active, setSctive] = useState(3);
 
   const handleActive = (idx) => {
@@ -190,7 +190,7 @@ export const ChartFilter = () => {
     <div className="filter_chart">
       <div className="filter_chart_text_wrap between">
         <div className="filter_chart_text start">
-          <div className="filter_chart_text_title">Carbon Credit Overview</div>
+          <div className="filter_chart_text_title">{title}</div>
           <div className="filter_chart_text_history">History</div>
         </div>
         <div className="filter_chart_wrap start">

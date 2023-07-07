@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./LoginForm.scss";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
 import Button from "components/widgets/button/Button";
 import { Link } from "react-router-dom";
-import { useLoginUserMutation } from "services/user.service";
+import { useGetUserQuery, useLoginUserMutation } from "services/user.service";
 import { useNavigate } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 import rtkMutation from "utils/rtkMutation";
@@ -12,14 +12,18 @@ import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const LoginForm = () => {
   const [loginUser, { isLoading, error, isSuccess }] = useLoginUserMutation();
+  useGetUserQuery();
 
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    await rtkMutation(loginUser, values)
+    await rtkMutation(loginUser, values);
   };
 
-  isSuccess && navigate("/");
+  useEffect(() => {
+    isSuccess && navigate("/");
+    isSuccess && window.location.reload();
+  }, [isSuccess, onSubmit]);
 
   return (
     <div className="auth_form">

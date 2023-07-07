@@ -13,6 +13,7 @@ export { default as LoginForm } from "components/primitives/auth/login-form/Logi
 export { default as RegisterAdminForm } from "components/primitives/auth/register-admin-form/RegisterAdminForm";
 export { default as RegisterCompanyForm } from "components/primitives/auth/register-company-form/RegisterCompanyForm";
 export { default as TableAccordion } from "components/primitives/super-admin-dashboard/table-accordion/TableAccordion";
+export { default as SuperAdminStatCard } from "components/primitives/super-admin-dashboard/super-admin-stat-card/SuperAdminStatCard";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
@@ -21,5 +22,6 @@ export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
 export { default as Button } from "components/widgets/button/Button";
 export { default as Input } from "components/widgets/input/Input";
 export { default as Upload } from "components/widgets/upload/Upload";
+export { default as SearchInput } from "components/widgets/search-input/SearchInput";
 
 export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";

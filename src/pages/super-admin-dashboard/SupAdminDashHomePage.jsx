@@ -1,8 +1,11 @@
 import React from 'react'
+import { Dashboard, SuperAdminDashHome } from 'containers'
 
 const SupAdminDashHomePage = () => {
   return (
-    <div>SupAdminDashHomePage</div>
+    <div>
+      <Dashboard component={SuperAdminDashHome}/>
+    </div>
   )
 }
 

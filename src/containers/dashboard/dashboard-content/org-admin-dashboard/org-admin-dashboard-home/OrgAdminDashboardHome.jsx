@@ -23,7 +23,7 @@ const OrgAdminDashboardHome = () => {
         </div>
       </div>
       <div className="dashboard_home_chart_wrap">
-        <ChartFilter />
+        <ChartFilter title={"Carbon Credit Overview"}/>
         <div className="dashboard_home_chart">
           <div className="dashboard_home_chart_width">
             <CarbonCreditChart />

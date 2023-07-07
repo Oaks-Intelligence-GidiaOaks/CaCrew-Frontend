@@ -1,8 +1,15 @@
 import React from "react";
 import "./OrgVerifyDashboardBanner.scss";
 import { checklist } from "assets/images";
+import { useGetUserQuery } from "services/user.service";
 
 const OrgVerifyDashboardBanner = () => {
+  const { data } = useGetUserQuery();
+
+  if(data?.organization_id?.isVerified) {
+    return null
+  }
+
   return (
     <div className="between dashboard_banner">
       <div>

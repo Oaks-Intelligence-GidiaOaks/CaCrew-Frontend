@@ -26,6 +26,9 @@
         width: 0;
         background-color: transparent;
       }
+      @media (min-width: 1500px) {
+        width: 100%;
+      }
       @media (max-width: 991px) {
         font-size: 12px;
       }
@@ -84,6 +87,9 @@
       &::-webkit-scrollbar {
         width: 0;
         background-color: transparent;
+      }
+      @media (min-width: 1500px) {
+        width: 100%;
       }
       .table_accordion_item_bottom_title {
         color: #212121;

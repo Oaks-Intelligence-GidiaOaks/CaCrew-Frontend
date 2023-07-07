@@ -2,34 +2,34 @@ import React from "react";
 import "./DashboardProjectReview.scss";
 import { doc, dots } from "assets/images";
 
-const data = [
-  {
-    sn: 1,
-    applicationId: "A123456",
-    date: "01/01/2023",
-    initiator: "John Doe",
-    carbonCredit: "500 tCO2e",
-    // documentation: "Yes",
-  },
-  {
-    sn: 2,
-    applicationId: "B789012",
-    date: "02/02/2023",
-    initiator: "Jane Smidiv",
-    carbonCredit: "320 tCO2e",
-    // documentation: "No",
-  },
-  {
-    sn: 3,
-    applicationId: "C345678",
-    date: "03/03/2023",
-    initiator: "Bob Lee",
-    carbonCredit: "320 tCO2e",
-    // documentation: "Yes",
-  },
-];
+// const data = [
+//   {
+//     sn: 1,
+//     applicationId: "A123456",
+//     date: "01/01/2023",
+//     initiator: "John Doe",
+//     carbonCredit: "500 tCO2e",
+//     // documentation: "Yes",
+//   },
+//   {
+//     sn: 2,
+//     applicationId: "B789012",
+//     date: "02/02/2023",
+//     initiator: "Jane Smidiv",
+//     carbonCredit: "320 tCO2e",
+//     // documentation: "No",
+//   },
+//   {
+//     sn: 3,
+//     applicationId: "C345678",
+//     date: "03/03/2023",
+//     initiator: "Bob Lee",
+//     carbonCredit: "320 tCO2e",
+//     // documentation: "Yes",
+//   },
+// ];
 
-const DashboardProjectReview = () => {
+const DashboardProjectReview = ({data}) => {
   return (
     <div className="dashboard_project_review">
       <div className="dashboard_project_table">
@@ -47,27 +47,27 @@ const DashboardProjectReview = () => {
             style={{ width: "30px" }}
           ></div>
         </div>
-        {data.map((row, idx) => (
+        {data?.map((row, idx) => (
           <div
-            key={row.sn}
+            key={row?._id}
             className={`dashboard_project_table_body between ${
               (idx + 1) % 2 === 0 && "dashboard_project_table_body_bg"
             }`}
           >
-            <div className="dashboard_project_table_body_item">{row.sn}</div>
+            <div className="dashboard_project_table_body_item">{idx + 1}</div>
             <div className="dashboard_project_table_body_item">
-              {row.applicationId}
+              {row?._id}
             </div>
-            <div className="dashboard_project_table_body_item">{row.date}</div>
+            <div className="dashboard_project_table_body_item">{row?.createdAt}</div>
             <div className="dashboard_project_table_body_item">
-              {row.initiator}
-            </div>
-            <div className="dashboard_project_table_body_item">
-              {row.carbonCredit}
+              {row?.originator?.name}
             </div>
             <div className="dashboard_project_table_body_item">
+              {row?.amount_earned}
+            </div>
+            <a href={row?.document_url} className="dashboard_project_table_body_item">
               <img src={doc} alt="icon" />
-            </div>
+            </a>
             <div
               className="dashboard_project_table_body_item"
               style={{ width: "30px", fontSize: "20px" }}

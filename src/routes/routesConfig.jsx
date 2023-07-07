@@ -31,13 +31,18 @@ import {
   DashboardStaffPage,
   // super admin dasboard pages
   DashboardOrganisationPage,
+  SupAdminDashHomePage,
   // organisation admin dasboard pages
   OrgAdminDashboardHomePage,
+  // staff
+  StaffDashboardHomePage,
 } from "pages";
 
 // Import dasboard pages
 
 const RoutesConfig = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user, "log");
   return (
     <Routes>
       {/* Public Routes */}
@@ -52,7 +57,19 @@ const RoutesConfig = () => {
       {/* Protected Routes */}
       <Route
         path={DASHBOARD}
-        element={<ProtectedRoute component={OrgAdminDashboardHomePage} />}
+        element={
+          <ProtectedRoute
+            component={
+              user?.role === "SuperAdmin"
+                ? SupAdminDashHomePage
+                : user?.role === "OrgAdmin"
+                ? OrgAdminDashboardHomePage
+                : user?.role === "Staff"
+                ? StaffDashboardHomePage
+                : LoginPage
+            }
+          />
+        }
       />
       <Route
         path={ORGANISATION}

@@ -14,6 +14,7 @@ import register from "./slices/register.slice";
 import { userApi } from "services/user.service";
 import { organisationApi } from "services/organisation.service";
 import { staffApi } from "services/staff.service";
+import { projectApi } from "services/project.service";
 // import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel1";
 // import autoMergeLevel1 from "redux-persist/es/stateReconciler/autoMergeLevel1";
 import hardSet from "redux-persist/es/stateReconciler/hardSet";
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   [organisationApi.reducerPath]: organisationApi.reducer,
   [staffApi.reducerPath]: staffApi.reducer,
+  [projectApi.reducerPath]: projectApi.reducer,
 });
 
 const persistConfig = {
@@ -46,7 +48,8 @@ const store = configureStore({
     }).concat(
       userApi.middleware,
       organisationApi.middleware,
-      staffApi.middleware
+      staffApi.middleware,
+      projectApi.middleware
     ),
 });
 

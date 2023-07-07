@@ -1,0 +1,62 @@
+@import "base.scss";
+
+.super_stat_card {
+  width: 100%;
+  .super_stat_card_name {
+    color: #143b76;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    @media (max-width: 991px) {
+      font-size: 15px;
+    }
+  }
+  .super_stat_card_wrap {
+    border-radius: 8px;
+    border: 1px solid #dedede;
+    padding-top: 26px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    align-items: center;
+    height: 240px;
+    .super_stat_card_text {
+        margin-right: 20px;
+        height: 150px;
+        justify-content: flex-start;
+      .super_stat_card_value {
+        color: #115ccd;
+        font-size: 36px;
+        line-height: 23.968px;
+        margin-bottom: 12px;
+        @media (max-width: 991px) {
+          font-size: 20px;
+        }
+      }
+      .super_stat_card_value_desc {
+        color: #4c5563;
+        text-align: center;
+        font-size: 13px;
+        line-height: 18.968px;
+        margin-bottom: 22px;
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+      }
+      .super_stat_card_value_btn {
+        border-radius: 4px;
+        border: 1px solid #dedede;
+        @extend .super_stat_card_value_desc;
+        color: #143b76;
+        text-decoration: none;
+        font-size: 12px;
+        padding: 7px 15px;
+      }
+    }
+    .super_stat_card_value_img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+    }
+  }
+}

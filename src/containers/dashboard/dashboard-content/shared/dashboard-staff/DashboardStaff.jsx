@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./DashboardStaff.scss";
 import Button from "components/widgets/button/Button";
 import { close, search } from "assets/images";
-import { DashboardStaffCard } from "components";
+import { DashboardStaffCard, SearchInput } from "components";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
 import { useAllStaffsQuery, useAddStaffMutation } from "services/staff.service";
@@ -13,20 +13,15 @@ import { formatErrorResponse } from "utils/formatErrorResponse";
 const DashboardStaff = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data: staffs } = useAllStaffsQuery();
-  const [
-    addStaff,
-    { isLoading: loadingAddStaff, error },
-  ] = useAddStaffMutation();
+  const [addStaff, { isLoading: loadingAddStaff, error }] =
+    useAddStaffMutation();
 
   const { data: userData } = useGetUserQuery();
-  //   console.log(staffs, error, "staff");
-
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  //   isSuccess && navigate("/dashboard_staff");
 
   const onSubmit = async (values) => {
     await rtkMutation(addStaff, values).then(() => {
@@ -48,7 +43,7 @@ const DashboardStaff = () => {
                 Total Staff
               </div>
               <div className="dashboard_staff_banner_text_staff_value">
-                {staffs?.length || "--" }
+                {staffs?.length || "--"}
               </div>
             </div>
             <div className="dashboard_staff_banner_text_org">
@@ -62,15 +57,7 @@ const DashboardStaff = () => {
           </div>
           <div className="dashboard_staff_banner_inputbtn_wrap start">
             <div className="dashboard_staff_banner_input_wrap">
-              <input
-                className="dashboard_staff_banner_input"
-                placeholder="Search"
-              />
-              <img
-                src={search}
-                alt="icon"
-                className="dashboard_staff_banner_img"
-              />
+              <SearchInput />
             </div>
             <Button
               // type={"submit"}
@@ -131,9 +118,7 @@ const DashboardStaff = () => {
                       name="role"
                       label="Staff Level"
                       select
-                      options={
-                        { "Admin User": "OrgAdmin", "Staff": "Staff" }
-                      }
+                      options={{ "Admin User": "OrgAdmin", Staff: "Staff" }}
                     />
                   </div>
                   {error && <div>{formatErrorResponse(error)}</div>}

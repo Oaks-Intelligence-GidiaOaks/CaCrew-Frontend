@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import enviroment from "configs/enviroment.config";
 import {
-  UNVERIFIED_ORGANISATION,
-  VERIFIED_ORGANISATION,
-  VERIFY_ORGANISATION,
+  ADD_PROJECT,
+  GET_ALL_PROJECTS,
+  GET_HANDLED_PROJECTS,
 } from "services/constants";
 import { REHYDRATE } from "redux-persist";
 
-export const organisationApi = createApi({
-  reducerPath: "organisations",
+export const projectApi = createApi({
+  reducerPath: "projects",
   baseQuery: fetchBaseQuery({
     baseUrl: enviroment.API_BASE_URL,
     prepareHeaders: (headers) => {
@@ -25,12 +25,12 @@ export const organisationApi = createApi({
     }
   },
   endpoints: (builder) => ({
-    addTagTypes: ["Organisation"],
-    // get all organisations route
-    unverifiedOrganisation: builder.query({
-      providesTags: ["Organisation"],
+    addTagTypes: ["Projects"],
+    // get all Projects route
+    allProjects: builder.query({
+      providesTags: ["Projects"],
       query: () => ({
-        url: UNVERIFIED_ORGANISATION,
+        url: GET_ALL_PROJECTS,
         method: "GET",
       }),
       transformResponse: (response) => {
@@ -38,10 +38,11 @@ export const organisationApi = createApi({
       },
     }),
 
-    verifiedOrganisation: builder.query({
-      providesTags: ["Organisation"],
+    // Get handled project
+    getHandledProjects: builder.query({
+      providesTags: ["Projects"],
       query: () => ({
-        url: VERIFIED_ORGANISATION,
+        url: GET_HANDLED_PROJECTS,
         method: "GET",
       }),
       transformResponse: (response) => {
@@ -49,12 +50,13 @@ export const organisationApi = createApi({
       },
     }),
 
-    // Verify organisation
-    verifyOrganisation: builder.mutation({
-      invalidatesTags: ["Organisation"],
-      query: (id) => ({
-        url: `${VERIFY_ORGANISATION}${id}`,
-        method: "PUT",
+    // Add Projects
+    addProject: builder.mutation({
+      invalidatesTags: ["Projects"],
+      query: (data) => ({
+        url: ADD_PROJECT,
+        method: "POST",
+        body: data,
       }),
     }),
   }),
@@ -63,7 +65,7 @@ export const organisationApi = createApi({
 });
 
 export const {
-  useUnverifiedOrganisationQuery,
-  useVerifiedOrganisationQuery,
-  useVerifyOrganisationMutation,
-} = organisationApi;
+  useAddProjectMutation,
+  useAllProjectsQuery,
+  useGetHandledProjectsQuery,
+} = projectApi;

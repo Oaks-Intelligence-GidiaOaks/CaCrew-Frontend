@@ -34,3 +34,6 @@ export const close = `${PATH}/close.svg`;
 export const docpng = `${PATH}/doc.png`;
 export const pdf = `${PATH}/pdf.png`;
 export const pic = `${PATH}/pic.png`;
+export const reg = `${PATH}/reg.png`;
+export const proj = `${PATH}/proj.png`;
+export const trans = `${PATH}/trans.png`;

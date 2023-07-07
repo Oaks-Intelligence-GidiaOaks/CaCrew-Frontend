@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TableAccordion.scss";
 import { down, fileImg } from "assets/images";
 import { Button } from "components";
-import getFileDetails from "utils/getFileDetails";
+import { useVerifyOrganisationMutation } from "services/organisation.service";
+import rtkMutation from "utils/rtkMutation";
+// import getFileDetails from "utils/getFileDetails";
 
-const TableAccordion = ({data}) => {
+const TableAccordion = ({ data, handleVerifyOrganisation }) => {
   const [isOpen, setIsopen] = useState(false);
   const handleOpen = () => {
     setIsopen(!isOpen);
   };
+  const [verifyOrganisation, { isLoading, error, isSuccess }] =
+    useVerifyOrganisationMutation({invalidateTag: "Organisation"});
+
+  const handleVerify = async (id) => {
+    await rtkMutation(verifyOrganisation, id);
+  };
+
+  useEffect(() => {
+    isSuccess && handleOpen();
+  }, [isSuccess]);
+
   return (
     <div className={` ${isOpen ? "open_table_accordion" : "table_accordion"}`}>
       <div
@@ -17,17 +30,19 @@ const TableAccordion = ({data}) => {
         }`}
       >
         <div className="table_accordion_value">{data?.organization_name}</div>
-        <div className="table_accordion_value">
-          {data?.organization_email}
-        </div>
+        <div className="table_accordion_value">{data?.organization_email}</div>
         <div className="table_accordion_value">{data?.industry_type}</div>
         <div className="table_accordion_value">{data?.wallet_id}</div>
         <div
           className="table_accordion_value"
           style={{ width: "30px", cursor: "pointer", zIndex: "2" }}
-          onClick={() => handleOpen(false)}
+          onClick={() => handleOpen()}
         >
-          <img src={down} alt="icon" style={{transform: isOpen && "rotate(180deg)"}} />
+          <img
+            src={down}
+            alt="icon"
+            style={{ transform: isOpen && "rotate(180deg)" }}
+          />
         </div>
       </div>
       <div className="table_accordion_items_top between">
@@ -97,7 +112,7 @@ const TableAccordion = ({data}) => {
               >
                 {"Download"}
               </a>
-              <span className="table_accordion_item_bottom_value_sm">45kb</span>
+              <span className="table_accordion_item_bottom_value_sm">File</span>
             </div>
           </div>
         </div>
@@ -118,7 +133,7 @@ const TableAccordion = ({data}) => {
               >
                 Download
               </a>
-              <span className="table_accordion_item_bottom_value_sm">45kb</span>
+              <span className="table_accordion_item_bottom_value_sm">File</span>
             </div>
           </div>
         </div>
@@ -139,14 +154,19 @@ const TableAccordion = ({data}) => {
               >
                 Download
               </a>
-              <span className="table_accordion_item_bottom_value_sm">45kb</span>
+              <span className="table_accordion_item_bottom_value_sm">File</span>
             </div>
           </div>
         </div>
         <div style={{ width: "30px" }} />
       </div>
       <div className="table_accordion_btn_wrap end">
-        <Button text={"Verify"} className={"table_accordion_btn"} />
+        <Button
+          text={"Verify"}
+          className={"table_accordion_btn"}
+          onClick={() => handleVerify(data?._id)}
+          loading={isLoading}
+        />
         <Button text={"Reject"} className={"table_accordion_btn_rej"} />
       </div>
     </div>

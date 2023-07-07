@@ -1,10 +1,59 @@
 @import "base.scss";
 
 .dashboard_organisation {
-  padding: 20px;
-
+  padding-top: 38px;
+  position: relative;
+  .dashboard_organisation_wrap {
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+    .dashboard_organisation_btn_wrap {
+      .dashboard_organisation_title {
+        color: #143b76;
+        font-size: 20px;
+        font-weight: 500;
+        @media (max-width: 991px) {
+          font-size: 14px;
+        }
+        @media (max-width: 767px) {
+          margin-bottom: 15px;
+        }
+      }
+    }
+    .dashboard_organisation_search {
+      // margin-top: -35px;
+      position: absolute;
+      right: 40px;
+      top: 0px;
+      @media (max-width: 767px) {
+        position: unset;
+      }
+    }
+  }
+  .dashboard_organisation_tab {
+    margin-top: 20px;
+    margin-bottom: 22px;
+    .dashboard_organisation_tab_item {
+      color: #4c5563;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 19.307px;
+      border-bottom: 1px solid #4c5563;
+      width: 50%;
+      padding-bottom: 8px;
+      cursor: pointer;
+      @media (max-width: 991px) {
+        font-size: 11px;
+      }
+    }
+    .dashboard_organisation_tab_item_active {
+      @extend .dashboard_organisation_tab_item;
+      color: #115ccd;
+      border-bottom: 2px solid #115ccd;
+    }
+  }
   .dashboard_organisation_review {
-    margin-top: 43px;
     width: 100%;
     overflow-x: scroll;
 
@@ -24,6 +73,11 @@
           line-height: 16.09px;
           width: 160px;
           white-space: nowrap;
+
+          @media (min-width: 1500px) {
+            width: 100%;
+          }
+
           @media (max-width: 991px) {
             font-size: 12px;
           }

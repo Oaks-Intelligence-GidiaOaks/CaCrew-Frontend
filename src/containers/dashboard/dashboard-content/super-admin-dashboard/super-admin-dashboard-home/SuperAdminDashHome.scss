@@ -1,0 +1,39 @@
+@import "base.scss";
+
+.sup_admin_dash_home {
+  width: 100%;
+  .sup_admin_dash_home_card_wrap {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    .sup_admin_dash_home_card {
+      width: 32%;
+      margin-bottom: 20px;
+      @media (max-width: 1200px) {
+        width: 48%;
+      }
+      @media (max-width: 991px) {
+        width: 45%;
+      }
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+  }
+  .sup_admin_dash_home_chart_wrap {
+    margin-top: 40px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #dedede;
+    padding: 28px;
+
+    .sup_admin_dash_home_chart {
+      overflow-x: scroll;
+
+      .sup_admin_dash_home_chart_width {
+        @media (max-width: 476px) {
+          width: 500px;
+        }
+      }
+    }
+  }
+}

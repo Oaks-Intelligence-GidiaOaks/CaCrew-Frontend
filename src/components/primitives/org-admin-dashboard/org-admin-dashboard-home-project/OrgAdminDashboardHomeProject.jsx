@@ -1,6 +1,7 @@
 import React from "react";
 import "./OrgAdminDashboardHomeProject.scss";
 import { square } from "assets/images";
+import { Link } from "react-router-dom";
 
 const OrgAdminDashboardHomeProject = () => {
   return (
@@ -14,9 +15,9 @@ const OrgAdminDashboardHomeProject = () => {
         </div>
         <div className="org_dash_home_project_empty center col">
           <img src={square} alt="icon" />
-          <div className="org_dash_home_project_empty_text">
+          <Link to={"/dashboard-project"} className="org_dash_home_project_empty_text">
             Create a Project
-          </div>
+          </Link>
         </div>
       </div>
     </div>
