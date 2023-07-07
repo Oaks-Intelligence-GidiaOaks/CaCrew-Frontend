@@ -49,7 +49,6 @@ const RoutesConfig = () => {
       <Route path={CERTIFICATE_DOCUMENT} element={<CertificatePage />} />
       <Route path={LETTER_AUTH_DOCUMENT} element={<LetterAuthPage />} />
       {/* <Route path={DASHBOARD} element={<DashScreen />} /> */}
-
       {/* Protected Routes */}
       <Route
         path={DASHBOARD}

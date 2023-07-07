@@ -31,3 +31,6 @@ export const crownstaff = `${PATH}/crownstaff.svg`;
 export const deletestaff = `${PATH}/deletestaff.svg`;
 export const assign = `${PATH}/assign.svg`;
 export const close = `${PATH}/close.svg`;
+export const docpng = `${PATH}/doc.png`;
+export const pdf = `${PATH}/pdf.png`;
+export const pic = `${PATH}/pic.png`;

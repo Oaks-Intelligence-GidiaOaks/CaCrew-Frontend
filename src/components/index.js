@@ -12,6 +12,7 @@ export { default as AuthLeftSide } from "components/primitives/auth/auth-left-si
 export { default as LoginForm } from "components/primitives/auth/login-form/LoginForm";
 export { default as RegisterAdminForm } from "components/primitives/auth/register-admin-form/RegisterAdminForm";
 export { default as RegisterCompanyForm } from "components/primitives/auth/register-company-form/RegisterCompanyForm";
+export { default as TableAccordion } from "components/primitives/super-admin-dashboard/table-accordion/TableAccordion";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

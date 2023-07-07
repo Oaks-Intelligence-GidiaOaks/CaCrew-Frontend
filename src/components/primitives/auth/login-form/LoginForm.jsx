@@ -19,7 +19,7 @@ const LoginForm = () => {
     await rtkMutation(loginUser, values)
   };
 
-  isSuccess && navigate("/dashboard");
+  isSuccess && navigate("/");
 
   return (
     <div className="auth_form">

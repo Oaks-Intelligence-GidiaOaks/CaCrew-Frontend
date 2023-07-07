@@ -4,7 +4,7 @@ export const REGISTER = "user"
 export const GETUSER = "user/me"
 
 // Organisation constants
-export const ALL_ORGANISATION = "organization"
+export const ALL_ORGANISATION = "organization/unverified"
 export const VERIFY_ORGANISATION = "organization/verify/"
 
 // Staff constants

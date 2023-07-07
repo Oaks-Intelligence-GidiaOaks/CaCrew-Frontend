@@ -48,7 +48,7 @@ const DashboardStaff = () => {
                 Total Staff
               </div>
               <div className="dashboard_staff_banner_text_staff_value">
-                {staffs?.length}
+                {staffs?.length || "--" }
               </div>
             </div>
             <div className="dashboard_staff_banner_text_org">
@@ -56,7 +56,7 @@ const DashboardStaff = () => {
                 Organization
               </div>
               <div className="dashboard_staff_banner_text_org_value">
-                {userData?.organization_id?.organization_name}
+                {userData?.organization_id?.organization_name || "--"}
               </div>
             </div>
           </div>
