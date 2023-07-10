@@ -1,31 +1,12 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import enviroment from "configs/enviroment.config";
 import {
   ADD_PROJECT,
   GET_ALL_PROJECTS,
   GET_HANDLED_PROJECTS,
 } from "services/constants";
-import { REHYDRATE } from "redux-persist";
+import apiSlice from "./api/apiSlice";
 
-export const projectApi = createApi({
-  reducerPath: "projects",
-  baseQuery: fetchBaseQuery({
-    baseUrl: enviroment.API_BASE_URL,
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        headers.set("authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-  extractRehydrationInfo: (action, { reducerPath }) => {
-    if (action.type === REHYDRATE) {
-      return action.payload?.[reducerPath];
-    }
-  },
+export const projectApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    addTagTypes: ["Projects"],
     // get all Projects route
     allProjects: builder.query({
       providesTags: ["Projects"],
@@ -68,4 +49,4 @@ export const {
   useAddProjectMutation,
   useAllProjectsQuery,
   useGetHandledProjectsQuery,
-} = projectApi;
+} = projectApiSlice;

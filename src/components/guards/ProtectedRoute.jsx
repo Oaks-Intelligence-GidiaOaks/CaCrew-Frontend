@@ -1,7 +1,9 @@
 import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({ component: Component }) => {
-  const token = localStorage.getItem("token")
+  const token = useSelector(state => state.user.token)
+
   const isAuthenticated = token === null || undefined ? false : true;
 
   return (

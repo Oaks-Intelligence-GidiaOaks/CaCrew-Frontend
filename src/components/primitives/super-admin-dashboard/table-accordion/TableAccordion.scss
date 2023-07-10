@@ -119,7 +119,7 @@
         }
         .table_accordion_item_bottom_download {
           display: flex;
-          align-items: start;
+          align-items: flex-start;
           flex-direction: column;
           .table_accordion_item_bottom_value_sm {
             width: 100px;

@@ -1,10 +1,12 @@
 import React from "react";
 import "./OrgVerifyDashboardBanner.scss";
 import { checklist } from "assets/images";
-import { useGetUserQuery } from "services/user.service";
+// import { useGetUserQuery } from "services/user.service";
+import { useSelector } from "react-redux";
 
 const OrgVerifyDashboardBanner = () => {
-  const { data } = useGetUserQuery();
+  // const { data } = useGetUserQuery();
+  const data = useSelector(state => state.user.user)
 
   if(data?.organization_id?.isVerified) {
     return null

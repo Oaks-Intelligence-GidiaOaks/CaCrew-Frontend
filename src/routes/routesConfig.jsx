@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "components/guards/ProtectedRoute";
-
+import { useSelector } from "react-redux";
 // Import contants
 import {
   // HOME,
@@ -41,7 +41,7 @@ import {
 // Import dasboard pages
 
 const RoutesConfig = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = useSelector(state => state?.user?.user)
   console.log(user, "log");
   return (
     <Routes>

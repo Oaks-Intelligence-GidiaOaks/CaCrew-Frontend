@@ -2,11 +2,13 @@ import React from "react";
 import "./DashboardHeader.scss";
 import { Link } from "react-router-dom";
 import { avartar, cart, down, message, settings } from "assets/images";
-import { useGetUserQuery } from "services/user.service";
+// import { useGetUserQuery } from "services/user.service";
+import { useSelector } from "react-redux"; 
 
 const DashboardHeader = () => {
 
-  const {data} = useGetUserQuery();
+  // const {data} = useGetUserQuery();
+  const data = useSelector(state => state.user.user)
   // console.log(isLoading, data, "headers");
 
   return (

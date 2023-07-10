@@ -9,30 +9,33 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { encryptTransform } from "redux-persist-transform-encrypt";
 import storage from "redux-persist/lib/storage";
 import register from "./slices/register.slice";
-import { userApi } from "services/user.service";
-import { organisationApi } from "services/organisation.service";
-import { staffApi } from "services/staff.service";
-import { projectApi } from "services/project.service";
-// import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel1";
-// import autoMergeLevel1 from "redux-persist/es/stateReconciler/autoMergeLevel1";
+import apiSlice from "services/api/apiSlice";
+import user from "./slices/user.slice";
 import hardSet from "redux-persist/es/stateReconciler/hardSet";
 
 const rootReducer = combineReducers({
+  user,
   formdata: register,
-  [userApi.reducerPath]: userApi.reducer,
-  [organisationApi.reducerPath]: organisationApi.reducer,
-  [staffApi.reducerPath]: staffApi.reducer,
-  [projectApi.reducerPath]: projectApi.reducer,
+  [apiSlice.reducerPath]: apiSlice.reducer,
 });
 
 const persistConfig = {
   key: "root",
   storage,
   version: 1,
-  // stateReconciler: hardSet,
-  // blacklist: userApi.reducerPath,
+  transforms: [
+    encryptTransform({
+      secretKey: "my-super-secret-key",
+      onError: function (error) {
+        // Handle the error.
+      },
+    }),
+  ],
+  stateReconciler: hardSet,
+  // blacklist: apiSlice.reducerPath,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -45,12 +48,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(
-      userApi.middleware,
-      organisationApi.middleware,
-      staffApi.middleware,
-      projectApi.middleware
-    ),
+    }).concat(apiSlice.middleware),
 });
 
 const persistor = persistStore(store);

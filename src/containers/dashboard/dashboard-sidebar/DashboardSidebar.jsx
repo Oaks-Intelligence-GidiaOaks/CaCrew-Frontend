@@ -11,20 +11,24 @@ import {
   fileImg,
 } from "assets/images";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "redux/slices/user.slice";
+import { useSelector } from "react-redux";
 
 const DashboardSidebar = () => {
   const [pathname, setPathName] = useState();
   const location = useLocation();
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
+
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setPathName(location.pathname);
   }, [location]);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    window.location.reload();
+    dispatch(logoutUser());
   };
 
   return (
@@ -83,7 +87,7 @@ const DashboardSidebar = () => {
           Staffs
         </NavLink>
         <NavLink
-          to={"/dash"}
+          to={"/login"}
           // activeclassname="active"
           className={"link dashboard_link_item start"}
           onClick={() => handleLogout()}

@@ -1,57 +1,49 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import enviroment from "configs/enviroment.config";
 import { GETUSER, LOGIN, REGISTER } from "services/constants";
-import { REHYDRATE } from "redux-persist";
+import apiSlice from "./api/apiSlice";
+import { updateUser } from "redux/slices/user.slice";
 // import { SkipToken } from "@reduxjs/toolkit/dist/query";
 
-export const userApi = createApi({
-  reducerPath: "users",
-  baseQuery: fetchBaseQuery({
-    baseUrl: enviroment.API_BASE_URL,
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        headers.set("authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-  extractRehydrationInfo: (action, { reducerPath }) => {
-    if (action.type === REHYDRATE) {
-      return action.payload?.[reducerPath];
-    }
-  },
+export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    addTagTypes: "User",
     // Login users route
     loginUser: builder.mutation({
-      // providesTags: ["User"],
       query: (userData) => ({
         url: LOGIN,
-        method: "POST",
         body: userData,
+        method: "POST",
       }),
+      onQueryStarted: async (credentials, { dispatch, queryFulfilled }) => {
+        try {
+          const { data } = await queryFulfilled;
+          const { accessToken, user } = data;
+
+          dispatch(
+            updateUser({
+              token: accessToken,
+              user,
+              refreshToken: user.refreshToken,
+            })
+          );
+        } catch (error) {
+          // console.log(error);
+          return;
+        }
+      },
       transformResponse: (response) => {
         console.log(response, "rtk");
-        const { accessToken, user } = response;
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", accessToken);
-        return user;
+        return response;
       },
+      invalidatesTags: ["User", "Staff", "Organization", "Projects"],
     }),
 
     // Register users route
     registerUser: builder.mutation({
       query: (userData) => ({
         url: REGISTER,
-        method: "POST",
         body: userData,
+        method: "POST",
       }),
-      transformErrorResponse: (response) => {
-        if (response) {
-          return response;
-        }
-      },
+      invalidatesTags: ["User"],
     }),
 
     // Get user route
@@ -60,19 +52,16 @@ export const userApi = createApi({
         url: GETUSER,
         method: "GET",
       }),
-      transformErrorResponse: (response) => {
-        if (response) {
-          return response;
-        }
-      },
+      providesTags: ["User"],
     }),
   }),
-  keepUnusedDataFor: 60,
-  refetchOnMountOrArgChange: true,
+  overrideExisting: true,
+  // keepUnusedDataFor: 60,
+  // refetchOnMountOrArgChange: true,
 });
 
 export const {
   useLoginUserMutation,
   useRegisterUserMutation,
   useGetUserQuery,
-} = userApi;
+} = userApiSlice;

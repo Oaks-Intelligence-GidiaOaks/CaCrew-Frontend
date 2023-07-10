@@ -11,8 +11,9 @@ import rtkMutation from "utils/rtkMutation";
 import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const LoginForm = () => {
-  const [loginUser, { isLoading, error, isSuccess }] = useLoginUserMutation();
-  useGetUserQuery();
+  const [loginUser, { isLoading, error, isSuccess }] = useLoginUserMutation({provideTag: ["User"]});
+  // useGetUserQuery(undefined, {skip: !isSuccess})
+  
 
   const navigate = useNavigate();
 
@@ -21,9 +22,10 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    isSuccess && navigate("/");
-    isSuccess && window.location.reload();
-  }, [isSuccess, onSubmit]);
+    if (isSuccess) {
+      navigate("/");
+    }
+  }, [isSuccess, navigate]);
 
   return (
     <div className="auth_form">

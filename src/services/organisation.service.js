@@ -1,31 +1,12 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import enviroment from "configs/enviroment.config";
 import {
   UNVERIFIED_ORGANISATION,
   VERIFIED_ORGANISATION,
   VERIFY_ORGANISATION,
 } from "services/constants";
-import { REHYDRATE } from "redux-persist";
+import apiSlice from "./api/apiSlice";
 
-export const organisationApi = createApi({
-  reducerPath: "organisations",
-  baseQuery: fetchBaseQuery({
-    baseUrl: enviroment.API_BASE_URL,
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        headers.set("authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-  extractRehydrationInfo: (action, { reducerPath }) => {
-    if (action.type === REHYDRATE) {
-      return action.payload?.[reducerPath];
-    }
-  },
+export const organisationApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    addTagTypes: ["Organisation"],
     // get all organisations route
     unverifiedOrganisation: builder.query({
       providesTags: ["Organisation"],
@@ -66,4 +47,4 @@ export const {
   useUnverifiedOrganisationQuery,
   useVerifiedOrganisationQuery,
   useVerifyOrganisationMutation,
-} = organisationApi;
+} = organisationApiSlice;

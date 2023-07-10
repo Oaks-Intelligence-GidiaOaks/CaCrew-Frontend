@@ -134,7 +134,7 @@ const DashboardStaff = () => {
         </div>
       </div>
       <div className="dashboard_staff_wrap">
-        {staffs && staffs?.map((data) => <DashboardStaffCard data={data} />)}
+        {staffs && staffs?.map((data) => <div key={data?._id}><DashboardStaffCard data={data} /></div>)}
       </div>
     </>
   );
