@@ -19,6 +19,7 @@ const baseQuery = fetchBaseQuery({
 
 const customBaseQuery = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
+  
   console.log(result, "res");
   if (result.error && result.error.status === 406) {
     api.dispatch(logoutUser());

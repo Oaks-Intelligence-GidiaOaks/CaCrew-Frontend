@@ -17,6 +17,7 @@ export { default as SuperAdminStatCard } from "components/primitives/super-admin
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
+export { default as AutoLogout } from "components/guards/AutoLogout";
 
 // widgets
 export { default as Button } from "components/widgets/button/Button";

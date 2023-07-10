@@ -6,6 +6,7 @@ import store, { persistor } from "redux/store";
 import { ModalContextProvider } from "context/modalContext";
 import Modal from "components/primitives/shared/modal/Modal";
 import { PersistGate } from "redux-persist/integration/react";
+import { AutoLogout } from "components";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <ModalContextProvider>
             <Router>
               <Modal />
+              <AutoLogout />
               <RoutesConfig />
             </Router>
           </ModalContextProvider>
