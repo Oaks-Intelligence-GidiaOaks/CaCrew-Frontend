@@ -1,1 +1,51 @@
 @import "base.scss";
+
+.buy_carbon_banner {
+  background-color: #f8f8f8;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  align-items: flex-end !important;
+  @media (max-width: 991px) {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  .buy_carbon_banner_title_wrap {
+    @media (max-width: 767px) {
+      margin-bottom: 20px;
+    }
+    .buy_carbon_banner_title {
+    }
+    .buy_carbon_banner_subtitle {
+      color: #212121;
+      font-size: 15px;
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
+  }
+  .buy_carbon_banner_search {
+    .buy_carbon_banner_search_item {
+      max-width: 150px;
+      margin-left: 20px;
+      .buy_carbon_banner_search_input {
+        margin-bottom: 0px;
+      }
+      @media (max-width: 767px) {
+        margin-left: 0px;
+        margin-right: 20px;
+      }
+    }
+    .buy_carbon_banner_btn {
+      background-color: $purple;
+      font-size: 13px;
+    }
+  }
+}

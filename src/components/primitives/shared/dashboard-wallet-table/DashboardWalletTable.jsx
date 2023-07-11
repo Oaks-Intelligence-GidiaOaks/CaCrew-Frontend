@@ -105,7 +105,7 @@ const DashboardWalletTable = () => {
           </div>
           {[1, 2, 3, 4, 5, 6, 7]?.map((row, idx) => (
             <div
-              key={row?._id}
+              key={row?._id || idx}
               className={`dashboard_table_body between ${
                 (idx + 1) % 2 === 0 && "dashboard_table_body_bg"
               }`}
