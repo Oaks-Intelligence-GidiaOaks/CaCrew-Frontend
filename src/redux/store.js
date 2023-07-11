@@ -28,7 +28,7 @@ const persistConfig = {
   version: 1,
   transforms: [
     encryptTransform({
-      secretKey: "my-super-secret-key",
+      secretKey: "process.env.REACT_ENCRYPT_KEY",
       onError: function (error) {
         // Handle the error.
       },

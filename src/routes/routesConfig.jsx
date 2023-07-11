@@ -14,6 +14,7 @@ import {
   ORGANISATION,
   PROJECT,
   STAFF,
+  WALLET,
 } from "routes/constants";
 
 // Import auth pages
@@ -36,7 +37,9 @@ import {
   OrgAdminDashboardHomePage,
   // staff
   StaffDashboardHomePage,
+  DashboardWalletPage,
 } from "pages";
+
 
 // Import dasboard pages
 
@@ -82,6 +85,10 @@ const RoutesConfig = () => {
       <Route
         path={STAFF}
         element={<ProtectedRoute component={DashboardStaffPage} />}
+      />
+      <Route
+        path={WALLET}
+        element={<ProtectedRoute component={DashboardWalletPage} />}
       />
     </Routes>
   );

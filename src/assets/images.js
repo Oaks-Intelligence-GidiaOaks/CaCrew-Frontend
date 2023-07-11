@@ -37,3 +37,5 @@ export const pic = `${PATH}/pic.png`;
 export const reg = `${PATH}/reg.png`;
 export const proj = `${PATH}/proj.png`;
 export const trans = `${PATH}/trans.png`;
+export const wallet_blue = `${PATH}/wallet_blue.svg`;
+export const wallet_white = `${PATH}/wallet_white.svg`;

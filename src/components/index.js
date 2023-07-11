@@ -14,6 +14,7 @@ export { default as RegisterAdminForm } from "components/primitives/auth/registe
 export { default as RegisterCompanyForm } from "components/primitives/auth/register-company-form/RegisterCompanyForm";
 export { default as TableAccordion } from "components/primitives/super-admin-dashboard/table-accordion/TableAccordion";
 export { default as SuperAdminStatCard } from "components/primitives/super-admin-dashboard/super-admin-stat-card/SuperAdminStatCard";
+export { default as DashboardWalletBanner } from "components/primitives/shared/dashboard-wallet-banner/DasboardWalletBanner";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

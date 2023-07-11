@@ -12,7 +12,7 @@ const AutoLogout = () => {
 
   useEffect(() => {
     const logoutTimer = setInterval(() => {
-      const inactivityThreshold = 15 * 60 * 1000;
+      const inactivityThreshold = 5 * 60 * 1000;
       const currentTime = Date.now();
       const inactiveTime = currentTime - lastActivityTime;
 
@@ -21,15 +21,17 @@ const AutoLogout = () => {
         dispatch(logoutUser());
         clearInterval(logoutTimer);
       }
-    }, 900000);
+    }, 60000);
 
-    window.addEventListener("mousemove", handleUserActivity);
-    window.addEventListener("touchstart", handleUserActivity);
+    // window.addEventListener("mousemove", handleUserActivity);
+    window.addEventListener("click", handleUserActivity);
+    // window.addEventListener("touchstart", handleUserActivity);
 
     return () => {
       clearInterval(logoutTimer);
-      window.removeEventListener("mousemove", handleUserActivity);
-      window.removeEventListener("touchstart", handleUserActivity);
+      //   window.removeEventListener("mousemove", handleUserActivity);
+      window.addEventListener("click", handleUserActivity);
+      //   window.removeEventListener("touchstart", handleUserActivity);
     };
   }, []);
 

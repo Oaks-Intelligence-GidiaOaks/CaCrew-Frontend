@@ -9,6 +9,8 @@ import {
   staffwhite,
   projectwhite,
   fileImg,
+  wallet_blue,
+  wallet_white,
 } from "assets/images";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -45,6 +47,18 @@ const DashboardSidebar = () => {
             className="dashboard_link_item_image"
           />
           Dashboard
+        </NavLink>
+        <NavLink
+          to={"/dashboard-wallet"}
+          activeclassname="active"
+          className={"link dashboard_link_item start"}
+        >
+          <img
+            src={pathname === "/dashboard-wallet" ? wallet_white : wallet_blue}
+            alt="icon"
+            className="dashboard_link_item_image"
+          />
+          Carbon Credit Wallet
         </NavLink>
         {user && user?.role === "SuperAdmin" && (
           <NavLink

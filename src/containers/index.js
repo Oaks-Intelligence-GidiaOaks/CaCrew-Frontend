@@ -8,6 +8,7 @@ export { default as DashboardOrganisation } from "containers/dashboard/dashboard
 export { default as DashboardHeader } from "containers/dashboard/dashboard-header/DashboardHeader";
 export { default as DashboardSidebar } from "containers/dashboard/dashboard-sidebar/DashboardSidebar";
 export { default as SuperAdminDashHome } from "containers/dashboard/dashboard-content/super-admin-dashboard/super-admin-dashboard-home/SuperAdminDashHome";
+export { default as DashboardWalletCon } from "containers/dashboard/dashboard-content/shared/dasboard-wallet-container/DashboardWalletCon";
 
 // auth
 export { default as AuthHeader } from "containers/auth/auth-header/AuthHeader";
