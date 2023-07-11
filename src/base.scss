@@ -1,4 +1,5 @@
 $blue: #143b76;
+$purple: #5F41B2;
 
 .center {
   display: flex;
@@ -120,5 +121,13 @@ $blue: #143b76;
 
   .auth_button_wrap {
     margin-top: 30px;
+  }
+}
+
+.dash_pad {
+  padding: 30px;
+  width: 100%;
+  @media (max-width: 991px) {
+    padding: 18px;
   }
 }

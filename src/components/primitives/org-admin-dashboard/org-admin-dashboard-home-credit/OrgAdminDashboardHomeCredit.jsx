@@ -2,33 +2,35 @@ import React from "react";
 import "./OrgAdminDashboardHomeCredit.scss";
 import { avartar } from "assets/images";
 import Button from "components/widgets/button/Button";
-import { useGetUserQuery } from "services/user.service";
+// import { useGetUserQuery } from "services/user.service";
+import { useSelector } from "react-redux";
 
 const OrgAdminDashboardHomeCredit = () => {
-  const { data } = useGetUserQuery();
+  // const { data } = useGetUserQuery();
+  const data = useSelector((state) => state.user.user);
   return (
     <div className="credit between">
       <img src={avartar} alt="avartar" className="credit_avartar" />
-      <div className="credit_detail_wrap end">
-        <div className="credit_detail_wrap_inner">
-          <div className="credit_name">
-            {data?.organization_id?.organization_name}
-          </div>
-          <div className="credit_wallet_wrap start">
-            <div className="credit_wallet_wrap_inner">
-              <div className="credit_wallet_text">Wallet Number</div>
-              <div className="credit_wallet_value">
-                {data?.organization_id?.wallet_id || "----------------"}
-              </div>
+      <div className="credit_detail_wrap_inner">
+        <div className="credit_name">
+          {data?.organization_id?.organization_name}
+        </div>
+        <div className="credit_wallet_wrap start">
+          <div className="credit_wallet_wrap_inner">
+            <div className="credit_wallet_text">Wallet Number</div>
+            <div className="credit_wallet_value">
+              {data?.organization_id?.wallet_id || "----------------"}
             </div>
-            <div className="credit_wallet_wrap_inner">
-              <div className="credit_wallet_text">Organization</div>
-              <div className="credit_wallet_value">
-                {data?.organization_id?.organization_name || "----------------"}
-              </div>
+          </div>
+          <div className="credit_wallet_wrap_inner">
+            <div className="credit_wallet_text">Organization</div>
+            <div className="credit_wallet_value">
+              {data?.organization_id?.organization_name || "----------------"}
             </div>
           </div>
         </div>
+      </div>
+      <div className="credit_detail_wrap end">
         <div className="credit_btn_wrap start wrap">
           <Button
             text={"Buy Carbon Credit"}

@@ -34,8 +34,8 @@ const DashboardSidebar = () => {
   };
 
   return (
-    <div className="dashboard_sidebar">
-      <div className="dashboard_link_item_wrap center col">
+    <div className="dashboard_sidebar_wrap">
+      <div className="dashboard_link_items_wrap center col">
         <NavLink
           to={"/"}
           activeclassname="active"
@@ -54,7 +54,7 @@ const DashboardSidebar = () => {
           className={"link dashboard_link_item start"}
         >
           <img
-            src={pathname === "/dashboard-wallet" ? wallet_white : wallet_blue}
+            src={pathname?.includes("dashboard-wallet") ? wallet_white : wallet_blue}
             alt="icon"
             className="dashboard_link_item_image"
           />

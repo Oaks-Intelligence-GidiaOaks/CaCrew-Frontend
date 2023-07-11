@@ -34,7 +34,7 @@ const DashboardOrganisation = () => {
   console.log(data, "allOrg");
 
   return (
-    <div className="dashboard_organisation">
+    <div className="dashboard_organisation dash_pad">
       <div className="dashboard_organisation_wrap between">
         <div className="dashboard_organisation_btn_wrap">
           <div className="dashboard_organisation_title">

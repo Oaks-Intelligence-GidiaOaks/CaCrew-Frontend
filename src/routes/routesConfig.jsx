@@ -15,6 +15,7 @@ import {
   PROJECT,
   STAFF,
   WALLET,
+  BUY_CARBON_CREDIT,
 } from "routes/constants";
 
 // Import auth pages
@@ -30,6 +31,8 @@ import {
   // shared dasboard pages
   DashboardProjectPage,
   DashboardStaffPage,
+  DashboardWalletPage,
+  BuyCarbonCreditPage,
   // super admin dasboard pages
   DashboardOrganisationPage,
   SupAdminDashHomePage,
@@ -37,7 +40,6 @@ import {
   OrgAdminDashboardHomePage,
   // staff
   StaffDashboardHomePage,
-  DashboardWalletPage,
 } from "pages";
 
 
@@ -89,6 +91,10 @@ const RoutesConfig = () => {
       <Route
         path={WALLET}
         element={<ProtectedRoute component={DashboardWalletPage} />}
+      />
+      <Route
+        path={BUY_CARBON_CREDIT}
+        element={<ProtectedRoute component={BuyCarbonCreditPage} />}
       />
     </Routes>
   );

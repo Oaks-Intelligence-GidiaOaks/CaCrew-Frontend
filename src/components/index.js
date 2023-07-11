@@ -15,6 +15,8 @@ export { default as RegisterCompanyForm } from "components/primitives/auth/regis
 export { default as TableAccordion } from "components/primitives/super-admin-dashboard/table-accordion/TableAccordion";
 export { default as SuperAdminStatCard } from "components/primitives/super-admin-dashboard/super-admin-stat-card/SuperAdminStatCard";
 export { default as DashboardWalletBanner } from "components/primitives/shared/dashboard-wallet-banner/DasboardWalletBanner";
+export { default as DashboardWalletTable } from "components/primitives/shared/dashboard-wallet-table/DashboardWalletTable";
+export { default as BuyCarbonCreditBanner } from "components/primitives/shared/buy-carbon-credit-banner/BuyCarbonCreditBanner";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

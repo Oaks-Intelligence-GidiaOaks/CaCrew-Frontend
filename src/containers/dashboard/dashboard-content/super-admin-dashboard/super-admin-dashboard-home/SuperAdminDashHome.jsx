@@ -10,7 +10,7 @@ const SuperAdminDashHome = () => {
   const { data: unverifiedData } = useUnverifiedOrganisationQuery();
   const {data: projectData} = useAllProjectsQuery();
   return (
-    <div className="sup_admin_dash_home">
+    <div className="sup_admin_dash_home dash_pad">
       <div className="sup_admin_dash_home_card_wrap between">
         <div className="sup_admin_dash_home_card">
           <SuperAdminStatCard

@@ -11,6 +11,7 @@ export {default as CertificateScreen} from "pages/auth/CertificatePage"
 export {default as DashboardProjectPage} from "pages/shared/DashboardProjectPage"
 export {default as DashboardStaffPage} from "pages/shared/DashboardStaffPage"
 export {default as DashboardWalletPage} from "pages/shared/DashboardWalletPage"
+export {default as BuyCarbonCreditPage} from "pages/shared/BuyCarbonCreditPage"
 
 // Super admin pages exports
 export {default as DashboardOrganisationPage} from "pages/super-admin-dashboard/DashboardOrganisationPage"

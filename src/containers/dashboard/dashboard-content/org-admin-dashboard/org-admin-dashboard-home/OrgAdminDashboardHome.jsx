@@ -11,26 +11,26 @@ import {
 
 const OrgAdminDashboardHome = () => {
   return (
-    <div className="dashboard_home start col">
+    <div className="dashboard_home start col dash_pad">
       <OrgVerifyDashboardBanner />
       <OrgAdminDashboardHomeCredit />
-      <div className="between wallet_project_wrap">
-        <div className="wallet_project_wrap_left">
-          <DashboardWallet />
+        <div className="between wallet_project_wrap">
+          <div className="wallet_project_wrap_left">
+            <DashboardWallet />
+          </div>
+          <div className="wallet_project_wrap_right">
+            <OrgAdminDashboardHomeProject />
+          </div>
         </div>
-        <div className="wallet_project_wrap_right">
-          <OrgAdminDashboardHomeProject />
-        </div>
-      </div>
-      <div className="dashboard_home_chart_wrap">
-        <ChartFilter title={"Carbon Credit Overview"}/>
-        <div className="dashboard_home_chart">
-          <div className="dashboard_home_chart_width">
-            <CarbonCreditChart />
+        <div className="dashboard_home_chart_wrap">
+          <ChartFilter title={"Carbon Credit Overview"} />
+          <div className="dashboard_home_chart">
+            <div className="dashboard_home_chart_width">
+              <CarbonCreditChart />
+            </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

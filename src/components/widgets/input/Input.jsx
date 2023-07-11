@@ -13,8 +13,11 @@ const Input = ({
   meta,
   password,
   select,
+  selectDefault,
   options,
   textArea,
+  placeholder,
+  className,
 }) => {
   const [passwordType, setPasswordType] = useState("password");
   // const parseDate = (value) => {
@@ -27,11 +30,14 @@ const Input = ({
   };
 
   return (
-    <div className="input">
+    <div className={`input ${className}`}>
       <div className="input_label_wrap between">
-        <div className="input_label_wrap_text">
-          {label} <span className="input_label_wrap_text_required">*</span>
-        </div>
+        {label && (
+          <div className="input_label_wrap_text">
+            {label} <span className="input_label_wrap_text_required">*</span>
+          </div>
+        )}
+
         <div className="tooltip">
           {tooltip && (
             <>
@@ -49,8 +55,8 @@ const Input = ({
             {...input}
             style={{ width: "100%" }}
           >
-            <option value="">Select an option</option>
-            {Object.entries(options).map((option) => {
+            <option value="">{selectDefault || "Select an option"}</option>
+            {Object.entries(options || {})?.map((option) => {
               return (
                 <option key={option[1]} value={option[1]}>
                   {option[0]}
@@ -83,6 +89,7 @@ const Input = ({
             {...input}
             style={{ width: (!date || !password) && "100%" }}
             type={password ? passwordType : type}
+            placeholder={placeholder}
           />
         )}
         {password && (

@@ -1,0 +1,40 @@
+@import "base.scss";
+
+.dashboard_wallet_container {
+  .dashboard_wallet_con_wrap {
+    border-bottom: 1px solid #DEDEDE;
+    padding-bottom: 50px;
+    @media (max-width: 991px) {
+      flex-direction: column;
+      margin-top: 20px;
+    }
+    .dashboard_wallet_con {
+      width: 45%;
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+    }
+    .dashboard_wallet_con_btns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      width: 45%;
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+      .dashboard_wallet_con_btn {
+        font-size: 12px;
+      }
+      .dashboard_wallet_con_btnone {
+        @extend .dashboard_wallet_con_btn;
+        background-color: #5f41b2;
+      }
+      .dashboard_wallet_con_btntwo {
+        @extend .dashboard_wallet_con_btn;
+        background-color: #fff;
+        color: #4c5563;
+        border: 1px solid #4c5563;
+      }
+    }
+  }
+}

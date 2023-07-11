@@ -59,7 +59,7 @@ const DashboardProject = () => {
           </div>
         </div>
       </div>
-      <div>{tabItems}</div>
+      <div className="dash_pad">{tabItems}</div>
     </div>
   );
 };

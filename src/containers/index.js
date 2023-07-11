@@ -9,6 +9,7 @@ export { default as DashboardHeader } from "containers/dashboard/dashboard-heade
 export { default as DashboardSidebar } from "containers/dashboard/dashboard-sidebar/DashboardSidebar";
 export { default as SuperAdminDashHome } from "containers/dashboard/dashboard-content/super-admin-dashboard/super-admin-dashboard-home/SuperAdminDashHome";
 export { default as DashboardWalletCon } from "containers/dashboard/dashboard-content/shared/dasboard-wallet-container/DashboardWalletCon";
+export { default as BuyCarbonCreditCon } from "containers/dashboard/dashboard-content/shared/buy-carbon-credit-container/BuyCarbonCreditCon";
 
 // auth
 export { default as AuthHeader } from "containers/auth/auth-header/AuthHeader";

@@ -4,6 +4,7 @@
   padding-top: 38px;
   position: relative;
   .dashboard_organisation_wrap {
+    padding-top: 20px;
     @media (max-width: 767px) {
       flex-direction: column;
     }
@@ -24,7 +25,7 @@
       // margin-top: -35px;
       position: absolute;
       right: 40px;
-      top: 0px;
+      top: 25px;
       @media (max-width: 767px) {
         position: unset;
       }

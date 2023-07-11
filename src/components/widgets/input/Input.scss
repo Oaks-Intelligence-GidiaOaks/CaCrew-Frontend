@@ -68,6 +68,14 @@
       font-family: "DM Sans", sans-serif;
       color: $blue;
       font-size: 15px;
+      &::placeholder {
+        font-family: "DM Sans", sans-serif;
+        color: #a1a4b1;
+        font-size: 12px;
+        @media (max-width: 991px) {
+          font-size: 11px;
+        }
+      }
       @media (max-width: 991px) {
         font-size: 12px;
       }
