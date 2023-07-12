@@ -20,7 +20,7 @@
         font-size: 25px;
       }
     }
-    .modal_content_text {
+    .modal_message_text {
       font-size: 15px;
       line-height: 24px;
       margin-bottom: 60px;
@@ -29,9 +29,14 @@
         font-size: 12px;
       }
     }
+    .modal_content_image {
+      width: 150px;
+      margin-bottom: 30px;
+    }
   }
 }
 
 .modal_close {
+  @extend .modal;
   display: none;
 }

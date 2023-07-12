@@ -1,37 +1,56 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Modal.scss";
 import { useNavigate } from "react-router-dom";
-import { ModalContext } from "context/modalContext";
-import { eye, info_circle } from "assets/images";
+import { failed, success } from "assets/images";
 import Button from "components/widgets/button/Button";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { closeModal } from "redux/slices/modal.slice";
 
 const Modal = () => {
-  const { isModalOPen, modalContent, closeModal, promptMessage, promptLink } =
-    useContext(ModalContext);
+  const {
+    title,
+    message,
+    isOpen,
+    promptMessage,
+    promptLink,
+    component: Component,
+    success: succeeded,
+  } = useSelector((state) => state.modal);
+
+  const dispatch = useDispatch();
+
+  console.log(isOpen, "open")
 
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(promptLink);
-    closeModal();
+  };
+  const handleClose = () => {
+    dispatch(closeModal());
   };
 
   return (
-    <div className={`${isModalOPen ? "modal center col" : "modal_close"}`}>
-      <div className="modal_content_wrap center col">
-        <div className="modal_content_title">{"modalContent.title"}</div>
-        <div className="modal_content_text">{"modalContent.title"}</div>
-        {modalContent.success ? (
-          <img className="modal_content_image" src={eye} alt="icon" />
-        ) : (
-          <img className="modal_content_image" src={info_circle} alt="icon" />
-        )}
-        {
-          <Button
-            text={promptMessage ? promptMessage : "Close"}
-            onClick={promptLink ? handleNavigate : closeModal}
-          />
-        }
-      </div>
+    <div className={`${isOpen ? "modal center col" : "modal_close"}`}>
+      {Component ? (
+        <Component />
+      ) : (
+        <div className="modal_content_wrap center col">
+          <div className="modal_content_title">{title}</div>
+          <div className="modal_message_text">{message}</div>
+          {succeeded ? (
+            <img className="modal_content_image" src={success} alt="icon" />
+          ) : (
+            <img className="modal_content_image" src={failed} alt="icon" />
+          )}
+          {
+            <Button
+              text={promptMessage ? promptMessage : "Close"}
+              onClick={() => {promptLink?.length > 1 ? handleNavigate() : handleClose()}}
+            />
+          }
+        </div>
+      )}
     </div>
   );
 };

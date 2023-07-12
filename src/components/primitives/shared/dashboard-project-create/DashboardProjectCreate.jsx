@@ -55,6 +55,14 @@ const DashboardProjectCreate = () => {
             <div className="dashboard_project_create_input_wrap">
               <div className="dashboard_project_create_field">
                 <Field
+                  name="project_name"
+                  component={Input}
+                  label={"Project name"}
+                  placeholder="Add project name"
+                />
+              </div>
+              <div className="dashboard_project_create_field">
+                <Field
                   name="originator"
                   component={Input}
                   label={"Add asignee"}

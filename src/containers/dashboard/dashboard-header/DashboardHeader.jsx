@@ -31,9 +31,9 @@ const DashboardHeader = () => {
         <Link to={"/register_company"} className="link">
           <img src={message} alt="icon" className="dashboard_icon" />
         </Link>
-        <Link to={"/register_company"} className="link">
+        {/* <Link to={"/register_company"} className="link">
           <img src={cart} alt="icon" className="dashboard_icon" />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

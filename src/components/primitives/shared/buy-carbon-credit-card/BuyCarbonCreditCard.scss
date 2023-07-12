@@ -1,0 +1,83 @@
+@import "base.scss";
+
+.buy_carb_card {
+  padding-bottom: 29px;
+  padding-top: 31px;
+  border-bottom: 1px solid #dedede;
+  .buy_carb_card_info_wrap {
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+    .buy_carb_card_info_initials {
+      border-radius: 50%;
+      background: #c8f0ff;
+      width: 40px;
+      height: 40px;
+      margin-right: 23px;
+      @media (max-width: 767px) {
+        font-size: 12px;
+        margin-right: 5px;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+  .buy_carb_card_info_text_wrap {
+    @media (max-width: 467px) {
+      max-width: 230px;
+    }
+    .buy_carb_card_info_text {
+      align-items: center;
+      margin-bottom: 12px;
+      .buy_carb_card_info_bold {
+        margin-right: 17px;
+        color: #212121;
+        font-size: 20px;
+        font-weight: 500;
+        @media (max-width: 991px) {
+          font-size: 15px;
+        }
+      }
+      .buy_carb_card_info_normal {
+        color: #4c5563;
+        font-size: 15px;
+        padding-right: 10px;
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+        @media (max-width: 767px) {
+          font-size: 11px;
+        }
+      }
+      .buy_carb_card_info_borderb {
+        border-right: 1px solid #4c5563;
+        border-left: 1px solid #4c5563;
+        padding: 0px 10px;
+        @media (max-width: 767px) {
+          padding: 0px 5px;
+        }
+      }
+      .buy_carb_card_info_borderr {
+        border-right: 1px solid #4c5563;
+        padding: 0px 10px;
+        @media (max-width: 767px) {
+          padding: 0px 5px;
+        }
+      }
+    }
+  }
+  .buy_carb_card_btn_wrap {
+    .buy_carb_card_text {
+      color: $purple;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 18px;
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
+    .buy_carb_card_btn {
+      font-size: 12px;
+    }
+  }
+}

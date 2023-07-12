@@ -98,7 +98,7 @@ const DashboardSidebar = () => {
             alt="icon"
             className="dashboard_link_item_image"
           />
-          Staffs
+          Staff
         </NavLink>
         <NavLink
           to={"/login"}

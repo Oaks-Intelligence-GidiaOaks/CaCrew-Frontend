@@ -17,6 +17,7 @@ export { default as SuperAdminStatCard } from "components/primitives/super-admin
 export { default as DashboardWalletBanner } from "components/primitives/shared/dashboard-wallet-banner/DasboardWalletBanner";
 export { default as DashboardWalletTable } from "components/primitives/shared/dashboard-wallet-table/DashboardWalletTable";
 export { default as BuyCarbonCreditBanner } from "components/primitives/shared/buy-carbon-credit-banner/BuyCarbonCreditBanner";
+export { default as BuyCarbonCreditCard } from "components/primitives/shared/buy-carbon-credit-card/BuyCarbonCreditCard";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

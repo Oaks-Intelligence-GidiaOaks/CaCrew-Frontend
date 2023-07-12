@@ -1,1 +1,32 @@
 @import "base.scss";
+
+.buy_carb_con {
+  .dashboard_table_tab {
+    margin-top: 21px;
+
+    .dashboard_table_tab_item {
+      color: #4c5563;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 19.307px;
+      border-bottom: 1px solid #d3d4d8;
+      width: 50%;
+      padding-bottom: 8px;
+      cursor: pointer;
+
+      @media (max-width: 991px) {
+        font-size: 11px;
+      }
+    }
+
+    .dashboard_table_tab_item_active {
+      @extend .dashboard_table_tab_item;
+      color: #115ccd;
+      border-bottom: 2px solid #4277ff;
+    }
+  }
+  .buy_carb_con_crd_wrap {
+    margin-top: 28px;
+  }
+}
