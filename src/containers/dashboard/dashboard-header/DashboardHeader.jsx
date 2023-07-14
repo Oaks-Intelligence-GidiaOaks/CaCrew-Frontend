@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DashboardHeader.scss";
 import { Link } from "react-router-dom";
 import { avartar, cart, down, message, settings } from "assets/images";
-// import { useGetUserQuery } from "services/user.service";
-import { useSelector } from "react-redux"; 
+import { useGetUserQuery } from "services/user.service";
+import { useSelector, useDispatch } from "react-redux";
+// import { openModal } from "redux/slices/modal.slice";
+// import { ModalBuyCarbon, ModalSellCarbon, MakePayment } from "components";
 
 const DashboardHeader = () => {
-
   // const {data} = useGetUserQuery();
-  const data = useSelector(state => state.user.user)
+  // const dispatch = useDispatch();
+  // const handle = () => {
+  //   dispatch(openModal({ component: "MakePayment" }));
+  // };
+
+  const data = useSelector((state) => state.user.user);
+  useGetUserQuery();
+
   // console.log(isLoading, data, "headers");
 
   return (

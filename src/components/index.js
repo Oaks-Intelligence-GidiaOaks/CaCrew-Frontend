@@ -18,6 +18,9 @@ export { default as DashboardWalletBanner } from "components/primitives/shared/d
 export { default as DashboardWalletTable } from "components/primitives/shared/dashboard-wallet-table/DashboardWalletTable";
 export { default as BuyCarbonCreditBanner } from "components/primitives/shared/buy-carbon-credit-banner/BuyCarbonCreditBanner";
 export { default as BuyCarbonCreditCard } from "components/primitives/shared/buy-carbon-credit-card/BuyCarbonCreditCard";
+export { default as ModalBuyCarbon } from "components/primitives/shared/modal-component-buy-credit/ModalBuyCarbon";
+export { default as ModalSellCarbon } from "components/primitives/shared/modal-component-sell-credit/ModalSellCarbon";
+export { default as MakePayment } from "components/primitives/shared/make-payment/MakePayment";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

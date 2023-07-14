@@ -6,6 +6,7 @@ import Button from "components/widgets/button/Button";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { closeModal } from "redux/slices/modal.slice";
+import { ModalSellCarbon, ModalBuyCarbon, MakePayment } from "components";
 
 const Modal = () => {
   const {
@@ -14,13 +15,13 @@ const Modal = () => {
     isOpen,
     promptMessage,
     promptLink,
-    component: Component,
+    component,
     success: succeeded,
   } = useSelector((state) => state.modal);
 
   const dispatch = useDispatch();
 
-  console.log(isOpen, "open")
+  console.log(isOpen, "open");
 
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -30,10 +31,18 @@ const Modal = () => {
     dispatch(closeModal());
   };
 
+  const ComponentItem = {
+    ModalSellCarbon: <ModalSellCarbon />,
+    ModalBuyCarbon: <ModalBuyCarbon />,
+    MakePayment: <MakePayment />,
+  }[component];
+
   return (
-    <div className={`${isOpen ? "modal center col" : "modal_close"}`}>
-      {Component ? (
-        <Component />
+    <div
+      className={`${isOpen ? "modal center col" : "modal_close center col"}`}
+    >
+      {component ? (
+        ComponentItem
       ) : (
         <div className="modal_content_wrap center col">
           <div className="modal_content_title">{title}</div>
@@ -46,7 +55,9 @@ const Modal = () => {
           {
             <Button
               text={promptMessage ? promptMessage : "Close"}
-              onClick={() => {promptLink?.length > 1 ? handleNavigate() : handleClose()}}
+              onClick={() => {
+                promptLink?.length > 1 ? handleNavigate() : handleClose();
+              }}
             />
           }
         </div>

@@ -42,3 +42,4 @@ export const wallet_white = `${PATH}/wallet_white.svg`;
 export const verify = `${PATH}/verify.svg`;
 export const failed = `${PATH}/failed.png`;
 export const success = `${PATH}/success.png`;
+export const messge = `${PATH}/messge.svg`;

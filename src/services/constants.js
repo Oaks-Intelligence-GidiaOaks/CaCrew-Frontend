@@ -7,6 +7,7 @@ export const GETUSER = "user/me"
 export const UNVERIFIED_ORGANISATION = "organization/unverified"
 export const VERIFIED_ORGANISATION = "organization/verified"
 export const VERIFY_ORGANISATION = "organization/verify/"
+export const SET_SALE_ORGANISATION = "organization/wallet"
 
 // Staff constants
 export const GET_ALL_STAFFS = "staff"

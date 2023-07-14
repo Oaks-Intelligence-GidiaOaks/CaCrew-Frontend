@@ -1,0 +1,182 @@
+@import "base.scss";
+
+.make_payment {
+  width: 70%;
+  background-color: #fff;
+  position: relative;
+  padding-top: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
+  .make_payment_close {
+    cursor: pointer;
+    position: absolute;
+    top: 21px;
+    right: 20px;
+  }
+  @media (max-width: 991px) {
+    width: 100%;
+  }
+  .make_payment_info_wrap {
+    .make_payment_info_initials_con {
+      border-bottom: 1px solid #dedede;
+      padding-bottom: 27.5px;
+      @media (max-width: 991px) {
+        flex-direction: column;
+      }
+      .make_payment_info_initials_wrap {
+        align-items: center;
+        @media (max-width: 991px) {
+          margin-bottom: 5px;
+        }
+        .make_payment_info_initials {
+          width: 46px;
+          height: 46px;
+          background-color: #c8f0ff;
+          border-radius: 50%;
+          margin-right: 21px;
+          @media (max-width: 991px) {
+            width: 28px;
+            height: 28px;
+          }
+        }
+        .make_payment_info_bold {
+          color: #212121;
+          font-size: 20px;
+          font-weight: 500;
+          margin-right: 17px;
+          @media (max-width: 991px) {
+            font-size: 15px;
+          }
+        }
+      }
+      .make_payment_info_initials_contact {
+        color: #4c5563;
+        font-size: 15px;
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+        span {
+          margin-left: 10px;
+        }
+      }
+    }
+    .make_payment_info_method {
+      padding-top: 50px;
+      padding-left: 40px;
+      padding-right: 40px;
+      @media (max-width: 991px) {
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .make_payment_info_method_item {
+        .make_payment_info_method_text {
+          color: #4c5563;
+          font-size: 15px;
+          margin-bottom: 10px;
+          @media (max-width: 991px) {
+            font-size: 12px;
+            margin-bottom: 4px;
+          }
+        }
+        .make_payment_info_method_value {
+          @extend .make_payment_info_method_text;
+        }
+      }
+    }
+    .make_payment_details {
+      padding: 40px;
+      border: 1px solid #dedede;
+      border-radius: 8px;
+      margin-top: 34px;
+      @media (max-width: 991px) {
+        padding: 10px;
+      }
+      .make_payment_details_title {
+        color: $purple;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 38px;
+        @media (max-width: 991px) {
+          font-size: 14px;
+        }
+      }
+      .make_payment_details_info {
+        margin-bottom: 38px;
+        // overflow-x: scroll;
+        @media (max-width: 991px) {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+        .make_payment_details_info_item {
+          .make_payment_details_info_text {
+            color: #4c5563;
+            font-size: 15px;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            @media (max-width: 991px) {
+              font-size: 12px;
+              margin-bottom: 2px;
+            }
+          }
+          .make_payment_details_info_value {
+            color: #212121;
+            font-size: 18px;
+            @media (max-width: 991px) {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .make_payment_details_message {
+        @media (max-width: 991px) {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+        .make_payment_details_message_seller {
+          border-radius: 8px;
+          align-items: center;
+          border: 1px solid #2b5fad;
+          padding: 10px;
+          img {
+            margin-right: 14px;
+          }
+        }
+        .make_payment_details_message_seller_text {
+          .make_payment_details_message_seller_text_small {
+            color: #212121;
+            font-size: 15px;
+            margin-right: 10px;
+            @media (max-width: 991px) {
+              font-size: 12px;
+            }
+          }
+          .make_payment_details_message_seller_text_big {
+            color: #5f41b2;
+            font-size: 32px;
+            font-weight: 500;
+            @media (max-width: 991px) {
+              font-size: 19px;
+            }
+          }
+        }
+      }
+    }
+    .make_payment_btn_wrap {
+      margin-top: 61px;
+      .make_payment_btn_two {
+        background-color: #fff;
+        border-radius: 26px;
+        border: 1px solid #4c5563;
+        color: black;
+        max-width: 134px;
+      }
+      .make_payment_btn {
+        max-width: 251px;
+        margin-left: 15px;
+      }
+    }
+  }
+}

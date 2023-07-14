@@ -3,7 +3,7 @@ import enviroment from "configs/enviroment.config";
 import { updateUser, logoutUser } from "redux/slices/user.slice";
 import { Mutex } from "async-mutex";
 
-const mutex = new Mutex()
+const mutex = new Mutex();
 const baseQuery = fetchBaseQuery({
   baseUrl: enviroment.API_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
@@ -32,9 +32,13 @@ const customBaseQuery = async (args, api, extraOptions) => {
       api,
       extraOptions
     );
+    // console.log(refreshResult.error, "cusError");
     if (refreshResult.data) {
       api.dispatch(updateUser({ token: refreshResult.data.accessToken }));
       result = await baseQuery(args, api, extraOptions);
+    }
+    if (refreshResult.error) {
+      api.dispatch(logoutUser());
     } else {
       api.dispatch(logoutUser);
     }

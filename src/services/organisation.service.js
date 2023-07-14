@@ -1,4 +1,5 @@
 import {
+  SET_SALE_ORGANISATION,
   UNVERIFIED_ORGANISATION,
   VERIFIED_ORGANISATION,
   VERIFY_ORGANISATION,
@@ -38,6 +39,16 @@ export const organisationApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
       }),
     }),
+
+    // Set sale
+    setSaleOrganisation: builder.mutation({
+      // invalidatesTags: ["Organisation"],
+      query: (bodyData) => ({
+        url: `${SET_SALE_ORGANISATION}`,
+        method: "PUT",
+        body: bodyData,
+      }),
+    }),
   }),
   // keepUnusedDataFor: 60,
   // refetchOnMountOrArgChange: true,
@@ -47,4 +58,5 @@ export const {
   useUnverifiedOrganisationQuery,
   useVerifiedOrganisationQuery,
   useVerifyOrganisationMutation,
+  useSetSaleOrganisationMutation,
 } = organisationApiSlice;

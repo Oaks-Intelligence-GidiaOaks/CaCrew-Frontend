@@ -1,8 +1,13 @@
 import React from "react";
 import "./DashboardWallet.scss";
 import { eye } from "assets/images";
+import { useGetUserQuery } from "services/user.service";
 
 const DashboardWallet = () => {
+
+  const {data} = useGetUserQuery()
+  console.log(data?.wallet_id?.available_to_sale, "kk");
+
   return (
     <div className="dashboard_wallet">
       <div className="dashboard_wallet_heading">Carbon Credit Wallet</div>
@@ -25,7 +30,7 @@ const DashboardWallet = () => {
                 </div>
               </div>
             </div>
-            <div className="dashboard_wallet_value">0 tCO2e</div>
+            <div className="dashboard_wallet_value">{data?.wallet_id?.available_to_sale || " - tCO2e"}</div>
           </div>
           <div>
             <div className="dashboard_wallet_title_wrap">

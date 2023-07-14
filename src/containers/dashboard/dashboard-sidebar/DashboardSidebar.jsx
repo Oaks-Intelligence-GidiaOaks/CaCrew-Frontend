@@ -89,6 +89,18 @@ const DashboardSidebar = () => {
           Projects
         </NavLink>
         <NavLink
+          to={"/dashboard-project"}
+          activeclassname="active"
+          className={"link dashboard_link_item start"}
+        >
+          <img
+            src={pathname === "/dashboard-project" ? projectwhite : projectblue}
+            alt="icon"
+            className="dashboard_link_item_image"
+          />
+          Track Projects
+        </NavLink>
+        <NavLink
           to={"/dashboard-staff"}
           activeclassname="active"
           className={"link dashboard_link_item start"}
