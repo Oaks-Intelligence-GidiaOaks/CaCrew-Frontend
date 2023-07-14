@@ -4,7 +4,7 @@ import { down, fileImg } from "assets/images";
 import { Button } from "components";
 import { useVerifyOrganisationMutation } from "services/organisation.service";
 import rtkMutation from "utils/rtkMutation";
-// import getFileDetails from "utils/getFileDetails";
+import getFileDetails from "utils/getFileDetails";
 
 const TableAccordion = ({ data, handleVerifyOrganisation }) => {
   const [isOpen, setIsopen] = useState(false);
@@ -17,6 +17,8 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
   const handleVerify = async (id) => {
     await rtkMutation(verifyOrganisation, id);
   };
+
+  console.log(getFileDetails(data?.letter_of_authorization_url), "getTest");
 
   useEffect(() => {
     isSuccess && handleOpen();

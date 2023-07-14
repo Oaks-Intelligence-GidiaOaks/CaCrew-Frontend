@@ -1,39 +1,34 @@
 import { fileImg, docpng, pdf, pic } from "assets/images";
-async function getFileDetails(downloadUrl) {
-  try {
-    const response = await fetch(downloadUrl);
-    const headers = response.headers;
+function getFileDetails(downloadUrl) {
+  const regex = /\/([^/]+)\?alt=media/;
+  const match = regex.exec(downloadUrl);
 
-    // Extract file size
-    const contentLength = headers.get('content-length');
-    const fileSize = contentLength ? parseInt(contentLength, 10) : 0;
+  let image;
+  let type
 
-    // Extract file name from the URL
-    const urlParts = downloadUrl.split('/');
-    const fileName = urlParts[urlParts.length - 1].split('?')[0];
-
-    // Determine the file type based on the file extension
-    const fileExtension = fileName.split('.').pop().toLowerCase();
-
-    let image;
-    if (fileExtension === 'pdf') {
+  if (match && match.length >= 2) {
+    const fileName = match[1];
+    console.log(fileName);
+    if (fileName === "pdf") {
       image = pdf;
-    } else if (fileExtension === 'png' || fileExtension === 'jpeg') {
+      type = "pdf"
+    } else if (fileName === "png" || fileName === "jpeg") {
       image = pic;
-    } else if (fileExtension === 'xlsx' || fileExtension === 'xls') {
+      type = "png"
+    } else if (fileName === "xlsx" || fileName === "xls") {
       image = fileImg;
-    } else if (fileExtension === 'docx') {
+      type = "xlsx"
+    } else if (fileName === "docx") {
       image = docpng;
+      type = "docx"
     } else {
       // Unknown file type
-      image = 'unknown';
+      image = "unknown";
     }
-
-    return { fileSize, fileName, image };
-  } catch (error) {
-    console.error('Error retrieving file details:', error);
-    throw error;
+  } else {
+    console.log("No file name found in the URL.");
   }
+  return {type, image };
 }
 
-export default getFileDetails
+export default getFileDetails;

@@ -102,7 +102,7 @@ const DashboardSidebar = () => {
           >
             <img
               src={
-                pathname === "/dashboard-track-project" ? trackproj : trackprojblue
+                pathname?.includes("dashboard-track-project") ? trackproj : trackprojblue
               }
               alt="icon"
               className="dashboard_link_item_image"

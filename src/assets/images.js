@@ -45,3 +45,4 @@ export const success = `${PATH}/success.png`;
 export const messge = `${PATH}/messge.svg`;
 export const trackproj = `${PATH}/trackproj.svg`;
 export const trackprojblue = `${PATH}/trackprojblue.svg`;
+export const certificate = `${PATH}/Certificate.png`;

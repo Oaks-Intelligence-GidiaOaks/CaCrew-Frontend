@@ -17,6 +17,7 @@ import {
   WALLET,
   BUY_CARBON_CREDIT,
   TRACK_PROJECT,
+  TRACK_PROJECT_OVERVIEW,
 } from "routes/constants";
 
 // Import auth pages
@@ -42,6 +43,7 @@ import {
   // staff
   StaffDashboardHomePage,
   TrackProjectPage,
+  ProjectTrackOverviewPage,
 } from "pages";
 
 // Import dasboard pages
@@ -100,6 +102,10 @@ const RoutesConfig = () => {
       <Route
         path={TRACK_PROJECT}
         element={<ProtectedRoute component={TrackProjectPage} />}
+      />
+      <Route
+        path={TRACK_PROJECT_OVERVIEW}
+        element={<ProtectedRoute component={ProjectTrackOverviewPage} />}
       />
     </Routes>
   );

@@ -1,2 +1,55 @@
 @import "base.scss";
 
+.proj_track_overview {
+  align-items: flex-start;
+  .proj_track_overview_wrap {
+    .proj_track_overview_title {
+    }
+    .proj_track_overview_info_wrap {
+      padding: 50px;
+      border-radius: 8px;
+      border: 1px solid #dedede;
+      margin-top: 20px;
+
+      .proj_track_overview_info_wrap_items {
+        align-self: flex-start;
+        flex-wrap: wrap;
+        gap: 70px;
+        .proj_track_overview_info_wrap_item {
+          width: 40%;
+          .proj_track_overview_info_wrap_item_text {
+            color: #212121;
+            font-size: 15px;
+            line-height: 23.968px;
+            margin-bottom: 14px;
+            white-space: nowrap;
+            @media (max-width: 991px) {
+              font-size: 12px;
+            }
+          }
+          .proj_track_overview_info_wrap_item_value {
+            color: #4c5563;
+            font-size: 15px;
+            line-height: 23.968px;
+            white-space: nowrap;
+            @media (max-width: 991px) {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .proj_track_overview_cert {
+    margin-left: 20px;
+
+    .proj_track_overview_cert_title {
+    }
+
+    .proj_track_overview_cert_img {
+    }
+
+    .proj_track_overview_btn {
+    }
+  }
+}

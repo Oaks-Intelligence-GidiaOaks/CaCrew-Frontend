@@ -1,6 +1,7 @@
 import React from "react";
 import "./TrackProjectTable.scss";
 import { TrackProjectProgress } from "components";
+import { Link } from "react-router-dom";
 
 const TrackProjectTable = ({ data }) => {
   return (
@@ -13,9 +14,10 @@ const TrackProjectTable = ({ data }) => {
           <div className="track_project_table_head_item">Progress</div>
         </div>
         {data?.map((row, idx) => (
-          <div
+          <Link
             key={row?._id}
             className={`track_project_table_body between`}
+            to={"/dashboard-track-project/overview"}
           >
             <div className="track_project_table_body_item">{row?._id}</div>
             <div className="track_project_table_body_item">
@@ -27,7 +29,7 @@ const TrackProjectTable = ({ data }) => {
             <div className="track_project_table_body_item">
               <TrackProjectProgress phase={row?.progress}/>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

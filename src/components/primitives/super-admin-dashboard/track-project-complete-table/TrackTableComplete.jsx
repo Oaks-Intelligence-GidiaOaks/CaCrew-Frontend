@@ -1,5 +1,6 @@
 import React from "react";
 import "./TrackTableComplete.scss";
+import { Link } from "react-router-dom";
 
 const TrackTableComplete = ({ data }) => {
   return (
@@ -13,7 +14,11 @@ const TrackTableComplete = ({ data }) => {
           <div className="track_table_head_item">Offset Period</div>
         </div>
         {data?.map((row, idx) => (
-          <div key={row?._id} className={`track_table_body between`}>
+          <Link
+            key={row?._id}
+            className={`track_table_body between`}
+            to={"/dashboard-track-project/overview"}
+          >
             <div className="track_table_body_item">{row?._id}</div>
             <div className="track_table_body_item">
               {row?.created_by?.organization_id?.organization_name}
@@ -23,7 +28,7 @@ const TrackTableComplete = ({ data }) => {
             <div className="track_table_body_item">
               12 Jan 2021 - 12 Jan 2023
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
