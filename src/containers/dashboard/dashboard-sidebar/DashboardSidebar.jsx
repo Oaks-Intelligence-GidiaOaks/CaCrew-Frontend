@@ -11,6 +11,8 @@ import {
   fileImg,
   wallet_blue,
   wallet_white,
+  trackproj,
+  trackprojblue,
 } from "assets/images";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -54,7 +56,11 @@ const DashboardSidebar = () => {
           className={"link dashboard_link_item start"}
         >
           <img
-            src={pathname?.includes("dashboard-wallet") ? wallet_white : wallet_blue}
+            src={
+              pathname?.includes("dashboard-wallet")
+                ? wallet_white
+                : wallet_blue
+            }
             alt="icon"
             className="dashboard_link_item_image"
           />
@@ -88,18 +94,22 @@ const DashboardSidebar = () => {
           />
           Projects
         </NavLink>
-        <NavLink
-          to={"/dashboard-project"}
-          activeclassname="active"
-          className={"link dashboard_link_item start"}
-        >
-          <img
-            src={pathname === "/dashboard-project" ? projectwhite : projectblue}
-            alt="icon"
-            className="dashboard_link_item_image"
-          />
-          Track Projects
-        </NavLink>
+        {user && user?.role === "SuperAdmin" && (
+          <NavLink
+            to={"/dashboard-track-project"}
+            activeclassname="active"
+            className={"link dashboard_link_item start"}
+          >
+            <img
+              src={
+                pathname === "/dashboard-track-project" ? trackproj : trackprojblue
+              }
+              alt="icon"
+              className="dashboard_link_item_image"
+            />
+            Track Projects
+          </NavLink>
+        )}
         <NavLink
           to={"/dashboard-staff"}
           activeclassname="active"

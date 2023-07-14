@@ -16,6 +16,7 @@ import {
   STAFF,
   WALLET,
   BUY_CARBON_CREDIT,
+  TRACK_PROJECT,
 } from "routes/constants";
 
 // Import auth pages
@@ -40,13 +41,13 @@ import {
   OrgAdminDashboardHomePage,
   // staff
   StaffDashboardHomePage,
+  TrackProjectPage,
 } from "pages";
-
 
 // Import dasboard pages
 
 const RoutesConfig = () => {
-  const user = useSelector(state => state?.user?.user)
+  const user = useSelector((state) => state?.user?.user);
   console.log(user, "log");
   return (
     <Routes>
@@ -95,6 +96,10 @@ const RoutesConfig = () => {
       <Route
         path={BUY_CARBON_CREDIT}
         element={<ProtectedRoute component={BuyCarbonCreditPage} />}
+      />
+      <Route
+        path={TRACK_PROJECT}
+        element={<ProtectedRoute component={TrackProjectPage} />}
       />
     </Routes>
   );

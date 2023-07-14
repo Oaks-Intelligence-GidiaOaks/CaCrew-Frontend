@@ -37,7 +37,7 @@ const persistConfig = {
     }),
   ],
   stateReconciler: hardSet,
-  // blacklist: apiSlice.reducerPath,
+  blacklist: apiSlice.reducerPath,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

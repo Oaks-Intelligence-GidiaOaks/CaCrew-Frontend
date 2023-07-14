@@ -21,6 +21,8 @@ export { default as BuyCarbonCreditCard } from "components/primitives/shared/buy
 export { default as ModalBuyCarbon } from "components/primitives/shared/modal-component-buy-credit/ModalBuyCarbon";
 export { default as ModalSellCarbon } from "components/primitives/shared/modal-component-sell-credit/ModalSellCarbon";
 export { default as MakePayment } from "components/primitives/shared/make-payment/MakePayment";
+export { default as TrackProjectTable } from "components/primitives/super-admin-dashboard/track-project-table/TrackProjectTable";
+export { default as TrackTableComplete } from "components/primitives/super-admin-dashboard/track-project-complete-table/TrackTableComplete";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
@@ -31,5 +33,6 @@ export { default as Button } from "components/widgets/button/Button";
 export { default as Input } from "components/widgets/input/Input";
 export { default as Upload } from "components/widgets/upload/Upload";
 export { default as SearchInput } from "components/widgets/search-input/SearchInput";
+export { default as TrackProjectProgress } from "components/widgets/track-project-progress/TrackProjectProgress";
 
 export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";

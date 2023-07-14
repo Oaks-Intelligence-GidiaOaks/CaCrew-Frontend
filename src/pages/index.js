@@ -16,6 +16,7 @@ export {default as BuyCarbonCreditPage} from "pages/shared/BuyCarbonCreditPage"
 // Super admin pages exports
 export {default as DashboardOrganisationPage} from "pages/super-admin-dashboard/DashboardOrganisationPage"
 export {default as SupAdminDashHomePage} from "pages/super-admin-dashboard/SupAdminDashHomePage"
+export {default as TrackProjectPage} from "pages/super-admin-dashboard/TrackProjectPage"
 
 // Organisation admin pages exports
 export {default as OrgAdminDashboardHomePage} from "pages/org-admin-dashboard/OrgAdminDashboardHomePage"

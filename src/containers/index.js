@@ -10,6 +10,8 @@ export { default as DashboardSidebar } from "containers/dashboard/dashboard-side
 export { default as SuperAdminDashHome } from "containers/dashboard/dashboard-content/super-admin-dashboard/super-admin-dashboard-home/SuperAdminDashHome";
 export { default as DashboardWalletCon } from "containers/dashboard/dashboard-content/shared/dasboard-wallet-container/DashboardWalletCon";
 export { default as BuyCarbonCreditCon } from "containers/dashboard/dashboard-content/shared/buy-carbon-credit-container/BuyCarbonCreditCon";
+export { default as TrackProject } from "containers/dashboard/dashboard-content/super-admin-dashboard/track-project/TrackProject";
+export { default as ProjectTrackOverview } from "containers/dashboard/dashboard-content/super-admin-dashboard/project-track-overview/ProjectTrackOverview";
 
 // auth
 export { default as AuthHeader } from "containers/auth/auth-header/AuthHeader";

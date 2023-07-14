@@ -43,3 +43,5 @@ export const verify = `${PATH}/verify.svg`;
 export const failed = `${PATH}/failed.png`;
 export const success = `${PATH}/success.png`;
 export const messge = `${PATH}/messge.svg`;
+export const trackproj = `${PATH}/trackproj.svg`;
+export const trackprojblue = `${PATH}/trackprojblue.svg`;

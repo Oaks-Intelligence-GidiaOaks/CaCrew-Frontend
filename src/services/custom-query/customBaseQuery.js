@@ -1,7 +1,9 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import enviroment from "configs/enviroment.config";
 import { updateUser, logoutUser } from "redux/slices/user.slice";
+import { openModal } from "redux/slices/modal.slice";
 import { Mutex } from "async-mutex";
+import { success } from "assets/images";
 
 const mutex = new Mutex();
 const baseQuery = fetchBaseQuery({
@@ -23,6 +25,14 @@ const customBaseQuery = async (args, api, extraOptions) => {
   // console.log(result, "res");
   if (result.error && result.error.status === 406) {
     api.dispatch(logoutUser());
+    api.dispatch(
+      openModal({
+        title: "Inactive for too long",
+        message: "Please login again to continue",
+        success: false,
+      })
+    );
+
     return;
   }
   if (result.error && result.error.status === 401) {
@@ -39,6 +49,13 @@ const customBaseQuery = async (args, api, extraOptions) => {
     }
     if (refreshResult.error) {
       api.dispatch(logoutUser());
+      api.dispatch(
+        openModal({
+          title: "Refresh Token Expired",
+          message: "Please login again to continue",
+          success: false,
+        })
+      );
     } else {
       api.dispatch(logoutUser);
     }
