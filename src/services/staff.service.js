@@ -1,6 +1,5 @@
 import { GET_ALL_STAFFS, ADD_STAFF } from "services/constants";
 import apiSlice from "./api/apiSlice";
-import { arc } from "@visx/shape";
 
 export const staffApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

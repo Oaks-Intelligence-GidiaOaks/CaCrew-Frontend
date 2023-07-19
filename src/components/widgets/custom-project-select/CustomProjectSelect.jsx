@@ -72,7 +72,7 @@ const CustomProjectSelect = ({ data, amount }) => {
       },
     });
     // console.log(index, "idxxxxxxxxxxxx");
-  }, [index, amount, data]);
+  }, [index, amount]);
 
   // console.log(data, "check***************", index);
 
