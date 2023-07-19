@@ -78,47 +78,80 @@ const transactionApiSlice = apiSlice.injectEndpoints({
 
     // set buy order
     setBuyOrder: builder.mutation({
-        invalidatesTags: ["Transaction"],
-        query: (data) => ({
-            url: SET_BUY_ORDER,
-            method: "POST",
-            body: data,
-        })
+      invalidatesTags: ["Transaction"],
+      query: (data) => ({
+        url: SET_BUY_ORDER,
+        method: "POST",
+        body: data,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
     }),
 
     // payment made
     paymentMade: builder.mutation({
-        invalidatesTags: ["Transaction"],
-        query: (data) => ({
-            url: PAYMENT_MADE,
-            method: "POST",
-            body: data,
-        }),
+      invalidatesTags: ["Transaction"],
+      query: (data) => ({
+        url: PAYMENT_MADE,
+        method: "POST",
+        body: data,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
     }),
 
     // payment recieved
     paymentRecieved: builder.mutation({
-        invalidatesTags: ["Transaction"],
-        query: (data) => ({
-            url: PAYMENT_RECIEVED,
-            method: "POST",
-            body: data,
-        }),
+      invalidatesTags: ["Transaction"],
+      query: (data) => ({
+        url: PAYMENT_RECIEVED,
+        method: "POST",
+        body: data,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
     }),
 
     // transaction failed
     transactionFailed: builder.mutation({
-        invalidatesTags: ["Transaction"],
-        query: (data) => ({
-            url: TRANSACTION_FAILED,
-            method: "POST",
-            body: data,
-        })
+      invalidatesTags: ["Transaction"],
+      query: (data) => ({
+        url: TRANSACTION_FAILED,
+        method: "POST",
+        body: data,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
     }),
 
     // transaction success
     transactionSuccess: builder.mutation({
-        
+      invalidatesTags: ["Transaction"],
+      query: (data) => ({
+        url: TRANSACTION_SUCCESS,
+        method: "POST",
+        body: data,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // retire carbon credit
+    retireCarbonCredit: builder.mutation({
+      invalidatesTags: ["Transaction"],
+      query: (data) => ({
+        url: RETIRE_CARBON_CREDIT,
+        method: "POST",
+        body: data,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
     }),
   }),
 });
