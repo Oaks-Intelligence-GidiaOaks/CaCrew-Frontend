@@ -36,7 +36,7 @@ const ProjectTrackOverview = () => {
 
   console.log(amount, "value");
 
-  useEffect(() => {}, [amount]);
+  // useEffect(() => {}, [amount]);
 
   // console.log(projectData, error, isSuccess, isLoading, "oneProj");
 

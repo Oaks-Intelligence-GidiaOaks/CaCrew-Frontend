@@ -19,7 +19,7 @@ const DashboardWallet = () => {
               <img src={eye} alt="icon" className="dashboard_wallet_icon" />
             </div>
           </div>
-          <div className="dashboard_wallet_value">{data?.wallet_id?.open_balance + data?.wallet_id?.close_balance} tCO2e</div>
+          <div className="dashboard_wallet_value">{data?.wallet_id?.open_balance + data?.wallet_id?.close_balance + " tCO2e" || "- tCO2e" }</div>
         </div>
         <div className="between">
           <div style={{ marginRight: "68px" }}>
@@ -30,12 +30,12 @@ const DashboardWallet = () => {
                 </div>
               </div>
             </div>
-            <div className="dashboard_wallet_value">{data?.wallet_id?.open_balance || " - tCO2e"}</div>
+            <div className="dashboard_wallet_value">{data?.wallet_id?.open_balance + " tCO2e" || " - tCO2e"}</div>
           </div>
           <div>
             <div className="dashboard_wallet_title_wrap">
               <div className="dashboard_wallet_title_icon_wrap start">
-                <div className="dashboard_wallet_title">Close Balance</div>
+                <div className="dashboard_wallet_title">Closed Balance</div>
               </div>
             </div>
             <div className="dashboard_wallet_value">{data?.wallet_id?.close_balance} tCO2e</div>

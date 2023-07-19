@@ -63,17 +63,18 @@ const CustomProjectSelect = ({ data, amount }) => {
   const [updateProject, { data: updata, isLoading, isSuccess, error }] =
     useUpdateProjectMutation();
 
-
   useEffect(() => {
     rtkMutation(updateProject, {
       id: data?._id,
-      body: { progress: options[index]?.value, amount_earned: amount || 0},
+      body: {
+        progress: index >= 0 ? options[index]?.value : data?.progress,
+        amount_earned: amount,
+      },
     });
     // console.log(index, "idxxxxxxxxxxxx");
-  }, [index, amount]);
+  }, [index, amount, data]);
 
-  console.log(amount, "check***************");
-
+  // console.log(data, "check***************", index);
 
   return (
     <div className="custom_proj_select">
