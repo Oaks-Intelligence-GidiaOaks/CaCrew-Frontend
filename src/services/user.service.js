@@ -45,6 +45,15 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    // send credit
+    sendCredit: builder.mutation({
+      query: (data) => ({
+        url: "superAdmin/send_carbon_credits",
+        body: data,
+        method: "POST",
+      }),
+      // invalidatesTags: ["User"],
+    }),
 
     // Get user route
     getUser: builder.query({
@@ -63,5 +72,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
 export const {
   useLoginUserMutation,
   useRegisterUserMutation,
+  useSendCreditMutation,
   useGetUserQuery,
 } = userApiSlice;

@@ -18,6 +18,7 @@ const Input = ({
   textArea,
   placeholder,
   className,
+  disabled,
 }) => {
   const [passwordType, setPasswordType] = useState("password");
   // const parseDate = (value) => {
@@ -90,6 +91,7 @@ const Input = ({
             style={{ width: (!date || !password) && "100%" }}
             type={password ? passwordType : type}
             placeholder={placeholder}
+            disabled = {disabled}
           />
         )}
         {password && (

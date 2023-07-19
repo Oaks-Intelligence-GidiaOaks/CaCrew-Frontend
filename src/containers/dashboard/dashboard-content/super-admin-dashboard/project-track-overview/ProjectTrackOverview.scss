@@ -52,4 +52,26 @@
     .proj_track_overview_btn {
     }
   }
+
+  .proj_track_overview_update_wrap {
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 34px;
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
+    .proj_track_overview_update_value {
+      width: 45%;
+      @media (max-width: 991px) {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+    .proj_track_overview_update_credit {
+      width: 45%;
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+    }
+  }
 }

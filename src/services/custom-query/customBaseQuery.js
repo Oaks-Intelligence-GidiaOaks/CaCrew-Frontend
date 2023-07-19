@@ -47,7 +47,7 @@ const customBaseQuery = async (args, api, extraOptions) => {
       api.dispatch(updateUser({ token: refreshResult.data.accessToken }));
       result = await baseQuery(args, api, extraOptions);
     }
-    if (refreshResult.error) {
+    if (refreshResult.error.status === 407) {
       api.dispatch(logoutUser());
       api.dispatch(
         openModal({

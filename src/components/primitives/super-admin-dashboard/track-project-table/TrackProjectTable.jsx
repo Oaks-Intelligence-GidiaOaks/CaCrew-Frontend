@@ -17,7 +17,7 @@ const TrackProjectTable = ({ data }) => {
           <Link
             key={row?._id}
             className={`track_project_table_body between`}
-            to={"/dashboard-track-project/overview"}
+            to={`/dashboard-track-project/overview/${row?._id}`}
           >
             <div className="track_project_table_body_item">{row?._id}</div>
             <div className="track_project_table_body_item">

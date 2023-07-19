@@ -14,11 +14,15 @@ const DashboardProject = () => {
 
   const {data, isSuccess, errpr} = useAllProjectsQuery()
 
+  const dataInComplete = data?.length > 0 ? data?.filter(item => item?.progress !== "Phase6") :  []
+  const dataComplete = data?.length > 0 ? data?.filter(item => item?.progress === "Phase6") : []
+
+  console.log(dataInComplete, "projtesr*******")
 
   const tabItems = {
     create: <DashboardProjectCreate />,
-    review: <DashboardProjectReview data={data}/>,
-    complete: <DashboardProjectReview />,
+    review: <DashboardProjectReview data={dataInComplete}/>,
+    complete: <DashboardProjectReview data={dataComplete}/>,
   }[active];
 
   return (

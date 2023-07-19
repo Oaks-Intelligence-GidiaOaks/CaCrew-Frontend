@@ -8,9 +8,8 @@ const TrackProject = () => {
 
   const { data: projData, isSuccess, errpr } = useAllProjectsQuery();
 
-  console.log(projData, "track");
   const dataNew = projData?.filter((item) => item?.progress === "Phase1");
-  const dataProgress = projData?.filter((item) => !item?.progress === "Phase1");
+  const dataProgress = projData?.filter((item) => item?.progress !== "Phase1" && item?.progress !== "Phase6");
   const dataComplete = projData?.filter((item) => item?.progress === "Phase6");
 
   const data =
@@ -19,6 +18,8 @@ const TrackProject = () => {
       : activeTab === "ongoing"
       ? dataProgress
       : dataComplete;
+
+  console.log(dataProgress, "track");
 
   const handleTabClick = (value) => {
     setActiveTab(value);
