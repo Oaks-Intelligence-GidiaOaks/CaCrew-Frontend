@@ -1,32 +1,67 @@
-import React, { useState } from "react";
-import "./ModalSellCarbon.scss";
+import React, { useEffect, useRef, useState } from "react";
+import "./ModalSellOrder.scss";
 import { close } from "assets/images";
 import { useDispatch } from "react-redux";
-import { closeModal } from "redux/slices/modal.slice";
+import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
 import { useSetSaleOrganisationMutation } from "services/organisation.service";
+import { useGetUserQuery } from "services/user.service";
 import rtkMutation from "utils/rtkMutation";
 
-const ModalSellCarbon = () => {
-  const dispatch = useDispatch();
-
-  const handleCloseModal = () => {
-    dispatch(closeModal());
-  };
-
-  const [setSaleOrganisation, { error, isSuccess }] =
+const ModalSellOrder = () => {
+  const [setSaleOrganisation, { error, isError, isSuccess, isLoading }] =
     useSetSaleOrganisationMutation();
 
-  const onSubmit = (values) => {
-    console.log(values);
-    rtkMutation(setSaleOrganisation, values);
+  const { data } = useGetUserQuery();
+
+  const dispatch = useDispatch();
+
+  // create ref values, need to update state inside a callback
+  const isSuccessRef = useRef(isSuccess);
+  const isErrorRef = useRef(isError);
+  const errorRef = useRef(error);
+
+  const handleCloseModal = () => {
+    dispatch(closeComponentModal());
   };
-  console.log(error, "error")
+
+  const onSubmit = async (values) => {
+    // console.log(values);
+    await rtkMutation(setSaleOrganisation, values);
+    isSuccessRef.current &&
+      dispatch(
+        openModal({
+          title: "Order Set Successful",
+          message: `You have successfuly placed a sell order for ${values?.available_to_sale} tCO2e`,
+          component: null,
+          success: true,
+        })
+      );
+
+    isErrorRef.current &&
+      dispatch(
+        openModal({
+          title: `Order for ${values?.available_to_sale} failed`,
+          message: `${errorRef?.current?.data?.message || "An error occured, please try again"} `,
+          component: null,
+        })
+      );
+  };
+
+  useEffect(() => {
+    isSuccessRef.current = isSuccess;
+    isErrorRef.current = isError;
+    errorRef.current = error;
+  }, [isSuccess, isError, error]);
+
+    console.log(isErrorRef.current, "**", error);
+
+
   return (
     <div className="modal_sell_carb">
       <div className="modal_sell_carb_title sub_heading">
-        Sell Carbon Credit
+        Set Sell Order
       </div>
       <img
         src={close}
@@ -38,7 +73,9 @@ const ModalSellCarbon = () => {
         <div className="modal_sell_carb_info_bold">
           Total Carbon Credit Available
         </div>
-        <div className="modal_sell_carb_info_text">700,000 tCO2e</div>
+        <div className="modal_sell_carb_info_text">
+          {data?.wallet_id?.open_balance + " tCO2e" || "-----"}
+        </div>
       </div>
       <div className="modal_sell_carb_input_warp">
         <div className="modal_sell_carb_input">
@@ -53,9 +90,9 @@ const ModalSellCarbon = () => {
                     label="Total Sell Quantity (tCO2e)"
                     component={Input}
                   />
-                  <div className="modal_sell_carb_input_item_fee">
+                  {/* <div className="modal_sell_carb_input_item_fee">
                     Transaction Fee: 0.0 tco2e
-                  </div>
+                  </div> */}
                 </div>
                 <div className="modal_sell_carb_input_item">
                   <Field
@@ -85,6 +122,7 @@ const ModalSellCarbon = () => {
                     text={"Sell"}
                     className={"modal_sell_carb_input_btn"}
                     type={"submit"}
+                    loading={isLoading}
                   />
                 </div>
               </form>
@@ -96,4 +134,4 @@ const ModalSellCarbon = () => {
   );
 };
 
-export default ModalSellCarbon;
+export default ModalSellOrder;

@@ -1,0 +1,149 @@
+@import "base.scss";
+
+.modal_buy_order {
+  background-color: #fff;
+  padding-top: 78px;
+  padding-left: 91px;
+  padding-right: 91px;
+  padding-bottom: 29px;
+  border-radius: 8px;
+  box-shadow: 4px 2px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 50%;
+
+  @media (max-width: 991px) {
+    padding-top: 28px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 29px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  .modal_buy_order_title {
+    margin-bottom: 40px;
+  }
+
+  .modal_buy_order_close {
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    right: 32px;
+    top: 21px;
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  .modal_buy_order_info_wrap {
+    background-color: #f2f5ff;
+    padding: 16px;
+    margin-bottom: 14px;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+
+    .modal_buy_order_info_text {
+      align-items: center;
+      margin-bottom: 12px;
+      color: #4c5563;
+      font-size: 20px;
+
+      @media (max-width: 991px) {
+        font-size: 17px;
+      }
+    }
+
+    .modal_buy_order_info_bold {
+      margin-right: 17px;
+      color: #212121;
+      font-size: 14px;
+      font-weight: 500;
+
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .modal_buy_order_sale_text {
+    align-items: center;
+    margin-bottom: 6px;
+
+    .modal_buy_order_sales_bold {
+      margin-right: 17px;
+      color: #5f41b2;
+      text-align: center;
+      font-size: 50px;
+
+      @media (max-width: 991px) {
+        font-size: 15px;
+      }
+    }
+
+    .modal_buy_order_sale_normal {
+      color: #4c5563;
+      font-size: 15px;
+      padding-right: 10px;
+
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 11px;
+      }
+    }
+  }
+
+  .modal_buy_order_input_warp {
+    margin-top: 30px;
+
+    .modal_buy_order_input {
+      .modal_buy_order_input_item {
+        .modal_buy_order_input_item_fee {
+          margin-top: -20px;
+          margin-bottom: 25px;
+          color: #4c5563;
+          font-size: 15px;
+
+          @media (max-width: 991px) {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .modal_buy_order_input_text {
+        color: $blue;
+        font-size: 14px;
+        margin-bottom: 10px;
+
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+      }
+
+      .modal_buy_order_input_btn_wrap {
+        .modal_buy_order_input_btn {
+          margin-top: 30px;
+          max-width: 140px;
+          margin-left: 16px;
+        }
+
+        .modal_buy_order_input_btn_two {
+          @extend .modal_buy_order_input_btn;
+          background-color: #fff;
+          border-radius: 26px;
+          border: 1px solid #4c5563;
+          color: #4c5563;
+        }
+      }
+    }
+  }
+}

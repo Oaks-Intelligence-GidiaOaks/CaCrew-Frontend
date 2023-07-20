@@ -1,19 +1,38 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./DashboardWalletTable.scss";
 import { Button, Input, SearchInput } from "components";
 import { Form, Field } from "react-final-form";
+import { useDispatch } from "react-redux";
+import { openModal } from "redux/slices/modal.slice";
 
-const DashboardWalletTable = () => {
+const DashboardWalletTable = ({ data }) => {
+  const dispatch = useDispatch()
   const [activeTab, setActiveTab] = useState("all");
 
   const handleTabClick = (value) => {
     setActiveTab(value);
-    
   };
 
   const onSubmit = (values) => {
     console.log(values);
   };
+
+  const handleOpenModal = (data) => {
+    dispatch(openModal({
+      component: "ConfirmPayment",
+      data,
+    }))
+  }
+
+  // const handle = () => {
+  //   if (confirm("are you high?")) {
+  //     alert("hi");
+  //   } else {
+  //     alert("bye");
+  //   }
+  // };
+
+  console.log(data, "trans");
 
   return (
     <div className="dashboard_table">
@@ -94,33 +113,35 @@ const DashboardWalletTable = () => {
       <div className="dashboard_table_wrap">
         <div className="dashboard_table">
           <div className="dashboard_table_head between">
-            <div className="dashboard_table_head_item">
-              Name of Organization
-            </div>
+            <div className="dashboard_table_head_item">Buyer</div>
+            <div className="dashboard_table_head_item">Seller</div>
             <div className="dashboard_table_head_item">Amount</div>
             <div className="dashboard_table_head_item">Transaction ID</div>
-            <div className="dashboard_table_head_item">Email</div>
             <div className="dashboard_table_head_item">Time of Transaction</div>
             <div className="dashboard_table_head_item">Status</div>
           </div>
-          {[1, 2, 3, 4, 5, 6, 7]?.map((row, idx) => (
+          {data?.map((row, idx) => (
             <div
               key={row?._id || idx}
               className={`dashboard_table_body between ${
                 (idx + 1) % 2 === 0 && "dashboard_table_body_bg"
               }`}
+              onClick={() => handleOpenModal(row)}
             >
-              <div className="dashboard_table_body_item">{"Agroventure Kapital"}</div>
-              <div className="dashboard_table_body_item">{row?._id || "760 tCO2e"}</div>
-              <div className="dashboard_table_body_item">{row?.createdAt || "KLM 814 813 0034"}</div>
               <div className="dashboard_table_body_item">
-                {row?.originator?.name || "agroventurekapital@example.com"}
+                {row?.buyer?.organization_name}
               </div>
               <div className="dashboard_table_body_item">
-                {row?.amount_earned || "11:10am  06/06/2023"}
+                {row?.seller?.organization_name}
               </div>
-              <a href={row?.document_url} className={`dashboard_table_body_item center dashboard_table_body_item_${"Approved".toLowerCase()}`}>
-                {"Approved"}
+              <div className="dashboard_table_body_item">{row?.amount}</div>
+              <div className="dashboard_table_body_item">{row?._id}</div>
+              <div className="dashboard_table_body_item">{row?.createdAt}</div>
+              <a
+                href={row?.document_url}
+                className={`dashboard_table_body_item center dashboard_table_body_item_${row?.status?.toLowerCase()}`}
+              >
+                {row?.status}
               </a>
             </div>
           ))}

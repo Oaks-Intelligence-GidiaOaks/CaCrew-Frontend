@@ -78,6 +78,11 @@
 
       .dashboard_table_body {
         padding: 12px 19px;
+        cursor: pointer;
+        transition: all 0.3 linear;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
 
         .dashboard_table_body_item {
           text-align: left;
@@ -101,21 +106,21 @@
             width: 90px;
           }
         }
-        .dashboard_table_body_item_approved {
+        .dashboard_table_body_item_completed {
           border-radius: 10px;
           background: #d1fae5;
           padding: 2px 10px;
           color: #065f46;
         }
         .dashboard_table_body_item_pending {
-          @extend .dashboard_table_body_item_approved;
-          background: #FEF3C7;
-          color: #92400E;
+          @extend .dashboard_table_body_item_completed;
+          background: #fef3c7;
+          color: #92400e;
         }
         .dashboard_table_body_item_failed {
-          @extend .dashboard_table_body_item_approved;
-          background: #FEE2E2;
-          color: #991B1B;
+          @extend .dashboard_table_body_item_completed;
+          background: #fee2e2;
+          color: #991b1b;
         }
       }
 

@@ -161,4 +161,11 @@ export const {
   useGetBuyItemsQuery,
   useGetMyTransactionQuery,
   useGetSellItemsQuery,
+  useInitiateBuyMutation,
+  usePaymentMadeMutation,
+  usePaymentRecievedMutation,
+  useRetireCarbonCreditMutation,
+  useSetBuyOrderMutation,
+  useTransactionFailedMutation,
+  useTransactionSuccessMutation,
 } = transactionApiSlice;

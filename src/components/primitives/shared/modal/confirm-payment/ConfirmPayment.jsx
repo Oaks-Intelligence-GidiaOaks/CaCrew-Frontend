@@ -1,78 +1,92 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./MakePayment.scss";
 import { close, messge, verify } from "assets/images";
 import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Button } from "components";
 import capitalizeInitials from "utils/capitaliseInitials";
 import {
-  useTransactionFailedMutation,
-  usePaymentMadeMutation,
+  useTransactionSuccessMutation,
+  usePaymentRecievedMutation,
 } from "services/transaction.service";
 import rtkMutation from "utils/rtkMutation";
 
-const MakePayment = ({ data, amount, transactionId }) => {
-  const [transactionFailed, { isSuccess, isLoading, error, isError }] =
-    useTransactionFailedMutation();
+const ConfirmPayment = ({ data }) => {
+  const [transactionSuccess, { isSuccess, isLoading, error, isError }] =
+    useTransactionSuccessMutation();
 
   const [
-    paymentMade,
+    paymentRecieved,
     {
-      data: dataPayment,
-      isSuccess: isSuccessPayment,
-      isLoading: isLoadingPayment,
-      error: errorPayment,
-      isError: isErrorPayment,
+      data: dataRecieved,
+      isSuccess: isSuccessRecieved,
+      isLoading: isLoadingRecieved,
+      error: errorRecieved,
+      isError: isErrorRecieved,
     },
-  ] = usePaymentMadeMutation();
+  ] = usePaymentRecievedMutation();
   const dispatch = useDispatch();
 
   // set ref, get updated value in a callback
-  const isErrorRefFailed = useRef(isError);
-  const isSuccessRefFailed = useRef(isSuccess);
-  const errorRefFailed = useRef(error);
-  const isErrorRefPayment = useRef(isErrorPayment);
-  const isSuccessRefPayment = useRef(isSuccessPayment);
-  const errorRefPayment = useRef(errorPayment);
-  const dataRefPayment = useRef(dataPayment);
+  const isErrorRefConfirm = useRef(isError);
+  const isSuccessRefConfirm = useRef(isSuccess);
+  const errorRefConfirm = useRef(error);
+  const isErrorRefRecieved = useRef(isErrorRecieved);
+  const isSuccessRefRecieved = useRef(isSuccessRecieved);
+  const errorRefRecieved = useRef(errorRecieved);
+  const dataRefRecieved = useRef(dataRecieved);
 
   const handleCloseModal = async () => {
-    await rtkMutation(transactionFailed, {
-      transaction_id: transactionId,
-    });
-    isSuccessRefFailed?.current && dispatch(closeComponentModal());
-    isErrorRefFailed?.current &&
-      dispatch(
-        openModal({
-          title: "Cancel Transaction Failed",
-          message:
-            errorRefFailed?.current?.data?.message ||
-            "An error occured please retry",
-        })
-      );
+    dispatch(closeComponentModal());
+    // await rtkMutation(transactionConfirm, {
+    //   transaction_id: transactionId,
+    // });
+    // isSuccessRefConfirm?.current && dispatch(closeComponentModal());
+    // isErrorRefConfirm?.current &&
+    //   dispatch(
+    //     openModal({
+    //       title: "Cancel Transaction Confirm",
+    //       message:
+    //         errorRefConfirm?.current?.data?.message ||
+    //         "An error occured please retry",
+    //     })
+    //   );
   };
 
-  const handlePaymentMade = async () => {
-    await rtkMutation(paymentMade, {
-      transaction_id: transactionId,
+  const handleRecievedMade = async () => {
+    await rtkMutation(paymentRecieved, {
+      transaction_id: data?._id,
     });
-    isSuccessRefPayment?.current && dispatch(closeComponentModal());
-    isErrorRefPayment?.current &&
+    // isSuccessRefRecieved?.current && dispatch(closeComponentModal());
+    isSuccessRefRecieved?.current &&
+      (await rtkMutation(transactionSuccess, {
+        transaction_id: data?._id,
+      }));
+
+    isErrorRefRecieved?.current &&
       dispatch(
         openModal({
-          title: "Payment Confirmation Failed",
+          title: "Recieved Payment Confirmation Failed",
           message:
-            errorRefPayment?.current?.data?.message ||
+            errorRefRecieved?.current?.data?.message ||
             "An error occured please retry",
         })
       );
-    isSuccessRefPayment?.current &&
+    isErrorRefConfirm?.current &&
       dispatch(
         openModal({
-          title: "Payment Confirmation Success",
+          title: "Transaction Not Successful ",
           message:
-            dataPayment?.current?.message ||
+            errorRefConfirm?.current?.data?.message ||
             "An error occured please retry",
+        })
+      );
+    isSuccessRefConfirm?.current &&
+      dispatch(
+        openModal({
+          title: "Transaction Completed Successfuly",
+          message:
+            isSuccessRefConfirm?.current?.message ||
+            "Your transaction completed successfuly",
           success: true,
         })
       );
@@ -83,24 +97,24 @@ const MakePayment = ({ data, amount, transactionId }) => {
   };
 
   useEffect(() => {
-    isErrorRefFailed.current = isError;
-    isSuccessRefFailed.current = isSuccess;
-    errorRefFailed.current = error;
-    isErrorRefPayment.current = isErrorPayment;
-    isSuccessRefPayment.current = isSuccessPayment;
-    errorRefPayment.current = errorPayment;
-    dataRefPayment.current = dataPayment;
+    isErrorRefConfirm.current = isError;
+    isSuccessRefConfirm.current = isSuccess;
+    errorRefConfirm.current = error;
+    isErrorRefRecieved.current = isErrorRecieved;
+    isSuccessRefRecieved.current = isSuccessRecieved;
+    errorRefRecieved.current = errorRecieved;
+    dataRefRecieved.current = dataRecieved;
   }, [
     isError,
     isSuccess,
     error,
-    isErrorPayment,
-    isSuccessPayment,
-    errorPayment,
-    dataPayment,
+    isErrorRecieved,
+    isSuccessRecieved,
+    errorRecieved,
+    dataRecieved,
   ]);
 
-  // console.log( transactionId, "***");
+  console.log( data, "***");
 
   return (
     <div className="make_payment">
@@ -121,11 +135,11 @@ const MakePayment = ({ data, amount, transactionId }) => {
               {data?.organization_id?.organization_name || "----"}
             </span>
             {data?.organization_id?.isVerified && (
-              <img src={verify} alt="icon"/>
+              <img src={verify} alt="icon" />
             )}
           </div>
           <div className="make_payment_info_initials_contact">
-            <span>Contact Seller:</span>
+            <span>Contact Buyer:</span>
             <span>{data?.organization_id?.admin_name}</span>
           </div>
         </div>
@@ -134,7 +148,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
             <div className="make_payment_info_method_text">
               Quantity of Carbon Credit
             </div>
-            <div className="make_payment_info_method_value">{amount} tCO2e</div>
+            <div className="make_payment_info_method_value">{data?.amount} tCO2e</div>
           </div>
           <div className="make_payment_info_method_item">
             <div className="make_payment_info_method_text">
@@ -154,26 +168,6 @@ const MakePayment = ({ data, amount, transactionId }) => {
         </div>
         <div className="make_payment_details">
           <div className="make_payment_details_title">Payment details</div>
-          <div className="make_payment_details_info between">
-            <div className="make_payment_details_info_item">
-              <div className="make_payment_details_info_text">Account Name</div>
-              <div className="make_payment_details_info_value">
-                Agroventure Kapital Limited
-              </div>
-            </div>
-            <div className="make_payment_details_info_item">
-              <div className="make_payment_details_info_text">
-                Account Number
-              </div>
-              <div className="make_payment_details_info_value">3426245267</div>
-            </div>
-            <div className="make_payment_details_info_item">
-              <div className="make_payment_details_info_text">Bank Name</div>
-              <div className="make_payment_details_info_value">
-                United Bank of Oaks Intelligence
-              </div>
-            </div>
-          </div>
           <div className="make_payment_details_message between">
             <div className="make_payment_details_message_seller start">
               <img src={messge} alt="icon" />
@@ -182,11 +176,12 @@ const MakePayment = ({ data, amount, transactionId }) => {
             <div className="make_payment_details_message_seller_text">
               <span className="make_payment_details_message_seller_text_small">
                 {" "}
-                Pay the Seller:{" "}
+                Amount:{" "}
               </span>
               <span className="make_payment_details_message_seller_text_big">
                 {" "}
-                $5,000{" "}
+                $
+                {data?.amount}{" "}
               </span>
             </div>
           </div>
@@ -199,10 +194,10 @@ const MakePayment = ({ data, amount, transactionId }) => {
             loading={isLoading}
           />
           <Button
-            text={"I Have Made Payment"}
+            text={"I Have Recieved Payment"}
             className={"make_payment_btn"}
-            onClick={handlePaymentMade}
-            loading={isLoadingPayment}
+            onClick={handleRecievedMade}
+            loading={isLoadingRecieved}
           />
         </div>
       </div>
@@ -210,4 +205,4 @@ const MakePayment = ({ data, amount, transactionId }) => {
   );
 };
 
-export default MakePayment;
+export default ConfirmPayment;

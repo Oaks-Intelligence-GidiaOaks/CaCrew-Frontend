@@ -2,8 +2,12 @@ import React from "react";
 import "./BuyCarbonCreditBanner.scss";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
+import { openModal } from "redux/slices/modal.slice";
+import { useDispatch } from "react-redux";
 
 const BuyCarbonCreditBanner = () => {
+  const dispatch = useDispatch();
+
   const onSubmit = (value) => {
     console.log(value);
   };
@@ -37,8 +41,14 @@ const BuyCarbonCreditBanner = () => {
         />
         <div className="buy_carbon_banner_search_item">
           <Button
-            text={"Place Buy Order"}
+            text={"Set Buy Order"}
             className={"buy_carbon_banner_btn"}
+            onClick={() => {
+              dispatch(openModal({
+                component: "ModalBuyOrder",
+
+              }))
+            }}
           />
         </div>
       </div>

@@ -1,9 +1,29 @@
 import React, { useState } from "react";
 import "./BuyCarbonCreditCon.scss";
 import { BuyCarbonCreditBanner, BuyCarbonCreditCard } from "components";
+import {
+  useGetSellItemsQuery,
+  useGetBuyItemsQuery,
+} from "services/transaction.service";
 
 const BuyCarbonCreditCon = () => {
   const [activeTab, setActiveTab] = useState("buy");
+
+  const {
+    data: sellData,
+    isLoading: sellLoading,
+    error: sellError,
+    isErorr: sellIsError,
+  } = useGetSellItemsQuery();
+  const {
+    data: buyData,
+    isLoading: buyLoading,
+    error: buyError,
+    isErorr: buyIsError,
+  } = useGetBuyItemsQuery();
+
+  const data = activeTab === "sell" ? sellData : buyData;
+  console.log(sellData, "sell", buyData);
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -31,11 +51,12 @@ const BuyCarbonCreditCon = () => {
           </div>
         </div>
         <div className="buy_carb_con_crd_wrap">
-          <BuyCarbonCreditCard type={activeTab}/>
-          <BuyCarbonCreditCard type={activeTab}/>
-          <BuyCarbonCreditCard type={activeTab}/>
-          <BuyCarbonCreditCard type={activeTab}/>
-          <BuyCarbonCreditCard type={activeTab}/>
+          {data &&
+            data?.map((item) => (
+              <div key={item?._id}>
+                <BuyCarbonCreditCard type={activeTab} data={item} />
+              </div>
+            ))}
         </div>
       </div>
     </div>

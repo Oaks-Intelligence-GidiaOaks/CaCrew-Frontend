@@ -9,13 +9,16 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
+import { useGetMyTransactionQuery } from "services/transaction.service";
 
 const DashboardWalletCon = () => {
   const dispatch = useDispatch();
 
   const handleOpenModal = () => {
-    dispatch(openModal({ component: "ModalSellCarbon" }));
+    dispatch(openModal({ component: "ModalSellOrder" }));
   };
+
+  const {data: dataMyTranscation} = useGetMyTransactionQuery()
 
   return (
     <div className="dashboard_wallet_container">
@@ -44,7 +47,7 @@ const DashboardWalletCon = () => {
         </div>
       </div>
       <div className="dashboard_wallet_con_table dash_pad">
-        <DashboardWalletTable />
+        <DashboardWalletTable data={dataMyTranscation}/>
       </div>
     </div>
   );

@@ -4,29 +4,38 @@ import { Button } from "components";
 import { verify } from "assets/images";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
+import capitalizeInitials from "utils/capitaliseInitials";
 
 const BuyCarbonCreditCard = ({ data, type }) => {
   const dispatch = useDispatch();
 
   const handleOpenModal = () => {
-    dispatch(openModal({ component: "ModalBuyCarbon" }));
+    dispatch(openModal({ component: "ModalBuyCarbon", data: data }));
   };
+
   return (
     <div className="buy_carb_card between">
       <div className="buy_carb_card_info_wrap start">
-        <div className="buy_carb_card_info_initials center">AK</div>
+        <div className="buy_carb_card_info_initials center">
+          {capitalizeInitials(data?.organization_id?.organization_name)}
+        </div>
         <div className="buy_carb_card_info_text_wrap">
           <div className="buy_carb_card_info_text start">
-            <span className="buy_carb_card_info_bold">Agroventure Kapital</span>
-            <img src={verify} alt="icon" />
+            <span className="buy_carb_card_info_bold">
+              {data?.organization_id?.organization_name || "----"}
+            </span>
+            {data?.organization_id?.isVerified && (
+              <img src={verify} alt="icon" />
+            )}
           </div>
           <div className="buy_carb_card_info_text">
             <span className="buy_carb_card_info_normal">421 Trades</span>
             <span className="buy_carb_card_info_normal buy_carb_card_info_borderb">
-              Registered: 02/05/2022
+              Registered:{" "}
+              {data?.organization_id?.date_of_incorporation || "---"}
             </span>
             <span className="buy_carb_card_info_normal buy_carb_card_info_borderr">
-              Industry: Agriculture
+              Industry: {data?.organization_id?.industry_type || "---"}
             </span>
             <span
               className="buy_carb_card_info_normal"
@@ -36,20 +45,32 @@ const BuyCarbonCreditCard = ({ data, type }) => {
             </span>
           </div>
           <div className="buy_carb_card_info_text">
-            <span
-              className="buy_carb_card_info_normal"
-              style={{ paddingRight: "10px" }}
-            >
-              Minimum Sale Available: 20,500 tCO2e
-            </span>
+            {type === "buy" && (
+              <>
+                {" "}
+                <span
+                  className="buy_carb_card_info_normal"
+                  style={{ paddingRight: "10px" }}
+                >
+                  Minimum Sale Available:{" "}
+                  {data?.minimum_sale_unit +
+                    " tCO2e" || "-"}
+                </span>
+              </>
+            )}
             <span className="buy_carb_card_info_normal">
-              Price: £50 per tCO2e
+              Price: {data?.amount_per_unit || "-"} per tCO2e
             </span>
           </div>
         </div>
       </div>
       <div className="buy_carb_card_btn_wrap">
-        <div className="buy_carb_card_text">650,000 tCO2e</div>
+        <div className="buy_carb_card_text">
+          {type === "buy"
+            ? data?.available_to_sale
+            : data?.carbon_credit_quantity || "---"}{" "}
+          tCO2e
+        </div>
         <Button
           text={type === "buy" ? "Buy" : "Sell"}
           className={"buy_carb_card_btn"}
