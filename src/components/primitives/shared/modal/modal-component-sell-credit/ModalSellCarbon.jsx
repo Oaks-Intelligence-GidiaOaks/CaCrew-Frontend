@@ -1,26 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./ModalBuyCarbon.scss";
+// import "./ModalBuyCarbon.scss";
 import { verify, close } from "assets/images";
 import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
 import capitalizeInitials from "utils/capitaliseInitials";
-import { useInitiateBuyMutation } from "services/transaction.service";
+import { useInitiateSellMutation } from "services/transaction.service";
 import rtkMutation from "utils/rtkMutation";
 
-const ModalBuyCarbon = ({ data }) => {
+const ModalSellCarbon = ({ data }) => {
   // make api req
   const [
-    initiateBuy,
-    {data: dataInitiate, isSuccess, error, isError, isLoading},
-  ] = useInitiateBuyMutation();
+    initiateSell,
+    { data: dataInitiate, isSuccess, error, isError, isLoading },
+  ] = useInitiateSellMutation();
 
-  // set ref, get updated value in a callback
-  const isErrorRef = useRef(isError);
-  const isSuccessRef = useRef(isSuccess);
-  const errorRef = useRef(error);
-  const dataRef = useRef(data);
+  //   set ref, get updated value in a callback
+  const isErrorRefSell = useRef(isError);
+  const isSuccessRefSell = useRef(isSuccess);
+  const errorRefSell = useRef(error);
+  const dataRefSell = useRef(data);
 
   const dispatch = useDispatch();
   const handleDis = () => {
@@ -33,44 +33,56 @@ const ModalBuyCarbon = ({ data }) => {
     setActiveTab(value);
   };
 
-  const onSubmit = async (values) => {
-    values["organization_id"] = data?.organization_id?._id;
-    await rtkMutation(initiateBuy, values);
+  const handleProceed = async () => {
+    await rtkMutation(initiateSell, {
+      amount: data?.carbon_credit_quantity,
+      organization_id: data?.organization_id?._id,
+    });
 
-    isSuccessRef.current &&
+    isSuccessRefSell.current &&
       dispatch(
         openModal({
-          component: "MakePayment",
-          data: data,
-          amount: values.amount,
-          transaction_id: dataRef?.current?.transaction_id,
+          title: "Sell Initiated Success",
+          message: `You have succesfuly initiated a sell to ${data?.organization_id?.organization_name},
+         amouunt is ${data?.carbon_credit_quantity}. Please await payment`,
+         success: true,
         })
       );
-    isErrorRef.current &&
+
+    isError &&
       dispatch(
         openModal({
-          title: "Initiate Buy",
+          title: "Initiate Sell Failed",
           message:
-            errorRef?.current?.data?.message ||
-            "An error occured, please try again ",
+            error?.data?.message || "An error occured, please try again ",
         })
       );
-    // console.log(values, "vals");
   };
 
+  //   dispatch(
+  //     openModal({
+  //       component: "MakePayment",
+  //       data: data,
+  //       amount: data?.amount,
+  //       transaction_id: dataRef?.current?.transaction_id,
+  //     })
+  //   );
+
   useEffect(() => {
-    isErrorRef.current = isError;
-    isSuccessRef.current = isSuccess;
-    errorRef.current = error;
-    dataRef.current = dataInitiate;
+    isErrorRefSell.current = isError;
+    isSuccessRefSell.current = isSuccess;
+    errorRefSell.current = error;
+    dataRefSell.current = dataInitiate;
   }, [isError, isSuccess, error, dataInitiate]);
 
-  console.log(dataInitiate, "buysell");
+  console.log(dataInitiate, "sell");
   // console.log(isErrorRef, isSuccessRef, errorRef, "buysell***");
 
   return (
     <div className="modal_buy_carb">
-      <div className="modal_buy_carb_title sub_heading">Buy Carbon Credit </div>
+      <div className="modal_buy_carb_title sub_heading">
+        Sell Carbon Credit{" "}
+      </div>
       <img
         src={close}
         alt="icon"
@@ -92,7 +104,7 @@ const ModalBuyCarbon = ({ data }) => {
             )}
           </div>
           <div className="modal_buy_carb_info_text">
-            <span className="modal_buy_carb_info_normal">421 Trades</span>
+            <span className="modal_buy_carb_info_normal">Trades</span>
             <span className="modal_buy_carb_info_normal modal_buy_carb_info_borderb">
               {data?.organization_id?.date_of_incorporation || "---"}
             </span>
@@ -103,14 +115,14 @@ const ModalBuyCarbon = ({ data }) => {
         </div>
       </div>
       <div className="modal_buy_carb_sale_text">
-        <span
+        {/* <span
           className="modal_buy_carb_sale_normal"
           style={{ paddingRight: "20px" }}
         >
-          Minimum Sale Available: {activeTab === "fiat" && " $"}
-          {data?.minimum_sale_unit}
+          Amount per unit: {activeTab === "fiat" && " $"}
+          {data?.amount_per_unit}
           {activeTab === "carbon" && " tCO2e"}
-        </span>
+        </span> */}
         <span className="modal_buy_carb_sale_normal">
           {" "}
           Price: {activeTab === "fiat" && " $"}
@@ -119,13 +131,13 @@ const ModalBuyCarbon = ({ data }) => {
         </span>
       </div>
       <div className="modal_buy_carb_sale_text">
-        <span className="modal_buy_carb_sale_normal">Total Available:</span>
+        <span className="modal_buy_carb_sale_normal">Quantity:</span>
         <span
           className="modal_buy_carb_sale_bold"
           style={{ paddingRight: "20px" }}
         >
           {activeTab === "fiat" && "$"}
-          {data?.available_to_sale} {activeTab === "carbon" && " tCO2e"}
+          {data?.carbon_credit_quantity} {activeTab === "carbon" && " tCO2e"}
         </span>
       </div>
       <div className="modal_buy_carb_input_warp">
@@ -148,7 +160,7 @@ const ModalBuyCarbon = ({ data }) => {
           </div>
         </div>
         <div className="modal_buy_carb_input">
-          <Form
+          {/* <Form
             onSubmit={onSubmit}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit}>
@@ -183,6 +195,15 @@ const ModalBuyCarbon = ({ data }) => {
                 />
               </form>
             )}
+          /> */}
+          <div className="text" style={{ color: "#2B5FAD", fontSize: "12px" }}>
+            Proceed to Intiate Sell
+          </div>
+          <Button
+            text={"Proceed"}
+            className={"modal_buy_carb_input_btn"}
+            onClick={handleProceed}
+            loading={isLoading}
           />
         </div>
       </div>
@@ -190,4 +211,4 @@ const ModalBuyCarbon = ({ data }) => {
   );
 };
 
-export default ModalBuyCarbon;
+export default ModalSellCarbon;

@@ -9,6 +9,7 @@ import { closeModal } from "redux/slices/modal.slice";
 import {
   ModalSellOrder,
   ModalBuyCarbon,
+  ModalSellCarbon,
   MakePayment,
   ModalBuyOrder,
   ConfirmPayment
@@ -44,6 +45,7 @@ const Modal = () => {
   const ComponentItem = {
     ModalSellOrder: <ModalSellOrder />,
     ModalBuyCarbon: <ModalBuyCarbon data={data} />,
+    ModalSellCarbon: <ModalSellCarbon data={data} />,
     MakePayment: <MakePayment data={data} amount={amount} transactionId= {transaction_id} />,
     ConfirmPayment: <ConfirmPayment data={data} />,
     ModalBuyOrder: <ModalBuyOrder />,

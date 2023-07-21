@@ -33,7 +33,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         console.log(response, "rtk");
         return response;
       },
-      invalidatesTags: ["User", "Staff", "Organization", "Projects"],
+      invalidatesTags: ["User", "Staff", "Organization", "Projects", "Transaction"],
     }),
 
     // Register users route

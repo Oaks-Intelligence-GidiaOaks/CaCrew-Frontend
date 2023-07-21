@@ -10,7 +10,9 @@ const BuyCarbonCreditCard = ({ data, type }) => {
   const dispatch = useDispatch();
 
   const handleOpenModal = () => {
-    dispatch(openModal({ component: "ModalBuyCarbon", data: data }));
+    type === "buy"
+      ? dispatch(openModal({ component: "ModalBuyCarbon", data: data }))
+      : dispatch(openModal({ component: "ModalSellCarbon", data: data }));
   };
 
   return (
@@ -29,7 +31,7 @@ const BuyCarbonCreditCard = ({ data, type }) => {
             )}
           </div>
           <div className="buy_carb_card_info_text">
-            <span className="buy_carb_card_info_normal">421 Trades</span>
+            <span className="buy_carb_card_info_normal">Trades</span>
             <span className="buy_carb_card_info_normal buy_carb_card_info_borderb">
               Registered:{" "}
               {data?.organization_id?.date_of_incorporation || "---"}
@@ -53,8 +55,7 @@ const BuyCarbonCreditCard = ({ data, type }) => {
                   style={{ paddingRight: "10px" }}
                 >
                   Minimum Sale Available:{" "}
-                  {data?.minimum_sale_unit +
-                    " tCO2e" || "-"}
+                  {data?.minimum_sale_unit + " tCO2e" || "-"}
                 </span>
               </>
             )}

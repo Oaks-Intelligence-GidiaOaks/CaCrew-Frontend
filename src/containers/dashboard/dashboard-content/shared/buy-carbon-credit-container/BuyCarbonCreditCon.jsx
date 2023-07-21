@@ -23,7 +23,7 @@ const BuyCarbonCreditCon = () => {
   } = useGetBuyItemsQuery();
 
   const data = activeTab === "sell" ? sellData : buyData;
-  console.log(sellData, "sell", buyData);
+  // console.log(sellData, "sell", buyData);
 
   const handleTabClick = (value) => {
     setActiveTab(value);

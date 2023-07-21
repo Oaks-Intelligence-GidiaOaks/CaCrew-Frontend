@@ -18,10 +18,11 @@ export { default as DashboardWalletBanner } from "components/primitives/shared/d
 export { default as DashboardWalletTable } from "components/primitives/shared/dashboard-wallet-table/DashboardWalletTable";
 export { default as BuyCarbonCreditBanner } from "components/primitives/shared/buy-carbon-credit-banner/BuyCarbonCreditBanner";
 export { default as BuyCarbonCreditCard } from "components/primitives/shared/buy-carbon-credit-card/BuyCarbonCreditCard";
-export { default as ModalBuyCarbon } from "components/primitives/shared/modal-component-buy-credit/ModalBuyCarbon";
-export { default as ModalSellOrder } from "components/primitives/shared/modal-component-sell-credit/ModalSellOrder";
+export { default as ModalBuyCarbon } from "components/primitives/shared/modal/modal-component-buy-credit/ModalBuyCarbon";
+export { default as ModalSellCarbon } from "components/primitives/shared/modal/modal-component-sell-credit/ModalSellCarbon";
+export { default as ModalSellOrder } from "components/primitives/shared/modal/modal-component-sell-order/ModalSellOrder";
 export { default as ModalBuyOrder } from "components/primitives/shared/modal/modal-component-buy-order/ModalBuyOrder";
-export { default as MakePayment } from "components/primitives/shared/make-payment/MakePayment";
+export { default as MakePayment } from "components/primitives/shared/modal/make-payment/MakePayment";
 export { default as ConfirmPayment } from "components/primitives/shared/modal/confirm-payment/ConfirmPayment";
 export { default as TrackProjectTable } from "components/primitives/super-admin-dashboard/track-project-table/TrackProjectTable";
 export { default as TrackTableComplete } from "components/primitives/super-admin-dashboard/track-project-complete-table/TrackTableComplete";

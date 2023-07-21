@@ -21,7 +21,7 @@ const userSlice = createSlice({
       newState.user = null;
       newState.token = null;
       newState.refreshToken = null;
-      return newState;
+      return newState 
     },
   },
 });

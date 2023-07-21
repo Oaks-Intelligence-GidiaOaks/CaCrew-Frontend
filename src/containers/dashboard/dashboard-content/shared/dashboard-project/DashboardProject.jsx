@@ -3,6 +3,7 @@ import "./DashboardProject.scss";
 import Button from "components/widgets/button/Button";
 import { DashboardProjectCreate, DashboardProjectReview } from "components";
 import { useAllProjectsQuery } from "services/project.service";
+import { useGetUserQuery } from "services/user.service";
 
 
 const DashboardProject = () => {
@@ -12,12 +13,13 @@ const DashboardProject = () => {
     setActive(value);
   };
 
-  const {data, isSuccess, errpr} = useAllProjectsQuery()
+  const {data, isSuccess, error} = useAllProjectsQuery()
+  const {data: userData} = useGetUserQuery()
 
   const dataInComplete = data?.length > 0 ? data?.filter(item => item?.progress !== "Phase6") :  []
   const dataComplete = data?.length > 0 ? data?.filter(item => item?.progress === "Phase6") : []
 
-  console.log(dataInComplete, "projtesr*******")
+  console.log(userData, "projtesr*******")
 
   const tabItems = {
     create: <DashboardProjectCreate />,
@@ -59,7 +61,7 @@ const DashboardProject = () => {
             Organization
           </div>
           <div className="dashboard_project_organisation_name">
-            Oaks Intelligence Limited
+              {userData?.organization_id?.organization_name}
           </div>
         </div>
       </div>

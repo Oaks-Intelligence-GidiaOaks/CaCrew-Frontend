@@ -6,7 +6,7 @@ import { useGetUserQuery } from "services/user.service";
 const DashboardWallet = () => {
 
   const {data} = useGetUserQuery()
-  console.log(data?.wallet_id?.available_to_sale, "kk");
+  // console.log(data?.wallet_id?.available_to_sale, "kk");
 
   return (
     <div className="dashboard_wallet">

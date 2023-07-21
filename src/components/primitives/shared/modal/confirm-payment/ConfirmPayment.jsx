@@ -114,7 +114,7 @@ const ConfirmPayment = ({ data }) => {
     dataRecieved,
   ]);
 
-  console.log( data, "***");
+  console.log(data, "***");
 
   return (
     <div className="make_payment">
@@ -148,7 +148,9 @@ const ConfirmPayment = ({ data }) => {
             <div className="make_payment_info_method_text">
               Quantity of Carbon Credit
             </div>
-            <div className="make_payment_info_method_value">{data?.amount} tCO2e</div>
+            <div className="make_payment_info_method_value">
+              {data?.amount} tCO2e
+            </div>
           </div>
           <div className="make_payment_info_method_item">
             <div className="make_payment_info_method_text">
@@ -171,7 +173,7 @@ const ConfirmPayment = ({ data }) => {
           <div className="make_payment_details_message between">
             <div className="make_payment_details_message_seller start">
               <img src={messge} alt="icon" />
-              <span> Message Seller</span>
+              <span> Message Buyer</span>
             </div>
             <div className="make_payment_details_message_seller_text">
               <span className="make_payment_details_message_seller_text_small">
@@ -180,26 +182,27 @@ const ConfirmPayment = ({ data }) => {
               </span>
               <span className="make_payment_details_message_seller_text_big">
                 {" "}
-                $
-                {data?.amount}{" "}
+                ${data?.amount}{" "}
               </span>
             </div>
           </div>
         </div>
-        <div className="make_payment_btn_wrap end">
-          <Button
-            text={"Cancel"}
-            className={"make_payment_btn_two"}
-            onClick={handleCloseModal}
-            loading={isLoading}
-          />
-          <Button
-            text={"I Have Recieved Payment"}
-            className={"make_payment_btn"}
-            onClick={handleRecievedMade}
-            loading={isLoadingRecieved}
-          />
-        </div>
+        {data?.status === "Pending" && (
+          <div className="make_payment_btn_wrap end">
+            <Button
+              text={"Cancel"}
+              className={"make_payment_btn_two"}
+              onClick={handleCloseModal}
+              loading={isLoading}
+            />
+            <Button
+              text={"I Have Recieved Payment"}
+              className={"make_payment_btn"}
+              onClick={handleRecievedMade}
+              loading={isLoadingRecieved}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ export const GET_HANDLED_PROJECTS = "project/project_handled";
 
 // Transaction constants
 export const INITIATE_BUY = "transaction/initiate_buy";
+export const INITIATE_SELL = "transaction/initiate_sell";
 export const PAYMENT_MADE = "transaction/payment_made";
 export const PAYMENT_RECIEVED = "transaction/payment_recieved";
 export const TRANSACTION_SUCCESS = "transaction/success";

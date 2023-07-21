@@ -10,6 +10,10 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 import { useGetMyTransactionQuery } from "services/transaction.service";
+import {
+  useGetSellItemsQuery,
+  useGetBuyItemsQuery,
+} from "services/transaction.service";
 
 const DashboardWalletCon = () => {
   const dispatch = useDispatch();

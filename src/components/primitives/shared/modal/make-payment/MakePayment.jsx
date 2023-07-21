@@ -36,7 +36,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
   const errorRefPayment = useRef(errorPayment);
   const dataRefPayment = useRef(dataPayment);
 
-  const handleCloseModal = async () => {
+  const handleCancelTransaction = async () => {
     await rtkMutation(transactionFailed, {
       transaction_id: transactionId,
     });
@@ -51,6 +51,10 @@ const MakePayment = ({ data, amount, transactionId }) => {
         })
       );
   };
+
+  const handleCloseModal = () => {
+    dispatch(closeComponentModal())
+  }
 
   const handlePaymentMade = async () => {
     await rtkMutation(paymentMade, {
@@ -71,8 +75,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
         openModal({
           title: "Payment Confirmation Success",
           message:
-            dataPayment?.current?.message ||
-            "An error occured please retry",
+            dataPayment?.current?.message || "Your payment has been confirmed to seller",
           success: true,
         })
       );
@@ -121,7 +124,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
               {data?.organization_id?.organization_name || "----"}
             </span>
             {data?.organization_id?.isVerified && (
-              <img src={verify} alt="icon"/>
+              <img src={verify} alt="icon" />
             )}
           </div>
           <div className="make_payment_info_initials_contact">
@@ -191,20 +194,22 @@ const MakePayment = ({ data, amount, transactionId }) => {
             </div>
           </div>
         </div>
-        <div className="make_payment_btn_wrap end">
-          <Button
-            text={"Cancel"}
-            className={"make_payment_btn_two"}
-            onClick={handleCloseModal}
-            loading={isLoading}
-          />
-          <Button
-            text={"I Have Made Payment"}
-            className={"make_payment_btn"}
-            onClick={handlePaymentMade}
-            loading={isLoadingPayment}
-          />
-        </div>
+        {data?.status === "Pending" && (
+          <div className="make_payment_btn_wrap end">
+            <Button
+              text={"Cancel"}
+              className={"make_payment_btn_two"}
+              onClick={handleCancelTransaction}
+              loading={isLoading}
+            />
+            <Button
+              text={"I Have Made Payment"}
+              className={"make_payment_btn"}
+              onClick={handlePaymentMade}
+              loading={isLoadingPayment}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

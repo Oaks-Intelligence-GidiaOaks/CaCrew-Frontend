@@ -11,6 +11,7 @@ import {
   SET_BUY_ORDER,
   GET_MY_TRANSACTIONS,
   GET_ALL_TRANSACTIONS,
+  INITIATE_SELL,
 } from "./constants";
 
 const transactionApiSlice = apiSlice.injectEndpoints({
@@ -68,6 +69,19 @@ const transactionApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ["Transaction"],
       query: (data) => ({
         url: INITIATE_BUY,
+        method: "POST",
+        body: data,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // initiate sell
+    initiateSell: builder.mutation({
+      invalidatesTags: ["Transaction"],
+      query: (data) => ({
+        url: INITIATE_SELL,
         method: "POST",
         body: data,
       }),
@@ -162,6 +176,7 @@ export const {
   useGetMyTransactionQuery,
   useGetSellItemsQuery,
   useInitiateBuyMutation,
+  useInitiateSellMutation,
   usePaymentMadeMutation,
   usePaymentRecievedMutation,
   useRetireCarbonCreditMutation,

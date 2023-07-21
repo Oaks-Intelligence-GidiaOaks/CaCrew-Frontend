@@ -4,10 +4,13 @@ import { Button, Input, SearchInput } from "components";
 import { Form, Field } from "react-final-form";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
+import { useGetUserQuery } from "services/user.service";
 
 const DashboardWalletTable = ({ data }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("all");
+
+  const { data: userData } = useGetUserQuery();
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -18,14 +21,27 @@ const DashboardWalletTable = ({ data }) => {
   };
 
   const handleOpenModal = (data) => {
-    dispatch(openModal({
-      component: "ConfirmPayment",
-      data,
-    }))
-  }
+    data?.seller?._id === userData?.organization_id?._id
+      ? dispatch(
+          openModal({
+            component: "ConfirmPayment",
+            data,
+          })
+        )
+      : data?.buyer?._id === userData?.organization_id?._id
+      ? dispatch(
+          openModal({
+            component: "MakePayment",
+            data,
+            amount: data?.amount,
+            transaction_id: data?._id,
+          })
+        )
+      : console.log(null);
+  };
 
   // const handle = () => {
-  //   if (confirm("are you high?")) {
+  //   if (confirm("are you high?")) {.lo
   //     alert("hi");
   //   } else {
   //     alert("bye");

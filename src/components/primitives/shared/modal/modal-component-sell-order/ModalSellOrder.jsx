@@ -34,7 +34,6 @@ const ModalSellOrder = () => {
         openModal({
           title: "Order Set Successful",
           message: `You have successfuly placed a sell order for ${values?.available_to_sale} tCO2e`,
-          component: null,
           success: true,
         })
       );
