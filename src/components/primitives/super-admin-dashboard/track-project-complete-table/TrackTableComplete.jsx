@@ -23,7 +23,7 @@ const TrackTableComplete = ({ data }) => {
             <div className="track_table_body_item">
               {row?.created_by?.organization_id?.organization_name}
             </div>
-            <div className="track_table_body_item"> {row?.description}</div>
+            <div className="track_table_body_item"> {row?.project_name}</div>
             <div className="track_table_body_item">{row?.amount_earned}</div>
             <div className="track_table_body_item">
               12 Jan 2021 - 12 Jan 2023

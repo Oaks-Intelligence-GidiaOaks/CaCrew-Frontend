@@ -64,7 +64,7 @@ const DashboardSidebar = () => {
             alt="icon"
             className="dashboard_link_item_image"
           />
-          Carbon Credit Wallet
+          Carbon Wallet
         </NavLink>
         {user && user?.role === "SuperAdmin" && (
           <NavLink
@@ -127,7 +127,7 @@ const DashboardSidebar = () => {
           // activeclassname="active"
           className={"link dashboard_link_item start"}
           onClick={() => handleLogout()}
-          style={{ marginTop: "200px" }}
+          style={{ marginTop: "50px" }}
         >
           <img
             src={fileImg}

@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./DashboardHeader.scss";
 import { Link } from "react-router-dom";
-import { avartar, cart, down, message, settings } from "assets/images";
+import { avartar, down, message, settings } from "assets/images";
 import { useGetUserQuery } from "services/user.service";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { MenuBars } from "components";
 // import { openModal } from "redux/slices/modal.slice";
 // import { ModalBuyCarbon, ModalSellCarbon, MakePayment } from "components";
 
-const DashboardHeader = () => {
+const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
   // const {data} = useGetUserQuery();
   // const dispatch = useDispatch();
   // const handle = () => {
@@ -22,7 +23,7 @@ const DashboardHeader = () => {
   return (
     <div className="dashboard_header between">
       <div className="dashboard_header_logo">
-        <span className="dashboard_header_logo_bold">Ca</span>Crew
+        <span className="dashboard_header_logo_bold">Carbon</span>Nible
       </div>
       <div className="dashboard_logowrap center">
         <Link
@@ -39,6 +40,9 @@ const DashboardHeader = () => {
         <Link to={"/register_company"} className="link">
           <img src={message} alt="icon" className="dashboard_icon" />
         </Link>
+        <div className="dashboard_header_menu">
+          <MenuBars isOpen={menuIsOpen} handleClick={setMenuIsOpen}/>
+        </div>
         {/* <Link to={"/register_company"} className="link">
           <img src={cart} alt="icon" className="dashboard_icon" />
         </Link> */}

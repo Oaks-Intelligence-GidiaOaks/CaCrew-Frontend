@@ -16,7 +16,7 @@
     font-size: 35px;
     color: $blue;
     @media (max-width: 991px) {
-      font-size: 25px;
+      font-size: 20px;
     }
   }
   .dashboard_header_logo_bold {
@@ -49,5 +49,12 @@
       width: 30px;
       height: 30px;
     }
+  }
+  .dashboard_header_menu{
+    display: none;
+    @media (max-width: 767px) {
+        display: block;
+        margin-left: 22px;
+      }
   }
 }

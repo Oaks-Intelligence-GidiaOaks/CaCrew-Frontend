@@ -6,9 +6,17 @@
     .dashboard_sidebar {
       width: 20%;
       position: sticky;
+      transition: all 0.3s linear;
+      background-color: #fff;
       @media (max-width: 767px) {
-        display: none;
+        position: fixed;
+        width: 45%;
+        transform: translateX(-350px);
+        z-index: 3;
       }
+    }
+    .dashboard_sidebar_open {
+      transform: translateX(0px);
     }
     .dashboard_content {
       width: 80%;

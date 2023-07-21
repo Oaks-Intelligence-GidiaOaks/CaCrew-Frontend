@@ -37,5 +37,6 @@ export { default as Upload } from "components/widgets/upload/Upload";
 export { default as SearchInput } from "components/widgets/search-input/SearchInput";
 export { default as TrackProjectProgress } from "components/widgets/track-project-progress/TrackProjectProgress";
 export { default as CustomProjectSelect } from "components/widgets/custom-project-select/CustomProjectSelect";
+export { default as MenuBars } from "components/widgets/menu-bars/MenuBars";
 
 export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";

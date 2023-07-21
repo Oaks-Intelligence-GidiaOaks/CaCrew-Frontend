@@ -70,7 +70,7 @@ const ProjectTrackOverview = () => {
                   Project Title
                 </div>
                 <div className="proj_track_overview_info_wrap_item_value">
-                  {projectData?.title || "--------"}
+                  {projectData?.project_name || "--------"}
                 </div>
               </div>
               <div className="proj_track_overview_info_wrap_item">

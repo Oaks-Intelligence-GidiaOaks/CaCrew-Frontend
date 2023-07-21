@@ -24,7 +24,7 @@ const TrackProjectTable = ({ data }) => {
               {row?.created_by?.organization_id?.organization_name}
             </div>
             <div className="track_project_table_body_item">
-              {row?.description}
+              {row?.project_name}
             </div>
             <div className="track_project_table_body_item">
               <TrackProjectProgress phase={row?.progress}/>
