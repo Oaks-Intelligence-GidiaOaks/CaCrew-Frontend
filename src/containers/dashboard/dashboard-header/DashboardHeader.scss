@@ -1,11 +1,11 @@
 @import "base.scss";
 
 .dashboard_header {
-  // position: fixed;
-  // top: 0;
+  position: fixed;
+  top: 0;
   z-index: 3;
   width: 100%;
-  background-color: transparent;
+  background-color: #fff;
   padding: 24px 30px;
   border-bottom: 1px solid #dedede;
   @media (max-width: 991px) {
