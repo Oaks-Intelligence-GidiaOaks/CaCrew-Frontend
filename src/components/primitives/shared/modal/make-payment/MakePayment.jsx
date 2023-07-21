@@ -103,7 +103,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
     dataPayment,
   ]);
 
-  // console.log( transactionId, "***");
+  // console.log( data, "***");
 
   return (
     <div className="make_payment">
@@ -189,7 +189,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
               </span>
               <span className="make_payment_details_message_seller_text_big">
                 {" "}
-                $5,000{" "}
+                ${" "}{amount}
               </span>
             </div>
           </div>

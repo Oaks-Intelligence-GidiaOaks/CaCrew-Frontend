@@ -32,7 +32,7 @@ const ModalSellOrder = () => {
     isSuccessRef.current &&
       dispatch(
         openModal({
-          title: "Order Set Successful",
+          title: "Sell Order Set Successfuly",
           message: `You have successfuly placed a sell order for ${values?.available_to_sale} tCO2e`,
           success: true,
         })
@@ -41,7 +41,7 @@ const ModalSellOrder = () => {
     isErrorRef.current &&
       dispatch(
         openModal({
-          title: `Order for ${values?.available_to_sale} failed`,
+          title: `Sell Order for ${values?.available_to_sale} tCO2e failed`,
           message: `${errorRef?.current?.data?.message || "An error occured, please try again"} `,
           component: null,
         })
