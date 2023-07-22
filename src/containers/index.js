@@ -12,6 +12,7 @@ export { default as DashboardWalletCon } from "containers/dashboard/dashboard-co
 export { default as BuyCarbonCreditCon } from "containers/dashboard/dashboard-content/shared/buy-carbon-credit-container/BuyCarbonCreditCon";
 export { default as TrackProject } from "containers/dashboard/dashboard-content/super-admin-dashboard/track-project/TrackProject";
 export { default as ProjectTrackOverview } from "containers/dashboard/dashboard-content/super-admin-dashboard/project-track-overview/ProjectTrackOverview";
+export { default as MyAccount } from "containers/dashboard/dashboard-content/shared/my-account/MyAccount";
 
 // auth
 export { default as AuthHeader } from "containers/auth/auth-header/AuthHeader";
@@ -19,5 +20,3 @@ export { default as DocumentUpload } from "containers/auth/document-upload/Docum
 export { default as Login } from "containers/auth/login/Login";
 export { default as RegisterAdmin } from "containers/auth/register-admin/RegisterAdmin";
 export { default as RegisterCompany } from "containers/auth/register-company/RegisterCompany";
-
-

@@ -125,24 +125,9 @@
       }
     }
   }
-  .dashboard_staff_card_admin {
-    border-radius: 8px;
-    border: 1px solid #4277ff;
-    background: #f8f8f8;
-    width: 100px;
-    padding: 8px 10px;
+  .dashboard_staff_card_badge {
     position: absolute;
     right: 20px;
     bottom: 24px;
-    .dashboard_staff_card_admin_img {
-      margin-right: 7px;
-    }
-    .dashboard_staff_card_admin_text {
-      color: #4c5563;
-      font-size: 15px;
-      @media (max-width: 991px) {
-        font-size: 12px;
-      }
-    }
   }
 }

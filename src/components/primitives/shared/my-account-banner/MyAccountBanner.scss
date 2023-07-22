@@ -1,0 +1,13 @@
+@import "base.scss";
+
+.my_account_banner {
+  padding-left: 44px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: #f2f5ff;
+  @media (max-width: "991px") {
+    padding-left: 34px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

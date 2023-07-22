@@ -10,6 +10,7 @@ import {
   dots,
   sms,
 } from "assets/images";
+import { Badge } from "components";
 
 const DashboardStaffCard = ({ data }) => {
   const [close, setClose] = useState(true);
@@ -29,7 +30,7 @@ const DashboardStaffCard = ({ data }) => {
           <div className="dashboard_staff_card_detail_namepos">
             <div className="dashboard_staff_card_detail_name">{data?.name}</div>
             <div className="dashboard_staff_card_detail_position">
-              {(data?.role === "SuperAdmin" || data?.role === "OrgAdmin")
+              {data?.role === "SuperAdmin" || data?.role === "OrgAdmin"
                 ? "Admin"
                 : data?.designation}
             </div>
@@ -115,13 +116,8 @@ const DashboardStaffCard = ({ data }) => {
         </div>
       </div>
       {(data?.role === "SuperAdmin" || data?.role === "OrgAdmin") && (
-        <div className="dashboard_staff_card_admin center">
-          <img
-            src={crown}
-            alt="icon"
-            className="dashboard_staff_card_admin_img"
-          />
-          <span className="dashboard_staff_card_admin_text">Admin</span>
+        <div className="dashboard_staff_card_badge">
+          <Badge text={"Admin"} image={crown} />
         </div>
       )}
     </div>

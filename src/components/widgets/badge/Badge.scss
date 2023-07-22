@@ -1,0 +1,27 @@
+@import "base.scss";
+
+.badge {
+  border-radius: 8px;
+  border: 1px solid #4277ff;
+  background: #f8f8f8;
+  width: 100px;
+  height: 40px;
+  padding: 8px 10px;
+  .badge_img {
+    margin-right: 7px;
+  }
+
+  .badge_text {
+    color: #4c5563;
+    font-size: 15px;
+
+    @media (max-width: 991px) {
+      font-size: 12px;
+    }
+  }
+}
+
+.badge_verified{
+    @extend .badge;
+  border: 1px solid #5F41B2;
+}

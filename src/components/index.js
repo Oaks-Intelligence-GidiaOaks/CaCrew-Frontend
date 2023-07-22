@@ -26,6 +26,8 @@ export { default as MakePayment } from "components/primitives/shared/modal/make-
 export { default as ConfirmPayment } from "components/primitives/shared/modal/confirm-payment/ConfirmPayment";
 export { default as TrackProjectTable } from "components/primitives/super-admin-dashboard/track-project-table/TrackProjectTable";
 export { default as TrackTableComplete } from "components/primitives/super-admin-dashboard/track-project-complete-table/TrackTableComplete";
+export { default as MyAccountBanner } from "components/primitives/shared/my-account-banner/MyAccountBanner";
+export { default as MyAccountInfo } from "components/primitives/shared/my-account-info/MyAccountInfo";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
@@ -39,5 +41,6 @@ export { default as SearchInput } from "components/widgets/search-input/SearchIn
 export { default as TrackProjectProgress } from "components/widgets/track-project-progress/TrackProjectProgress";
 export { default as CustomProjectSelect } from "components/widgets/custom-project-select/CustomProjectSelect";
 export { default as MenuBars } from "components/widgets/menu-bars/MenuBars";
+export { default as Badge } from "components/widgets/badge/Badge";
 
 export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";

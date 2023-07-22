@@ -27,17 +27,17 @@ const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
       </div>
       <div className="dashboard_logowrap center">
         <Link
-          to={"/register-company"}
+          to={"/my-account"}
           className="dashboard_header_textbtn_wrap center link"
         >
           <img src={avartar} alt="icon" className="dashboard_avartar" />
           <div className="dashboard_header_text">{data?.name}</div>
           <img src={down} alt="icon" className="dashboard_down_icon" />
         </Link>
-        <Link to={"/register_company"} className="link">
+        <Link to={"/my-account"} className="link">
           <img src={settings} alt="icon" className="dashboard_icon" />
         </Link>
-        <Link to={"/register_company"} className="link">
+        <Link to={"/my-account"} className="link">
           <img src={message} alt="icon" className="dashboard_icon" />
         </Link>
         <div className="dashboard_header_menu">

@@ -18,6 +18,7 @@ import {
   BUY_CARBON_CREDIT,
   TRACK_PROJECT,
   TRACK_PROJECT_OVERVIEW,
+  MY_ACCOUNT,
 } from "routes/constants";
 
 // Import auth pages
@@ -38,12 +39,14 @@ import {
   // super admin dasboard pages
   DashboardOrganisationPage,
   SupAdminDashHomePage,
-  // organisation admin dasboard pages
-  OrgAdminDashboardHomePage,
-  // staff
   StaffDashboardHomePage,
   TrackProjectPage,
   ProjectTrackOverviewPage,
+  MyAccountPage,
+  // organisation admin dasboard pages
+  OrgAdminDashboardHomePage,
+  // staff
+  
 } from "pages";
 
 // Import dasboard pages
@@ -106,6 +109,10 @@ const RoutesConfig = () => {
       <Route
         path={TRACK_PROJECT_OVERVIEW}
         element={<ProtectedRoute component={ProjectTrackOverviewPage} />}
+      />
+      <Route
+        path={MY_ACCOUNT}
+        element={<ProtectedRoute component={MyAccountPage} />}
       />
     </Routes>
   );

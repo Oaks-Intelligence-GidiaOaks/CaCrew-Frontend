@@ -1,0 +1,92 @@
+@import "base.scss";
+
+.my_account_info {
+  .my_account_info {
+    width: 100%;
+    align-items: center;
+    padding: 30px;
+
+    @media (max-width: 991px) {
+      padding: 20px;
+      flex-direction: column;
+    }
+
+    .my_account_info_avartar {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+      border-radius: 80px;
+      background: #dcdddf;
+      object-fit: cover;
+      margin-right: 14px;
+
+      @media (max-width: 767px) {
+        margin-bottom: 20px;
+        margin-left: 0px;
+      }
+    }
+
+    .my_account_info_detail_wrap_inner {
+      .my_account_info_name {
+        color: #143b76;
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 20px;
+
+        @media (max-width: 991px) {
+          font-size: 18px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      .my_account_info_wallet_wrap {
+        .my_account_info_wallet_wrap_inner {
+          margin-right: 17px;
+
+          @media (max-width: 767px) {
+            margin-right: 10px;
+          }
+
+          .my_account_info_wallet_text {
+            color: #4c5563;
+            font-size: 11px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            white-space: nowrap;
+
+            @media (max-width: 767px) {
+              //   font-size: 12px;
+            }
+          }
+
+          .my_account_info_wallet_value {
+            @extend .my_account_info_wallet_text;
+            color: #212121;
+          }
+        }
+      }
+    }
+
+    .my_account_info_detail_wrap {
+      align-items: center;
+      // justify-content: start;
+      width: 100%;
+
+      @media (max-width: 991px) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .my_account_info_btn_wrap {
+        @media (max-width: 991px) {
+          margin-top: 30px;
+        }
+
+        .my_account_info_btn {
+          margin-left: 23px;
+        }
+      }
+    }
+  }
+}

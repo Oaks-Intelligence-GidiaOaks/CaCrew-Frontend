@@ -3,9 +3,9 @@ import { OrgAdminDashboardHome, Dashboard } from "containers";
 
 const OrgAdminDashboardHomePage = () => {
   return (
-    <div>
+    <>
       <Dashboard component={OrgAdminDashboardHome} />
-    </div>
+    </>
   );
 };
 

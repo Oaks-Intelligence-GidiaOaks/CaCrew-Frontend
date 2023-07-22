@@ -3,9 +3,9 @@ import { Dashboard, ProjectTrackOverview } from 'containers'
 
 const ProjectTrackOverviewPage = () => {
   return (
-    <div>
+    <>
         <Dashboard component={ProjectTrackOverview}/>
-    </div>
+    </>
   )
 }
 

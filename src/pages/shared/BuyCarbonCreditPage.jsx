@@ -3,9 +3,9 @@ import React from "react";
 
 const BuyCarbonCreditPage = () => {
   return (
-    <div>
+    <>
       <Dashboard component={BuyCarbonCreditCon} />
-    </div>
+    </>
   );
 };
 
