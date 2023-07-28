@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
 import Button from "components/widgets/button/Button";
@@ -16,14 +16,9 @@ const RegisterCompanyForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const state = useSelector((state) => state.formdata);
+  const [initialValuesCompany, setInitialValuesCompany] = useState({});
 
-  const initialValues = () => {
-    const { date_of_incorporation } = state;
-    const { ...copy } = state;
-    copy["date_of_incorporation"] = revertToDateFormat(date_of_incorporation);
-    return copy;
-  };
+  const state = useSelector((state) => state.formdata);
 
   const onSubmit = (values) => {
     const { date_of_incorporation, ...otherValues } = values;
@@ -33,12 +28,18 @@ const RegisterCompanyForm = () => {
     navigate("/register-admin");
     // console.log(formatDate, otherValues, "valuesDispatch");
   };
+  useEffect(() => {
+    const { date_of_incorporation } = state;
+    const { ...copy } = state;
+    copy["date_of_incorporation"] = revertToDateFormat(date_of_incorporation);
+    setInitialValuesCompany(copy);
+  }, [state]);
   return (
     <div className="auth_form">
       <Form
         onSubmit={onSubmit}
         validate={validate}
-        initialValues={initialValues}
+        initialValues={initialValuesCompany}
         render={({ handleSubmit, valid }) => (
           <form onSubmit={handleSubmit} className="form">
             <div className="auth_form_title">Let’s Get You Started</div>

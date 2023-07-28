@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./DocumentUpload.scss";
 import { Form } from "react-final-form";
 import Button from "components/widgets/button/Button";
@@ -8,13 +8,15 @@ import { useNavigate, useLocation } from "react-router-dom";
 import rtkMutation from "utils/rtkMutation";
 import { useRegisterUserMutation } from "services/user.service";
 import Upload from "components/widgets/upload/Upload";
-import fileTypeReader from "utils/fileTypeReader";
+import fileTypeReader, { createFileFromData } from "utils/fileTypeReader";
 import { openModal } from "redux/slices/modal.slice";
 // import axios from "axios";
 
 const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
   const [registerUser, { isLoading, error, isSuccess, isError }] =
     useRegisterUserMutation();
+
+  const [uploadFile, setUploadFile] = useState({});
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -80,13 +82,21 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
     }
   };
 
-  console.log(error, "rtk Final");
+  // console.log(state[documentName], "rtk Final");
 
   useEffect(() => {
     registerIsSuccessRef.current = isSuccess;
     registerErroRef.current = error;
     registerIsErroRef.current = isError;
-  }, [isSuccess, error, isError]);
+
+    const fileObj = state[documentName];
+    const initialUploadObj = {};
+    const uploadStringCovertFile =
+      Object.keys(fileObj).length > 0 &&
+      createFileFromData(fileObj.string, fileObj.name, fileObj.type);
+    initialUploadObj[documentName] = uploadStringCovertFile;
+    setUploadFile(initialUploadObj);
+  }, [isSuccess, error, isError, state, documentName]);
 
   return (
     <div className="upload_document center">
@@ -95,7 +105,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
         <div className="upload_document_text">(Notarized Documents Only)</div>
         <Form
           onSubmit={handleSubmit}
-          // initialValues={state}
+          initialValues={uploadFile}
           render={({ handleSubmit, valid }) => (
             <form onSubmit={handleSubmit}>
               <Upload documentName={documentName} />

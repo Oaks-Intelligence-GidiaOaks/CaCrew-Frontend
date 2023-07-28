@@ -1,24 +1,28 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Upload.scss";
 import { fileImg, filesImg, trash } from "assets/images";
 import { Field } from "react-final-form";
 import { required } from "validations/validations";
+import { useSelector } from "react-redux";
+import { createFileFromData } from "utils/fileTypeReader";
 
 const Upload = ({ documentName, multiple = false }) => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
+
+  const state = useSelector((state) => state.formdata);
 
   const fileRef = useRef(null);
 
   // handle file change
   const handleChange = (e) => {
     const selectedFile = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(selectedFile);
+    // const fileReader = new FileReader();
+    // fileReader.readAsDataURL(selectedFile);
 
-    fileReader.onload = () => {
-      setFile(() => selectedFile);
-    };
+    // fileReader.onload = () => {
+    setFile(() => selectedFile);
+    // };
 
     // console.log(file);
 
@@ -34,6 +38,15 @@ const Upload = ({ documentName, multiple = false }) => {
     setFile(null);
     setProgress(0);
   };
+
+  useEffect(() => {
+    const fileObj = state[documentName];
+    const uploadStringCovertFile =
+     Object.keys(fileObj).length > 0 && createFileFromData(fileObj.string, fileObj.name, fileObj.type);
+    setFile(uploadStringCovertFile);
+    setProgress(100);
+    // console.log(file);
+  }, [state]);
   return (
     <div>
       <Field
@@ -61,7 +74,11 @@ const Upload = ({ documentName, multiple = false }) => {
                 }}
               />
             </div>
-            {meta.error && <div className="input_error" style={{textAlign: "center"}}>{meta.error}</div>}
+            {meta.error && (
+              <div className="input_error" style={{ textAlign: "center" }}>
+                {meta.error}
+              </div>
+            )}
           </>
         )}
       />
