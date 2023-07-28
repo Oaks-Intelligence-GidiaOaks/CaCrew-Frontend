@@ -4,7 +4,7 @@ import { DocumentUpload, AuthHeader } from "containers";
 const IdentityDocumentPage = () => {
   return (
     <>
-      <AuthHeader text={"Already have an account?"} buttonText={"Login"} />
+      <AuthHeader text={"Already have an account?"} buttonText={"Login"} link={"/login"}/>
       <DocumentUpload
         title={"Upload Identity Document of Contact Person"}
         documentName="admin_identity_document"

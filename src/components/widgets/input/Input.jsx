@@ -19,6 +19,7 @@ const Input = ({
   placeholder,
   className,
   disabled,
+  required = true,
 }) => {
   const [passwordType, setPasswordType] = useState("password");
   // const parseDate = (value) => {
@@ -35,7 +36,7 @@ const Input = ({
       <div className="input_label_wrap between">
         {label && (
           <div className="input_label_wrap_text">
-            {label} <span className="input_label_wrap_text_required">*</span>
+            {label} {required && <span className="input_label_wrap_text_required">*</span>}
           </div>
         )}
 
@@ -105,7 +106,7 @@ const Input = ({
           </div>
         )}
       </div>
-      <div className="input_error">{meta?.error}</div>
+      {meta.error && meta.touched && <span className="input_error">{meta.error}</span>}
     </div>
   );
 };

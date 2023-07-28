@@ -1,4 +1,5 @@
 const fileTypeReader = (file, reader) => {
+
   switch (file.type) {
     case "image/jpeg":
     case "image/png":

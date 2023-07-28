@@ -11,6 +11,12 @@
     padding-bottom: 88px;
     padding-top: 59px;
     max-width: 725px;
+    @media (max-width: 991px) {
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-bottom: 25px;
+      padding-top: 25px;
+    }
     .upload_document_title {
       color: $blue;
       text-align: center;
@@ -34,7 +40,6 @@
     .upload_document_btn {
       margin-top: 40px;
     }
-    
   }
   .admin_info_left_float {
     position: absolute;

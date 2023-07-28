@@ -14,7 +14,7 @@ import { useSendCreditMutation } from "services/user.service";
 import rtkMutation from "utils/rtkMutation";
 
 const ProjectTrackOverview = () => {
-  const [sendCredit, { data: dataRes, isSuccess: succ, isLoading: loading }] =
+  const [sendCredit, { data: dataRes, isSuccess: isSuccessCredit, isLoading: loading }] =
     useSendCreditMutation();
 
   const [amount, setAmount] = useState(0);
@@ -127,7 +127,7 @@ const ProjectTrackOverview = () => {
       </div>
       <div className="proj_track_overview_update_wrap between">
         <div className="proj_track_overview_update_value">
-          <CustomProjectSelect data={projectData} amount={amount} />
+          <CustomProjectSelect data={projectData} amount={amount} isSuccessCredit={isSuccessCredit}/>
         </div>
         <div className="proj_track_overview_update_credit">
           <Form

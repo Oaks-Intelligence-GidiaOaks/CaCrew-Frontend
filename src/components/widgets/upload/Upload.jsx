@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
-import "./Upload.scss"
+import "./Upload.scss";
 import { fileImg, filesImg, trash } from "assets/images";
 import { Field } from "react-final-form";
+import { required } from "validations/validations";
 
-
-const Upload = ({ documentName }) => {
+const Upload = ({ documentName, multiple = false }) => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
 
@@ -20,7 +20,7 @@ const Upload = ({ documentName }) => {
       setFile(() => selectedFile);
     };
 
-    console.log(file);
+    // console.log(file);
 
     setProgress(0);
     setTimeout(() => {
@@ -38,25 +38,31 @@ const Upload = ({ documentName }) => {
     <div>
       <Field
         name={documentName}
-        render={({ input }) => (
-          <div className="upload center col">
-            <div className="upload_image_wrap center">
-              <img src={fileImg} alt="icon" />
+        validate={required(documentName?.replace(/_/g, " "))}
+        render={({ input, meta }) => (
+          <>
+            <div className="upload center col">
+              <div className="upload_image_wrap center">
+                <img src={fileImg} alt="icon" />
+              </div>
+              <div className="upload_text_bold">
+                Drag and drop files, or Browse
+              </div>
+              <div className="upload_text">Support jpg, png, pdf, docx</div>
+              <input
+                ref={fileRef}
+                type="file"
+                className="uplaod_input"
+                multiple={multiple}
+                accept="image/jpeg,image/png,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                onChange={(e) => {
+                  input.onChange(e.target.files[0]);
+                  handleChange(e);
+                }}
+              />
             </div>
-            <div className="upload_text_bold">
-              Drag and drop files, or Browse
-            </div>
-            <div className="upload_text">Support jpg, png, pdf, docx</div>
-            <input
-              ref={fileRef}
-              type="file"
-              className="uplaod_input"
-              onChange={(e) => {
-                input.onChange(e.target.files[0]);
-                handleChange(e);
-              }}
-            />
-          </div>
+            {meta.error && <div className="input_error" style={{textAlign: "center"}}>{meta.error}</div>}
+          </>
         )}
       />
       {file && (

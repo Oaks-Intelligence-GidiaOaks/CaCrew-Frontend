@@ -5,6 +5,7 @@ import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
 import Button from "components/widgets/button/Button";
 import { useNavigate } from "react-router-dom";
+import validate, { mustBeNumber, required } from "validations/validations";
 
 const RegisterAdminForm = () => {
   const dispatch = useDispatch();
@@ -15,21 +16,38 @@ const RegisterAdminForm = () => {
   const onSubmit = (values) => {
     dispatch(updateFormdata(values));
     navigate("/identity-document");
-    console.log(state, "form");
+    // console.log(values, "form");
   };
   return (
     <div className="auth_form">
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit, values, submitting, pristine, form }) => (
+        validate={validate}
+        initialValues={state}
+        render={({ handleSubmit, valid }) => (
           <form onSubmit={handleSubmit} className="form">
             <div className="field">
-              <Field name="name" component={Input} label={"Full Name"} />
+              <Field
+                name="name"
+                component={Input}
+                label={"Full Name"}
+                validate={required("Full Name")}
+              />
             </div>
             <div className="field">
-              <Field name="email" component={Input} label={"Email Address"} />
+              <Field
+                name="email"
+                component={Input}
+                label={"Email Address"}
+                validate={required("Email Address")}
+              />
             </div>
-            <Field name="phone_number" component={Input} label={"Phone"} />
+            <Field
+              name="phone_number"
+              component={Input}
+              label={"Phone"}
+              validate={required("Phone number")}
+            />
 
             <div className="field">
               <Field
@@ -37,6 +55,7 @@ const RegisterAdminForm = () => {
                 component={Input}
                 label={"Password"}
                 password
+                validate={required("Password")}
               />
             </div>
             <div className="field">
@@ -45,12 +64,14 @@ const RegisterAdminForm = () => {
                 component={Input}
                 label={"Confirm Password"}
                 password
+                validate={() => {required("Password")}}
               />
             </div>
             <Button
               type="submit"
               text={"Create Account"}
               className="auth_button_wrap"
+              disabled={!valid}
             />
           </form>
         )}

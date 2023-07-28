@@ -8,7 +8,7 @@ import {
 } from "services/project.service";
 import rtkMutation from "utils/rtkMutation";
 
-const CustomProjectSelect = ({ data, amount }) => {
+const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
   const options = [
     {
       phase: (

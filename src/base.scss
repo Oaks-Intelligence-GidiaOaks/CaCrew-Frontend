@@ -1,5 +1,5 @@
 $blue: #143b76;
-$purple: #5F41B2;
+$purple: #5f41b2;
 
 .center {
   display: flex;
@@ -88,7 +88,7 @@ $purple: #5F41B2;
 
     @media (max-width: 991px) {
       width: 100%;
-      padding-top: 50px;
+      padding-top: 120px;
     }
   }
 }
@@ -129,5 +129,15 @@ $purple: #5F41B2;
   width: 100%;
   @media (max-width: 991px) {
     padding: 18px;
+  }
+}
+
+.input_error {
+  color: #ff0707;
+  font-size: 12px;
+  margin-top: 5px;
+  letter-spacing: 1px;
+  @media (max-width: 991px) {
+    font-size: 11px;
   }
 }

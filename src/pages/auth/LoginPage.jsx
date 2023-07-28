@@ -4,7 +4,7 @@ import { Login, AuthHeader } from "containers";
 const LoginPage = () => {
   return (
     <>
-      <AuthHeader text={"Don’t have an account?"} buttonText={"SignUp"} />
+      <AuthHeader text={"Don’t have an account?"} buttonText={"SignUp"} link={"/register-company"}/>
       <Login />
     </>
   );

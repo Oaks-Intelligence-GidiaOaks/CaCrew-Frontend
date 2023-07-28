@@ -3,14 +3,14 @@ import "./AuthHeader.scss";
 import { Link } from "react-router-dom";
 import Button from "components/widgets/button/Button";
 
-const AuthHeader = ({text, buttonText}) => {
+const AuthHeader = ({text, buttonText, link}) => {
   return (
     <div className="auth_header between">
       <div className="auth_header_logo">
         <span className="auth_header_logo_bold">Ca</span>Crew
       </div>
       <Link
-        to={"/register-company"}
+        to={link}
         className="auth_header_textbtn_wrap center link"
       >
         <div className="auth_header_text">{text}</div>

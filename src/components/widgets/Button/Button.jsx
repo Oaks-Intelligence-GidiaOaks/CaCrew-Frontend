@@ -2,9 +2,15 @@ import React from "react";
 import "./Button.scss";
 import { ThreeDots } from "react-loader-spinner";
 
-const Button = ({ text, loading, className, type, ...rest }) => {
+const Button = ({ text, loading, disabled, className, type, ...rest }) => {
   return (
-    <button {...rest} type={type} className={`button ${className} center`}>
+    <button
+      {...rest}
+      type={type}
+      disabled={disabled}
+      className={` ${disabled ? "invalid" : "button"} ${className} center `}
+      // style={{ cursor: "not-allowed" }}
+    >
       {loading ? (
         <ThreeDots
           height="15"

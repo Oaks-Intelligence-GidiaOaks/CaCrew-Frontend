@@ -6,6 +6,9 @@
   border: 1px solid #dedede;
   width: 100%;
 
+  @media (max-width: 991px) {
+    padding: 10px 10px 10px 10px;
+  }
   .upload_image_wrap {
     background-color: #e4ddf4;
     width: 60px;
@@ -34,6 +37,7 @@
     color: #4c5563;
     font-size: 14px;
     line-height: 150%;
+    text-align: center;
     @media (max-width: 991px) {
       font-size: 12px;
     }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./DocumentUpload.scss";
 import { Form } from "react-final-form";
 import Button from "components/widgets/button/Button";
@@ -9,23 +9,33 @@ import rtkMutation from "utils/rtkMutation";
 import { useRegisterUserMutation } from "services/user.service";
 import Upload from "components/widgets/upload/Upload";
 import fileTypeReader from "utils/fileTypeReader";
+import { openModal } from "redux/slices/modal.slice";
 // import axios from "axios";
 
 const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
+  const [registerUser, { isLoading, error, isSuccess, isError }] =
+    useRegisterUserMutation();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [registerUser, { isLoading, error }] = useRegisterUserMutation();
+  const registerIsSuccessRef = useRef(isSuccess);
+  const registerErroRef = useRef(error);
+  const registerIsErroRef = useRef(isError);
+
   const state = useSelector((state) => state.formdata);
   const currentUrl = location.pathname;
-  console.log(state, "url");
+  // console.log(state, "url");
 
-  const handleSubmit = (value) => {
+  const handleSubmit = async (value) => {
     const file = value[documentName];
+    // console.log(value, "rtkval");
+
     if (file) {
       const reader = new FileReader();
       const object = {};
+      const object_dispatched = {};
       reader.onload = () => {
         // Get string result from file
         const fileDataString = reader.result;
@@ -34,20 +44,49 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
         object.type = file.type;
         object.string = fileDataString; // store the string result
         object.path = URL.createObjectURL(file);
-        // Replace form value with object
-        value[documentName] = object;
-        // console.log(value, "name");
-        dispatch(updateFormdata(value));
+        // Setup object to be dispatched
+        object_dispatched[documentName] = object;
+        dispatch(updateFormdata(object_dispatched));
         navigate(path);
       };
       // Check the file type and use different methods to read the file
-      fileTypeReader(file, reader)
+      fileTypeReader(file, reader);
       if (currentUrl === "/letter-document") {
-        rtkMutation(registerUser, state);
-        console.log(isLoading, error, "rtk Final");
+        await rtkMutation(registerUser, state);
+        registerIsSuccessRef &&
+          dispatch(
+            openModal({
+              title: "Registration Successful",
+              message:
+                "You have succesfully registered, verification is ongoing",
+              success: true,
+              promptMessage: "Done",
+              promptLink: "/Login",
+            })
+          );
+        registerIsErroRef &&
+          dispatch(
+            openModal({
+              title: "Registration Failed",
+              message: `${
+                registerErroRef.current?.data?.message ||
+                "Registration failed please try again"
+              }`,
+              promptMessage: "Review",
+              promptLink: "/register-company",
+            })
+          );
       }
     }
   };
+
+  console.log(error, "rtk Final");
+
+  useEffect(() => {
+    registerIsSuccessRef.current = isSuccess;
+    registerErroRef.current = error;
+    registerIsErroRef.current = isError;
+  }, [isSuccess, error, isError]);
 
   return (
     <div className="upload_document center">
@@ -56,13 +95,16 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
         <div className="upload_document_text">(Notarized Documents Only)</div>
         <Form
           onSubmit={handleSubmit}
-          render={({ handleSubmit }) => (
+          // initialValues={state}
+          render={({ handleSubmit, valid }) => (
             <form onSubmit={handleSubmit}>
               <Upload documentName={documentName} />
               <Button
                 type={"Submit"}
                 text={"Next"}
                 className={"upload_document_btn"}
+                disabled={!valid}
+                loading={isLoading}
               />
             </form>
           )}

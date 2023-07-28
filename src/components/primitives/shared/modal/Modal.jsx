@@ -12,7 +12,7 @@ import {
   ModalSellCarbon,
   MakePayment,
   ModalBuyOrder,
-  ConfirmPayment
+  ConfirmPayment,
 } from "components";
 
 const Modal = () => {
@@ -37,6 +37,7 @@ const Modal = () => {
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(promptLink);
+    dispatch(closeModal());
   };
   const handleClose = () => {
     dispatch(closeModal());
@@ -46,7 +47,9 @@ const Modal = () => {
     ModalSellOrder: <ModalSellOrder />,
     ModalBuyCarbon: <ModalBuyCarbon data={data} />,
     ModalSellCarbon: <ModalSellCarbon data={data} />,
-    MakePayment: <MakePayment data={data} amount={amount} transactionId= {transaction_id} />,
+    MakePayment: (
+      <MakePayment data={data} amount={amount} transactionId={transaction_id} />
+    ),
     ConfirmPayment: <ConfirmPayment data={data} />,
     ModalBuyOrder: <ModalBuyOrder />,
   }[component];

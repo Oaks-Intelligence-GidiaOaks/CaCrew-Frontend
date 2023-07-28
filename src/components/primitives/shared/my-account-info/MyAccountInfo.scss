@@ -4,10 +4,8 @@
   .my_account_info {
     width: 100%;
     align-items: center;
-    padding: 30px;
-
+    padding-top: 20px;
     @media (max-width: 991px) {
-      padding: 20px;
       flex-direction: column;
     }
 
@@ -85,6 +83,44 @@
 
         .my_account_info_btn {
           margin-left: 23px;
+          @media (max-width: 991px) {
+            margin: 0px 13px;
+          }
+        }
+      }
+    }
+  }
+  .my_account_info_item_container {
+    margin-top: 45px;
+    .my_account_info_item_title {
+      margin-bottom: 14px;
+    }
+    .my_account_info_item_wrap {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 80px;
+      padding: 46px;
+      border-radius: 4px;
+      border: 1px solid #dedede;
+      @media (max-width: 1200px) {
+        grid-gap: 40px;
+      }
+      @media (max-width: 991px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 767px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .my_account_info_item {
+        // width: 100%;
+        .my_account_info_item_img {
+          margin-right: 10px;
+        }
+        .my_account_info_item_text_wrap {
+          .my_account_info_item_text {
+            color: #4c5563;
+            font-size: 15px;
+          }
         }
       }
     }

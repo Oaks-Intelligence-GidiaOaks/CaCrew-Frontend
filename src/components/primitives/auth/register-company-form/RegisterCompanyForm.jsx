@@ -5,27 +5,41 @@ import Button from "components/widgets/button/Button";
 import { useNavigate } from "react-router-dom";
 import { updateFormdata } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";
-import convertToDateFormat from "utils/convertToDateFormat";
+import convertToDateFormat, {
+  revertToDateFormat,
+} from "utils/convertToDateFormat";
+import validate, { required } from "validations/validations";
+import { industries } from "static/industries";
+import { formatOptionsList } from "utils/formatList";
 
 const RegisterCompanyForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const state = useSelector((state) => state.formdata);
+  const state = useSelector((state) => state.formdata);
+
+  const initialValues = () => {
+    const { date_of_incorporation } = state;
+    const { ...copy } = state;
+    copy["date_of_incorporation"] = revertToDateFormat(date_of_incorporation);
+    return copy;
+  };
 
   const onSubmit = (values) => {
     const { date_of_incorporation, ...otherValues } = values;
-    const formatDate = convertToDateFormat(date_of_incorporation)
+    const formatDate = convertToDateFormat(date_of_incorporation);
     dispatch(updateFormdata(otherValues));
-    dispatch(updateFormdata({date_of_incorporation: formatDate}));
+    dispatch(updateFormdata({ date_of_incorporation: formatDate }));
     navigate("/register-admin");
-    console.log(formatDate, otherValues, "valuesDispatch");
+    // console.log(formatDate, otherValues, "valuesDispatch");
   };
   return (
     <div className="auth_form">
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit, values, submitting, pristine, form }) => (
+        validate={validate}
+        initialValues={initialValues}
+        render={({ handleSubmit, valid }) => (
           <form onSubmit={handleSubmit} className="form">
             <div className="auth_form_title">Let’s Get You Started</div>
             <div className="auth_form_sub_title">
@@ -37,6 +51,7 @@ const RegisterCompanyForm = () => {
                 component={Input}
                 label={"Name of Company"}
                 tooltip="Name of Company, Please input your organization name"
+                validate={required("Organisation name")}
               />
             </div>
             <div className="field">
@@ -45,12 +60,14 @@ const RegisterCompanyForm = () => {
                 component={Input}
                 label={"Company email"}
                 tooltip="Email address for your organization"
+                validate={required("Organisation email")}
               />
             </div>
             <Field
               name="company_website"
               component={Input}
               label={"Company's Website"}
+              required={false}
             />
             <div className="field">
               <Field
@@ -58,6 +75,7 @@ const RegisterCompanyForm = () => {
                 component={Input}
                 label={"Date of Incorporation"}
                 date
+                validate={required("Date of Incorporation")}
               />
             </div>
             <div className="field">
@@ -66,9 +84,13 @@ const RegisterCompanyForm = () => {
                 component={Input}
                 label={"Select Industry"}
                 tooltip="Select the Industry your organization belongs to"
+                select
+                selectDefault={"Select an Industry"}
+                options={formatOptionsList(industries)}
+                validate={required("Industry type")}
               />
             </div>
-            <Button type="submit" text={"Register"} />
+            <Button type="submit" text={"Register"} disabled={!valid} />
           </form>
         )}
       />

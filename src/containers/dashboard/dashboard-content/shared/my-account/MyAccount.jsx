@@ -8,7 +8,7 @@ const MyAccount = () => {
       <div>
         <MyAccountBanner />
       </div>
-      <div>
+      <div className="dash_pad">
         <MyAccountInfo />
       </div>
     </div>

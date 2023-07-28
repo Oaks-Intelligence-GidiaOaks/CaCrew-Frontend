@@ -1,0 +1,18 @@
+export const industries = [
+  "Agriculture",
+  "Construction",
+  "Manufacturing",
+  "Data, Data analysis",
+  "Wholesale and Retail Trade",
+  "Transportation and Warehousing",
+  "Information and Communication",
+  "Financial Activities",
+  "Real Estate and Rental and Leasing",
+  "Professional, Scientific, and Technical Services",
+  "Management of Companies and Enterprises",
+  "Administrative and Support and Waste Management and Remediation Services",
+  "Education and Health Care and Social Assistance",
+  "Arts, Entertainment, and Recreation",
+  "Accommodation and Food Services",
+  "Other Services",
+];
