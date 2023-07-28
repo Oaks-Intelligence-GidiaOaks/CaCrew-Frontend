@@ -42,7 +42,7 @@ const Upload = ({ documentName, multiple = false }) => {
   useEffect(() => {
     const fileObj = state[documentName];
     const uploadStringCovertFile =
-     Object.keys(fileObj).length > 0 && createFileFromData(fileObj.string, fileObj.name, fileObj.type);
+    fileObj && Object.keys(fileObj).length > 0 && createFileFromData(fileObj.string, fileObj.name, fileObj.type);
     setFile(uploadStringCovertFile);
     setProgress(100);
     // console.log(file);

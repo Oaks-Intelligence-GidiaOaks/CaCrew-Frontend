@@ -79,7 +79,7 @@ const DashboardSidebar = () => {
               alt="icon"
               className="dashboard_link_item_image"
             />
-            Organistion
+            Organisation
           </NavLink>
         )}
         <NavLink
