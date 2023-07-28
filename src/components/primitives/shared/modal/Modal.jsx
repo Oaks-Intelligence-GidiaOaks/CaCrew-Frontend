@@ -2,7 +2,7 @@ import React from "react";
 import "./Modal.scss";
 import { useNavigate } from "react-router-dom";
 import { failed, success } from "assets/images";
-import Button from "components/widgets/button/Button";
+import { Button } from "components";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { closeModal } from "redux/slices/modal.slice";

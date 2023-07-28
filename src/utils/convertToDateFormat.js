@@ -15,6 +15,9 @@ export default convertToDateFormat;
 
 export const  revertToDateFormat = (formattedDateString) => {
   // Split the formatted date string into day, month, and year parts
+  if (formattedDateString?.length === 0) {
+    return ""
+  }
   const [day, month, year] = formattedDateString.split('/');
 
   // Convert day, month, and year parts to numbers

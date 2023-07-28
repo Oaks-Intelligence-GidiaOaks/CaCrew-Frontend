@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./DashboardStaff.scss";
-import Button from "components/widgets/button/Button";
+import { Button } from "components";
 import { close, search } from "assets/images";
 import { DashboardStaffCard, SearchInput } from "components";
 import { Form, Field } from "react-final-form";

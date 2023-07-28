@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
-import Button from "components/widgets/button/Button";
+import { Button } from "components";
 import { useNavigate } from "react-router-dom";
 import { updateFormdata } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,6 +33,7 @@ const RegisterCompanyForm = () => {
     const { ...copy } = state;
     copy["date_of_incorporation"] = revertToDateFormat(date_of_incorporation);
     setInitialValuesCompany(copy);
+    console.log(initialValuesCompany, "cop")
   }, [state]);
   return (
     <div className="auth_form">

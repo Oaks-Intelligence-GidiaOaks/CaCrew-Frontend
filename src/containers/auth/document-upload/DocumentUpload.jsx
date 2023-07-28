@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./DocumentUpload.scss";
 import { Form } from "react-final-form";
-import Button from "components/widgets/button/Button";
+import { Button } from "components";
 import { updateFormdata } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";

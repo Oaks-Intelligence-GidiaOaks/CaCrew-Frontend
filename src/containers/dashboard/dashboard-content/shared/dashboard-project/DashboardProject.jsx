@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./DashboardProject.scss";
-import Button from "components/widgets/button/Button";
+import { Button } from "components";
 import { DashboardProjectCreate, DashboardProjectReview } from "components";
 import { useAllProjectsQuery } from "services/project.service";
 import { useGetUserQuery } from "services/user.service";

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./LoginForm.scss";
 import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
-import Button from "components/widgets/button/Button";
+import { Button } from "components";
 import { Link } from "react-router-dom";
 import { useGetUserQuery, useLoginUserMutation } from "services/user.service";
 import { useNavigate } from "react-router-dom";
