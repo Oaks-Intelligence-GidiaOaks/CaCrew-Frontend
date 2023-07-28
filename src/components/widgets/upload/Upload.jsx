@@ -3,14 +3,16 @@ import "./Upload.scss";
 import { fileImg, filesImg, trash } from "assets/images";
 import { Field } from "react-final-form";
 import { required } from "validations/validations";
-import { useSelector } from "react-redux";
-import { createFileFromData } from "utils/fileTypeReader";
+import { useSelector, useDispatch } from "react-redux";
+import { updateFormdata } from "redux/slices/register.slice";
+import { stringTypeToFile } from "utils/fileTypeReader";
 
-const Upload = ({ documentName, multiple = false }) => {
+const Upload = ({ documentName, multiple = false, setUploadFile = null }) => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
 
   const state = useSelector((state) => state.formdata);
+  const dispatch = useDispatch();
 
   const fileRef = useRef(null);
 
@@ -37,15 +39,20 @@ const Upload = ({ documentName, multiple = false }) => {
     fileRef.current.value = "";
     setFile(null);
     setProgress(0);
+    const delObj = {};
+    delObj[documentName] = null;
+    dispatch(updateFormdata(delObj));
+    setUploadFile && setUploadFile(null);
   };
 
   useEffect(() => {
     const fileObj = state[documentName];
     const uploadStringCovertFile =
-    fileObj && Object.keys(fileObj).length > 0 && createFileFromData(fileObj.string, fileObj.name, fileObj.type);
-    setFile(uploadStringCovertFile);
-    setProgress(100);
-    // console.log(file);
+      fileObj &&
+      Object.keys(fileObj).length > 0 &&
+      stringTypeToFile(fileObj.string, fileObj.type, fileObj.name);
+    setFile(uploadStringCovertFile || null);
+    uploadStringCovertFile && setProgress(100);
   }, [state]);
   return (
     <div>
@@ -74,7 +81,7 @@ const Upload = ({ documentName, multiple = false }) => {
                 }}
               />
             </div>
-            {meta.error && (
+            {meta.error &&  (
               <div className="input_error" style={{ textAlign: "center" }}>
                 {meta.error}
               </div>

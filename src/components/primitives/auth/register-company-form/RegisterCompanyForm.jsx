@@ -29,12 +29,16 @@ const RegisterCompanyForm = () => {
     // console.log(formatDate, otherValues, "valuesDispatch");
   };
   useEffect(() => {
-    const { date_of_incorporation } = state;
-    const { ...copy } = state;
-    copy["date_of_incorporation"] = revertToDateFormat(date_of_incorporation);
-    setInitialValuesCompany(copy);
-    console.log(initialValuesCompany, "cop")
+    if (state && state.organization_name !== null) {
+      const { date_of_incorporation } = state;
+      const { ...copy } = state;
+      copy["date_of_incorporation"] = revertToDateFormat(date_of_incorporation);
+      setInitialValuesCompany(copy);
+    }
+    console.log(Object.keys(initialValuesCompany).length, "cop");
+    console.log(initialValuesCompany, "cop2");
   }, [state]);
+
   return (
     <div className="auth_form">
       <Form

@@ -53,12 +53,17 @@ export const mustBeNumber = (value) =>
 export const minValue = (min) => (value) =>
   isNaN(value) || value >= min ? undefined : `Should be greater than ${min}`;
 
-// export const composeValidators =
-//   (...validators) =>
-//   (value) =>
-//     validators.reduce(
-//       (error, validator) => error || validator(value),
-//       undefined
-//     );
+export const passwordMatch = (value, allValues) => {
+  console.log(value, "vlsdem")
+  return value === allValues?.password ? undefined : "Passwords do not match";
+};
+
+export const composeValidators =
+  (...validators) =>
+  (value, allValues) =>
+    validators.reduce(
+      (error, validator) => error || validator(value, allValues),
+      undefined
+    );
 
 export default validate;

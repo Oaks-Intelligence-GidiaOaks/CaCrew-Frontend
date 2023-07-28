@@ -8,7 +8,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import rtkMutation from "utils/rtkMutation";
 import { useRegisterUserMutation } from "services/user.service";
 import Upload from "components/widgets/upload/Upload";
-import fileTypeReader, { createFileFromData } from "utils/fileTypeReader";
+import fileTypeReader, { stringTypeToFile } from "utils/fileTypeReader";
 import { openModal } from "redux/slices/modal.slice";
 // import axios from "axios";
 
@@ -48,6 +48,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
         object.path = URL.createObjectURL(file);
         // Setup object to be dispatched
         object_dispatched[documentName] = object;
+        // console.log(object_dispatched.string, "disobj");
         dispatch(updateFormdata(object_dispatched));
         navigate(path);
       };
@@ -55,7 +56,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
       fileTypeReader(file, reader);
       if (currentUrl === "/letter-document") {
         await rtkMutation(registerUser, state);
-        registerIsSuccessRef &&
+        registerIsSuccessRef.current &&
           dispatch(
             openModal({
               title: "Registration Successful",
@@ -66,7 +67,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
               promptLink: "/Login",
             })
           );
-        registerIsErroRef &&
+        registerIsErroRef.current &&
           dispatch(
             openModal({
               title: "Registration Failed",
@@ -84,19 +85,28 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
 
   // console.log(state[documentName], "rtk Final");
 
+  // track rtk network status in a callback
   useEffect(() => {
     registerIsSuccessRef.current = isSuccess;
     registerErroRef.current = error;
     registerIsErroRef.current = isError;
+  }, [isSuccess, error, isError]);
 
+  // this populate the uploaded file value in redux state
+  useEffect(() => {
     const fileObj = state[documentName];
+    // console.log(fileObj?.string, "fileObj");
+    // console.log(uploadFile, "string");
+
     const initialUploadObj = {};
     const uploadStringCovertFile =
+      fileObj &&
       Object.keys(fileObj).length > 0 &&
-      createFileFromData(fileObj.string, fileObj.name, fileObj.type);
-    initialUploadObj[documentName] = uploadStringCovertFile;
+      stringTypeToFile(fileObj.string, fileObj.type, fileObj.name);
+    initialUploadObj[documentName] = uploadStringCovertFile || null;
     setUploadFile(initialUploadObj);
-  }, [isSuccess, error, isError, state, documentName]);
+    // console.log(uploadFile, "string");
+  }, [documentName, state]);
 
   return (
     <div className="upload_document center">
@@ -108,7 +118,10 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
           initialValues={uploadFile}
           render={({ handleSubmit, valid }) => (
             <form onSubmit={handleSubmit}>
-              <Upload documentName={documentName} />
+              <Upload
+                documentName={documentName}
+                setUploadFile={setUploadFile}
+              />
               <Button
                 type={"Submit"}
                 text={"Next"}

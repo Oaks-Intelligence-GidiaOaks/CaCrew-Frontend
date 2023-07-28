@@ -5,7 +5,11 @@ import { Form, Field } from "react-final-form";
 import Input from "components/widgets/input/Input";
 import { Button } from "components";
 import { useNavigate } from "react-router-dom";
-import validate, { mustBeNumber, required } from "validations/validations";
+import validate, {
+  required,
+  passwordMatch,
+  composeValidators,
+} from "validations/validations";
 
 const RegisterAdminForm = () => {
   const dispatch = useDispatch();
@@ -64,7 +68,10 @@ const RegisterAdminForm = () => {
                 component={Input}
                 label={"Confirm Password"}
                 password
-                validate={() => {required("Password")}}
+                validate={composeValidators(
+                  required("Confirm Password"),
+                  passwordMatch
+                )}
               />
             </div>
             <Button
