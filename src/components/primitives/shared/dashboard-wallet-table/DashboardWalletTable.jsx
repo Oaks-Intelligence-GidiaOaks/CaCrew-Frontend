@@ -145,10 +145,10 @@ const DashboardWalletTable = ({ data }) => {
               onClick={() => handleOpenModal(row)}
             >
               <div className="dashboard_table_body_item">
-                {row?.buyer?.organization_name}
+                {row?.buyer?.organization_name || "Transaction fee"}
               </div>
               <div className="dashboard_table_body_item">
-                {row?.seller?.organization_name}
+                {row?.seller?.organization_name || "Transaction fee"}
               </div>
               <div className="dashboard_table_body_item">{row?.amount}</div>
               <div className="dashboard_table_body_item">{row?._id}</div>

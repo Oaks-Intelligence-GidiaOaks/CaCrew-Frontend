@@ -18,6 +18,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "redux/slices/user.slice";
 import { useSelector } from "react-redux";
+import { clearFormData } from "redux/slices/register.slice";
 
 const DashboardSidebar = () => {
   const [pathname, setPathName] = useState();
@@ -35,6 +36,7 @@ const DashboardSidebar = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    dispatch(clearFormData())
   };
 
   return (

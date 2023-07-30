@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./DocumentUpload.scss";
 import { Form } from "react-final-form";
 import { Button } from "components";
-import { updateFormdata } from "redux/slices/register.slice";
+import { updateFormdata, clearFormData } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import rtkMutation from "utils/rtkMutation";
@@ -56,7 +56,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
       fileTypeReader(file, reader);
       if (currentUrl === "/letter-document") {
         await rtkMutation(registerUser, state);
-        registerIsSuccessRef.current &&
+        if (registerIsSuccessRef.current) {
           dispatch(
             openModal({
               title: "Registration Successful",
@@ -67,6 +67,8 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
               promptLink: "/Login",
             })
           );
+          dispatch(clearFormData())
+        }
         registerIsErroRef.current &&
           dispatch(
             openModal({

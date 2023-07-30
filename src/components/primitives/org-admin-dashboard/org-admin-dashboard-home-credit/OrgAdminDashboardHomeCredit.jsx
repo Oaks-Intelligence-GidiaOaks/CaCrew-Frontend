@@ -4,10 +4,12 @@ import { avartar } from "assets/images";
 import { Button } from "components";
 // import { useGetUserQuery } from "services/user.service";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const OrgAdminDashboardHomeCredit = () => {
   // const { data } = useGetUserQuery();
   const data = useSelector((state) => state.user.user);
+  const navigate = useNavigate();
   return (
     <div className="credit between">
       <img src={avartar} alt="avartar" className="credit_avartar" />
@@ -34,6 +36,10 @@ const OrgAdminDashboardHomeCredit = () => {
         <div className="credit_btn_wrap start wrap">
           <Button
             text={"Buy Carbon Credit"}
+            onClick={() => {
+              data?.organization_id?.isVerified &&
+                navigate("/dashboard-wallet/buy");
+            }}
             className={`${
               data?.organization_id?.isVerified
                 ? "credit_btn"
@@ -42,6 +48,10 @@ const OrgAdminDashboardHomeCredit = () => {
           />
           <Button
             text={"Sell Carbon Credit"}
+            onClick={() => {
+              data?.organization_id?.isVerified &&
+                navigate("/dashboard-wallet/buy");
+            }}
             className={`${
               data?.organization_id?.isVerified
                 ? "credit_btn"
