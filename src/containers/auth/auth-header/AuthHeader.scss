@@ -23,6 +23,10 @@
     @media (max-width: 991px) {
       font-size: 25px;
     }
+    .auth_header_logo_img {
+      width: 100px;
+      object-fit: cover;
+    }
   }
 
   .auth_header_logo_bold {

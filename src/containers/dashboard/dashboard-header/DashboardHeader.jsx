@@ -1,7 +1,7 @@
 import React from "react";
 import "./DashboardHeader.scss";
 import { Link } from "react-router-dom";
-import { avartar, down, message, settings } from "assets/images";
+import { avartar, carbon, down, message, settings } from "assets/images";
 import { useGetUserQuery } from "services/user.service";
 import { useSelector } from "react-redux";
 import { MenuBars } from "components";
@@ -23,7 +23,9 @@ const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
   return (
     <div className="dashboard_header between">
       <div className="dashboard_header_logo">
-        <span className="dashboard_header_logo_bold">Carbon</span>Nible
+        {/* <span className="dashboard_header_logo_bold">Carbon</span>Nible */}
+        <img src={carbon} className="dashboard_header_logo_img" alt="logo" />
+
       </div>
       <div className="dashboard_logowrap center">
         <Link

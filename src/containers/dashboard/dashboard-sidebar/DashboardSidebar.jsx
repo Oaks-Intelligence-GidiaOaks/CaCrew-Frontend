@@ -27,6 +27,8 @@ const DashboardSidebar = () => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
+  console.log(user?.organization_id?.isVerified)
+
   useEffect(() => {
     setPathName(location.pathname);
   }, [location]);
@@ -37,11 +39,19 @@ const DashboardSidebar = () => {
 
   return (
     <div className="dashboard_sidebar_wrap">
+      {!user?.organization_id?.isVerified && (
+        <div className="dashboard_sidebar_blocked">
+          <div className="dashboard_sidebar_blocked_text center text">
+            You are not yet activated
+          </div>
+        </div>
+      )}
       <div className="dashboard_link_items_wrap center col">
         <NavLink
           to={"/"}
           activeclassname="active"
           className={"link dashboard_link_item start"}
+          // style={{zIndex: "3"}}
         >
           <img
             src={pathname === "/" ? gridwhite : gridblue}
@@ -102,7 +112,9 @@ const DashboardSidebar = () => {
           >
             <img
               src={
-                pathname?.includes("dashboard-track-project") ? trackproj : trackprojblue
+                pathname?.includes("dashboard-track-project")
+                  ? trackproj
+                  : trackprojblue
               }
               alt="icon"
               className="dashboard_link_item_image"
@@ -127,7 +139,7 @@ const DashboardSidebar = () => {
           // activeclassname="active"
           className={"link dashboard_link_item start"}
           onClick={() => handleLogout()}
-          style={{ marginTop: "50px" }}
+          style={{ marginTop: "50px", zIndex: "3" }}
         >
           <img
             src={fileImg}

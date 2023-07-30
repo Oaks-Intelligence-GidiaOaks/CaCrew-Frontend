@@ -34,8 +34,7 @@ const customBaseQuery = async (args, api, extraOptions) => {
     );
 
     return;
-  }
-  if (result.error && result.error.status === 401) {
+  } else if (result.error && result.error.status === 401) {
     const refreshToken = api.getState().user.refreshToken;
     const refreshResult = await baseQuery(
       { url: "user/refresh_token", method: "POST", body: { refreshToken } },
@@ -47,7 +46,7 @@ const customBaseQuery = async (args, api, extraOptions) => {
       api.dispatch(updateUser({ token: refreshResult.data.accessToken }));
       result = await baseQuery(args, api, extraOptions);
     }
-    if (refreshResult.error.status === 404) {
+    else if (refreshResult.error.status === 401 || refreshResult.error.status === 403) {
       api.dispatch(logoutUser());
       api.dispatch(
         openModal({

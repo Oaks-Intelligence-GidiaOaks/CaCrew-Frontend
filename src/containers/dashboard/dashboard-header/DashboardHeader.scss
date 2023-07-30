@@ -18,6 +18,11 @@
     @media (max-width: 991px) {
       font-size: 20px;
     }
+    .dashboard_header_logo_img {
+      width: 100px;
+      height: 50px;
+      object-fit: contain;
+    }
   }
   .dashboard_header_logo_bold {
     font-weight: 700;
@@ -50,11 +55,11 @@
       height: 30px;
     }
   }
-  .dashboard_header_menu{
+  .dashboard_header_menu {
     display: none;
     @media (max-width: 767px) {
-        display: block;
-        margin-left: 22px;
-      }
+      display: block;
+      margin-left: 22px;
+    }
   }
 }
