@@ -46,4 +46,4 @@ export const messge = `${PATH}/messge.svg`;
 export const trackproj = `${PATH}/trackproj.svg`;
 export const trackprojblue = `${PATH}/trackprojblue.svg`;
 export const certificate = `${PATH}/Certificate.png`;
-export const carbon = `${PATH}/carbon.png`;
+export const carbon = `${PATH}/carbon.svg`;

@@ -19,12 +19,16 @@
       font-size: 20px;
     }
     .dashboard_header_logo_img {
-      width: 100px;
-      height: 50px;
-      object-fit: contain;
+      width: 40px;
     }
+    
   }
   .dashboard_header_logo_bold {
+    font-size: 15px;
+    
+      @media (max-width: 991px) {
+        font-size: 13px;
+      }
     font-weight: 700;
   }
   .dashboard_header_textbtn_wrap {

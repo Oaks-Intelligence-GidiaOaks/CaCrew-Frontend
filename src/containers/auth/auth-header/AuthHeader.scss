@@ -24,13 +24,17 @@
       font-size: 25px;
     }
     .auth_header_logo_img {
-      width: 100px;
+      width: 60px;
       object-fit: cover;
     }
   }
 
   .auth_header_logo_bold {
     font-weight: 700;
+    font-size: 17px;
+    @media (max-width: 991px) {
+        font-size: 14px;
+      }
   }
 
   .auth_header_textbtn_wrap {

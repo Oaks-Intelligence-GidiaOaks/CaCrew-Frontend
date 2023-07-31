@@ -28,7 +28,7 @@ const DashboardSidebar = () => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
-  console.log(user?.organization_id?.isVerified)
+  // console.log(user?.organization_id?.isVerified)
 
   useEffect(() => {
     setPathName(location.pathname);

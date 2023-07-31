@@ -139,7 +139,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
             </div>
             <div className="make_payment_info_method_value">{amount} tCO2e</div>
           </div>
-          <div className="make_payment_info_method_item">
+          {data?.status === "Pending" && <div className="make_payment_info_method_item">
             <div className="make_payment_info_method_text">
               Time left to make payment
             </div>
@@ -149,15 +149,26 @@ const MakePayment = ({ data, amount, transactionId }) => {
             >
               00: 02 :53
             </div>
-          </div>
-          <div className="make_payment_info_method_item">
+          </div>}
+          {data?.status !== "Pending" && <div className="make_payment_info_method_item">
+            <div className="make_payment_info_method_text">
+              Status
+            </div>
+            <div
+              className="make_payment_info_method_value"
+              style={{ color: data?.status === "Completed" ? "green" : "#FF5151"}}
+            >
+              {data?.status}
+            </div>
+          </div>}
+          {data?.status === "Pending" && <div className="make_payment_info_method_item">
             <div className="make_payment_info_method_text">Payment Method</div>
             <div className="make_payment_info_method_value">Bank transfer</div>
-          </div>
+          </div>}
         </div>
         <div className="make_payment_details">
           <div className="make_payment_details_title">Payment details</div>
-          <div className="make_payment_details_info between">
+          {data?.status === "Pending" && <div className="make_payment_details_info between">
             <div className="make_payment_details_info_item">
               <div className="make_payment_details_info_text">Account Name</div>
               <div className="make_payment_details_info_value">
@@ -176,13 +187,23 @@ const MakePayment = ({ data, amount, transactionId }) => {
                 United Bank of Oaks Intelligence
               </div>
             </div>
-          </div>
+          </div>}
           <div className="make_payment_details_message between">
-            <div className="make_payment_details_message_seller start">
+            {data?.status === "Pending" && <div className="make_payment_details_message_seller start">
               <img src={messge} alt="icon" />
               <span> Message Seller</span>
-            </div>
-            <div className="make_payment_details_message_seller_text">
+            </div>}
+            {data?.status !== "Pending" && <div className="make_payment_details_message_seller_text">
+              <span className="make_payment_details_message_seller_text_small">
+                {" "}
+                Transaction fee:{" "}
+              </span>
+              <span className="make_payment_details_message_seller_text_big">
+                {" "}
+                {Math.ceil(amount * 0.015)}{" tCO2e"}
+              </span>
+            </div>}
+            {data?.status === "Pending" && <div className="make_payment_details_message_seller_text">
               <span className="make_payment_details_message_seller_text_small">
                 {" "}
                 Pay the Seller:{" "}
@@ -191,7 +212,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
                 {" "}
                 ${" "}{amount}
               </span>
-            </div>
+            </div>}
           </div>
         </div>
         {data?.status === "Pending" && (

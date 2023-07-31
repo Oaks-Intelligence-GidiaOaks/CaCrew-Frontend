@@ -153,38 +153,61 @@ const ConfirmPayment = ({ data }) => {
             </div>
           </div>
           <div className="make_payment_info_method_item">
-            <div className="make_payment_info_method_text">
-              Time left to make payment
-            </div>
+            <div className="make_payment_info_method_text">Status</div>
             <div
               className="make_payment_info_method_value"
-              style={{ color: "#FF5151" }}
+              style={{
+                color: data?.status === "Completed" ? "green" : "#FF5151",
+              }}
             >
-              00: 02 :53
+              {data?.status}
             </div>
           </div>
-          <div className="make_payment_info_method_item">
-            <div className="make_payment_info_method_text">Payment Method</div>
-            <div className="make_payment_info_method_value">Bank transfer</div>
-          </div>
+          {data?.status === "Pending" && (
+            <div className="make_payment_info_method_item">
+              <div className="make_payment_info_method_text">
+                Payment Method
+              </div>
+              <div className="make_payment_info_method_value">
+                Bank transfer
+              </div>
+            </div>
+          )}
         </div>
         <div className="make_payment_details">
           <div className="make_payment_details_title">Payment details</div>
           <div className="make_payment_details_message between">
-            <div className="make_payment_details_message_seller start">
-              <img src={messge} alt="icon" />
-              <span> Message Buyer</span>
-            </div>
-            <div className="make_payment_details_message_seller_text">
-              <span className="make_payment_details_message_seller_text_small">
-                {" "}
-                Amount:{" "}
-              </span>
-              <span className="make_payment_details_message_seller_text_big">
-                {" "}
-                ${data?.amount}{" "}
-              </span>
-            </div>
+            {data?.status === "Pending" && (
+              <div className="make_payment_details_message_seller start">
+                <img src={messge} alt="icon" />
+                <span> Message Buyer</span>
+              </div>
+            )}
+            {data?.status !== "Pending" && (
+              <div className="make_payment_details_message_seller_text">
+                <span className="make_payment_details_message_seller_text_small">
+                  {" "}
+                  Transaction fee:{" "}
+                </span>
+                <span className="make_payment_details_message_seller_text_big">
+                  {" "}
+                  {Math.ceil(data?.amount * 0.015)}
+                  {" tCO2e"}
+                </span>
+              </div>
+            )}
+            {data?.status === "Pending" && (
+              <div className="make_payment_details_message_seller_text">
+                <span className="make_payment_details_message_seller_text_small">
+                  {" "}
+                  Amount:{" "}
+                </span>
+                <span className="make_payment_details_message_seller_text_big">
+                  {" "}
+                  ${data?.amount}{" "}
+                </span>
+              </div>
+            )}
           </div>
         </div>
         {data?.status === "Pending" && (

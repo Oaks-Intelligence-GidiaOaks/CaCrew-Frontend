@@ -8,6 +8,7 @@ import { Button, Input } from "components";
 import capitalizeInitials from "utils/capitaliseInitials";
 import { useInitiateSellMutation } from "services/transaction.service";
 import rtkMutation from "utils/rtkMutation";
+import formatPrice from "utils/formatPrice";
 
 const ModalSellCarbon = ({ data }) => {
   // make api req
@@ -45,7 +46,7 @@ const ModalSellCarbon = ({ data }) => {
           title: "Sell Initiated Success",
           message: `You have succesfuly initiated a sell to ${data?.organization_id?.organization_name},
          amouunt is ${data?.carbon_credit_quantity}. Please await payment`,
-         success: true,
+          success: true,
         })
       );
 
@@ -126,7 +127,9 @@ const ModalSellCarbon = ({ data }) => {
         <span className="modal_buy_carb_sale_normal">
           {" "}
           Price: {activeTab === "fiat" && " $"}
-          {data?.amount_per_unit || "-"}
+          {activeTab === "carbon"
+            ? data?.amount_per_unit
+            : formatPrice(data?.amount_per_unit * data?.carbon_credit_quantity) || "-"}
           {activeTab === "carbon" && " per tCO2e"}
         </span>
       </div>
@@ -136,8 +139,10 @@ const ModalSellCarbon = ({ data }) => {
           className="modal_buy_carb_sale_bold"
           style={{ paddingRight: "20px" }}
         >
-          {activeTab === "fiat" && "$"}
-          {data?.carbon_credit_quantity} {activeTab === "carbon" && " tCO2e"}
+          {/* {activeTab === "fiat" && "$"} */}
+          {data?.carbon_credit_quantity}
+          {" tCO2e"}
+          {/* {activeTab === "carbon" && " tCO2e"} */}
         </span>
       </div>
       <div className="modal_buy_carb_input_warp">
@@ -148,7 +153,7 @@ const ModalSellCarbon = ({ data }) => {
             }`}
             onClick={() => handleTabClick("carbon")}
           >
-            By Carbon Credit
+            Carbon Credit
           </div>
           <div
             className={`dashboard_table_tab_item ${
@@ -156,7 +161,7 @@ const ModalSellCarbon = ({ data }) => {
             }`}
             onClick={() => handleTabClick("fiat")}
           >
-            By Fiat
+            Fiat
           </div>
         </div>
         <div className="modal_buy_carb_input">

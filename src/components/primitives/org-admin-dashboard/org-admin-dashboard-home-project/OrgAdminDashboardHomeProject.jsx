@@ -2,8 +2,11 @@ import React from "react";
 import "./OrgAdminDashboardHomeProject.scss";
 import { square } from "assets/images";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const OrgAdminDashboardHomeProject = () => {
+  const user = useSelector((state) => state.user.user);
+  console.log(user, "test");
   return (
     <div className="org_dash_home_project">
       <div className="org_dash_home_project_heading">Projects</div>
@@ -15,7 +18,13 @@ const OrgAdminDashboardHomeProject = () => {
         </div>
         <div className="org_dash_home_project_empty center col">
           <img src={square} alt="icon" />
-          <Link to={"/dashboard-project"} className="org_dash_home_project_empty_text">
+          <Link
+            to={user?.organization_id?.isVerified ? "/dashboard-project" : ""}
+            className={`org_dash_home_project_empty_text ${
+              !user?.organization_id?.isVerified &&
+              "org_dash_home_project_empty_notallowed"
+            }`}
+          >
             Create a Project
           </Link>
         </div>

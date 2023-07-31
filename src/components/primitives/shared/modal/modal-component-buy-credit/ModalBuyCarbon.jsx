@@ -3,31 +3,37 @@ import "./ModalBuyCarbon.scss";
 import { verify, close } from "assets/images";
 import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
-import { Form, Field } from "react-final-form";
+import { Form, Field, useFormState } from "react-final-form";
 import { Button, Input } from "components";
 import capitalizeInitials from "utils/capitaliseInitials";
 import { useInitiateBuyMutation } from "services/transaction.service";
 import rtkMutation from "utils/rtkMutation";
+import formatPrice from "utils/formatPrice";
+import { OnChange } from "react-final-form-listeners";
 
 const ModalBuyCarbon = ({ data }) => {
   // make api req
   const [
     initiateBuy,
-    {data: dataInitiate, isSuccess, error, isError, isLoading},
+    { data: dataInitiate, isSuccess, error, isError, isLoading },
   ] = useInitiateBuyMutation();
+
+  // carbon credit amount
+  const [amount, setAmount] = useState()
+  const [activeTab, setActiveTab] = useState("carbon");
+
 
   // set ref, get updated value in a callback
   const isErrorRef = useRef(isError);
   const isSuccessRef = useRef(isSuccess);
   const errorRef = useRef(error);
   const dataRef = useRef(data);
+  // const amountRef = useRef(amount);
 
   const dispatch = useDispatch();
   const handleDis = () => {
     dispatch(closeComponentModal());
   };
-
-  const [activeTab, setActiveTab] = useState("carbon");
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -63,9 +69,9 @@ const ModalBuyCarbon = ({ data }) => {
     isSuccessRef.current = isSuccess;
     errorRef.current = error;
     dataRef.current = dataInitiate;
-  }, [isError, isSuccess, error, dataInitiate]);
+  }, [isError, isSuccess, error, dataInitiate, amount]);
 
-  console.log(dataInitiate, "buysell");
+  // console.log(amount, "buysell");
   // console.log(isErrorRef, isSuccessRef, errorRef, "buysell***");
 
   return (
@@ -107,14 +113,18 @@ const ModalBuyCarbon = ({ data }) => {
           className="modal_buy_carb_sale_normal"
           style={{ paddingRight: "20px" }}
         >
-          Minimum Sale Available: {activeTab === "fiat" && " $"}
-          {data?.minimum_sale_unit}
-          {activeTab === "carbon" && " tCO2e"}
+          Minimum Sale Available:
+          {/* {activeTab === "fiat" && " $"} */} {data?.minimum_sale_unit}
+          {" tCO2e"}
         </span>
         <span className="modal_buy_carb_sale_normal">
           {" "}
           Price: {activeTab === "fiat" && " $"}
-          {data?.amount_per_unit || "-"}
+          {activeTab === "carbon"
+            ? data?.amount_per_unit
+            : formatPrice(
+                data?.amount_per_unit * data?.carbon_credit_quantity
+              ) || "-"}
           {activeTab === "carbon" && " per tCO2e"}
         </span>
       </div>
@@ -124,8 +134,8 @@ const ModalBuyCarbon = ({ data }) => {
           className="modal_buy_carb_sale_bold"
           style={{ paddingRight: "20px" }}
         >
-          {activeTab === "fiat" && "$"}
-          {data?.available_to_sale} {activeTab === "carbon" && " tCO2e"}
+          {/* {activeTab === "fiat" && "$"} */}
+          {data?.available_to_sale} {" tCO2e"}
         </span>
       </div>
       <div className="modal_buy_carb_input_warp">
@@ -136,7 +146,7 @@ const ModalBuyCarbon = ({ data }) => {
             }`}
             onClick={() => handleTabClick("carbon")}
           >
-            By Carbon Credit
+            Carbon Credit
           </div>
           <div
             className={`dashboard_table_tab_item ${
@@ -144,7 +154,7 @@ const ModalBuyCarbon = ({ data }) => {
             }`}
             onClick={() => handleTabClick("fiat")}
           >
-            By Fiat
+            Fiat
           </div>
         </div>
         <div className="modal_buy_carb_input">
@@ -162,18 +172,23 @@ const ModalBuyCarbon = ({ data }) => {
                     }
                     component={Input}
                   />
+                  <OnChange name="amount">
+                    {(value, previous) => {
+                        setAmount(value)
+                    }}
+                  </OnChange>
                 </div>
                 <div className="modal_buy_carb_input_text_red">
-                  Minimum is £12,500
+                  {"Transaction fee: " + Math.ceil((amount * 0.015).toFixed(2))}
                 </div>
                 <div className="modal_buy_carb_input_text between">
                   <span>Quantity</span>
-                  <span>4,500 tCO2e</span>
+                  <span>{amount}</span>
                 </div>
-                <div className="modal_buy_carb_input_text between">
+                {/* <div className="modal_buy_carb_input_text between">
                   <span>Quantity</span>
                   <span>4,500 tCO2e</span>
-                </div>
+                </div> */}
                 <Button
                   text={"Proceed"}
                   type={"submit"}
