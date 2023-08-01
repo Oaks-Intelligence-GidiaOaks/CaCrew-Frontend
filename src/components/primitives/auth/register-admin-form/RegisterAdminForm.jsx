@@ -27,7 +27,7 @@ const RegisterAdminForm = () => {
       <Form
         onSubmit={onSubmit}
         validate={validate}
-        initialValues={state}
+        // initialValues={state}
         render={({ handleSubmit, valid }) => (
           <form onSubmit={handleSubmit} className="form">
             <div className="field">

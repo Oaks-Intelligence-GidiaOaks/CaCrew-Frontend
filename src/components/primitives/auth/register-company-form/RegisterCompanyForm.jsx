@@ -16,7 +16,7 @@ const RegisterCompanyForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [initialValuesCompany, setInitialValuesCompany] = useState({});
+  // const [initialValuesCompany, setInitialValuesCompany] = useState({});
 
   const state = useSelector((state) => state.formdata);
 
@@ -28,23 +28,23 @@ const RegisterCompanyForm = () => {
     navigate("/register-admin");
     // console.log(formatDate, otherValues, "valuesDispatch");
   };
-  useEffect(() => {
-    if (state && state.organization_name !== null) {
-      const { date_of_incorporation } = state;
-      const { ...copy } = state;
-      copy["date_of_incorporation"] = revertToDateFormat(date_of_incorporation);
-      setInitialValuesCompany(copy);
-    }
-    console.log(Object.keys(initialValuesCompany).length, "cop");
-    console.log(initialValuesCompany, "cop2");
-  }, [state]);
+  // useEffect(() => {
+  //   if (state && state.organization_name !== null) {
+  //     const { date_of_incorporation } = state;
+  //     const { ...copy } = state;
+  //     copy["date_of_incorporation"] = revertToDateFormat(date_of_incorporation);
+  //     setInitialValuesCompany(copy);
+  //   }
+  //   console.log(Object.keys(initialValuesCompany).length, "cop");
+  //   console.log(initialValuesCompany, "cop2");
+  // }, [state]);
 
   return (
     <div className="auth_form">
       <Form
         onSubmit={onSubmit}
         validate={validate}
-        initialValues={initialValuesCompany}
+        // initialValues={initialValuesCompany}
         render={({ handleSubmit, valid }) => (
           <form onSubmit={handleSubmit} className="form">
             <div className="auth_form_title">Let’s Get You Started</div>

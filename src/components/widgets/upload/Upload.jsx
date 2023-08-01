@@ -1,32 +1,26 @@
-import React, { useState, useRef, useEffect } from "react";
-import "./Upload.scss";
+import React, { useState, useRef } from "react";
+import "./Upload.scss"
 import { fileImg, filesImg, trash } from "assets/images";
 import { Field } from "react-final-form";
-import { required } from "validations/validations";
-import { useSelector, useDispatch } from "react-redux";
-import { updateFormdata } from "redux/slices/register.slice";
-import { stringTypeToFile } from "utils/fileTypeReader";
 
-const Upload = ({ documentName, multiple = false, setUploadFile = null }) => {
+
+const Upload = ({ documentName }) => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
-
-  const state = useSelector((state) => state.formdata);
-  const dispatch = useDispatch();
 
   const fileRef = useRef(null);
 
   // handle file change
   const handleChange = (e) => {
     const selectedFile = e.target.files[0];
-    // const fileReader = new FileReader();
-    // fileReader.readAsDataURL(selectedFile);
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(selectedFile);
 
-    // fileReader.onload = () => {
-    setFile(() => selectedFile);
-    // };
+    fileReader.onload = () => {
+      setFile(() => selectedFile);
+    };
 
-    // console.log(file);
+    console.log(file);
 
     setProgress(0);
     setTimeout(() => {
@@ -39,54 +33,30 @@ const Upload = ({ documentName, multiple = false, setUploadFile = null }) => {
     fileRef.current.value = "";
     setFile(null);
     setProgress(0);
-    const delObj = {};
-    delObj[documentName] = null;
-    dispatch(updateFormdata(delObj));
-    setUploadFile && setUploadFile(null);
   };
-
-  useEffect(() => {
-    const fileObj = state[documentName];
-    const uploadStringCovertFile =
-      fileObj &&
-      Object.keys(fileObj).length > 0 &&
-      stringTypeToFile(fileObj.string, fileObj.type, fileObj.name);
-    setFile(uploadStringCovertFile || null);
-    uploadStringCovertFile && setProgress(100);
-  }, [state]);
   return (
     <div>
       <Field
         name={documentName}
-        validate={required(documentName?.replace(/_/g, " "))}
-        render={({ input, meta }) => (
-          <>
-            <div className="upload center col">
-              <div className="upload_image_wrap center">
-                <img src={fileImg} alt="icon" />
-              </div>
-              <div className="upload_text_bold">
-                Drag and drop files, or Browse
-              </div>
-              <div className="upload_text">Support jpg, png, pdf, docx</div>
-              <input
-                ref={fileRef}
-                type="file"
-                className="uplaod_input"
-                multiple={multiple}
-                accept="image/jpeg,image/png,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                onChange={(e) => {
-                  input.onChange(e.target.files[0]);
-                  handleChange(e);
-                }}
-              />
+        render={({ input }) => (
+          <div className="upload center col">
+            <div className="upload_image_wrap center">
+              <img src={fileImg} alt="icon" />
             </div>
-            {meta.error &&  (
-              <div className="input_error" style={{ textAlign: "center" }}>
-                {meta.error}
-              </div>
-            )}
-          </>
+            <div className="upload_text_bold">
+              Drag and drop files, or Browse
+            </div>
+            <div className="upload_text">Support jpg, png, pdf, docx</div>
+            <input
+              ref={fileRef}
+              type="file"
+              className="uplaod_input"
+              onChange={(e) => {
+                input.onChange(e.target.files[0]);
+                handleChange(e);
+              }}
+            />
+          </div>
         )}
       />
       {file && (
