@@ -19,6 +19,7 @@ import {
   TRACK_PROJECT,
   TRACK_PROJECT_OVERVIEW,
   MY_ACCOUNT,
+  MESSAGE,
 } from "routes/constants";
 
 // Import auth pages
@@ -36,6 +37,7 @@ import {
   DashboardStaffPage,
   DashboardWalletPage,
   BuyCarbonCreditPage,
+  DashboardMessagePage,
   // super admin dasboard pages
   DashboardOrganisationPage,
   SupAdminDashHomePage,
@@ -113,6 +115,10 @@ const RoutesConfig = () => {
       <Route
         path={MY_ACCOUNT}
         element={<ProtectedRoute component={MyAccountPage} />}
+      />
+      <Route
+        path={MESSAGE}
+        element={<ProtectedRoute component={DashboardMessagePage} />}
       />
     </Routes>
   );

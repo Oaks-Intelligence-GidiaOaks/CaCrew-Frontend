@@ -13,6 +13,8 @@ export {default as DashboardStaffPage} from "pages/shared/DashboardStaffPage"
 export {default as DashboardWalletPage} from "pages/shared/DashboardWalletPage"
 export {default as BuyCarbonCreditPage} from "pages/shared/BuyCarbonCreditPage"
 export {default as MyAccountPage} from "pages/shared/MyAccountPage"
+export {default as DashboardMessagePage} from "pages/shared/DashboardMessagePage"
+
 
 // Super admin pages exports
 export {default as DashboardOrganisationPage} from "pages/super-admin-dashboard/DashboardOrganisationPage"

@@ -1,0 +1,67 @@
+@import "base.scss";
+
+.messsage_list {
+  padding-top: 17px;
+  .messsage_list_search_wrap {
+    padding: 5px;
+  }
+  .messsage_list_bg {
+    background: #f8f8f8;
+    margin-top: 4px;
+    padding: 5px;
+    height: 400px;
+    overflow-y: scroll;
+    .messsage_list_heading {
+      margin-bottom: 11px;
+      margin-top: 20px;
+    }
+    .messsage_list_wrap {
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #dedede;
+      background: #fff;
+      margin-bottom: 4px;
+      .messsage_list_img_text_wrap {
+        align-items: center;
+        .messsage_list_img {
+          margin-right: 12px;
+          width: 49px;
+          height: 49px;
+        }
+        .messsage_list_text {
+          .messsage_list_last {
+            color: #4c5563;
+            font-size: 15px;
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            @media (max-width: 991px) {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .messsage_list_wrap_bg{
+        background-color: #F2F5FF;
+    }
+    .messsage_list_new {
+      color: white;
+      font-size: 12px;
+      background-color: $blue;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+    }
+    .messsage_list_name {
+      color: #212121;
+      font-size: 15px;
+      margin-bottom: 5px;
+
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
+  }
+}

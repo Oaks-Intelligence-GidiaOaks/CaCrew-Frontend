@@ -12,7 +12,7 @@ const apiSlice = createApi({
   //     return action.payload?.[reducerPath];
   //   }
   // },
-  tagTypes: ["User", "Organization", "Projects", "Staff", "Transaction"],
+  tagTypes: ["User", "Organization", "Projects", "Staff", "Transaction", "Message"],
   endpoints: (builder) => ({}),
   // refetchOnMountOrArgChange: true,
   keepUnusedDataFor: 50000

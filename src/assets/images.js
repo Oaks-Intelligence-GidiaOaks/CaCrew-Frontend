@@ -47,3 +47,6 @@ export const trackproj = `${PATH}/trackproj.svg`;
 export const trackprojblue = `${PATH}/trackprojblue.svg`;
 export const certificate = `${PATH}/Certificate.png`;
 export const carbon = `${PATH}/carbon.svg`;
+export const support = `${PATH}/support.png`;
+export const notification = `${PATH}/notification.svg`;
+export const attach = `${PATH}/attach.svg`;

@@ -32,3 +32,8 @@ export const GET_SELL_ITEMS = "transaction/sell_items";
 export const SET_BUY_ORDER = "transaction/set_buy_order";
 export const GET_MY_TRANSACTIONS = "transaction/my_transactions";
 export const GET_ALL_TRANSACTIONS = "transaction/all_transactions";
+
+// Messaging constants
+export const MESSAGE = "message";
+export const MARK_AS_READ = "message/mark_as_read"
+

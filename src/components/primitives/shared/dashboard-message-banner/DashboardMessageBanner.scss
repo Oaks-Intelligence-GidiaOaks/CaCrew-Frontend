@@ -1,0 +1,33 @@
+@import "base.scss";
+
+.dash_message_banner {
+  padding: 39px 70px 24px 70px;
+  background: #f2f5ff;
+  @media (max-width: 991px) {
+    padding: 39px 20px 24px 20px;
+    flex-direction: column;
+  }
+  .dash_message_banner_heading {
+    @media (max-width: 991px) {
+      margin-bottom: 10px;
+    }
+  }
+  .dash_message_banner_notify {
+    .dash_message_banner_notify_wrap {
+      margin-left: 50px;
+      @media (max-width: 991px) {
+        margin: 0px 15px;
+      }
+      .dash_message_banner_notify_img {
+      }
+      .dash_message_banner_notify_text {
+        color: #4c5563;
+        font-size: 15px;
+
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

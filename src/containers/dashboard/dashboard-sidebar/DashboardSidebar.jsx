@@ -137,6 +137,18 @@ const DashboardSidebar = () => {
           Staff
         </NavLink>
         <NavLink
+          to={"/messages"}
+          activeclassname="active"
+          className={"link dashboard_link_item start"}
+        >
+          <img
+            src={pathname === "/dashboard-staff" ? staffwhite : staffblue}
+            alt="icon"
+            className="dashboard_link_item_image"
+          />
+          Notification
+        </NavLink>
+        <NavLink
           to={"/login"}
           // activeclassname="active"
           className={"link dashboard_link_item start"}

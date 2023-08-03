@@ -13,6 +13,8 @@ import {
   MakePayment,
   ModalBuyOrder,
   ConfirmPayment,
+  ModalRetireCredit,
+  ConfirmRetireCredit
 } from "components";
 
 const Modal = () => {
@@ -52,6 +54,8 @@ const Modal = () => {
     ),
     ConfirmPayment: <ConfirmPayment data={data} />,
     ModalBuyOrder: <ModalBuyOrder />,
+    ModalRetireCredit: <ModalRetireCredit />, 
+    ConfirmRetireCredit: <ConfirmRetireCredit data={data}/>, 
   }[component];
 
   return (

@@ -1,0 +1,26 @@
+@import "base.scss";
+
+.dashboard_message {
+  .dashboard_message_wrap {
+    width: 100%;
+    align-items: flex-start;
+    .dashboard_message_list {
+      width: 40%;
+    //   background-color: #f8f8f8;
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+    }
+    .dashboard_message_view {
+      width: 60%;
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+    .show_dashboard_message_view{
+        z-index: 2;
+        display: block;
+        width: 100%;
+    }
+  }
+}

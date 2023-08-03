@@ -144,7 +144,7 @@ const transactionApiSlice = apiSlice.injectEndpoints({
 
     // transaction success
     transactionSuccess: builder.mutation({
-      invalidatesTags: ["Transaction"],
+      invalidatesTags: ["Transaction", "User"],
       query: (data) => ({
         url: TRANSACTION_SUCCESS,
         method: "POST",
@@ -157,7 +157,7 @@ const transactionApiSlice = apiSlice.injectEndpoints({
 
     // retire carbon credit
     retireCarbonCredit: builder.mutation({
-      invalidatesTags: ["Transaction"],
+      invalidatesTags: ["Transaction", "User"],
       query: (data) => ({
         url: RETIRE_CARBON_CREDIT,
         method: "POST",

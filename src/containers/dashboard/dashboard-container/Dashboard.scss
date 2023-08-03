@@ -3,7 +3,7 @@
 .dashboard {
   width: 100%;
   .dashboard_wrap {
-    padding-top: 95px;
+    padding-top: 105px;
     .dashboard_sidebar {
       width: 20%;
       position: fixed;
@@ -11,6 +11,7 @@
       background-color: #fff;
       top: 92px;
       z-index: 2;
+      
       @media (max-width: 767px) {
         position: fixed;
         width: 45%;

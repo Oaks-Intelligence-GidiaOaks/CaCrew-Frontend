@@ -22,12 +22,19 @@ export { default as ModalBuyCarbon } from "components/primitives/shared/modal/mo
 export { default as ModalSellCarbon } from "components/primitives/shared/modal/modal-component-sell-credit/ModalSellCarbon";
 export { default as ModalSellOrder } from "components/primitives/shared/modal/modal-component-sell-order/ModalSellOrder";
 export { default as ModalBuyOrder } from "components/primitives/shared/modal/modal-component-buy-order/ModalBuyOrder";
+export { default as ModalRetireCredit } from "components/primitives/shared/modal/modal-retire-credit/ModalRetireCredit";
 export { default as MakePayment } from "components/primitives/shared/modal/make-payment/MakePayment";
 export { default as ConfirmPayment } from "components/primitives/shared/modal/confirm-payment/ConfirmPayment";
+export { default as ConfirmRetireCredit } from "components/primitives/shared/modal/comfirm-retire/ConfirmRetireCredit";
 export { default as TrackProjectTable } from "components/primitives/super-admin-dashboard/track-project-table/TrackProjectTable";
 export { default as TrackTableComplete } from "components/primitives/super-admin-dashboard/track-project-complete-table/TrackTableComplete";
 export { default as MyAccountBanner } from "components/primitives/shared/my-account-banner/MyAccountBanner";
 export { default as MyAccountInfo } from "components/primitives/shared/my-account-info/MyAccountInfo";
+export { default as DashboardMessageBanner } from "components/primitives/shared/dashboard-message-banner/DashboardMessageBanner";
+export { default as MessagesList } from "components/primitives/shared/messages-list/MessagesList";
+export { default as ViewMessages } from "components/primitives/shared/view-messages/ViewMessages";
+export { default as MessageItem } from "components/primitives/shared/Message-item/MessageItem";
+export { default as SendMessage } from "components/primitives/shared/send-message/SendMessage";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

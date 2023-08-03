@@ -3,13 +3,19 @@ import "./OrgAdminDashboardHomeCredit.scss";
 import { avartar } from "assets/images";
 import { Button } from "components";
 // import { useGetUserQuery } from "services/user.service";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { openModal } from "redux/slices/modal.slice";
 
 const OrgAdminDashboardHomeCredit = () => {
   // const { data } = useGetUserQuery();
   const data = useSelector((state) => state.user.user);
   const navigate = useNavigate();
+   const dispatch = useDispatch()
+
+  const handleOpenModalRetire = () => {
+    dispatch(openModal({ component: "ModalRetireCredit" }));
+  };
   return (
     <div className="credit between">
       <img src={avartar} alt="avartar" className="credit_avartar" />
@@ -65,6 +71,7 @@ const OrgAdminDashboardHomeCredit = () => {
                 ? "credit_btn"
                 : "credit_btn_pending"
             } credit_btn_three`}
+            onClick={handleOpenModalRetire}
           />
         </div>
       </div>

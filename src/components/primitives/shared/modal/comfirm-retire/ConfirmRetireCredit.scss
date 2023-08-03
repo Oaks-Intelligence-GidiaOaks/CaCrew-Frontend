@@ -1,0 +1,245 @@
+@import "base.scss";
+
+.retire {
+  width: 70%;
+  background-color: #fff;
+  position: relative;
+  padding-top: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+
+  .retire_close {
+    cursor: pointer;
+    position: absolute;
+    top: 21px;
+    right: 20px;
+  }
+
+  @media (max-width: 991px) {
+    width: 100%;
+  }
+
+  .retire_info_wrap {
+    .retire_info_initials_con {
+      border-bottom: 1px solid #dedede;
+      padding-bottom: 27.5px;
+
+      @media (max-width: 991px) {
+        flex-direction: column;
+      }
+
+      .retire_info_initials_wrap {
+        align-items: center;
+
+        @media (max-width: 991px) {
+          margin-bottom: 5px;
+        }
+
+        .retire_info_initials {
+          width: 46px;
+          height: 46px;
+          background-color: #c8f0ff;
+          border-radius: 50%;
+          margin-right: 10px;
+
+          @media (max-width: 991px) {
+            width: 28px;
+            height: 28px;
+          }
+        }
+
+        .retire_info_bold {
+          color: #212121;
+          font-size: 20px;
+          font-weight: 500;
+          margin-right: 15px;
+
+          @media (max-width: 991px) {
+            font-size: 15px;
+          }
+        }
+      }
+
+      .retire_info_initials_contact {
+        color: #4c5563;
+        font-size: 15px;
+
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+
+        span {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .retire_info_method {
+      padding-top: 30px;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 30px;
+      border-radius: 4px;
+      border: 1px solid #dedede;
+      margin-top: 50px;
+
+      @media (max-width: 991px) {
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .retire_info_method_item {
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          height: 100px;
+          width: 1px;
+          background-color: #dedede;
+          left: 220px;
+          top: -20px;
+          @media (max-width: 991px) {
+            display: none;
+          }
+        }
+        .retire_info_method_text {
+          color: $blue;
+          font-size: 15px;
+          margin-bottom: 10px;
+
+          @media (max-width: 991px) {
+            font-size: 12px;
+            margin-bottom: 4px;
+          }
+        }
+
+        .retire_info_method_value {
+          @extend .retire_info_method_text;
+          color: #4c5563;
+        }
+      }
+      .retire_info_method_item_noboder {
+        &::before {
+          display: none;
+        }
+        @extend .retire_info_method_item;
+      }
+    }
+
+    .retire_details {
+      padding: 40px;
+      background: #f8f8f8;
+      border-radius: 8px;
+      margin-top: 34px;
+
+      @media (max-width: 991px) {
+        padding: 10px;
+      }
+
+      .retire_details_title {
+        color: $purple;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 38px;
+
+        @media (max-width: 991px) {
+          font-size: 14px;
+        }
+      }
+
+      .retire_details_info {
+        margin-bottom: 38px;
+
+        // overflow-x: scroll;
+        @media (max-width: 991px) {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .retire_details_info_item {
+          .retire_details_info_text {
+            color: #4c5563;
+            font-size: 15px;
+            margin-bottom: 8px;
+            white-space: nowrap;
+
+            @media (max-width: 991px) {
+              font-size: 12px;
+              margin-bottom: 2px;
+            }
+          }
+
+          .retire_details_info_value {
+            color: #212121;
+            font-size: 18px;
+
+            @media (max-width: 991px) {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
+      .retire_details_message {
+        @media (max-width: 991px) {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .retire_details_message_seller {
+          border-radius: 8px;
+          align-items: center;
+          border: 1px solid #2b5fad;
+          padding: 10px;
+
+          img {
+            margin-right: 14px;
+          }
+        }
+
+        .retire_details_message_seller_text {
+          .retire_details_message_seller_text_small {
+            color: #212121;
+            font-size: 15px;
+            margin-right: 10px;
+
+            @media (max-width: 991px) {
+              font-size: 12px;
+            }
+          }
+
+          .retire_details_message_seller_text_big {
+            color: #5f41b2;
+            font-size: 32px;
+            font-weight: 500;
+
+            @media (max-width: 991px) {
+              font-size: 19px;
+            }
+          }
+        }
+      }
+    }
+
+    .retire_btn_wrap {
+      margin-top: 61px;
+
+      .retire_btn_two {
+        background-color: #fff;
+        border-radius: 26px;
+        border: 1px solid #4c5563;
+        color: black;
+        max-width: 134px;
+      }
+
+      .retire_btn {
+        max-width: 251px;
+        margin-left: 15px;
+      }
+    }
+  }
+}

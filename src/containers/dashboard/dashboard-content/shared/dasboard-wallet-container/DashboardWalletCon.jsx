@@ -22,7 +22,11 @@ const DashboardWalletCon = () => {
     dispatch(openModal({ component: "ModalSellOrder" }));
   };
 
-  const {data: dataMyTranscation} = useGetMyTransactionQuery()
+  const handleOpenModalRetire = () => {
+    dispatch(openModal({ component: "ModalRetireCredit" }));
+  };
+
+  const { data: dataMyTranscation } = useGetMyTransactionQuery();
 
   return (
     <div className="dashboard_wallet_container">
@@ -43,7 +47,11 @@ const DashboardWalletCon = () => {
             className={"dashboard_wallet_con_btnone"}
             onClick={handleOpenModal}
           />
-          <Button text={"Retire"} className={"dashboard_wallet_con_btntwo"} />
+          <Button
+            text={"Retire"}
+            className={"dashboard_wallet_con_btntwo"}
+            onClick={handleOpenModalRetire}
+          />
           <Button
             text={"Generate Statement"}
             className={"dashboard_wallet_con_btntwo"}
@@ -51,7 +59,7 @@ const DashboardWalletCon = () => {
         </div>
       </div>
       <div className="dashboard_wallet_con_table dash_pad">
-        <DashboardWalletTable data={dataMyTranscation}/>
+        <DashboardWalletTable data={dataMyTranscation} />
       </div>
     </div>
   );
