@@ -33,7 +33,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
   const navigate = useNavigate();
 
   // get buyer id, for messaging
-  const { data: id } = useGetOrgAdminQuery({ id: data?.buyer?._id });
+  const { data: id } = useGetOrgAdminQuery({ id: data?.seller?._id });
 
   // handle snd message button functionality
   const handleSendMessage = async () => {
