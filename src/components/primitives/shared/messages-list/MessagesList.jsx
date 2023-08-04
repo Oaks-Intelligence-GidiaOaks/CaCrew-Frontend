@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import timeAgo from "utils/timeAgo";
 
 const MessagesList = () => {
-  const { data } = useGetAllMessagesQuery({ pollingInterval: 1000 });
+  const { data } = useGetAllMessagesQuery("getAllMessage", { pollingInterval: 1000 });
   const { data: user } = useGetUserQuery();
 
   const [tabIndex, setTabIndex] = useState(0);
