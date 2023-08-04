@@ -9,7 +9,10 @@ import { useSelector } from "react-redux";
 const ViewMessages = () => {
   const chatId = useSelector((store) => store.message.chat_id);
   const skipQuery = chatId === null || chatId === undefined ? true : false;
-  const { data } = useGetMessageQuery(chatId, { skip: skipQuery });
+  const { data } = useGetMessageQuery(chatId, {
+    skip: skipQuery,
+    pollingInterval: 1000,
+  });
   const { data: user } = useGetUserQuery();
   console.log(chatId, "message");
 
@@ -29,7 +32,7 @@ const ViewMessages = () => {
         <div className="view_message_all">
           {data &&
             data?.map((item) => (
-              <div key={item?._id} >
+              <div key={item?._id}>
                 <MessageItem
                   send={user?._id === item?.sender?._id}
                   message={item?.message}
@@ -39,7 +42,7 @@ const ViewMessages = () => {
               </div>
             ))}
         </div>
-        <div id="chat"/>
+        <div id="chat" />
       </div>
     </div>
   );
