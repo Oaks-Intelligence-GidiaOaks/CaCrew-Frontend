@@ -34,17 +34,19 @@ const MakePayment = ({ data, amount, transactionId }) => {
 
   // get buyer id, for messaging
   const { data: id } = useGetOrgAdminQuery({ id: data?.seller?._id });
-  console.log(id, "id")
+  console.log(data?.seller?._id, "ids")
 
   // handle snd message button functionality
   const handleSendMessage = async () => {
-    id && dispatch(updateMessageId({ chat_id: id?.id, message_id: null }));
-    console.log(id)
+    id && dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
 
     if (chatId) {
       await rtkMutation(sendMessage, { reciever: chatId, message: " " });
     }
   };
+
+    console.log(chatId, "chatId")
+
 
   const [
     paymentMade,
@@ -139,6 +141,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
 
   useEffect(() => {
     isSuccessMessage && navigate("/messages");
+    isSuccessMessage && dispatch(closeComponentModal())
     isErrorMessage &&
       dispatch(
         openModal({

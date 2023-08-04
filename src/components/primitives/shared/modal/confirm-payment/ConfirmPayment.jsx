@@ -154,7 +154,8 @@ const ConfirmPayment = ({ data }) => {
       title: "Failed To Initiate Messaging",
       message: `${errorMessage?.data?.message || "An error occured, try agiain" }`,
     }))
-    // isSuccessMessage && navigate("/messages")
+    isSuccessMessage && dispatch(closeComponentModal())
+    isSuccessMessage && navigate("/messages")
 
   }, [isSuccessMessage, isErrorMessage, errorMessage])
 
