@@ -1,19 +1,48 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./MakePayment.scss";
 import { close, messge, verify } from "assets/images";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
+import { updateMessageId } from "redux/slices/message.slice";
 import { Button } from "components";
 import capitalizeInitials from "utils/capitaliseInitials";
 import {
   useTransactionFailedMutation,
   usePaymentMadeMutation,
+  useGetOrgAdminQuery,
 } from "services/transaction.service";
+import { useSendMessageMutation } from "services/message.service";
 import rtkMutation from "utils/rtkMutation";
+import { useNavigate } from "react-router-dom";
 
 const MakePayment = ({ data, amount, transactionId }) => {
   const [transactionFailed, { isSuccess, isLoading, error, isError }] =
     useTransactionFailedMutation();
+
+  const [
+    sendMessage,
+    {
+      isSuccess: isSuccessMessage,
+      isLoading: isLoadingMessage,
+      error: errorMessage,
+      isError: isErrorMessage,
+    },
+  ] = useSendMessageMutation();
+
+  const chatId = useSelector((state) => state.message.chat_id);
+  const navigate = useNavigate();
+
+  // get buyer id, for messaging
+  const { data: id } = useGetOrgAdminQuery({ id: data?.buyer?._id });
+
+  // handle snd message button functionality
+  const handleSendMessage = async () => {
+    id && dispatch(updateMessageId({ chat_id: id?.id, message_id: null }));
+
+    if (chatId) {
+      await rtkMutation(sendMessage, { reciever: chatId, message: " " });
+    }
+  };
 
   const [
     paymentMade,
@@ -53,8 +82,8 @@ const MakePayment = ({ data, amount, transactionId }) => {
   };
 
   const handleCloseModal = () => {
-    dispatch(closeComponentModal())
-  }
+    dispatch(closeComponentModal());
+  };
 
   const handlePaymentMade = async () => {
     await rtkMutation(paymentMade, {
@@ -75,7 +104,8 @@ const MakePayment = ({ data, amount, transactionId }) => {
         openModal({
           title: "Payment Confirmation Success",
           message:
-            dataPayment?.current?.message || "Your payment has been confirmed to seller",
+            dataPayment?.current?.message ||
+            "Your payment has been confirmed to seller",
           success: true,
         })
       );
@@ -103,7 +133,20 @@ const MakePayment = ({ data, amount, transactionId }) => {
     dataPayment,
   ]);
 
-  console.log( data, "***");
+  console.log(data, "***");
+
+  useEffect(() => {
+    isSuccessMessage && navigate("/messages");
+    isErrorMessage &&
+      dispatch(
+        openModal({
+          title: "Failed To Initiate Messaging",
+          message: `${
+            errorMessage?.data?.message || "An error occured, try agiain"
+          }`,
+        })
+      );
+  }, [isSuccessMessage, isErrorMessage, errorMessage]);
 
   return (
     <div className="make_payment">
@@ -139,80 +182,103 @@ const MakePayment = ({ data, amount, transactionId }) => {
             </div>
             <div className="make_payment_info_method_value">{amount} tCO2e</div>
           </div>
-          {data?.status === "Pending" && <div className="make_payment_info_method_item">
-            <div className="make_payment_info_method_text">
-              Time left to make payment
+          {data?.status === "Pending" && (
+            <div className="make_payment_info_method_item">
+              <div className="make_payment_info_method_text">
+                Time left to make payment
+              </div>
+              <div
+                className="make_payment_info_method_value"
+                style={{ color: "#FF5151" }}
+              >
+                00: 02 :53
+              </div>
             </div>
-            <div
-              className="make_payment_info_method_value"
-              style={{ color: "#FF5151" }}
-            >
-              00: 02 :53
+          )}
+          {data?.status !== "Pending" && (
+            <div className="make_payment_info_method_item">
+              <div className="make_payment_info_method_text">Status</div>
+              <div
+                className="make_payment_info_method_value"
+                style={{
+                  color: data?.status === "Completed" ? "green" : "#FF5151",
+                }}
+              >
+                {data?.status}
+              </div>
             </div>
-          </div>}
-          {data?.status !== "Pending" && <div className="make_payment_info_method_item">
-            <div className="make_payment_info_method_text">
-              Status
+          )}
+          {data?.status === "Pending" && (
+            <div className="make_payment_info_method_item">
+              <div className="make_payment_info_method_text">
+                Payment Method
+              </div>
+              <div className="make_payment_info_method_value">
+                Bank transfer
+              </div>
             </div>
-            <div
-              className="make_payment_info_method_value"
-              style={{ color: data?.status === "Completed" ? "green" : "#FF5151"}}
-            >
-              {data?.status}
-            </div>
-          </div>}
-          {data?.status === "Pending" && <div className="make_payment_info_method_item">
-            <div className="make_payment_info_method_text">Payment Method</div>
-            <div className="make_payment_info_method_value">Bank transfer</div>
-          </div>}
+          )}
         </div>
         <div className="make_payment_details">
           <div className="make_payment_details_title">Payment details</div>
-          {data?.status === "Pending" && <div className="make_payment_details_info between">
-            <div className="make_payment_details_info_item">
-              <div className="make_payment_details_info_text">Account Name</div>
-              <div className="make_payment_details_info_value">
-                Agroventure Kapital Limited
+          {data?.status === "Pending" && (
+            <div className="make_payment_details_info between">
+              <div className="make_payment_details_info_item">
+                <div className="make_payment_details_info_text">
+                  Account Name
+                </div>
+                <div className="make_payment_details_info_value">
+                  Agroventure Kapital Limited
+                </div>
+              </div>
+              <div className="make_payment_details_info_item">
+                <div className="make_payment_details_info_text">
+                  Account Number
+                </div>
+                <div className="make_payment_details_info_value">
+                  3426245267
+                </div>
+              </div>
+              <div className="make_payment_details_info_item">
+                <div className="make_payment_details_info_text">Bank Name</div>
+                <div className="make_payment_details_info_value">
+                  United Bank of Oaks Intelligence
+                </div>
               </div>
             </div>
-            <div className="make_payment_details_info_item">
-              <div className="make_payment_details_info_text">
-                Account Number
-              </div>
-              <div className="make_payment_details_info_value">3426245267</div>
-            </div>
-            <div className="make_payment_details_info_item">
-              <div className="make_payment_details_info_text">Bank Name</div>
-              <div className="make_payment_details_info_value">
-                United Bank of Oaks Intelligence
-              </div>
-            </div>
-          </div>}
+          )}
           <div className="make_payment_details_message between">
-            {data?.status === "Pending" && <div className="make_payment_details_message_seller start">
-              <img src={messge} alt="icon" />
-              <span> Message Seller</span>
-            </div>}
-            {data?.status !== "Pending" && <div className="make_payment_details_message_seller_text">
-              <span className="make_payment_details_message_seller_text_small">
-                {" "}
-                Transaction fee:{" "}
-              </span>
-              <span className="make_payment_details_message_seller_text_big">
-                {" "}
-                {Math.ceil(amount * 0.015)}{" tCO2e"}
-              </span>
-            </div>}
-            {data?.status === "Pending" && <div className="make_payment_details_message_seller_text">
-              <span className="make_payment_details_message_seller_text_small">
-                {" "}
-                Pay the Seller:{" "}
-              </span>
-              <span className="make_payment_details_message_seller_text_big">
-                {" "}
-                ${" "}{amount}
-              </span>
-            </div>}
+            {data?.status === "Pending" && (
+              <div className="make_payment_details_message_seller start" onClick={handleSendMessage}>
+                <img src={messge} alt="icon" />
+                <span> {isLoadingMessage ? "Sending..." : "Message Seller"}</span>
+              </div>
+            )}
+            {data?.status !== "Pending" && (
+              <div className="make_payment_details_message_seller_text">
+                <span className="make_payment_details_message_seller_text_small">
+                  {" "}
+                  Transaction fee:{" "}
+                </span>
+                <span className="make_payment_details_message_seller_text_big">
+                  {" "}
+                  {Math.ceil(amount * 0.015)}
+                  {" tCO2e"}
+                </span>
+              </div>
+            )}
+            {data?.status === "Pending" && (
+              <div className="make_payment_details_message_seller_text">
+                <span className="make_payment_details_message_seller_text_small">
+                  {" "}
+                  Pay the Seller:{" "}
+                </span>
+                <span className="make_payment_details_message_seller_text_big">
+                  {" "}
+                  $ {amount}
+                </span>
+              </div>
+            )}
           </div>
         </div>
         {data?.status === "Pending" && (

@@ -6,7 +6,9 @@ import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field, FormSpy } from "react-final-form";
 import { Button, Input } from "components";
 import capitalizeInitials from "utils/capitaliseInitials";
-import { useInitiateBuyMutation } from "services/transaction.service";
+import {
+  useInitiateBuyMutation,
+} from "services/transaction.service";
 import rtkMutation from "utils/rtkMutation";
 import formatPrice from "utils/formatPrice";
 // import { OnChange } from "react-final-form-listeners";
@@ -18,6 +20,7 @@ const ModalBuyCarbon = ({ data }) => {
     { data: dataInitiate, isSuccess, error, isError, isLoading },
   ] = useInitiateBuyMutation();
 
+  
   // carbon credit amount
   const [amount, setAmount] = useState();
   const [activeTab, setActiveTab] = useState("carbon");
@@ -171,7 +174,11 @@ const ModalBuyCarbon = ({ data }) => {
                 </div>
                 <div className="modal_buy_carb_input_text between">
                   <span>Quantity</span>
-                  <span>{activeTab === "carbon" ? amount - Math.ceil(amount * 0.015) : Math.ceil(amount / data?.amount_per_unit)}</span>
+                  <span>
+                    {activeTab === "carbon"
+                      ? amount - Math.ceil(amount * 0.015)
+                      : Math.ceil(amount / data?.amount_per_unit)}
+                  </span>
                 </div>
                 {/* <div className="modal_buy_carb_input_text between">
                   <span>Quantity</span>
@@ -188,7 +195,7 @@ const ModalBuyCarbon = ({ data }) => {
                   subscription={{ values: true }}
                   onChange={(props) => {
                     const amount = props.values.amount;
-                    setAmount(amount)
+                    setAmount(amount);
                   }}
                 />
               </form>
