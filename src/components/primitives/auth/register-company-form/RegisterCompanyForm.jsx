@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Field } from "react-final-form";
-import Input from "components/widgets/input/Input";
-import { Button } from "components";
+import { Button, Input } from "components";
 import { useNavigate } from "react-router-dom";
 import { updateFormdata } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";

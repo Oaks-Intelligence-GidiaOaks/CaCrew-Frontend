@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./DashboardStaff.scss";
-import { Button } from "components";
+import { Button, Input } from "components";
 import { close, search } from "assets/images";
 import { DashboardStaffCard, SearchInput } from "components";
 import { Form, Field } from "react-final-form";
-import Input from "components/widgets/input/Input";
 import { useAllStaffsQuery, useAddStaffMutation } from "services/staff.service";
 import { useGetUserQuery } from "services/user.service";
 import rtkMutation from "utils/rtkMutation";

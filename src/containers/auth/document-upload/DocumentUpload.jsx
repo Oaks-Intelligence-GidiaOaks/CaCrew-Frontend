@@ -1,13 +1,12 @@
 import React from "react";
 import "./DocumentUpload.scss";
 import { Form } from "react-final-form";
-import { Button } from "components";
+import { Button, Upload } from "components";
 import { updateFormdata } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import rtkMutation from "utils/rtkMutation";
 import { useRegisterUserMutation } from "services/user.service";
-import Upload from "components/widgets/upload/Upload";
 import fileTypeReader from "utils/fileTypeReader";
 // import axios from "axios";
 

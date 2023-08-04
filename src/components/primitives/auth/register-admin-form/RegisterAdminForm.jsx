@@ -2,8 +2,7 @@ import React from "react";
 import { updateFormdata } from "redux/slices/register.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Field } from "react-final-form";
-import Input from "components/widgets/input/Input";
-import { Button } from "components";
+import { Button, Input } from "components";
 import { useNavigate } from "react-router-dom";
 import validate, {
   required,
