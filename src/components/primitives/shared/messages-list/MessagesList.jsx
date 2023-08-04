@@ -52,7 +52,7 @@ const MessagesList = () => {
   // console.log(uniqueIds, "ids");
   // console.log(chatObj, "obj");
 
-  // console.log(filterData, "filer");
+  console.log(message, "messaage");
   useEffect(() => {
     const firstMessage = filterData && filterData[0];
     firstMessage &&

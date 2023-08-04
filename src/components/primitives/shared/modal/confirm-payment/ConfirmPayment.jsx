@@ -33,15 +33,19 @@ const ConfirmPayment = ({ data }) => {
 
   // get buyer id, for messaging
   const { data: id } = useGetOrgAdminQuery({ id: data?.buyer?._id });
+  // console.log(id.id, "id")
+
 
   // handle snd message button functionality
   const handleSendMessage = async () => {
-    id && dispatch(updateMessageId({ chat_id: id?.id, message_id: null }));
+    id && dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
 
     if (chatId) {
       await rtkMutation(sendMessage, {reciever: chatId, message: " " });
     }
   };
+
+    // console.log(chatId, "id****")
 
   const [
     paymentRecieved,
@@ -146,11 +150,12 @@ const ConfirmPayment = ({ data }) => {
   console.log(data, "***");
 
   useEffect(() => {
-    isSuccessMessage && navigate("/messages")
     isErrorMessage && dispatch(openModal({
       title: "Failed To Initiate Messaging",
       message: `${errorMessage?.data?.message || "An error occured, try agiain" }`,
     }))
+    // isSuccessMessage && navigate("/messages")
+
   }, [isSuccessMessage, isErrorMessage, errorMessage])
 
   return (
