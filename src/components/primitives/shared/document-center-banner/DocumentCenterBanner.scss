@@ -1,0 +1,15 @@
+@import "base.scss";
+
+.doc_center_banner {
+  padding: 50px 30px;
+  background-color: #f8f8f8;
+  @media (max-width: 991px) {
+    padding: 30px 10px;
+    flex-direction: column;
+  }
+  .doc_center_banner_heading {
+    @media (max-width: 991px) {
+        margin-bottom: 20px;
+    }
+  }
+}

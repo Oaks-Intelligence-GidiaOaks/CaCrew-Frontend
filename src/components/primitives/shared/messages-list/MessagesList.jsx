@@ -9,13 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import timeAgo from "utils/timeAgo";
 
 const MessagesList = () => {
-  const { data } = useGetAllMessagesQuery();
+  const { data } = useGetAllMessagesQuery({ pollingInterval: 1000 });
   const { data: user } = useGetUserQuery();
 
   const [tabIndex, setTabIndex] = useState(0);
 
   const dispatch = useDispatch();
-  const message = useSelector(state => state.message)
+  const message = useSelector((state) => state.message);
 
   const filterData = useMemo(() => {
     const uniqueIds = new Set();
@@ -73,36 +73,37 @@ const MessagesList = () => {
       </div>
       <div className="messsage_list_bg">
         <div className="messsage_list_heading sub_heading">All Messages</div>
-        {filterData && filterData?.map((item, idx) => (
-          <a
-            href="#chat"
-            key={idx}
-            onClick={() => {
-              dispatch(
-                updateMessageId({
-                  message_id: item?.message_id,
-                  chat_id: item?.id,
-                })
-              );
-              setTabIndex(idx);
-            }}
-            className={`messsage_list_wrap between ${
-              idx === tabIndex && "messsage_list_wrap_bg"
-            } link`}
-          >
-            <div className="messsage_list_img_text_wrap start">
-              <img src={avartar} alt="icon" className="messsage_list_img" />
-              <div className="messsage_list_text">
-                <div className="messsage_list_name">{item?.name}</div>
-                <div className="messsage_list_last">{item?.message}</div>
+        {filterData &&
+          filterData?.map((item, idx) => (
+            <a
+              href="#chat"
+              key={idx}
+              onClick={() => {
+                dispatch(
+                  updateMessageId({
+                    message_id: item?.message_id,
+                    chat_id: item?.id,
+                  })
+                );
+                setTabIndex(idx);
+              }}
+              className={`messsage_list_wrap between ${
+                idx === tabIndex && "messsage_list_wrap_bg"
+              } link`}
+            >
+              <div className="messsage_list_img_text_wrap start">
+                <img src={avartar} alt="icon" className="messsage_list_img" />
+                <div className="messsage_list_text">
+                  <div className="messsage_list_name">{item?.name}</div>
+                  <div className="messsage_list_last">{item?.message}</div>
+                </div>
               </div>
-            </div>
-            <div className="messsage_list_text">
-              <div className="messsage_list_name">{timeAgo(item?.time)}</div>
-              <div className="messsage_list_new center">2</div>
-            </div>
-          </a>
-        ))}
+              <div className="messsage_list_text">
+                <div className="messsage_list_name">{timeAgo(item?.time)}</div>
+                <div className="messsage_list_new center">2</div>
+              </div>
+            </a>
+          ))}
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ export { default as TrackProject } from "containers/dashboard/dashboard-content/
 export { default as ProjectTrackOverview } from "containers/dashboard/dashboard-content/super-admin-dashboard/project-track-overview/ProjectTrackOverview";
 export { default as MyAccount } from "containers/dashboard/dashboard-content/shared/my-account/MyAccount";
 export { default as DashboardMessage } from "containers/dashboard/dashboard-content/shared/dashboard-message/DashboardMessage";
+export { default as DocumentCenter } from "containers/dashboard/dashboard-content/shared/dashboard-document-center/DocumentCenter";
 
 
 // auth

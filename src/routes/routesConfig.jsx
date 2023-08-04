@@ -20,6 +20,7 @@ import {
   TRACK_PROJECT_OVERVIEW,
   MY_ACCOUNT,
   MESSAGE,
+  DOCUMENT_CENTER,
 } from "routes/constants";
 
 // Import auth pages
@@ -48,8 +49,8 @@ import {
   // organisation admin dasboard pages
   OrgAdminDashboardHomePage,
   // staff
-  
 } from "pages";
+import DocumentCenterPage from "pages/shared/DocumentCenterPage";
 
 // Import dasboard pages
 
@@ -119,6 +120,10 @@ const RoutesConfig = () => {
       <Route
         path={MESSAGE}
         element={<ProtectedRoute component={DashboardMessagePage} />}
+      />
+      <Route
+        path={DOCUMENT_CENTER}
+        element={<ProtectedRoute component={DocumentCenterPage} />}
       />
     </Routes>
   );

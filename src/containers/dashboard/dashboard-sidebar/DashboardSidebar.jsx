@@ -78,8 +78,8 @@ const DashboardSidebar = () => {
           />
           Carbon Wallet
         </NavLink>
-        {/* <NavLink
-          to={"/dashboard-wallet"}
+        <NavLink
+          to={"/document-center"}
           activeclassname="active"
           className={"link dashboard_link_item start"}
         >
@@ -93,7 +93,7 @@ const DashboardSidebar = () => {
             className="dashboard_link_item_image"
           />
           Document Center
-        </NavLink> */}
+        </NavLink>
         {user && user?.role === "SuperAdmin" && (
           <NavLink
             to={"/dashboard-organization"}
