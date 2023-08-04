@@ -3,6 +3,9 @@
 .view_message {
   padding: 13px;
   height: 400px;
+  // @media (max-width: 991px) {
+  //   height: 100vh;
+  // }
   overflow-y: scroll;
   .view_message_banner {
     align-items: center;

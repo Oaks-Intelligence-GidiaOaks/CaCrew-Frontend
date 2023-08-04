@@ -11,6 +11,9 @@
     padding: 5px;
     height: 400px;
     overflow-y: scroll;
+    // @media (max-width: 991px) {
+    //   height: 100vh;
+    // }
     .messsage_list_heading {
       margin-bottom: 11px;
       margin-top: 20px;
@@ -43,8 +46,8 @@
         }
       }
     }
-    .messsage_list_wrap_bg{
-        background-color: #F2F5FF;
+    .messsage_list_wrap_bg {
+      background-color: #f2f5ff;
     }
     .messsage_list_new {
       color: white;
