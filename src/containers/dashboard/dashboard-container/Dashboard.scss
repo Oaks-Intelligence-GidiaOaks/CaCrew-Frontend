@@ -11,7 +11,8 @@
       background-color: #fff;
       top: 92px;
       z-index: 2;
-      
+      overflow-y: scroll;
+      height: 90%;
       @media (max-width: 767px) {
         position: fixed;
         width: 45%;

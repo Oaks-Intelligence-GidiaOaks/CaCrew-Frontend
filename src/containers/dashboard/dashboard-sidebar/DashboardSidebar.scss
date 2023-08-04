@@ -6,21 +6,20 @@
   border-right: 1px solid #dedede;
   padding-top: 40px;
   position: relative;
-  overflow: scroll;
-  .dashboard_sidebar_blocked{
+  .dashboard_sidebar_blocked {
     position: absolute;
     height: 100%;
     width: 100%;
     z-index: 2;
     cursor: not-allowed;
-    &:hover .dashboard_sidebar_blocked_text{
+    &:hover .dashboard_sidebar_blocked_text {
       display: block;
     }
-    .dashboard_sidebar_blocked_text{
+    .dashboard_sidebar_blocked_text {
       display: none;
       position: absolute;
       width: 150px;
-      box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
       border-radius: 8px;
       background-color: white;
       font-size: 12px;
