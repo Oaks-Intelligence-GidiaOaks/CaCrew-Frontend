@@ -78,6 +78,22 @@ const DashboardSidebar = () => {
           />
           Carbon Wallet
         </NavLink>
+        <NavLink
+          to={"/dashboard-wallet"}
+          activeclassname="active"
+          className={"link dashboard_link_item start"}
+        >
+          <img
+            src={
+              pathname?.includes("dashboard-wallet")
+                ? wallet_white
+                : wallet_blue
+            }
+            alt="icon"
+            className="dashboard_link_item_image"
+          />
+          Document Center
+        </NavLink>
         {user && user?.role === "SuperAdmin" && (
           <NavLink
             to={"/dashboard-organization"}
@@ -153,7 +169,7 @@ const DashboardSidebar = () => {
           // activeclassname="active"
           className={"link dashboard_link_item start"}
           onClick={() => handleLogout()}
-          style={{ marginTop: "20px", zIndex: "3" }}
+          style={{ marginTop: "0px", zIndex: "3" }}
         >
           <img
             src={fileImg}

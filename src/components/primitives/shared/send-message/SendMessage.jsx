@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./SendMessage.scss";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
@@ -10,16 +10,19 @@ import { openModal } from "redux/slices/modal.slice";
 import { useDispatch } from "react-redux";
 
 const SendMessage = () => {
-  const recieverId = useSelector((store) => store.message.reciever_id);
+  const recieverId = useSelector((store) => store.message.chat_id);
   const skipQuery = recieverId === null ? true : false;
-  const [sendMessageMutation, { data, isError, isLoading, isSuccess, error }] =
+  const [sendMessageMutation, { isError, isLoading, isSuccess, error }] =
     useSendMessageMutation({ skip: skipQuery });
+
+  const isSuccessSendMessageRef = useRef(isSuccess);
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, form) => {
     values["reciever"] = recieverId;
     await rtkMutation(sendMessageMutation, values);
+    isSuccessSendMessageRef.current && form.initialize({});
     // console.log(values);
   };
 
@@ -35,6 +38,11 @@ const SendMessage = () => {
         })
       );
   }, [isError]);
+
+  // force a rerender
+  useEffect(() => {
+    isSuccessSendMessageRef.current = isSuccess;
+  }, [isSuccess]);
 
   return (
     <div className="send_message">

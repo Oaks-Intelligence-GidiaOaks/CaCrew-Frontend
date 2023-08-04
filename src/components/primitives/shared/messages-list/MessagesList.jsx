@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./MessagesList.scss";
 import { SearchInput } from "components";
 import { avartar } from "assets/images";
@@ -6,61 +6,65 @@ import { useGetAllMessagesQuery } from "services/message.service";
 import { useGetUserQuery } from "services/user.service";
 import { updateMessageId } from "redux/slices/message.slice";
 import { useDispatch, useSelector } from "react-redux";
+import timeAgo from "utils/timeAgo";
 
 const MessagesList = () => {
   const { data } = useGetAllMessagesQuery();
   const { data: user } = useGetUserQuery();
-  const messageSlice = useSelector((state) => state.message);
+
+  const [tabIndex, setTabIndex] = useState(0);
 
   const dispatch = useDispatch();
+  const message = useSelector(state => state.message)
 
   const filterData = useMemo(() => {
-    // store unique reciever ids
     const uniqueIds = new Set();
 
-    const filtered = data
-      ? data?.map((item) => {
-          // populate list if id is unique to Set values
-          if (item?.sender?._id === user?._id) {
-            if (!uniqueIds.has(item?.reciever?._id)) {
-              uniqueIds.add(item?.reciever?._id);
-              const obj = {};
-              obj["message_id"] = item?._id;
-              obj["name"] = item?.reciever?.name;
-              obj["sender_id"] = item?.sender?._id;
-              obj["reciever_id"] = item?.reciever?._id;
-              obj["message"] = item?.message;
-              return obj;
-            } else {
-              return false;
-            }
-          } else if (item?.reciever?._id === user?._id) {
-            if (!uniqueIds.has(item?.sender?._id)) {
-              uniqueIds.add(item?.sender?._id);
-              const obj = {};
-              obj["message_id"] = item?._id;
-              obj["name"] = item?.sender?.name;
-              obj["sender_id"] = item?.sender?._id;
-              obj["reciever_id"] = item?.reciever?._id;
-              obj["message"] = item?.message;
-              return obj;
-            } else {
-              return false;
-            }
-          } else {
-            return false;
-          }
+    const uniqueChats = data?.reduce((chats, chat) => {
+      const senderId = chat?.sender?._id;
+      // const recieverId = chat.reciever._id;
+      const chatName =
+        senderId === user?._id ? chat?.reciever?.name : chat?.sender?.name;
+      const chatId =
+        senderId === user?._id ? chat?.reciever?._id : chat?.sender?._id;
+      const messageId = chat?._id;
+      const message = chat?.message;
+      const time = chat?.createdAt;
+      const chatObj = {};
+
+      if (!uniqueIds.has(chatId)) {
+        chatObj["name"] = chatName;
+        chatObj["id"] = chatId;
+        chatObj["message_id"] = messageId;
+        chatObj["message"] = message;
+        chatObj["time"] = time;
+        chats.push(chatObj);
+        uniqueIds.add(chatId);
+      }
+      // console.log(uniqueIds);
+      return chats;
+    }, []);
+
+    return uniqueChats;
+  }, [data, user?._id]);
+
+  console.log(filterData, "slice");
+  // console.log(uniqueIds, "ids");
+  // console.log(chatObj, "obj");
+
+  // console.log(filterData, "filer");
+  useEffect(() => {
+    const firstMessage = filterData && filterData[0];
+    firstMessage &&
+      dispatch(
+        updateMessageId({
+          message_id: firstMessage?.message_id,
+          chat_id: firstMessage?.id,
         })
-      : [];
+      );
 
-    console.log(uniqueIds, "ids");
-    console.log(filtered, "nnn");
-
-    return filtered;
-  }, [data]);
-
-  console.log(messageSlice, "slice");
-  console.log(filterData, "filer");
+    console.log(firstMessage, "first");
+  }, [filterData, dispatch]);
 
   return (
     <div className="messsage_list">
@@ -69,40 +73,35 @@ const MessagesList = () => {
       </div>
       <div className="messsage_list_bg">
         <div className="messsage_list_heading sub_heading">All Messages</div>
-        {filterData?.map((item) => (
-          <div
-            key={item?._id}
+        {filterData && filterData?.map((item, idx) => (
+          <a
+            href="#chat"
+            key={idx}
             onClick={() => {
               dispatch(
                 updateMessageId({
-                  message_id: item?._id,
-                  sender_id: item?.sender?._id,
-                  reciever_id: item?.reciever?._id,
-                  isSender: user?._id === item?.sender?._id ? true : false,
+                  message_id: item?.message_id,
+                  chat_id: item?.id,
                 })
               );
+              setTabIndex(idx);
             }}
             className={`messsage_list_wrap between ${
-              messageSlice.reciever_id === item?.reciever?._id &&
-              "messsage_list_wrap_bg"
-            }`}
+              idx === tabIndex && "messsage_list_wrap_bg"
+            } link`}
           >
             <div className="messsage_list_img_text_wrap start">
               <img src={avartar} alt="icon" className="messsage_list_img" />
               <div className="messsage_list_text">
-                <div className="messsage_list_name">
-                  {messageSlice.isSender
-                    ? item?.reciever?.name
-                    : item?.sender?.name}
-                </div>
+                <div className="messsage_list_name">{item?.name}</div>
                 <div className="messsage_list_last">{item?.message}</div>
               </div>
             </div>
             <div className="messsage_list_text">
-              <div className="messsage_list_name">now</div>
+              <div className="messsage_list_name">{timeAgo(item?.time)}</div>
               <div className="messsage_list_new center">2</div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

@@ -21,8 +21,8 @@
     .message_item_message {
       color: #fff;
       font-size: 14px;
-      line-height: 165%;
       letter-spacing: 0.16px;
+      width: 750%;
       @media (max-width: 991px) {
         font-size: 12px;
       }
@@ -59,8 +59,9 @@
     .message_item_message {
       color: $blue;
       font-size: 14px;
-      line-height: 165%;
       letter-spacing: 0.16px;
+      width: 750%;
+      // background-color: red;
       @media (max-width: 991px) {
         font-size: 12px;
       }

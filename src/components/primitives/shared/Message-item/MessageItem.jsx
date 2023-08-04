@@ -1,6 +1,7 @@
 import React from "react";
 import "./MessageItem.scss";
 import { avartar } from "assets/images";
+import timeAgo from "utils/timeAgo";
 
 const MessageItem = ({ send, message, time, read }) => {
     console.log(send, "**send")
@@ -16,7 +17,7 @@ const MessageItem = ({ send, message, time, read }) => {
       >
         <div className="message_item_message">{message}</div>
         <div className="message_item_timestatus end">
-          <span className="message_item_time">{"time"}</span>
+          <span className="message_item_time">{timeAgo(time)}</span>
           <span className={`${read ? "message_item_read" : "message_item_unread"}`}/>
         </div>
       </div>

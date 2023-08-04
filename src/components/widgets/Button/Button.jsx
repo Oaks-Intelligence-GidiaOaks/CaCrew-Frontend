@@ -2,7 +2,7 @@ import React from "react";
 import "./Button.scss";
 import { ThreeDots } from "react-loader-spinner";
 
-const Button = ({ text, loading, disabled, className, type, ...rest }) => {
+const Button = ({ text, loading, disabled, className, type, loadColor, ...rest }) => {
   return (
     <button
       {...rest}
@@ -16,7 +16,7 @@ const Button = ({ text, loading, disabled, className, type, ...rest }) => {
           height="15"
           width="15"
           radius="9"
-          color="#ffffff"
+          color={loadColor ? "" :"#ffffff"}
           ariaLabel="three-dots-loading"
           wrapperStyle={{}}
           wrapperClassName=""

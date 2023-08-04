@@ -118,13 +118,7 @@ const ModalBuyCarbon = ({ data }) => {
         </span>
         <span className="modal_buy_carb_sale_normal">
           {" "}
-          Price: {activeTab === "fiat" && " $"}
-          {activeTab === "carbon"
-            ? data?.amount_per_unit
-            : formatPrice(
-                data?.amount_per_unit * data?.carbon_credit_quantity
-              ) || "-"}
-          {activeTab === "carbon" && " per tCO2e"}
+          Price: {data?.amount_per_unit + " per tCO2e"}
         </span>
       </div>
       <div className="modal_buy_carb_sale_text">
@@ -177,7 +171,7 @@ const ModalBuyCarbon = ({ data }) => {
                 </div>
                 <div className="modal_buy_carb_input_text between">
                   <span>Quantity</span>
-                  <span>{amount}</span>
+                  <span>{activeTab === "carbon" ? amount - Math.ceil(amount * 0.015) : Math.ceil(amount / data?.amount_per_unit)}</span>
                 </div>
                 {/* <div className="modal_buy_carb_input_text between">
                   <span>Quantity</span>

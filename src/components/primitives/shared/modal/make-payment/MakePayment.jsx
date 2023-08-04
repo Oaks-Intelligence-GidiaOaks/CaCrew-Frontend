@@ -103,7 +103,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
     dataPayment,
   ]);
 
-  // console.log( data, "***");
+  console.log( data, "***");
 
   return (
     <div className="make_payment">
@@ -222,6 +222,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
               className={"make_payment_btn_two"}
               onClick={handleCancelTransaction}
               loading={isLoading}
+              loadColor={"#143B76"}
             />
             <Button
               text={"I Have Made Payment"}
