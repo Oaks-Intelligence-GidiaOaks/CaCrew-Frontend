@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const ViewMessages = () => {
   const recieverId = useSelector((store) => store.message.reciever_id);
-  const skipQuery = recieverId === null ? true : false;
+  const skipQuery = recieverId === null || recieverId === undefined ? true : false;
   const { data } = useGetMessageQuery(recieverId, { skip: skipQuery });
   const { data: user } = useGetUserQuery();
   console.log(recieverId, "message");

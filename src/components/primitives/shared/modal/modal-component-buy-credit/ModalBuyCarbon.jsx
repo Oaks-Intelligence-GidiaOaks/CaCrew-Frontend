@@ -3,13 +3,13 @@ import "./ModalBuyCarbon.scss";
 import { verify, close } from "assets/images";
 import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
-import { Form, Field, useFormState } from "react-final-form";
+import { Form, Field, FormSpy } from "react-final-form";
 import { Button, Input } from "components";
 import capitalizeInitials from "utils/capitaliseInitials";
 import { useInitiateBuyMutation } from "services/transaction.service";
 import rtkMutation from "utils/rtkMutation";
 import formatPrice from "utils/formatPrice";
-import { OnChange } from "react-final-form-listeners";
+// import { OnChange } from "react-final-form-listeners";
 
 const ModalBuyCarbon = ({ data }) => {
   // make api req
@@ -19,9 +19,8 @@ const ModalBuyCarbon = ({ data }) => {
   ] = useInitiateBuyMutation();
 
   // carbon credit amount
-  const [amount, setAmount] = useState()
+  const [amount, setAmount] = useState();
   const [activeTab, setActiveTab] = useState("carbon");
-
 
   // set ref, get updated value in a callback
   const isErrorRef = useRef(isError);
@@ -172,11 +171,6 @@ const ModalBuyCarbon = ({ data }) => {
                     }
                     component={Input}
                   />
-                  <OnChange name="amount">
-                    {(value, previous) => {
-                        setAmount(value)
-                    }}
-                  </OnChange>
                 </div>
                 <div className="modal_buy_carb_input_text_red">
                   {"Transaction fee: " + Math.ceil((amount * 0.015).toFixed(2))}
@@ -195,6 +189,13 @@ const ModalBuyCarbon = ({ data }) => {
                   className={"modal_buy_carb_input_btn"}
                   // onClick={handleProceed}
                   loading={isLoading}
+                />
+                <FormSpy
+                  subscription={{ values: true }}
+                  onChange={(props) => {
+                    const amount = props.values.amount;
+                    setAmount(amount)
+                  }}
                 />
               </form>
             )}

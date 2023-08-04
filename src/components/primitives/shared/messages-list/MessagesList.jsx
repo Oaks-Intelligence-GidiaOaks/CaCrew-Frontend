@@ -19,7 +19,7 @@ const MessagesList = () => {
     const uniqueIds = new Set();
 
     const filtered = data
-      ? data?.filter((item) => {
+      ? data?.map((item) => {
           // populate list if id is unique to Set values
           if (item?.sender?._id === user?._id) {
             if (!uniqueIds.has(item?.reciever?._id)) {
@@ -39,7 +39,7 @@ const MessagesList = () => {
               uniqueIds.add(item?.sender?._id);
               const obj = {};
               obj["message_id"] = item?._id;
-              obj["name"] = item?.reciever?.name;
+              obj["name"] = item?.sender?.name;
               obj["sender_id"] = item?.sender?._id;
               obj["reciever_id"] = item?.reciever?._id;
               obj["message"] = item?.message;
