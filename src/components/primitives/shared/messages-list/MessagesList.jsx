@@ -15,7 +15,7 @@ const MessagesList = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.message);
+  // const message = useSelector((state) => state.message);
 
   const filterData = useMemo(() => {
     const uniqueIds = new Set();
@@ -48,11 +48,11 @@ const MessagesList = () => {
     return uniqueChats;
   }, [data, user?._id]);
 
-  console.log(filterData, "slice");
+  // console.log(filterData, "slice");
   // console.log(uniqueIds, "ids");
   // console.log(chatObj, "obj");
 
-  console.log(message, "messaage");
+  // console.log(message, "messaage"); 
   useEffect(() => {
     const firstMessage = filterData && filterData[0];
     firstMessage &&
@@ -63,7 +63,7 @@ const MessagesList = () => {
         })
       );
 
-    console.log(firstMessage, "first");
+    // console.log(firstMessage, "first");
   }, [filterData, dispatch]);
 
   return (

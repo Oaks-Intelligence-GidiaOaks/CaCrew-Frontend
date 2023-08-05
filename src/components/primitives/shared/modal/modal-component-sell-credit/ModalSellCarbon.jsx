@@ -50,12 +50,12 @@ const ModalSellCarbon = ({ data }) => {
         })
       );
 
-    isError &&
+    isErrorRefSell.current &&
       dispatch(
         openModal({
           title: "Initiate Sell Failed",
           message:
-            error?.data?.message || "An error occured, please try again ",
+            errorRefSell.current?.data?.message || "An error occured, please try again ",
         })
       );
   };
@@ -74,6 +74,12 @@ const ModalSellCarbon = ({ data }) => {
     isSuccessRefSell.current = isSuccess;
     errorRefSell.current = error;
     dataRefSell.current = dataInitiate;
+    return () => {
+      isErrorRefSell.current = null;
+      isSuccessRefSell.current = null;
+      errorRefSell.current = null;
+      dataRefSell.current = null;
+    };
   }, [isError, isSuccess, error, dataInitiate]);
 
   console.log(dataInitiate, "sell");
@@ -129,7 +135,9 @@ const ModalSellCarbon = ({ data }) => {
           Price: {activeTab === "fiat" && " $"}
           {activeTab === "carbon"
             ? data?.amount_per_unit
-            : formatPrice(data?.amount_per_unit * data?.carbon_credit_quantity) || "-"}
+            : formatPrice(
+                data?.amount_per_unit * data?.carbon_credit_quantity
+              ) || "-"}
           {activeTab === "carbon" && " per tCO2e"}
         </span>
       </div>

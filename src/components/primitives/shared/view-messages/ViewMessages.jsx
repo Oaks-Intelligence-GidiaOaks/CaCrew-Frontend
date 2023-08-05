@@ -32,14 +32,18 @@ const ViewMessages = () => {
         <div className="view_message_all">
           {data &&
             data?.map((item) => (
-              <div key={item?._id}>
-                <MessageItem
-                  send={user?._id === item?.sender?._id}
-                  message={item?.message}
-                  read={item?.read}
-                  time={item?.createdAt}
-                />
-              </div>
+              <>
+                {item?.message !== " " && (
+                  <div key={item?._id}>
+                    <MessageItem
+                      send={user?._id === item?.sender?._id}
+                      message={item?.message}
+                      read={item?.read}
+                      time={item?.createdAt}
+                    />
+                  </div>
+                )}
+              </>
             ))}
         </div>
         <div id="chat" />
