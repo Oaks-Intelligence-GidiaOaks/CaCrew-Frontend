@@ -24,7 +24,7 @@ const ViewMessages = () => {
     <div className="view_message">
       <div className="view_message_banner start">
         <img src={support} alt="icon" className="view_message_banner_img" />
-        <div className="view_message_banner_text">CaCrew Support</div>
+        <div className="view_message_banner_text">Cabornible Support</div>
         <div className="view_message_banner_online" />
       </div>
       <div className="view_message_wrap center">
