@@ -22,10 +22,8 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
   const [registerUser, { isLoading, error, isSuccess, isError }] =
     useRegisterUserMutation();
   const state = useSelector((state) => state.formdata);
-  const stateRef = useRef(state);
   const currentUrl = location.pathname;
   // console.log(formData, "url");
-  console.log(stateRef.current, "url");
 
   const handleSubmit = (value) => {
     const file = value[documentName];
@@ -52,6 +50,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
   };
 
   useEffect(() => {
+    setIsFile(false);
     if (isSuccess) {
       dispatch(
         openModal({
@@ -83,7 +82,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
 
   useEffect(() => {
     const request = async () => {
-      if (currentUrl === "/letter-document" && isFile) {
+      if (currentUrl === "/letter-document" && isFile && state.password) {
         await rtkMutation(registerUser, state);
         setIsFile(false);
         // alert("aha")
@@ -93,7 +92,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
     return () => {
       setIsFile(false);
     };
-  }, [state]);
+  }, [state, isError]);
 
   return (
     <div className="upload_document center">
