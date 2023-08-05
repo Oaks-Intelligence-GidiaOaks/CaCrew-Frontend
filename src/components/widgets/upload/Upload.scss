@@ -64,6 +64,9 @@
       font-size: 18px;
       font-weight: 500;
       line-height: 150%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 300px;
       @media (max-width: 991px) {
         font-size: 14px;
       }

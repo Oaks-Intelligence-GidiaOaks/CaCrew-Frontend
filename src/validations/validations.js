@@ -54,7 +54,7 @@ export const minValue = (min) => (value) =>
   isNaN(value) || value >= min ? undefined : `Should be greater than ${min}`;
 
 export const passwordMatch = (value, allValues) => {
-  console.log(value, "vlsdem")
+  // console.log(value, "vlsdem")
   return value === allValues?.password ? undefined : "Passwords do not match";
 };
 

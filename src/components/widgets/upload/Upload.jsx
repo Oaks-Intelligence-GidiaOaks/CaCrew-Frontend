@@ -1,44 +1,48 @@
-import React, { useState, useRef } from "react";
-import "./Upload.scss"
+import React, { useState, useRef, useEffect } from "react";
+import "./Upload.scss";
 import { fileImg, filesImg, trash } from "assets/images";
-import { Field } from "react-final-form";
-
+import { Field, FormSpy, useForm } from "react-final-form";
+import { required } from "validations/validations";
 
 const Upload = ({ documentName }) => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
 
   const fileRef = useRef(null);
+  const form = useForm();
 
   // handle file change
-  const handleChange = (e) => {
-    const selectedFile = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(selectedFile);
-
-    fileReader.onload = () => {
-      setFile(() => selectedFile);
-    };
-
-    console.log(file);
-
+  const handleChange = () => {
     setProgress(0);
     setTimeout(() => {
       setProgress(100);
     }, 1000);
   };
 
+  // console.log(fileRef, "fileref");
+
   // handle file deletion
   const handleDelete = () => {
     fileRef.current.value = "";
     setFile(null);
     setProgress(0);
+    form.reset();
   };
+  // useEffect(() => {
+  //   // setProgress(0);
+  //   setTimeout(() => {
+  //     setProgress(100);
+  //   }, 1000);
+  //   return () => {
+  //     setProgress(0);
+  //   };
+  // }, [file]);
   return (
     <div>
       <Field
         name={documentName}
-        render={({ input }) => (
+        validate={required(`${documentName}`)}
+        render={({ input, meta }) => (
           <div className="upload center col">
             <div className="upload_image_wrap center">
               <img src={fileImg} alt="icon" />
@@ -51,13 +55,26 @@ const Upload = ({ documentName }) => {
               ref={fileRef}
               type="file"
               className="uplaod_input"
+              accept="image/jpeg,image/png,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
               onChange={(e) => {
                 input.onChange(e.target.files[0]);
-                handleChange(e);
+                // handleChange(e);
               }}
             />
+            {meta.error && meta.touched && (
+              <span className="input_error">{meta.error}</span>
+            )}
           </div>
         )}
+      />
+      <FormSpy
+        subscription={{ values: true }}
+        onChange={(props) => {
+          const file = props.values;
+          // console.log(file[documentName], "file");
+          setFile(file[documentName]);
+          handleChange();
+        }}
       />
       {file && (
         <div className="upload_progress_wrap start">
