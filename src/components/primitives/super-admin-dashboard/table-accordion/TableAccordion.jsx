@@ -12,13 +12,24 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
     setIsopen(!isOpen);
   };
   const [verifyOrganisation, { isLoading, error, isSuccess }] =
-    useVerifyOrganisationMutation({invalidateTag: "Organisation"});
+    useVerifyOrganisationMutation({ invalidateTag: "Organisation" });
 
   const handleVerify = async (id) => {
     await rtkMutation(verifyOrganisation, id);
   };
 
-  console.log(getFileDetails(data?.letter_of_authorization_url), "getTest");
+  const {
+    image: imageAuth,
+    name: nameAuth,
+  } = getFileDetails(data?.letter_of_authorization_url);
+  const {
+    image: imageIdentity,
+    name: nameIdentity,
+  } = getFileDetails(data?.admin_identity_document_url);
+  const {
+    image: imageIncoporation,
+    name: nameIncoporation,
+  } = getFileDetails(data?.certificate_of_incorporation_url);
 
   useEffect(() => {
     isSuccess && handleOpen();
@@ -103,7 +114,7 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
           </span>
           <div className="table_accordion_item_bottom_value_wrap">
             <img
-              src={fileImg}
+              src={imageIncoporation || fileImg}
               alt="icon"
               className="table_accordion_item_bottom_img"
             />
@@ -112,9 +123,9 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
                 className="table_accordion_item_bottom_value_sm"
                 href={data?.certificate_of_incorporation_url}
               >
-                {"Download"}
+                {nameIncoporation || "Download"}
               </a>
-              <span className="table_accordion_item_bottom_value_sm">File</span>
+              <span className="table_accordion_item_bottom_value_sm">Download</span>
             </div>
           </div>
         </div>
@@ -124,7 +135,7 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
           </span>
           <div className="table_accordion_item_bottom_value_wrap">
             <img
-              src={fileImg}
+              src={imageIdentity || fileImg}
               alt="icon"
               className="table_accordion_item_bottom_img"
             />
@@ -133,9 +144,9 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
                 className="table_accordion_item_bottom_value_sm"
                 href={data?.admin_identity_document_url}
               >
-                Download
+               {nameIdentity || "Download"}
               </a>
-              <span className="table_accordion_item_bottom_value_sm">File</span>
+              <span className="table_accordion_item_bottom_value_sm">Download</span>
             </div>
           </div>
         </div>
@@ -145,7 +156,7 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
           </span>
           <div className="table_accordion_item_bottom_value_wrap">
             <img
-              src={fileImg}
+              src={imageAuth || fileImg}
               alt="icon"
               className="table_accordion_item_bottom_img"
             />
@@ -154,15 +165,15 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
                 className="table_accordion_item_bottom_value_sm"
                 href={data?.letter_of_authorization_url}
               >
-                Download
+                {nameAuth || "Download"}
               </a>
-              <span className="table_accordion_item_bottom_value_sm">File</span>
+              <span className="table_accordion_item_bottom_value_sm">Download</span>
             </div>
           </div>
         </div>
         <div style={{ width: "30px" }} />
       </div>
-      <div className="table_accordion_btn_wrap end">
+      {!data?.isVerified && <div className="table_accordion_btn_wrap end">
         <Button
           text={"Verify"}
           className={"table_accordion_btn"}
@@ -170,7 +181,7 @@ const TableAccordion = ({ data, handleVerifyOrganisation }) => {
           loading={isLoading}
         />
         <Button text={"Reject"} className={"table_accordion_btn_rej"} />
-      </div>
+      </div>}
     </div>
   );
 };

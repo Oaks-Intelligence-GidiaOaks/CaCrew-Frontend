@@ -112,6 +112,7 @@
         .table_accordion_item_bottom_img {
           object-fit: cover;
           width: 50px;
+          height: 60px;
           background-color: rgba(130, 120, 120, 0.1);
           border-radius: 8px;
           margin-right: 5px;
@@ -123,6 +124,7 @@
           flex-direction: column;
           .table_accordion_item_bottom_value_sm {
             width: 100px;
+            white-space: nowrap;
             color: #4c5563;
             font-size: 12px;
             text-decoration: none;

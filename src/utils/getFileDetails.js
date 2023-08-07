@@ -1,34 +1,37 @@
-import { fileImg, docpng, pdf, pic } from "assets/images";
+import { excel, docpng, pdf, pic } from "assets/images";
+
 function getFileDetails(downloadUrl) {
-  const regex = /\/([^/]+)\?alt=media/;
-  const match = regex.exec(downloadUrl);
+  const fileNameAndTypeRegex = /\/([^/]+\/[^/]+\.\w+)(?=\?|$)/;
+  const match = downloadUrl ? downloadUrl.match(fileNameAndTypeRegex) : [];
 
   let image;
-  let type
-
+  let name;
+  // If there's a match, return an object containing the file name and file type
   if (match && match.length >= 2) {
-    const fileName = match[1];
-    console.log(fileName);
-    if (fileName === "pdf") {
+    const fileNameWithSpaces = match[1].replace(/%20/g, " "); // Replace %20 with spaces
+    const lastSlashIndex = fileNameWithSpaces.lastIndexOf("/");
+    const fileName = fileNameWithSpaces.slice(lastSlashIndex + 1);
+    const fileType = fileName.split(".").pop();
+
+    if (fileType === "pdf") {
       image = pdf;
-      type = "pdf"
-    } else if (fileName === "png" || fileName === "jpeg") {
+      name = fileName;
+    } else if (fileType === "png" || fileType === "jpeg" || fileType === "jpg") {
       image = pic;
-      type = "png"
-    } else if (fileName === "xlsx" || fileName === "xls") {
-      image = fileImg;
-      type = "xlsx"
-    } else if (fileName === "docx") {
+      name = fileName;
+    } else if (fileType === "xlsx" || fileType === "xls") {
+      image = excel;
+      name = fileName;
+    } else if (fileType === "docx") {
       image = docpng;
-      type = "docx"
-    } else {
-      // Unknown file type
-      image = "unknown";
+      name = fileName;
     }
   } else {
-    console.log("No file name found in the URL.");
+    image = null;
+    name = null;
   }
-  return {type, image };
+
+  return { image, name };
 }
 
 export default getFileDetails;
