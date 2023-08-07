@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./BuyCarbonCreditCon.scss";
-import { BuyCarbonCreditBanner, BuyCarbonCreditCard } from "components";
+import {
+  BuyCarbonCreditBanner,
+  BuyCarbonCreditCard,
+  Shimmer,
+} from "components";
 import {
   useGetSellItemsQuery,
   useGetBuyItemsQuery,
@@ -23,7 +27,7 @@ const BuyCarbonCreditCon = () => {
   } = useGetBuyItemsQuery();
 
   const data = activeTab === "sell" ? sellData : buyData;
-  // console.log(sellData, "sell", buyData);
+  console.log(sellData, "sell", buyData);
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -51,12 +55,21 @@ const BuyCarbonCreditCon = () => {
           </div>
         </div>
         <div className="buy_carb_con_crd_wrap">
-          {data &&
+          {data?.length < 1 ? (
+            <div style={{ width: "100%", height: "50vh" }}>No orders yet</div>
+          ) : data?.length >= 1 ? (
             data?.map((item) => (
               <div key={item?._id}>
                 <BuyCarbonCreditCard type={activeTab} data={item} />
               </div>
-            ))}
+            ))
+          ) : (
+            [1, 2, 3].map((_, idx) => (
+              <div key={idx} className="mb_10">
+                <Shimmer height={"80px"} />
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

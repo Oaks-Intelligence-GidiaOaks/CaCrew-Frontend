@@ -50,5 +50,6 @@ export { default as TrackProjectProgress } from "components/widgets/track-projec
 export { default as CustomProjectSelect } from "components/widgets/custom-project-select/CustomProjectSelect";
 export { default as MenuBars } from "components/widgets/menu-bars/MenuBars";
 export { default as Badge } from "components/widgets/badge/Badge";
+export { default as Shimmer } from "components/widgets/shimmer/Shimmer";
 
 export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";
