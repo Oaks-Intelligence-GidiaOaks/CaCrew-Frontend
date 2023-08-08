@@ -39,7 +39,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
   // handle snd message button functionality
   const handleSendMessage = async () => {
     if (id) {
-      // console.log(id, "id");
+      console.log(id, "id");
       dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
       await rtkMutation(sendMessageMutation, { reciever: id?.id, message: " " });
     } else {

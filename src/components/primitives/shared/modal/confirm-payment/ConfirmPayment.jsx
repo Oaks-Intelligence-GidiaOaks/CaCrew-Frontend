@@ -39,6 +39,7 @@ const ConfirmPayment = ({ data }) => {
   const handleSendMessage = async () => {
 
     if (id) {
+      console.log(id, "id");
       dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
       await rtkMutation(sendMessage, { reciever: id?.id, message: " " });
     } else {
