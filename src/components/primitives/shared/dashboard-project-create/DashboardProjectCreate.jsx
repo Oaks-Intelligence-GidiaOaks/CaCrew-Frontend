@@ -25,6 +25,7 @@ const DashboardProjectCreate = () => {
     if (file) {
       const reader = new FileReader();
       let object = {};
+      // let uploadObj = {}
       reader.onload = () => {
         // Get string result from file
         const fileDataString = reader.result;
@@ -34,6 +35,7 @@ const DashboardProjectCreate = () => {
         object.string = fileDataString; // store the string result
         object.path = URL.createObjectURL(file);
         // Replace form value with object
+        // uploadObj["document"] = object;
         values["document"] = object;
         rtkMutation(addProject, values);
       };

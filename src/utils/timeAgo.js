@@ -12,8 +12,14 @@ function timeAgo(createdAt) {
   const timeDiffInWeeks = timeDiffInDays / 7;
   const timeDiffInYears = timeDiffInDays / 365;
 
-  if (timeDiffInMinutes <= 2) {
+  if (timeDiffInSeconds <= 59) {
     return "now";
+  } else if (timeDiffInSeconds <= 120) {
+    return "a minute ago";
+  } else if (timeDiffInMinutes <= 59) {
+    return `${Math.ceil(timeDiffInMinutes)} minutes ago`;
+  } else if (timeDiffInHours <= 23) {
+    return `${Math.ceil(timeDiffInHours)} hours ago`;
   } else if (timeDiffInDays <= 1) {
     return "today";
   } else if (timeDiffInDays < 2) {

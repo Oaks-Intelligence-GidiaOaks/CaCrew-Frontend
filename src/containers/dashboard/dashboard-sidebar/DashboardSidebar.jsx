@@ -13,6 +13,10 @@ import {
   wallet_white,
   trackproj,
   trackprojblue,
+  docu,
+  docublue,
+  messagewhte,
+  messge,
 } from "assets/images";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -85,9 +89,9 @@ const DashboardSidebar = () => {
         >
           <img
             src={
-              pathname?.includes("dashboard-wallet")
-                ? wallet_white
-                : wallet_blue
+              pathname?.includes("document-center")
+                ? docu
+                : docublue
             }
             alt="icon"
             className="dashboard_link_item_image"
@@ -158,7 +162,7 @@ const DashboardSidebar = () => {
           className={"link dashboard_link_item start"}
         >
           <img
-            src={pathname === "/dashboard-staff" ? staffwhite : staffblue}
+            src={pathname === "/messages" ? messagewhte : messge}
             alt="icon"
             className="dashboard_link_item_image"
           />

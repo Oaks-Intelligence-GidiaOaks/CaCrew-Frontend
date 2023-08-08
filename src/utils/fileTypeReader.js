@@ -2,16 +2,19 @@
 // import * as docx from "docx";
 
 const fileTypeReader = (file, reader) => {
+  if (!file) {
+    alert("select file");
+  }
   switch (file.type) {
     case "image/jpeg":
     case "image/png":
     case "image/jpg":
     case "application/pdf":
-      reader.readAsDataURL(file);
+      reader?.readAsDataURL(file);
       break;
     case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
     case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-      reader.readAsBinaryString(file);
+      reader?.readAsBinaryString(file);
       break;
     default:
       alert("Unsupported file type");
@@ -28,7 +31,7 @@ export const stringTypeToFile = (str, type, name) => {
     const uint8Array = Uint8Array.from(str, (char) => char.charCodeAt(0));
     var blob = new Blob([uint8Array], { type: type });
     let file = new File([blob], name, { type: blob.type });
-    console.log(file, "file")
+    console.log(file, "file");
     return file;
   }
 };

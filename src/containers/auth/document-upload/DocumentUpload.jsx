@@ -30,6 +30,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
     if (file) {
       const reader = new FileReader();
       const object = {};
+      const uploadObj = {};
       reader.onload = () => {
         // Get string result from file
         const fileDataString = reader.result;
@@ -39,9 +40,11 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
         object.string = fileDataString; // store the string result
         object.path = URL.createObjectURL(file);
         // Replace form value with object
-        value[documentName] = object;
+        // value[documentName] = object;
+        uploadObj[documentName] = object;
+
         // console.log(value, "name");
-        dispatch(updateFormdata(value));
+        dispatch(updateFormdata(uploadObj));
         navigate(path);
       };
       // Check the file type and use different methods to read the file

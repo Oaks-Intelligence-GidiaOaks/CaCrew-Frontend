@@ -38,3 +38,6 @@ export const GET_ORG_ADMIN = "transaction/get_org_admin_id";
 export const MESSAGE = "message";
 export const MARK_AS_READ = "message/mark_as_read"
 
+// Documment center constants
+export const DOCUMENTS = "document"
+

@@ -1,5 +1,19 @@
 @import "base.scss";
 
-.document_center{
-    
+.document_center {
+  .document_center_btn {
+    margin-top: 20px;
+    max-width: 300px;
+    width: 100%;
+  }
+}
+.document_center_heading {
+  color: #143b76;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  margin-bottom: 5px;
+  @media (max-width: 991px) {
+    font-size: 14px;
+  }
 }

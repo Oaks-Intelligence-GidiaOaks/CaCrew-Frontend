@@ -36,6 +36,7 @@ export { default as ViewMessages } from "components/primitives/shared/view-messa
 export { default as MessageItem } from "components/primitives/shared/Message-item/MessageItem";
 export { default as SendMessage } from "components/primitives/shared/send-message/SendMessage";
 export { default as DocumentCenterBanner } from "components/primitives/shared/document-center-banner/DocumentCenterBanner";
+export { default as DocumentList } from "components/primitives/shared/document-list/DocumentList";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
