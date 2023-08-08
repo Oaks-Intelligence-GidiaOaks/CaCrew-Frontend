@@ -98,8 +98,8 @@ const MessagesList = () => {
                   <div className="messsage_list_last">{item?.message}</div>
                 </div>
               </div>
-              <div className="messsage_list_text">
-                <div className="messsage_list_name">{timeAgo(item?.time)}</div>
+              <div className="messsage_list_text end col">
+                <div className="messsage_list_name_time">{timeAgo(item?.time)}</div>
                 <div className="messsage_list_new center">2</div>
               </div>
             </a>

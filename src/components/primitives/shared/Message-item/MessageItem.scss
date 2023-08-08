@@ -36,6 +36,11 @@
         font-size: 12px;
         letter-spacing: 0.12px;
         margin-right: 5px;
+        font-size: 10px;
+        white-space: nowrap;
+        @media (max-width: 991px) {
+          font-size: 9px;
+        }
       }
       .message_item_read {
         width: 10px;
@@ -73,9 +78,13 @@
       .message_item_time {
         color: #9f9f9f;
         text-align: right;
-        font-size: 12px;
         letter-spacing: 0.12px;
         margin-right: 5px;
+        font-size: 10px;
+        white-space: nowrap;
+        @media (max-width: 991px) {
+          font-size: 9px;
+        }
       }
 
       .message_item_read {

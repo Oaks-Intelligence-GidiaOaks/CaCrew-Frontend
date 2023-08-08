@@ -66,5 +66,12 @@
         font-size: 12px;
       }
     }
+    .messsage_list_name_time {
+      @extend .messsage_list_name;
+      font-size: 11px;
+      @media (max-width: 991px) {
+        font-size: 10px;
+      }
+    }
   }
 }
