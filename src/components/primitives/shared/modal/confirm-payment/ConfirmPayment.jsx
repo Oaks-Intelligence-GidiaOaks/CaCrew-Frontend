@@ -37,10 +37,10 @@ const ConfirmPayment = ({ data }) => {
 
   // handle snd message button functionality
   const handleSendMessage = async () => {
-    id && dispatch(updateMessageId({ message_id: null, chat_id: id?.id }));
 
     if (id) {
-      await rtkMutation(sendMessage, { reciever: id, message: " " });
+      dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
+      await rtkMutation(sendMessage, { reciever: id?.id, message: " " });
     } else {
       dispatch(
         openModal({

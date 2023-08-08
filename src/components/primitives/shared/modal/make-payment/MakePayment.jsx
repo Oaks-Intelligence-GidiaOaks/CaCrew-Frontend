@@ -38,10 +38,10 @@ const MakePayment = ({ data, amount, transactionId }) => {
 
   // handle snd message button functionality
   const handleSendMessage = async () => {
-    id && dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
     if (id) {
-      console.log(id, "id");
-      await rtkMutation(sendMessageMutation, { reciever: id, message: " " });
+      // console.log(id, "id");
+      dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
+      await rtkMutation(sendMessageMutation, { reciever: id?.id, message: " " });
     } else {
       dispatch(
         openModal({
