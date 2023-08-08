@@ -1,7 +1,7 @@
 import { support } from "assets/images";
 import "./ViewMessages.scss";
 import React, { useEffect } from "react";
-import { MessageItem } from "components";
+import { MessageItem, Shimmer } from "components";
 import { useGetMessageQuery } from "services/message.service";
 import { useGetUserQuery } from "services/user.service";
 import { useSelector } from "react-redux";
@@ -30,23 +30,28 @@ const ViewMessages = () => {
       <div className="view_message_wrap center">
         <div className="view_message_time">Today</div>
         <div className="view_message_all">
-          {data &&
-            data?.map((item) => (
-              <>
-                {item?.message !== " " && (
-                  <div key={item?._id}>
-                    <MessageItem
-                      send={user?._id === item?.sender?._id}
-                      message={item?.message}
-                      read={item?.read}
-                      time={item?.createdAt}
-                    />
-                  </div>
-                )}
-              </>
-            ))}
+          {data && data?.length >= 1
+            ? data?.map((item) => (
+                <>
+                  {item?.message !== " " && (
+                    <div key={item?._id}>
+                      <MessageItem
+                        send={user?._id === item?.sender?._id}
+                        message={item?.message}
+                        read={item?.read}
+                        time={item?.createdAt}
+                      />
+                    </div>
+                  )}
+                </>
+              ))
+            : [1, 2, 3, 4, 5, 6].map((_, idx) => (
+                <div className="mb_10">
+                  <Shimmer height={"40px"} />
+                </div>
+              ))}
+          <div id="chat" />
         </div>
-        <div id="chat" />
       </div>
     </div>
   );

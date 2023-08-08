@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./DocumentCenter.scss";
 import { Button, DocumentCenterBanner, DocumentList, Upload } from "components";
-import { Form } from "react-final-form";
+import { Form, useForm } from "react-final-form";
 import { useAddDocumentMutation } from "services/document.service";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
@@ -11,8 +11,11 @@ import fileTypeReader from "utils/fileTypeReader";
 const DocumentCenter = () => {
   const [addDocument, { isLoading, isSuccess, isError, error }] =
     useAddDocumentMutation();
-  console.log(isSuccess, "docs");
+
+  const [isDelete, setIsDelete] = useState(false);
+
   const dispatch = useDispatch();
+
 
   const onSubmit = async (value) => {
     const file = value.document;
@@ -54,6 +57,7 @@ const DocumentCenter = () => {
           success: true,
         })
       );
+      setIsDelete(true)
     }
   }, [isError, isSuccess, error]);
 
@@ -70,7 +74,11 @@ const DocumentCenter = () => {
           onSubmit={onSubmit}
           render={({ handleSubmit, valid }) => (
             <form onSubmit={handleSubmit}>
-              <Upload documentName={"document"} />
+              <Upload
+                documentName={"document"}
+                isDelete={isDelete}
+                setIsDelete={setIsDelete}
+              />
               <div className="center">
                 <Button
                   type={"submit"}

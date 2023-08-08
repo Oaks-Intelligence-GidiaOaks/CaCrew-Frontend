@@ -4,7 +4,7 @@ import { fileImg, filesImg, trash } from "assets/images";
 import { Field, FormSpy, useForm } from "react-final-form";
 import { required } from "validations/validations";
 
-const Upload = ({ documentName }) => {
+const Upload = ({ documentName, isDelete = null, setIsDelete = null }) => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
 
@@ -28,15 +28,13 @@ const Upload = ({ documentName }) => {
     setProgress(0);
     form.reset();
   };
-  // useEffect(() => {
-  //   // setProgress(0);
-  //   setTimeout(() => {
-  //     setProgress(100);
-  //   }, 1000);
-  //   return () => {
-  //     setProgress(0);
-  //   };
-  // }, [file]);
+
+  useEffect(() => {
+    if (isDelete) {
+      handleDelete();
+      setIsDelete(false);
+    }
+  }, [isDelete]);
   return (
     <div>
       <Field
