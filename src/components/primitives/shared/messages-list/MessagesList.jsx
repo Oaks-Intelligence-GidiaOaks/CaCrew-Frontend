@@ -46,7 +46,7 @@ const MessagesList = () => {
     }, []);
 
     return uniqueChats;
-  }, [data, user?._id]);
+  }, [data]);
 
   // console.log(filterData, "slice");
   // console.log(uniqueIds, "ids");

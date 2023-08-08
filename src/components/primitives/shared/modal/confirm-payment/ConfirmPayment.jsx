@@ -28,24 +28,32 @@ const ConfirmPayment = ({ data }) => {
     },
   ] = useSendMessageMutation();
 
-  const chatId = useSelector((state) => state.message.chat_id);
-  const navigate = useNavigate()
+  // const chatId = useSelector((state) => state.message.chat_id);
+  const navigate = useNavigate();
 
   // get buyer id, for messaging
   const { data: id } = useGetOrgAdminQuery({ id: data?.buyer?._id });
   // console.log(id.id, "id")
 
-
   // handle snd message button functionality
   const handleSendMessage = async () => {
-    id && dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
+    id && dispatch(updateMessageId({ message_id: null, chat_id: id?.id }));
 
-    if (chatId) {
-      await rtkMutation(sendMessage, {reciever: chatId, message: " " });
+    if (id) {
+      await rtkMutation(sendMessage, { reciever: id, message: " " });
+    } else {
+      dispatch(
+        openModal({
+          title: "Failed To Initiate Messaging",
+          message: `${
+            errorMessage?.data?.message || "An error occured, try agiain"
+          }`,
+        })
+      );
     }
   };
 
-    // console.log(chatId, "id****")
+  // console.log(chatId, "id****")
 
   const [
     paymentRecieved,
@@ -150,14 +158,18 @@ const ConfirmPayment = ({ data }) => {
   console.log(data, "***");
 
   useEffect(() => {
-    isErrorMessage && dispatch(openModal({
-      title: "Failed To Initiate Messaging",
-      message: `${errorMessage?.data?.message || "An error occured, try agiain" }`,
-    }))
-    isSuccessMessage && dispatch(closeComponentModal())
-    isSuccessMessage && navigate("/messages")
-
-  }, [isSuccessMessage, isErrorMessage, errorMessage])
+    isErrorMessage &&
+      dispatch(
+        openModal({
+          title: "Failed To Initiate Messaging",
+          message: `${
+            errorMessage?.data?.message || "An error occured, try agiain"
+          }`,
+        })
+      );
+    isSuccessMessage && dispatch(closeComponentModal());
+    isSuccessMessage && navigate("/messages");
+  }, [isSuccessMessage, isErrorMessage, errorMessage]);
 
   return (
     <div className="make_payment">
@@ -221,9 +233,14 @@ const ConfirmPayment = ({ data }) => {
           <div className="make_payment_details_title">Payment details</div>
           <div className="make_payment_details_message between">
             {data?.status === "Pending" && (
-              <div className="make_payment_details_message_seller start" onClick={handleSendMessage}>
+              <div
+                className="make_payment_details_message_seller start"
+                onClick={handleSendMessage}
+              >
                 <img src={messge} alt="icon" />
-                <span>{isLoadingMessage ? "Sending..." : "Message Buyer"} </span>
+                <span>
+                  {isLoadingMessage ? "Sending..." : "Message Buyer"}{" "}
+                </span>
               </div>
             )}
             {data?.status !== "Pending" && (

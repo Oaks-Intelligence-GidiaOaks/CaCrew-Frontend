@@ -20,7 +20,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
     useTransactionFailedMutation();
 
   const [
-    sendMessage,
+    sendMessageMutation,
     {
       isSuccess: isSuccessMessage,
       isLoading: isLoadingMessage,
@@ -29,24 +29,32 @@ const MakePayment = ({ data, amount, transactionId }) => {
     },
   ] = useSendMessageMutation();
 
-  const chatId = useSelector((state) => state.message.chat_id);
+  // const chatId = useSelector((state) => state.message.chat_id);
   const navigate = useNavigate();
 
   // get buyer id, for messaging
   const { data: id } = useGetOrgAdminQuery({ id: data?.seller?._id });
-  console.log(data?.seller?._id, "ids")
+  console.log(data?.seller?._id, "ids");
 
   // handle snd message button functionality
   const handleSendMessage = async () => {
     id && dispatch(updateMessageId({  message_id: null, chat_id: id?.id }));
-
-    if (chatId) {
-      await rtkMutation(sendMessage, { reciever: chatId, message: " " });
+    if (id) {
+      console.log(id, "id");
+      await rtkMutation(sendMessageMutation, { reciever: id, message: " " });
+    } else {
+      dispatch(
+        openModal({
+          title: "Failed To Initiate Messaging",
+          message: `${
+            errorMessage?.data?.message || "An error occured, try agiain"
+          }`,
+        })
+      );
     }
   };
 
-    console.log(chatId, "chatId")
-
+  // console.log(chatId, "chatId");
 
   const [
     paymentMade,
@@ -141,7 +149,7 @@ const MakePayment = ({ data, amount, transactionId }) => {
 
   useEffect(() => {
     isSuccessMessage && navigate("/messages");
-    isSuccessMessage && dispatch(closeComponentModal())
+    isSuccessMessage && dispatch(closeComponentModal());
     isErrorMessage &&
       dispatch(
         openModal({
@@ -254,9 +262,15 @@ const MakePayment = ({ data, amount, transactionId }) => {
           )}
           <div className="make_payment_details_message between">
             {data?.status === "Pending" && (
-              <div className="make_payment_details_message_seller start" onClick={handleSendMessage}>
+              <div
+                className="make_payment_details_message_seller start"
+                onClick={handleSendMessage}
+              >
                 <img src={messge} alt="icon" />
-                <span> {isLoadingMessage ? "Sending..." : "Message Seller"}</span>
+                <span>
+                  {" "}
+                  {isLoadingMessage ? "Sending..." : "Message Seller"}
+                </span>
               </div>
             )}
             {data?.status !== "Pending" && (
