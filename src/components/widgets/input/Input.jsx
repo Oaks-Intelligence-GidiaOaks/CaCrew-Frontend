@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Input.scss";
-import { info_circle, eye, calendar } from "assets/images";
+import { info_circle, eye, calendar, eyeclose } from "assets/images";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -97,7 +97,7 @@ const Input = ({
         )}
         {password && (
           <div className="date center" onClick={togglePasswordType}>
-            <img src={eye} alt="icon" />
+            <img src={passwordType === "password" ? eyeclose : eye } alt="icon" />
           </div>
         )}
         {date && (

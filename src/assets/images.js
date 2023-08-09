@@ -55,3 +55,6 @@ export const docublue = `${PATH}/docublue.svg`;
 export const messagewhte = `${PATH}/messagewhte.svg`;
 export const excel = `${PATH}/excel.png`;
 export const filebg = `${PATH}/filebg.png`;
+export const pattern = `${PATH}/pattern.png`;
+export const eyeclose = `${PATH}/eyeclose.svg`;
+export const patterntwo = `${PATH}/patterntwo.png`;

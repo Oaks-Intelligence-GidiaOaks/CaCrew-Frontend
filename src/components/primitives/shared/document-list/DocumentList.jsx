@@ -11,7 +11,7 @@ import { Shimmer } from "components";
 
 const DocumentList = () => {
   const { data } = useAllDocumentsQuery();
-  console.log(data, "data")
+  // console.log(data, "data")
   // const data = null
 
   return (
