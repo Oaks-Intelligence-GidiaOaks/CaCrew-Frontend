@@ -173,7 +173,7 @@ const DashboardSidebar = () => {
           // activeclassname="active"
           className={"link dashboard_link_item start"}
           onClick={() => handleLogout()}
-          style={{ marginTop: "0px", zIndex: "3" }}
+          style={{ marginTop: "0px", zIndex: "5" }}
         >
           <img
             src={fileImg}

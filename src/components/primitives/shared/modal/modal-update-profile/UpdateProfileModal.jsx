@@ -74,16 +74,6 @@ const UpdateProfileModal = () => {
                     validate={required("Retire amount")}
                   />
                 </div>
-                {/* <div className=" ">
-                  <Field
-                    name="organization"
-                    placeholder="Enter organisation"
-                    label="Organization"
-                    tooltip={"Enter organization to retire carbon credit"}
-                    component={Input}
-                    validate={required("Organisation")}
-                  />
-                </div> */}
                 <div className=" ">
                   <Field
                     name="purpose"

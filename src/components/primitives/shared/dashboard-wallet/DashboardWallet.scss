@@ -29,7 +29,7 @@
       object-fit: cover;
       width: 70%;
       height: 100%;
-      z-index: 2;
+      z-index: 1;
     }
     .dashboard_wallet_patterntwo {
       @extend .dashboard_wallet_pattern;
@@ -52,7 +52,6 @@
           margin-left: 21px;
           background: rgba(241, 241, 241, 0.5);
           padding: 4px;
-          z-index: 3;
           cursor: pointer;
           transition: all 0.3s linear;
           &:hover {
