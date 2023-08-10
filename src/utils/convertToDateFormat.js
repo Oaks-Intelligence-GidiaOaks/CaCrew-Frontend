@@ -13,12 +13,12 @@ function convertToDateFormat(dateString) {
 
 export default convertToDateFormat;
 
-export const  revertToDateFormat = (formattedDateString) => {
+export const revertToDateFormat = (formattedDateString) => {
   // Split the formatted date string into day, month, and year parts
   if (!formattedDateString) {
-    return
+    return;
   }
-  const [day, month, year] = formattedDateString?.split('/');
+  const [day, month, year] = formattedDateString?.split("/");
 
   // Convert day, month, and year parts to numbers
   const dayNumber = parseInt(day, 10);
@@ -35,6 +35,40 @@ export const  revertToDateFormat = (formattedDateString) => {
   }
 
   return date;
-}
+};
 
+export const convertDateToWord = (dateString) => {
+  if (!dateString) {
+    return null;
+  }
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.getMonth(); // Months are zero-based
+  const year = date.getFullYear();
+
+  // Pad the day and month with leading zeros if necessary
+  const formattedDay =
+    day !== 2 && day !== 3
+      ? `${day + "th"}`
+      : day === 2
+      ? `${day + "nd"}`
+      : `${day + "rd"}`;
+  const formattedMonth = months[month];
+
+  return `${formattedDay} ${formattedMonth} ${year}`;
+};

@@ -20,7 +20,7 @@
 
       @media (max-width: 767px) {
         margin-bottom: 20px;
-        margin-left: 0px;
+        margin-right: 0px;
       }
     }
 
@@ -92,9 +92,19 @@
   }
   .my_account_info_item_container {
     margin-top: 45px;
-    .my_account_info_item_title {
-      margin-bottom: 14px;
+    .my_account_info_item_edit_wrap {
+      .my_account_info_item_title {
+        margin-bottom: 14px;
+      }
+      .my_account_info_item_edit {
+        cursor: pointer;
+        margin-bottom: 14px;
+        .edit_image {
+          margin-left: 10px;
+        }
+      }
     }
+
     .my_account_info_item_wrap {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -110,6 +120,10 @@
       }
       @media (max-width: 767px) {
         grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px;
+      }
+      @media (max-width: 467px) {
+        grid-gap: 20px;
       }
       .my_account_info_item {
         // width: 100%;
@@ -120,7 +134,26 @@
           .my_account_info_item_text {
             color: #4c5563;
             font-size: 15px;
+            width: 100%;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+              height: 0.1px;
+            }
+            @media (max-width: 767px) {
+              width: 250px;
+            }
           }
+        }
+      }
+      .noaccount{
+        width: 100%;
+        grid-column: 2;
+        .noaccount_img{
+
+        }
+        .noaccount_text{
+          text-align: center;
+          color: #4C5563;
         }
       }
     }
