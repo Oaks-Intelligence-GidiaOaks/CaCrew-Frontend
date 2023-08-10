@@ -7,7 +7,7 @@ import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
 import {required} from "validations/validations";
 
-const ModalRetireCredit = () => {
+const UpdateOrganisationModal = () => {
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
@@ -28,7 +28,7 @@ const ModalRetireCredit = () => {
   return (
     <div className="modal_sell_carb">
       <div className="modal_sell_carb_title sub_heading">
-        Retire Carbon credit
+        Edit  Organisation
       </div>
       <img
         src={close}
@@ -74,7 +74,7 @@ const ModalRetireCredit = () => {
                     validate={required("Retire amount")}
                   />
                 </div>
-                <div className=" ">
+                {/* <div className=" ">
                   <Field
                     name="organization"
                     placeholder="Enter organisation"
@@ -83,7 +83,7 @@ const ModalRetireCredit = () => {
                     component={Input}
                     validate={required("Organisation")}
                   />
-                </div>
+                </div> */}
                 <div className=" ">
                   <Field
                     name="purpose"
@@ -117,4 +117,4 @@ const ModalRetireCredit = () => {
   );
 };
 
-export default ModalRetireCredit;
+export default UpdateOrganisationModal;

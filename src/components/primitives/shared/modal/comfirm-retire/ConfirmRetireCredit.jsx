@@ -23,11 +23,11 @@ const ConfirmRetireCredit = ({ data }) => {
   const dispatch = useDispatch();
 
   const onSubmit = async () => {
-    const {...copy} = data;
-    copy["organization"] = user?.organization_id?.organization_name
+    // const {...copy} = data;
+    // copy["organization"] = user?.organization_id?.organization_name
     // console.log(copy, "data");
 
-    await rtkMutation(retireCarbonCredit, copy);
+    await rtkMutation(retireCarbonCredit, data);
     isSuccessRef.current && dispatch(closeComponentModal())
     isSuccessRef.current &&
       dispatch(
