@@ -7,7 +7,7 @@ import {
   crown,
   verify,
   sms,
-  calendar,
+  calendarblue,
   call,
   edit,
   accplaceh,
@@ -99,7 +99,7 @@ const MyAccountInfo = () => {
           </div>
           <div className="my_account_info_item start">
             <img
-              src={calendar}
+              src={calendarblue}
               alt="icon"
               className="my_account_info_item_img"
             />
@@ -145,7 +145,7 @@ const MyAccountInfo = () => {
           </div>
           <div className="my_account_info_item start">
             <img
-              src={calendar}
+              src={calendarblue}
               alt="icon"
               className="my_account_info_item_img"
             />
