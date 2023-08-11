@@ -16,7 +16,7 @@ const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
   // };
 
   const data = useSelector((state) => state.user.user);
-  useGetUserQuery();
+  const {data: user} = useGetUserQuery();
 
   // console.log(isLoading, data, "headers");
 
@@ -32,7 +32,7 @@ const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
           to={"/my-account"}
           className="dashboard_header_textbtn_wrap center link"
         >
-          <img src={avartar} alt="icon" className="dashboard_avartar" />
+          <img src={user?.photo_url || avartar} alt="icon" className="dashboard_avartar" />
           <div className="dashboard_header_text">{data?.name}</div>
           <img src={down} alt="icon" className="dashboard_down_icon" />
         </Link>
