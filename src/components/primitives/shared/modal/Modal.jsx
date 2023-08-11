@@ -14,7 +14,9 @@ import {
   ModalBuyOrder,
   ConfirmPayment,
   ModalRetireCredit,
-  ConfirmRetireCredit
+  ConfirmRetireCredit,
+  UpdateOrganisationModal,
+  UpdateProfileModal,
 } from "components";
 
 const Modal = () => {
@@ -56,6 +58,8 @@ const Modal = () => {
     ModalBuyOrder: <ModalBuyOrder />,
     ModalRetireCredit: <ModalRetireCredit />, 
     ConfirmRetireCredit: <ConfirmRetireCredit data={data}/>, 
+    UpdateOrganisationModal: <UpdateOrganisationModal />,
+    UpdateProfileModal: <UpdateProfileModal />,
   }[component];
 
   return (

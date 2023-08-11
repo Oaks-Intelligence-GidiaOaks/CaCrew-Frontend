@@ -14,17 +14,26 @@ import {
   buildings,
   buildingstwo,
   staffblue,
-  global
+  global,
 } from "assets/images";
 import { Badge } from "components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { convertDateToWord } from "utils/convertToDateFormat";
+import { openModal } from "redux/slices/modal.slice";
 
 const MyAccountInfo = () => {
   const { data } = useGetUserQuery();
   const { data: staffs } = useAllStaffsQuery();
+
   const user = useSelector((state) => state.user.user);
-  console.log(data, "dtt");
+  const dispatch = useDispatch();
+
+  const handleOpenProfileUpdateModal = () => {
+    dispatch(openModal({ component: "UpdateProfileModal" }));
+  };
+  const handleOpenOrganisationUpdateModal = () => {
+    dispatch(openModal({ component: "UpdateOrganisationModal" }));
+  };
 
   return (
     <div className="my_account_info">
@@ -71,8 +80,11 @@ const MyAccountInfo = () => {
           <div className="sub_heading my_account_info_item_title">
             My Information
           </div>
-          {user?.role === "OrgAdmin" && (
-            <div className="center text my_account_info_item_edit">
+          {(user?.role === "OrgAdmin" || user?.role === "SuperAdmin") && (
+            <div
+              className="center text my_account_info_item_edit"
+              onClick={handleOpenProfileUpdateModal}
+            >
               <span>Edit</span>{" "}
               <img src={edit} alt="icon" className="edit_image" />
             </div>
@@ -117,8 +129,11 @@ const MyAccountInfo = () => {
           <div className="sub_heading my_account_info_item_title">
             Organisation Information
           </div>
-          {user?.role === "OrgAdmin" && (
-            <div className="center text my_account_info_item_edit">
+          {(user?.role === "OrgAdmin" || user?.role === "SuperAdmin") && (
+            <div
+              className="center text my_account_info_item_edit"
+              onClick={handleOpenOrganisationUpdateModal}
+            >
               <span>Edit</span>{" "}
               <img src={edit} alt="icon" className="edit_image" />
             </div>
@@ -126,7 +141,11 @@ const MyAccountInfo = () => {
         </div>
         <div className="my_account_info_item_wrap">
           <div className="my_account_info_item start">
-            <img src={buildings} alt="icon" className="my_account_info_item_img" />
+            <img
+              src={buildings}
+              alt="icon"
+              className="my_account_info_item_img"
+            />
             <div className="my_account_info_item_text_wrap">
               <div className="my_account_info_item_text">Name of Company</div>
               <div className="my_account_info_item_text">
@@ -135,7 +154,11 @@ const MyAccountInfo = () => {
             </div>
           </div>
           <div className="my_account_info_item start">
-            <img src={buildingstwo} alt="icon" className="my_account_info_item_img" />
+            <img
+              src={buildingstwo}
+              alt="icon"
+              className="my_account_info_item_img"
+            />
             <div className="my_account_info_item_text_wrap">
               <div className="my_account_info_item_text">Industry</div>
               <div className="my_account_info_item_text">
@@ -158,11 +181,7 @@ const MyAccountInfo = () => {
             </div>
           </div>
           <div className="my_account_info_item start">
-            <img
-              src={global}
-              alt="icon"
-              className="my_account_info_item_img"
-            />
+            <img src={global} alt="icon" className="my_account_info_item_img" />
             <div className="my_account_info_item_text_wrap">
               <div className="my_account_info_item_text">Website</div>
               <div className="my_account_info_item_text">
