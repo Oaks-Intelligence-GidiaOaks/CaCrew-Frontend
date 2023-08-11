@@ -54,6 +54,7 @@
           padding: 4px;
           cursor: pointer;
           transition: all 0.3s linear;
+          z-index: 2;
           &:hover {
             background: rgba(227, 226, 226, 0.5);
           }
