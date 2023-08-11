@@ -2,13 +2,13 @@ import React from "react";
 import "./OrgAdminDashboardHomeCredit.scss";
 import { avartar } from "assets/images";
 import { Button } from "components";
-// import { useGetUserQuery } from "services/user.service";
+import { useGetUserQuery } from "services/user.service";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { openModal } from "redux/slices/modal.slice";
 
 const OrgAdminDashboardHomeCredit = () => {
-  // const { data } = useGetUserQuery();
+  const { data: user } = useGetUserQuery();
   const data = useSelector((state) => state.user.user);
   const navigate = useNavigate();
    const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const OrgAdminDashboardHomeCredit = () => {
   };
   return (
     <div className="credit between">
-      <img src={avartar} alt="avartar" className="credit_avartar" />
+      <img src={user?.photo_url || avartar} alt="avartar" className="credit_avartar" />
       <div className="credit_detail_wrap_inner">
         <div className="credit_name">
           {data?.organization_id?.organization_name}
