@@ -79,7 +79,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         body: data,
       }),
-      providesTags: ["User"],
+      invalidatesTags: ["User"],
     }),
   }),
   // overrideExisting: true,

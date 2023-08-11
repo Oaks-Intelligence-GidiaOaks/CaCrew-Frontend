@@ -47,8 +47,8 @@ const UpdateProfileModal = () => {
         // Replace form value with object
         // uploadObj["document"] = object;
         values["photo_url"] = object;
-        rtkMutation(updateUser, values);
       };
+      await rtkMutation(updateUser, values);
       fileTypeReader(imageFile, reader);
     }
   };

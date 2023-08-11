@@ -34,10 +34,11 @@ export const organisationApiSlice = apiSlice.injectEndpoints({
 
     // update organistion
     updateOrganisation: builder.mutation({
-      providesTags: ["Organisation", "User"],
-      query: () => ({
+      invalidatesTags: ["User"],
+      query: (data) => ({
         url: UPDATE_ORGANISATION,
         method: "PUT",
+        body: data,
       }),
       transformResponse: (response) => {
         return response;
