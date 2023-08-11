@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./UpdateProfileModal.scss";
 import "../modal-component-sell-order/ModalSellOrder.scss";
 import { avartar, close } from "assets/images";
@@ -7,23 +7,34 @@ import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
 import { required } from "validations/validations";
+import { useGetUserQuery } from "services/user.service";
 
 const UpdateProfileModal = () => {
+  const [initialValue, setInitialValues] = useState({});
+
   const dispatch = useDispatch();
+
+  const { data } = useGetUserQuery();
+  console.log(data, "dtt");
+  console.log(initialValue, "dtts");
 
   const handleCloseModal = () => {
     dispatch(closeComponentModal());
   };
 
   const onSubmit = async (values) => {
-    // console.log(values);
-    dispatch(
-      openModal({
-        component: "ConfirmRetireCredit",
-        data: values,
-      })
-    );
+    console.log(values);
   };
+
+  useEffect(() => {
+    if (data) {
+      setInitialValues({
+        name: data?.name,
+        email: data?.email,
+        phone_number: data?.phone_number,
+      });
+    }
+  }, [data]);
 
   //   console.log(isErrorRef.current, "**", error);
   return (
@@ -57,6 +68,7 @@ const UpdateProfileModal = () => {
         <div className="profile_input">
           <Form
             onSubmit={onSubmit}
+            initialValues={initialValue}
             render={({ handleSubmit, valid }) => (
               <form onSubmit={handleSubmit}>
                 <div className="profile_input_item">
@@ -65,7 +77,7 @@ const UpdateProfileModal = () => {
                     placeholder="Enter Account Name"
                     label="Account Name"
                     component={Input}
-                    validate={required("Retire amount")}
+                    validate={required("Account Name")}
                   />
                 </div>
                 <div className=" ">
@@ -74,7 +86,16 @@ const UpdateProfileModal = () => {
                     placeholder="Enter Email"
                     label="Email"
                     component={Input}
-                    validate={required("Purpose")}
+                    validate={required("Enter Email")}
+                  />
+                </div>
+                <div className=" ">
+                  <Field
+                    name="phone_number"
+                    placeholder="Enter Phone"
+                    label="Phone"
+                    component={Input}
+                    validate={required("Enter Phone")}
                   />
                 </div>
                 <div className="profile_input_btn_wrap end">
