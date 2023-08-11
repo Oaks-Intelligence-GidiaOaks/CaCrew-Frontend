@@ -22,12 +22,11 @@ const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
 
   return (
     <div className="dashboard_header between">
-      <div className="dashboard_header_logo center col">
+      <Link to={"/"} className="dashboard_header_logo center col link">
         {/* <span className="dashboard_header_logo_bold">Carbon</span>Nible */}
         <img src={carbon} className="dashboard_header_logo_img" alt="logo" />
         <div className="dashboard_header_logo_bold">Carbonible</div>
-
-      </div>
+      </Link>
       <div className="dashboard_logowrap center">
         <Link
           to={"/my-account"}
