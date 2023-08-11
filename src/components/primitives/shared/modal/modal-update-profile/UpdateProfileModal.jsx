@@ -54,8 +54,9 @@ const UpdateProfileModal = () => {
     // console.log(imageObj, "obj");
     if (imageObj) {
       values["photo"] = imageObj;
-    } else {
-      values["photo"] = data ? data?.photo_url : "";
+    }
+    else if (!imageObj) {
+      values["photo"] = data?.photo_url;
     }
 
     console.log(values);
