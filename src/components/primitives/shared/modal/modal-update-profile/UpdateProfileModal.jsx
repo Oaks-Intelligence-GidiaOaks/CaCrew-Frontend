@@ -54,9 +54,11 @@ const UpdateProfileModal = () => {
     // console.log(imageObj, "obj");
     if (imageObj) {
       values["photo"] = imageObj;
+    } else {
+      values["photo"] = data ? data?.photo_url : "";
     }
 
-    // console.log(values);
+    console.log(values);
     await rtkMutation(updateUser, values);
   };
 
