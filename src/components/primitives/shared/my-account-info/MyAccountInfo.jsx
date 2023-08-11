@@ -38,7 +38,7 @@ const MyAccountInfo = () => {
   return (
     <div className="my_account_info">
       <div className="my_account_info between">
-        <img src={avartar} alt="avartar" className="my_account_info_avartar" />
+        <img src={data?.photo_url || avartar} alt="avartar" className="my_account_info_avartar" />
         <div className="my_account_info_detail_wrap_inner">
           <div className="my_account_info_name">{data?.name}</div>
           <div className="my_account_info_wallet_wrap start">
@@ -162,7 +162,7 @@ const MyAccountInfo = () => {
             <div className="my_account_info_item_text_wrap">
               <div className="my_account_info_item_text">Industry</div>
               <div className="my_account_info_item_text">
-                {data?.organization_id?.industry_type}
+                {data?.organization_id?.industry_type || "-----"}
               </div>
             </div>
           </div>

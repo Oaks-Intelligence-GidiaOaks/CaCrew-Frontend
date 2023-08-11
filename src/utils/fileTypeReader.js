@@ -4,6 +4,7 @@
 const fileTypeReader = (file, reader) => {
   if (!file) {
     alert("select file");
+    return undefined;
   }
   switch (file.type) {
     case "image/jpeg":

@@ -29,28 +29,35 @@ const UpdateProfileModal = () => {
     dispatch(closeComponentModal());
   };
 
-  const onSubmit = async (values) => {
-    console.log(values);
-
-    if (imageFile) {
-      const reader = new FileReader();
-      let object = {};
-      // let uploadObj = {};
-      reader.onload = () => {
-        // Get string result from file
-        const fileDataString = reader.result;
-        // Add to properties
-        object.name = imageFile.name;
-        object.type = imageFile.type;
-        object.string = fileDataString; // store the string result
-        object.path = URL.createObjectURL(imageFile);
-        // Replace form value with object
-        // uploadObj["document"] = object;
-        values["photo_url"] = object;
-      };
-      await rtkMutation(updateUser, values);
-      fileTypeReader(imageFile, reader);
+  const readFileAndReturnObject = async (imageFile) => {
+    if (!imageFile) {
+      return;
     }
+    const reader = new FileReader();
+    imageFile && fileTypeReader(imageFile, reader);
+    return await new Promise((resolve) => {
+      reader.onload = () => {
+        const fileDataString = reader.result;
+        const object = {
+          name: imageFile.name,
+          type: imageFile.type,
+          string: fileDataString,
+          path: URL.createObjectURL(imageFile),
+        };
+        resolve(object);
+      };
+    });
+  };
+
+  const onSubmit = async (values) => {
+    const imageObj = await readFileAndReturnObject(imageFile);
+    // console.log(imageObj, "obj");
+    if (imageObj) {
+      values["photo"] = imageObj;
+    }
+
+    // console.log(values);
+    await rtkMutation(updateUser, values);
   };
 
   useEffect(() => {
@@ -113,7 +120,8 @@ const UpdateProfileModal = () => {
             accept="image/jpeg,image/png"
             onChange={(e) => {
               setImageFile(e.target.files[0]);
-              setImage(URL.createObjectURL(e.target.files[0]));
+              e.target.files[0] &&
+                setImage(URL.createObjectURL(e.target.files[0]));
             }}
           />
         </div>
