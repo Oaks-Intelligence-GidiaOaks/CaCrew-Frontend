@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./UpdateOrganisationModal.scss";
 import "../modal-component-sell-order/ModalSellOrder.scss";
 import { avartar, close } from "assets/images";
@@ -7,8 +7,19 @@ import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
 import { required } from "validations/validations";
+import { useGetUserQuery } from "services/user.service";
+import { useUpdateOrganisationMutation } from "services/organisation.service";
+import rtkMutation from "utils/rtkMutation";
+import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const UpdateOrganisationModal = () => {
+  const [initialValue, setInitialValues] = useState({});
+
+  const [updateOrganisation, { isSuccess, isLoading, isError, error }] =
+    useUpdateOrganisationMutation();
+  const { data } = useGetUserQuery();
+  console.log(data, "dtt");
+
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
@@ -16,14 +27,43 @@ const UpdateOrganisationModal = () => {
   };
 
   const onSubmit = async (values) => {
-    // console.log(values);
-    dispatch(
-      openModal({
-        component: "ConfirmRetireCredit",
-        data: values,
-      })
-    );
+    console.log(values);
+    await rtkMutation(updateOrganisation, values);
   };
+
+  useEffect(() => {
+    if (data) {
+      setInitialValues({
+        organization_email: data?.organization_id?.organization_email,
+        account_name: data?.organization_id?.account_name,
+        account_number: data?.organization_id?.account_number,
+        account_type: data?.organization_id?.account_type,
+        bank: data?.organization_id?.bank,
+      });
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (isError) {
+      dispatch(
+        openModal({
+          title: "Update Organization Failed",
+          message: `${
+            formatErrorResponse(error) || "An error occured please try again"
+          }`,
+        })
+      );
+    }
+    if (isSuccess) {
+      dispatch(
+        openModal({
+          title: "Update Organization Success",
+          message: `${"Profile updated succesfully"}`,
+          success: true,
+        })
+      );
+    }
+  }, [isError, isSuccess, error, dispatch]);
 
   //   console.log(isErrorRef.current, "**", error);
   return (
@@ -44,6 +84,7 @@ const UpdateOrganisationModal = () => {
         <div className="profile_input">
           <Form
             onSubmit={onSubmit}
+            initialValues={initialValue}
             render={({ handleSubmit, valid }) => (
               <form onSubmit={handleSubmit}>
                 <div className="profile_input_item">
@@ -80,6 +121,8 @@ const UpdateOrganisationModal = () => {
                     label="Account Type"
                     component={Input}
                     validate={required("Account Type")}
+                    select
+                    options={{Savings: "Savings", Current: "Current" }}
                   />
                 </div>
                 <div className=" ">
@@ -102,6 +145,7 @@ const UpdateOrganisationModal = () => {
                     className={"profile_input_btn"}
                     type={"submit"}
                     disabled={!valid}
+                    loading={isLoading}
                   />
                 </div>
               </form>

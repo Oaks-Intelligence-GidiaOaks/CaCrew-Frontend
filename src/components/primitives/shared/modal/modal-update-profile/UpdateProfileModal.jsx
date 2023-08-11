@@ -23,8 +23,7 @@ const UpdateProfileModal = () => {
   const dispatch = useDispatch();
 
   const { data } = useGetUserQuery();
-  console.log(data, "dtt");
-  console.log(imageFile, "dtts");
+  // console.log(data, "dtt");
 
   const handleCloseModal = () => {
     dispatch(closeComponentModal());

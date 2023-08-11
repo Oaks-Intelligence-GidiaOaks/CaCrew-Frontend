@@ -1,6 +1,7 @@
 import {
   SET_SALE_ORGANISATION,
   UNVERIFIED_ORGANISATION,
+  UPDATE_ORGANISATION,
   VERIFIED_ORGANISATION,
   VERIFY_ORGANISATION,
 } from "services/constants";
@@ -25,6 +26,18 @@ export const organisationApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: VERIFIED_ORGANISATION,
         method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // update organistion
+    updateOrganisation: builder.mutation({
+      providesTags: ["Organisation", "User"],
+      query: () => ({
+        url: UPDATE_ORGANISATION,
+        method: "PUT",
       }),
       transformResponse: (response) => {
         return response;
@@ -59,4 +72,5 @@ export const {
   useVerifiedOrganisationQuery,
   useVerifyOrganisationMutation,
   useSetSaleOrganisationMutation,
+  useUpdateOrganisationMutation,
 } = organisationApiSlice;

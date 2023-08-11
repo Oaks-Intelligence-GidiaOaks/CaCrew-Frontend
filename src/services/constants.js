@@ -8,6 +8,7 @@ export const UNVERIFIED_ORGANISATION = "organization/unverified";
 export const VERIFIED_ORGANISATION = "organization/verified";
 export const VERIFY_ORGANISATION = "organization/verify/";
 export const SET_SALE_ORGANISATION = "organization/wallet";
+export const UPDATE_ORGANISATION = "organization";
 
 // Staff constants
 export const GET_ALL_STAFFS = "staff";
