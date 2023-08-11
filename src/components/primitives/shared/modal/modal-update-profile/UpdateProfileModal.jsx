@@ -7,16 +7,24 @@ import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
 import { required } from "validations/validations";
-import { useGetUserQuery } from "services/user.service";
+import { useGetUserQuery, useUpdateUserMutation } from "services/user.service";
+import fileTypeReader from "utils/fileTypeReader";
+import rtkMutation from "utils/rtkMutation";
+import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const UpdateProfileModal = () => {
   const [initialValue, setInitialValues] = useState({});
+  const [imageFile, setImageFile] = useState(null);
+  const [image, setImage] = useState(null);
+
+  const [updateUser, { isSuccess, isLoading, isError, error }] =
+    useUpdateUserMutation();
 
   const dispatch = useDispatch();
 
   const { data } = useGetUserQuery();
   console.log(data, "dtt");
-  console.log(initialValue, "dtts");
+  console.log(imageFile, "dtts");
 
   const handleCloseModal = () => {
     dispatch(closeComponentModal());
@@ -24,6 +32,26 @@ const UpdateProfileModal = () => {
 
   const onSubmit = async (values) => {
     console.log(values);
+
+    if (imageFile) {
+      const reader = new FileReader();
+      let object = {};
+      // let uploadObj = {};
+      reader.onload = () => {
+        // Get string result from file
+        const fileDataString = reader.result;
+        // Add to properties
+        object.name = imageFile.name;
+        object.type = imageFile.type;
+        object.string = fileDataString; // store the string result
+        object.path = URL.createObjectURL(imageFile);
+        // Replace form value with object
+        // uploadObj["document"] = object;
+        values["photo_url"] = object;
+        rtkMutation(updateUser, values);
+      };
+      fileTypeReader(imageFile, reader);
+    }
   };
 
   useEffect(() => {
@@ -33,8 +61,31 @@ const UpdateProfileModal = () => {
         email: data?.email,
         phone_number: data?.phone_number,
       });
+      setImage(data?.photo_url);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (isError) {
+      dispatch(
+        openModal({
+          title: "Update Profile Failed",
+          message: `${
+            formatErrorResponse(error) || "An error occured please try again"
+          }`,
+        })
+      );
+    }
+    if (isSuccess) {
+      dispatch(
+        openModal({
+          title: "Update Profile Success",
+          message: `${"Profile updated succesfully"}`,
+          success: true,
+        })
+      );
+    }
+  }, [isError, isSuccess, error, dispatch]);
 
   //   console.log(isErrorRef.current, "**", error);
   return (
@@ -48,7 +99,11 @@ const UpdateProfileModal = () => {
       />
       <div className="profile_info_wrap center col">
         <div className="profile_info_bold">
-          <img src={avartar} alt="avartar" className="profile_input_img" />
+          <img
+            src={image || avartar}
+            alt="avartar"
+            className="profile_input_img"
+          />
         </div>
         <div className="text profile_input_wrap">
           <span className="profile_input_text">Change Avatar</span>
@@ -56,11 +111,11 @@ const UpdateProfileModal = () => {
             // ref={fileRef}
             type="file"
             className="profile_input"
-            accept="image/jpeg,image/png,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            // onChange={(e) => {
-            //   input.onChange(e.target.files[0]);
-            //   // handleChange(e);
-            // }}
+            accept="image/jpeg,image/png"
+            onChange={(e) => {
+              setImageFile(e.target.files[0]);
+              setImage(URL.createObjectURL(e.target.files[0]));
+            }}
           />
         </div>
       </div>
@@ -109,6 +164,7 @@ const UpdateProfileModal = () => {
                     className={"profile_input_btn"}
                     type={"submit"}
                     disabled={!valid}
+                    loading={isLoading}
                   />
                 </div>
               </form>

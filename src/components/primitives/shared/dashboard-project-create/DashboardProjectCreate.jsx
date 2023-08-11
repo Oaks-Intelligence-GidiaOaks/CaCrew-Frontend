@@ -25,6 +25,7 @@ const DashboardProjectCreate = () => {
     if (file) {
       const reader = new FileReader();
       let object = {};
+      fileTypeReader(file, reader);
       // let uploadObj = {}
       reader.onload = () => {
         // Get string result from file
@@ -39,7 +40,6 @@ const DashboardProjectCreate = () => {
         values["document"] = object;
         rtkMutation(addProject, values);
       };
-      fileTypeReader(file, reader);
       console.log(values.document, "val");
     }
   };

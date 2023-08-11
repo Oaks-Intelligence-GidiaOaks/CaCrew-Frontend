@@ -71,8 +71,18 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["User"],
     }),
+
+    // Get user route
+    updateUser: builder.mutation({
+      query: (data) => ({
+        url: GETUSER,
+        method: "PUT",
+        body: data,
+      }),
+      providesTags: ["User"],
+    }),
   }),
-  overrideExisting: true,
+  // overrideExisting: true,
   // keepUnusedDataFor: 60,
   // refetchOnMountOrArgChange: true,
 });
@@ -82,4 +92,5 @@ export const {
   useRegisterUserMutation,
   useSendCreditMutation,
   useGetUserQuery,
+  useUpdateUserMutation,
 } = userApiSlice;

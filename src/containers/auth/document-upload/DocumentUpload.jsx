@@ -31,6 +31,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
       const reader = new FileReader();
       const object = {};
       const uploadObj = {};
+      fileTypeReader(file, reader);
       reader.onload = () => {
         // Get string result from file
         const fileDataString = reader.result;
@@ -48,7 +49,6 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
         navigate(path);
       };
       // Check the file type and use different methods to read the file
-      fileTypeReader(file, reader);
     }
   };
 
