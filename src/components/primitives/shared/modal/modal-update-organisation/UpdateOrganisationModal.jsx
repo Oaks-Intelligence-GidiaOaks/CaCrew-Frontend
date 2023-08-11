@@ -1,11 +1,12 @@
 import React from "react";
+import "./UpdateOrganisationModal.scss";
 import "../modal-component-sell-order/ModalSellOrder.scss";
-import { close } from "assets/images";
+import { avartar, close } from "assets/images";
 import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
-import {required} from "validations/validations";
+import { required } from "validations/validations";
 
 const UpdateOrganisationModal = () => {
   const dispatch = useDispatch();
@@ -26,84 +27,79 @@ const UpdateOrganisationModal = () => {
 
   //   console.log(isErrorRef.current, "**", error);
   return (
-    <div className="modal_sell_carb">
-      <div className="modal_sell_carb_title sub_heading">
-        Edit  Organisation
-      </div>
+    <div className="profile">
+      <div className="profile_title sub_heading">Edit profile</div>
       <img
         src={close}
         alt="icon"
-        className="modal_sell_carb_close"
+        className="profile_close"
         onClick={handleCloseModal}
       />
-      <div className="modal_sell_carb_info_wrap ">
-        <div className="modal_sell_carb_info_bold">
-          Retire carbon credits to offset your carbon emissions
+      <div className="profile_info_wrap ">
+        <div className="profile_info_bold">
+          Input the Banking Details of your Organization
         </div>
-        {/* <div className="modal_sell_carb_info_text">
-          {data?.wallet_id?.open_balance + " tCO2e" || "-----"}
-        </div> */}
       </div>
-      <div className="modal_sell_carb_input_warp">
-        <div className="modal_sell_carb_input">
+      <div className="profile_input_warp">
+        <div className="profile_input">
           <Form
             onSubmit={onSubmit}
             render={({ handleSubmit, valid }) => (
               <form onSubmit={handleSubmit}>
-                <div className="modal_sell_carb_input_item">
+                <div className="profile_input_item">
                   <Field
-                    name="wallet_type"
-                    label="Select Wallet to Retire From"
+                    name="organization_email"
+                    placeholder="Enter Email"
+                    label="Email"
                     component={Input}
-                    select
-                    options={{ Close: "Close", Open: "Open" }}
-                    validate={required("Wallet type")}
-
-                  />
-                  {/* <div className="modal_sell_carb_input_item_fee">
-                    Transaction Fee: 0.0 tco2e
-                  </div> */}
-                </div>
-                <div className="modal_sell_carb_input_item">
-                  <Field
-                    name="amount"
-                    placeholder="Enter Amount"
-                    label="Retire Amount"
-                    tooltip={"Input quantiy to retire"}
-                    component={Input}
-                    validate={required("Retire amount")}
+                    validate={required("Enter Email")}
                   />
                 </div>
-                {/* <div className=" ">
-                  <Field
-                    name="organization"
-                    placeholder="Enter organisation"
-                    label="Organization"
-                    tooltip={"Enter organization to retire carbon credit"}
-                    component={Input}
-                    validate={required("Organisation")}
-                  />
-                </div> */}
                 <div className=" ">
                   <Field
-                    name="purpose"
-                    placeholder="Enter purpose"
-                    label="Purpose of Retirement"
-                    tooltip={"Enter organization to retire carbon credit"}
+                    name="account_name"
+                    placeholder="Enter Account Name"
+                    label="Account Name"
                     component={Input}
-                    validate={required("Purpose")}
-
+                    validate={required("Account Name")}
                   />
                 </div>
-                <div className="modal_sell_carb_input_btn_wrap end">
+                <div className=" ">
+                  <Field
+                    name="account_number"
+                    placeholder="Enter Account Number"
+                    label="Account Number"
+                    component={Input}
+                    validate={required("Account Number")}
+                  />
+                </div>
+                <div className=" ">
+                  <Field
+                    name="account_type"
+                    placeholder="Enter Account Type"
+                    label="Account Type"
+                    component={Input}
+                    validate={required("Account Type")}
+                  />
+                </div>
+                <div className=" ">
+                  <Field
+                    name="bank"
+                    placeholder="Enter Bank"
+                    label="Bank"
+                    component={Input}
+                    validate={required("Bank")}
+                  />
+                </div>
+                <div className="profile_input_btn_wrap end">
                   <Button
                     text={"Cancel"}
-                    className={"modal_sell_carb_input_btn_two"}
+                    className={"profile_input_btn_two"}
                     onClick={handleCloseModal}
                   />
                   <Button
-                    text={"Retire"}
-                    className={"modal_sell_carb_input_btn"}
+                    text={"Update"}
+                    className={"profile_input_btn"}
                     type={"submit"}
                     disabled={!valid}
                   />
