@@ -7,7 +7,7 @@ import { useAllProjectsQuery } from "services/project.service";
 import { useAllTransactionsQuery } from "services/transaction.service";
 
 const SuperAdminDashHome = () => {
-  const { data: unverifiedData } = useUnverifiedOrganisationQuery();
+  const { data: unverifiedData } = useUnverifiedOrganisationQuery({});
   const {data: projectData} = useAllProjectsQuery();
   const {data: transactionData} = useAllTransactionsQuery();
   return (

@@ -12,7 +12,7 @@ export const organisationApiSlice = apiSlice.injectEndpoints({
     // get all organisations route
     unverifiedOrganisation: builder.query({
       providesTags: ["Organisation"],
-      query: ({page}) => ({
+      query: ({page = 1}) => ({
         url: `${UNVERIFIED_ORGANISATION}?page=${page}`,
         method: "GET",
       }),
@@ -23,7 +23,7 @@ export const organisationApiSlice = apiSlice.injectEndpoints({
 
     verifiedOrganisation: builder.query({
       providesTags: ["Organisation"],
-      query: ({page}) => ({
+      query: ({page = 1}) => ({
         url: `${VERIFIED_ORGANISATION}?page=${page}`,
         method: "GET",
       }),

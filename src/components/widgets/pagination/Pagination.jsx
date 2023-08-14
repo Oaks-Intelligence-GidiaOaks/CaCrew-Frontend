@@ -34,7 +34,7 @@ const Pagination = ({ totalCount, page = 1, limit = 10, setPage }) => {
         ))}
       </div>
 
-      {/* <div className="pagination_num">1 - 10 of 17</div> */}
+      <div className="pagination_num">1 - 10 of 17</div>
       <div className="start pagination_control">
         <div className="pagination_control_item center">
           <img src={left} alt="" />
