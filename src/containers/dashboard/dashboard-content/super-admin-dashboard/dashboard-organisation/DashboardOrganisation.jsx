@@ -5,33 +5,34 @@ import {
   useVerifiedOrganisationQuery,
 } from "services/organisation.service";
 // import { formatErrorResponse } from "utils/formatErrorResponse";
-import { SearchInput, TableAccordion } from "components";
+import { Pagination, SearchInput, TableAccordion } from "components";
+import { organisationApiSlice } from "services/organisation.service";
 
 // fixedCacheKey: organisationApi.reducerPath,
 // }
 
 const DashboardOrganisation = () => {
   const [activeTab, setActiveTab] = useState("pending");
+  const [page, setPage] = useState(1);
 
   const {
     isLoading: unverifiedLoad,
     error: unverifiedError,
     data: unverifiedData,
-  } = useUnverifiedOrganisationQuery({providesTags: ["Organisation"],});
+  } = useUnverifiedOrganisationQuery({ page });
   const {
     isLoading: verifiedLoad,
     error: verifiedError,
     data: verifiedData,
-  } = useVerifiedOrganisationQuery({providesTags: ["Organisation"],});
+  } = useVerifiedOrganisationQuery({ page });
 
   const data = activeTab === "pending" ? unverifiedData : verifiedData;
 
   const handleTabClick = (value) => {
     setActiveTab(value);
-    
   };
 
-  console.log(data, "allOrg");
+  // console.log(data, "allOrg");
 
   return (
     <div className="dashboard_organisation dash_pad">
@@ -83,10 +84,11 @@ const DashboardOrganisation = () => {
           </div>
           {data?.organizations?.map((data) => (
             <div key={data?._id}>
-            <TableAccordion data={data}/>
+              <TableAccordion data={data} />
             </div>
           ))}
         </div>
+        <Pagination totalCount={data?.total} setPage={setPage} />
       </div>
     </div>
   );

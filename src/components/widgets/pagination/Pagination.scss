@@ -1,0 +1,35 @@
+@import "base.scss";
+
+.pagination {
+  width: 100%;
+  margin-top: 20px;
+  .pagination_wrap {
+    margin-right: 40px;
+    .pagination_active {
+      width: 32px;
+      height: 32px;
+      border-radius: 3px;
+      background: #dedede;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 0.804px solid #dedede;
+    }
+
+    .pagination_inactive {
+      @extend .pagination_active;
+      background: #fff;
+    }
+  }
+  .pagination_num {
+    margin-right: 40px;
+  }
+  .pagination_control {
+    .pagination_control_item {
+      border-radius: 3px;
+      background: #d0ddff;
+      width: 32px;
+      height: 32px;
+      margin-left: 10px;
+    }
+  }
+}

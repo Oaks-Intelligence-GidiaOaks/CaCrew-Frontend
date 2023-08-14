@@ -54,5 +54,6 @@ export { default as CustomProjectSelect } from "components/widgets/custom-projec
 export { default as MenuBars } from "components/widgets/menu-bars/MenuBars";
 export { default as Badge } from "components/widgets/badge/Badge";
 export { default as Shimmer } from "components/widgets/shimmer/Shimmer";
+export { default as Pagination } from "components/widgets/pagination/Pagination";
 
 export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";
