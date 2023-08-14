@@ -89,7 +89,12 @@ const DashboardOrganisation = () => {
           ))}
         </div>
       </div>
-      <Pagination totalCount={data?.total} setPage={setPage} page={page}/>
+      <Pagination
+        totalCount={data?.total}
+        setPage={setPage}
+        page={page}
+        dataLength={data?.organizations?.length}
+      />
     </div>
   );
 };
