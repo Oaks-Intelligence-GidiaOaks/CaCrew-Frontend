@@ -33,7 +33,7 @@ const Pagination = ({
   // console.log(page, "endpoints");
   return (
     <div className="pagination end">
-      <div className="pagination_wrap start">
+      <div className="pagination_wrap center">
         {pageNumbers.map((pageNumber, idx) => (
           <div
             key={pageNumber}
@@ -47,7 +47,11 @@ const Pagination = ({
             {pageNumber}
           </div>
         ))}
-        <div>...</div>
+        <div className="pagination_dots_wrap center">
+          <div className="pagination_dots"></div>
+          <div className="pagination_dots"></div>
+          <div className="pagination_dots"></div>
+        </div>
         <div
           className={
             pageNumbers?.length === page

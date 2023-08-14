@@ -19,6 +19,16 @@
       @extend .pagination_active;
       background: #fff;
     }
+    .pagination_dots_wrap{
+      margin-right: 10px;
+      .pagination_dots{
+        width: 7px;
+        height: 7px;
+        background: #7A7A7A;
+        border-radius: 50%;
+        margin: 0 2px;
+      }
+    }
   }
   .pagination_num {
     margin-right: 40px;
