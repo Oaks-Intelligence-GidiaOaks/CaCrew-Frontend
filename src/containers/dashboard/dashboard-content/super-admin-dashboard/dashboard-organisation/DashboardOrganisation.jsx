@@ -13,26 +13,29 @@ import { organisationApiSlice } from "services/organisation.service";
 
 const DashboardOrganisation = () => {
   const [activeTab, setActiveTab] = useState("pending");
-  const [page, setPage] = useState(1);
+  const [pageUnVerified, setPageUnVerified] = useState(1);
+  const [pageVerified, setPageVerified] = useState(1);
 
   const {
     isLoading: unverifiedLoad,
     error: unverifiedError,
     data: unverifiedData,
-  } = useUnverifiedOrganisationQuery({ page });
+  } = useUnverifiedOrganisationQuery({ page: pageUnVerified });
   const {
     isLoading: verifiedLoad,
     error: verifiedError,
     data: verifiedData,
-  } = useVerifiedOrganisationQuery({ page });
+  } = useVerifiedOrganisationQuery({ page: pageVerified });
 
   const data = activeTab === "pending" ? unverifiedData : verifiedData;
+  const page = activeTab === "pending" ? pageUnVerified : pageVerified;
+  const setPage = activeTab === "pending" ? setPageUnVerified : setPageVerified;
 
   const handleTabClick = (value) => {
     setActiveTab(value);
   };
 
-  // console.log(data, "allOrg");
+  console.log(setPage, "allOrg");
 
   return (
     <div className="dashboard_organisation dash_pad">
