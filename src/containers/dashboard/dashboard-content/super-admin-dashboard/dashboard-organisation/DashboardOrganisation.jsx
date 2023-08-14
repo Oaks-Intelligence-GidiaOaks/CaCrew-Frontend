@@ -5,7 +5,7 @@ import {
   useVerifiedOrganisationQuery,
 } from "services/organisation.service";
 // import { formatErrorResponse } from "utils/formatErrorResponse";
-import { Pagination, SearchInput, TableAccordion } from "components";
+import { Pagination, SearchInput, Shimmer, TableAccordion } from "components";
 import { organisationApiSlice } from "services/organisation.service";
 
 // fixedCacheKey: organisationApi.reducerPath,
@@ -35,7 +35,7 @@ const DashboardOrganisation = () => {
     setActiveTab(value);
   };
 
-  // console.log(setPage, "allOrg");
+  console.log(data, "allOrg");
 
   return (
     <div className="dashboard_organisation dash_pad">
@@ -85,11 +85,21 @@ const DashboardOrganisation = () => {
               style={{ width: "30px" }}
             ></div>
           </div>
-          {data?.organizations?.map((data) => (
-            <div key={data?._id}>
-              <TableAccordion data={data} />
-            </div>
-          ))}
+          {data ? (
+            data?.organizations?.map((data) => (
+              <div key={data?._id}>
+                <TableAccordion data={data} />
+              </div>
+            ))
+          ) : (
+            <>
+              {Array.from({ length: 10 }, (_, idx) => (
+                <div className="mb_10" key={idx}>
+                  <Shimmer height={"40px"} />
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
       <Pagination

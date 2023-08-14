@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./DashboardWalletTable.scss";
-import { Button, Input, SearchInput } from "components";
+import { Button, Input, Pagination, SearchInput } from "components";
 import { Form, Field } from "react-final-form";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
@@ -163,6 +163,7 @@ const DashboardWalletTable = ({ data }) => {
           ))}
         </div>
       </div>
+      <Pagination totalCount={data?.length}/>
     </div>
   );
 };
