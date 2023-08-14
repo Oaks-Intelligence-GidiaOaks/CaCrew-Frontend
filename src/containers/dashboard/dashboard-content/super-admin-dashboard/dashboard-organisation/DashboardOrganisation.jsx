@@ -35,7 +35,7 @@ const DashboardOrganisation = () => {
     setActiveTab(value);
   };
 
-  console.log(setPage, "allOrg");
+  // console.log(setPage, "allOrg");
 
   return (
     <div className="dashboard_organisation dash_pad">
@@ -93,6 +93,7 @@ const DashboardOrganisation = () => {
         </div>
       </div>
       <Pagination
+        // totalCount={200}
         totalCount={data?.total}
         setPage={setPage}
         page={page}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Pagination.scss";
 import { left, right } from "assets/images";
 
@@ -9,32 +9,39 @@ const Pagination = ({
   setPage,
   dataLength = 10,
 }) => {
-  //  query data to perform pagination on // This basically is suscribed data
-  //   page = 2;
-  //   const { data } = (query && query.useQuery(page)) || { data: null };
+  // set page number limit, for sliding page number boxes
+  const [pageNumbersLimit, setPageNumbersLimit] = useState(5);
 
-  //   //
-  //   const totalCount = data?.total || data?.totalCount || 10;
-  // console.log(dataLength, "len");
+  // Get the current count of items user has moved through on the table.
   const currentCount =
     page * limit - (dataLength === limit ? 0 : limit - dataLength);
+
+  // Get the total number of pages
   const totalPages = Math.ceil(totalCount / limit);
+
+  // get a list of the number of pages, this is used to display page number boxes.. I use length property here
   const pageNumbers = Array.from(
     { length: totalPages },
     (_, index) => index + 1
   );
 
+  // I want to always slide the page number boxes forward
+  const pageList = pageNumbers.slice(page - 1, pageNumbersLimit);
+
   const handleNext = () => {
     page < totalPages && setPage(page + 1);
+    pageNumbersLimit <= totalPages && setPageNumbersLimit(pageNumbersLimit + 1);
   };
+
   const handlePrev = () => {
     page > 1 && setPage(page - 1);
+    pageNumbersLimit > 5 && setPageNumbersLimit(pageNumbersLimit - 1);
   };
   // console.log(page, "endpoints");
   return (
     <div className="pagination end">
       <div className="pagination_wrap center">
-        {pageNumbers.map((pageNumber, idx) => (
+        {pageList.map((pageNumber) => (
           <div
             key={pageNumber}
             className={
@@ -42,7 +49,10 @@ const Pagination = ({
                 ? "pagination_active center"
                 : "pagination_inactive center"
             }
-            onClick={() => setPage(pageNumber)}
+            onClick={() => {
+              setPage(pageNumber);
+              setPageNumbersLimit(pageNumber + 4);
+            }}
           >
             {pageNumber}
           </div>
