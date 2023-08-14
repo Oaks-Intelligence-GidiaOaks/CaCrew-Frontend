@@ -2,7 +2,7 @@ import React from "react";
 import "./Pagination.scss";
 import { left, right } from "assets/images";
 
-const Pagination = ({ totalCount, page = 1, limit = 10, setPage }) => {
+const Pagination = ({ totalCount, page, limit = 10, setPage }) => {
   //  query data to perform pagination on // This basically is suscribed data
   //   page = 2;
   //   const { data } = (query && query.useQuery(page)) || { data: null };
@@ -14,6 +14,8 @@ const Pagination = ({ totalCount, page = 1, limit = 10, setPage }) => {
     { length: totalPages },
     (_, index) => index + 1
   );
+
+  
 
   console.log(page, "endpoints");
   return (
@@ -34,7 +36,7 @@ const Pagination = ({ totalCount, page = 1, limit = 10, setPage }) => {
         ))}
       </div>
 
-      <div className="pagination_num">1 - 10 of 17</div>
+      <div className="pagination_num center">{page + " - " + 10 + " of " + totalCount}</div>
       <div className="start pagination_control">
         <div className="pagination_control_item center">
           <img src={left} alt="" />
