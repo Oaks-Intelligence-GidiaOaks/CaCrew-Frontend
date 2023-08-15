@@ -42,10 +42,10 @@ const Pagination = ({
     pageNumbersLimit > 5 && setPageNumbersLimit(pageNumbersLimit - 1);
     startNumber > 0 && setStartNumber(startNumber - 1);
   };
-  console.log(startNumber > 0, "ch");
+  // console.log(startNumber > 0, "ch");
 
-  console.log(startNumber, "endpoints");
-  console.log(pageNumbersLimit, "page");
+  // console.log(startNumber, "endpoints");
+  // console.log(pageNumbersLimit, "page");
   return (
     <div className="pagination end">
       <div className="pagination_wrap center">

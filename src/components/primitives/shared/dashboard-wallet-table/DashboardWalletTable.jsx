@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./DashboardWalletTable.scss";
 import { Button, Input, Pagination, SearchInput, Shimmer } from "components";
-import { Form, Field } from "react-final-form";
+import { Form, Field, FormSpy } from "react-final-form";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 import { useGetUserQuery } from "services/user.service";
@@ -11,6 +11,7 @@ const DashboardWalletTable = () => {
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("all");
   const [page, setPage] = useState(1);
+  const [status, setStatus] = useState(null);
 
   const type =
     activeTab === "sell"
@@ -24,6 +25,7 @@ const DashboardWalletTable = () => {
   const { data: dataMyTranscation } = useGetMyTransactionQuery({
     page,
     type,
+    status,
   });
 
   const handleTabClick = (value) => {
@@ -85,14 +87,14 @@ const DashboardWalletTable = () => {
                   selectDefault={"Filter By Status"}
                   className="dashboard_table_input"
                   options={{
-                    Approved: "Approved",
+                    Completed: "Completed",
                     Pending: "Pending",
                     Failed: "Failed",
                   }}
                   component={Input}
                 />
               </div>
-              <div className="dashboard_table_search_item">
+              {/* <div className="dashboard_table_search_item">
                 <Field name="search" component={SearchInput} />
               </div>
               <div className="dashboard_table_search_item">
@@ -101,7 +103,15 @@ const DashboardWalletTable = () => {
                   text={"Search"}
                   className={"dashboard_table_search_btn"}
                 />
-              </div>
+              </div> */}
+              <FormSpy
+                subscription={{ values: true }}
+                onChange={(props) => {
+                  const val = props.values;
+                  setStatus(val.status)
+                  console.log(val, "file");
+                }}
+              />
             </form>
           )}
         />
@@ -187,7 +197,7 @@ const DashboardWalletTable = () => {
               </div>
             ))
           ) : dataMyTranscation?.transactions?.length < 1 ? (
-            <div className="text center">No Transactions yet</div>
+            <div className="text center mt_10">No Transactions yet</div>
           ) : (
             <div className="mt_10">
               {Array.from({ length: 10 }, (_, idx) => (
