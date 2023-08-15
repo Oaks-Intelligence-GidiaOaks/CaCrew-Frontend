@@ -58,7 +58,7 @@ const Pagination = ({
             onClick={() => {
               setPage(pageNumber);
               setPageNumbersLimit(Math.min(pageNumber + 4, totalPages))
-              pageNumbersLimit < totalPages ? setStartNumber(Math.max(pageNumber - 3, 0)) : setStartNumber(startNumber)
+              setStartNumber(Math.max(pageNumber - 3, 0))
             }}
           >
             {pageNumber}
