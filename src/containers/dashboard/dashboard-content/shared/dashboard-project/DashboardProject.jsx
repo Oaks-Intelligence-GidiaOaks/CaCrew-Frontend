@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./DashboardProject.scss";
-import { Button } from "components";
+import { Button, ProjectDetails } from "components";
 import { DashboardProjectCreate, DashboardProjectReview } from "components";
 import { useAllProjectsQuery } from "services/project.service";
 import { useGetUserQuery } from "services/user.service";
@@ -23,8 +23,8 @@ const DashboardProject = () => {
 
   const tabItems = {
     create: <DashboardProjectCreate />,
-    review: <DashboardProjectReview data={dataInComplete}/>,
-    complete: <DashboardProjectReview data={dataComplete}/>,
+    review: <ProjectDetails data={dataInComplete}/>,
+    complete: <ProjectDetails data={dataComplete}/>,
   }[active];
 
   return (

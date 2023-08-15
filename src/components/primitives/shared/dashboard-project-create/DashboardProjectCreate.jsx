@@ -1,7 +1,7 @@
 import React from "react";
 import "./DashboardProjectCreate.scss";
 import { Form, Field } from "react-final-form";
-import { Button, Upload, Input } from "components";
+import { Button, Upload, Input, ProjectDetails } from "components";
 import { useAddProjectMutation } from "services/project.service";
 import rtkMutation from "utils/rtkMutation";
 import fileTypeReader from "utils/fileTypeReader";
@@ -101,6 +101,7 @@ const DashboardProjectCreate = () => {
           </form>
         )}
       />
+      <ProjectDetails />
     </div>
   );
 };

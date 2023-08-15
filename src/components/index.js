@@ -39,6 +39,8 @@ export { default as DocumentCenterBanner } from "components/primitives/shared/do
 export { default as DocumentList } from "components/primitives/shared/document-list/DocumentList";
 export { default as UpdateOrganisationModal } from "components/primitives/shared/modal/modal-update-organisation/UpdateOrganisationModal";
 export { default as UpdateProfileModal } from "components/primitives/shared/modal/modal-update-profile/UpdateProfileModal";
+export { default as ProjectDetails } from "components/primitives/shared/project-details/ProjectDetails";
+export { default as ProjectDetailAccordion } from "components/primitives/shared/project-detail-accordion/ProjectDetailAccordion";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

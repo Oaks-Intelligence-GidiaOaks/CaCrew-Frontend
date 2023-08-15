@@ -1,0 +1,61 @@
+@import "base.scss";
+
+.project_details {
+  border: 1px solid #dedede;
+  border-radius: 8px;
+  padding: 40px;
+  margin-bottom: 20px;
+  .project_details_title_wrap {
+    flex-wrap: wrap;
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 24px;
+    @media (max-width: 767px) {
+      row-gap: 50px;
+    }
+    .project_details_title {
+      .project_details_key {
+        margin-bottom: 14px;
+      }
+      .project_details_value {
+        color: #4c5563;
+      }
+      .project_details_title_btn {
+      }
+    }
+  }
+  .project_details_info_wrap {
+    margin-top: 24px;
+    // border-bottom: 1px solid #dedede;
+    padding-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    row-gap: 50px;
+    @media (max-width: 991px) {
+      row-gap: 30px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .project_details_info {
+      .project_details_key {
+        margin-bottom: 14px;
+        font-size: 14px;
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+      }
+      .project_details_value {
+        color: #4c5563;
+        font-size: 13px;
+        @media (max-width: 991px) {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+  
+
+  
+}
