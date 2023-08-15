@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 import "./DashboardProject.scss";
 import { Button, ProjectDetails } from "components";
-import { DashboardProjectCreate, DashboardProjectReview } from "components";
+// import { DashboardProjectCreate, DashboardProjectReview } from "components";
 import { useAllProjectsQuery } from "services/project.service";
 import { useGetUserQuery } from "services/user.service";
-
+import { useDispatch } from "react-redux";
+import { openModal } from "redux/slices/modal.slice";
 
 const DashboardProject = () => {
-  const [active, setActive] = useState("create");
+  const [active, setActive] = useState("review");
+
+  const dispatch = useDispatch();
 
   const handleTabSwitch = (value) => {
     setActive(value);
   };
+  const handleOpenCreateProjModal = (value) => {
+    dispatch(openModal({ component: "StartProjectModal" }));
+  };
 
-  const {data, isSuccess, error} = useAllProjectsQuery()
-  const {data: userData} = useGetUserQuery()
+  const { data, isSuccess, error } = useAllProjectsQuery();
+  const { data: userData } = useGetUserQuery();
 
-  const dataInComplete = data?.length > 0 ? data?.filter(item => item?.progress !== "Phase6") :  []
-  const dataComplete = data?.length > 0 ? data?.filter(item => item?.progress === "Phase6") : []
+  const dataInComplete =
+    data?.length > 0 ? data?.filter((item) => item?.progress !== "Phase6") : [];
+  const dataComplete =
+    data?.length > 0 ? data?.filter((item) => item?.progress === "Phase6") : [];
 
-  console.log(userData, "projtesr*******")
+  console.log(userData, "projtesr*******");
 
   const tabItems = {
-    create: <DashboardProjectCreate />,
-    review: <ProjectDetails data={dataInComplete}/>,
-    complete: <ProjectDetails data={dataComplete}/>,
+    // create: <DashboardProjectCreate />,
+    review: <ProjectDetails data={dataInComplete} />,
+    complete: <ProjectDetails data={dataComplete} />,
   }[active];
 
   return (
@@ -38,17 +46,17 @@ const DashboardProject = () => {
               className={`dashboard_project_btn ${
                 active === "create" && "dashboard_project_btn_active"
               }`}
-              onClick={() => handleTabSwitch("create")}
+              onClick={handleOpenCreateProjModal}
             />
             <Button
-              text={"Project in Review"}
+              text={"Project in Review " + `(${dataInComplete?.length})`}
               className={`dashboard_project_btn ${
                 active === "review" && "dashboard_project_btn_active"
               }`}
               onClick={() => handleTabSwitch("review")}
             />
             <Button
-              text={"Project Completed"}
+              text={"Project Completed " + `(${dataComplete?.length})`}
               className={`dashboard_project_btn ${
                 active === "complete" && "dashboard_project_btn_active"
               }`}
@@ -61,7 +69,7 @@ const DashboardProject = () => {
             Organization
           </div>
           <div className="dashboard_project_organisation_name">
-              {userData?.organization_id?.organization_name}
+            {userData?.organization_id?.organization_name}
           </div>
         </div>
       </div>

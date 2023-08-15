@@ -41,6 +41,7 @@ export { default as UpdateOrganisationModal } from "components/primitives/shared
 export { default as UpdateProfileModal } from "components/primitives/shared/modal/modal-update-profile/UpdateProfileModal";
 export { default as ProjectDetails } from "components/primitives/shared/project-details/ProjectDetails";
 export { default as ProjectDetailAccordion } from "components/primitives/shared/project-detail-accordion/ProjectDetailAccordion";
+export { default as StartProjectModal } from "components/primitives/shared/modal/start-project-modal/StartProjectModal";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
