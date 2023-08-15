@@ -9,7 +9,6 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
-import { useGetMyTransactionQuery } from "services/transaction.service";
 import {
   useGetSellItemsQuery,
   useGetBuyItemsQuery,
@@ -26,7 +25,6 @@ const DashboardWalletCon = () => {
     dispatch(openModal({ component: "ModalRetireCredit" }));
   };
 
-  const { data: dataMyTranscation } = useGetMyTransactionQuery();
 
   return (
     <div className="dashboard_wallet_container">
@@ -59,7 +57,7 @@ const DashboardWalletCon = () => {
         </div>
       </div>
       <div className="dashboard_wallet_con_table dash_pad">
-        <DashboardWalletTable data={dataMyTranscation} />
+        <DashboardWalletTable />
       </div>
     </div>
   );

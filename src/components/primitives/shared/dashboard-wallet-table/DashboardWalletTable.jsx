@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import "./DashboardWalletTable.scss";
-import { Button, Input, Pagination, SearchInput } from "components";
+import { Button, Input, Pagination, SearchInput, Shimmer } from "components";
 import { Form, Field } from "react-final-form";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 import { useGetUserQuery } from "services/user.service";
+import { useGetMyTransactionQuery } from "services/transaction.service";
 
-const DashboardWalletTable = ({ data }) => {
+const DashboardWalletTable = () => {
   const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState("all");
+  const [page, setPage] = useState(1);
 
   const { data: userData } = useGetUserQuery();
+  const { data: dataMyTranscation } = useGetMyTransactionQuery({ page });
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -48,7 +51,7 @@ const DashboardWalletTable = ({ data }) => {
   //   }
   // };
 
-  console.log(data, "trans");
+  // console.log(dataMyTranscation, "trans");
 
   return (
     <div className="dashboard_table">
@@ -136,34 +139,63 @@ const DashboardWalletTable = ({ data }) => {
             <div className="dashboard_table_head_item">Time of Transaction</div>
             <div className="dashboard_table_head_item">Status</div>
           </div>
-          {data?.map((row, idx) => (
-            <div
-              key={row?._id || idx}
-              className={`dashboard_table_body between ${
-                (idx + 1) % 2 === 0 && "dashboard_table_body_bg"
-              }`}
-              onClick={() => handleOpenModal(row)}
-            >
-              <div className="dashboard_table_body_item">
-                {row?.buyer?.organization_name || row?.transaction_type || "Transaction fee"}
-              </div>
-              <div className="dashboard_table_body_item">
-                {row?.seller?.organization_name || row?.transaction_type || "Transaction fee"}
-              </div>
-              <div className="dashboard_table_body_item">{row?.transaction_fee ? row?.amount - row?.transaction_fee : row?.amount}</div>
-              <div className="dashboard_table_body_item">{row?._id}</div>
-              <div className="dashboard_table_body_item">{row?.createdAt}</div>
-              <a
-                href={row?.document_url}
-                className={`dashboard_table_body_item center dashboard_table_body_item_${row?.status?.toLowerCase()}`}
+          {dataMyTranscation?.transactions?.length >= 1 ? (
+            dataMyTranscation?.transactions?.map((row, idx) => (
+              <div
+                key={row?._id || idx}
+                className={`dashboard_table_body between ${
+                  (idx + 1) % 2 === 0 && "dashboard_table_body_bg"
+                }`}
+                onClick={() => handleOpenModal(row)}
               >
-                {row?.status}
-              </a>
-            </div>
-          ))}
+                <div className="dashboard_table_body_item">
+                  {row?.buyer?.organization_name ||
+                    row?.transaction_type ||
+                    "Transaction fee"}
+                </div>
+                <div className="dashboard_table_body_item">
+                  {row?.seller?.organization_name ||
+                    row?.transaction_type ||
+                    "Transaction fee"}
+                </div>
+                <div className="dashboard_table_body_item">
+                  {row?.transaction_fee
+                    ? row?.amount - row?.transaction_fee
+                    : row?.amount}
+                </div>
+                <div className="dashboard_table_body_item">{row?._id}</div>
+                <div className="dashboard_table_body_item">
+                  {row?.createdAt}
+                </div>
+                <a
+                  href={row?.document_url}
+                  className={`dashboard_table_body_item center dashboard_table_body_item_${row?.status?.toLowerCase()}`}
+                >
+                  {row?.status}
+                </a>
+              </div>
+            ))
+          ) : dataMyTranscation?.transactions?.length < 1 ? (
+            <div className="text center">No Transactions yet</div>
+          ) : (
+            <>
+              {Array.from({ length: 10 }, (_, idx) => (
+                <div className="mb_10" key={idx}>
+                  <Shimmer height={"40px"} />
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
-      <Pagination totalCount={data?.length}/>
+      {dataMyTranscation?.transactions && (
+        <Pagination
+          totalCount={dataMyTranscation?.totalTransactions}
+          page={page}
+          setPage={setPage}
+          dataLength={dataMyTranscation?.transactions?.length}
+        />
+      )}
     </div>
   );
 };

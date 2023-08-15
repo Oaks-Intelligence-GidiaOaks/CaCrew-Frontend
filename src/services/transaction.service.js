@@ -32,8 +32,8 @@ const transactionApiSlice = apiSlice.injectEndpoints({
     // get my transaction
     getMyTransaction: builder.query({
       providesTags: ["Transaction"],
-      query: () => ({
-        url: GET_MY_TRANSACTIONS,
+      query: ({page=1}) => ({
+        url: `${GET_MY_TRANSACTIONS}?page=${page}`,
         method: "GET",
       }),
       transformResponse: (response) => {

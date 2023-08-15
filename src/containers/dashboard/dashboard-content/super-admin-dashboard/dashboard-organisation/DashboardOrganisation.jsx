@@ -18,18 +18,19 @@ const DashboardOrganisation = () => {
 
   const {
     isLoading: unverifiedLoad,
-    error: unverifiedError,
+    // error: unverifiedError,
     data: unverifiedData,
   } = useUnverifiedOrganisationQuery({ page: pageUnVerified });
   const {
     isLoading: verifiedLoad,
-    error: verifiedError,
+    // error: verifiedError,
     data: verifiedData,
   } = useVerifiedOrganisationQuery({ page: pageVerified });
 
   const data = activeTab === "pending" ? unverifiedData : verifiedData;
   const page = activeTab === "pending" ? pageUnVerified : pageVerified;
   const setPage = activeTab === "pending" ? setPageUnVerified : setPageVerified;
+  const loading = activeTab === "pending" ? unverifiedLoad : verifiedLoad;
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -85,30 +86,35 @@ const DashboardOrganisation = () => {
               style={{ width: "30px" }}
             ></div>
           </div>
-          {data ? (
+          {data?.organizations?.length >= 1 ? (
             data?.organizations?.map((data) => (
               <div key={data?._id}>
                 <TableAccordion data={data} />
               </div>
             ))
+          ) : data?.organizations?.length < 1 ? (
+            <div className="text center">No Organisations yet</div>
           ) : (
             <>
               {Array.from({ length: 10 }, (_, idx) => (
                 <div className="mb_10" key={idx}>
-                  <Shimmer height={"40px"} />
+                  <Shimmer height={"50px"} />
                 </div>
               ))}
             </>
           )}
         </div>
       </div>
-      <Pagination
-        // totalCount={200}
-        totalCount={data?.total}
-        setPage={setPage}
-        page={page}
-        dataLength={data?.organizations?.length}
-      />
+      {data?.organizations && (
+        <Pagination
+          // totalCount={200}
+          totalCount={data?.total}
+          setPage={setPage}
+          page={page}
+          dataLength={data?.organizations?.length}
+          loading={loading}
+        />
+      )}
     </div>
   );
 };

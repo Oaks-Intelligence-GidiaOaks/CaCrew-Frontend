@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Pagination.scss";
 import { left, right } from "assets/images";
+import { ThreeDots } from "react-loader-spinner";
 
 const Pagination = ({
   totalCount,
@@ -11,8 +12,10 @@ const Pagination = ({
 }) => {
   // set page number limit, for sliding page number boxes
   const [pageNumbersLimit, setPageNumbersLimit] = useState(5);
+  const [startNumber, setStartNumber] = useState(0);
 
   // Get the current count of items user has moved through on the table.
+
   const currentCount =
     page * limit - (dataLength === limit ? 0 : limit - dataLength);
 
@@ -26,18 +29,21 @@ const Pagination = ({
   );
 
   // I want to always slide the page number boxes forward
-  const pageList = pageNumbers.slice(page - 1, pageNumbersLimit);
+  const pageList = pageNumbers.slice(startNumber, pageNumbersLimit);
 
   const handleNext = () => {
     page < totalPages && setPage(page + 1);
-    pageNumbersLimit <= totalPages && setPageNumbersLimit(pageNumbersLimit + 1);
+    pageNumbersLimit < totalPages && setPageNumbersLimit(pageNumbersLimit + 1);
+    pageNumbersLimit < totalPages && setStartNumber(startNumber + 1);
   };
 
   const handlePrev = () => {
     page > 1 && setPage(page - 1);
     pageNumbersLimit > 5 && setPageNumbersLimit(pageNumbersLimit - 1);
+    pageNumbersLimit > 5 && setStartNumber(startNumber - 1);
   };
-  // console.log(page, "endpoints");
+  console.log(startNumber, "endpoints");
+  console.log(pageNumbersLimit, "page");
   return (
     <div className="pagination end">
       <div className="pagination_wrap center">
@@ -51,7 +57,8 @@ const Pagination = ({
             }
             onClick={() => {
               setPage(pageNumber);
-              setPageNumbersLimit(pageNumber + 4);
+              setPageNumbersLimit(Math.min(pageNumber + 4, totalPages))
+              pageNumbersLimit < totalPages ? setStartNumber(Math.max(pageNumber - 3, 0)) : setStartNumber(startNumber)
             }}
           >
             {pageNumber}
@@ -75,7 +82,18 @@ const Pagination = ({
       </div>
 
       <div className="pagination_num center text">
-        {page + " - " + currentCount + " of " + totalCount}
+        {currentCount ? (
+          page + " - " + currentCount + " of " + totalCount
+        ) : (
+          <ThreeDots
+            height="15"
+            width="15"
+            radius="9"
+            color={"#7A7A7A"}
+            ariaLabel="three-dots-loading"
+            visible={true}
+          />
+        )}
       </div>
       <div className="start pagination_control">
         <div
