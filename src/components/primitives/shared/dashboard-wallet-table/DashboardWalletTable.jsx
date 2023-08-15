@@ -178,13 +178,13 @@ const DashboardWalletTable = () => {
           ) : dataMyTranscation?.transactions?.length < 1 ? (
             <div className="text center">No Transactions yet</div>
           ) : (
-            <>
+            <div className="mt_10">
               {Array.from({ length: 10 }, (_, idx) => (
                 <div className="mb_10" key={idx}>
                   <Shimmer height={"40px"} />
                 </div>
               ))}
-            </>
+            </div>
           )}
         </div>
       </div>

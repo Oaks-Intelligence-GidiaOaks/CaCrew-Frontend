@@ -37,7 +37,7 @@ const SuperAdminDashHome = () => {
             desc={"Total Transactions in last 24 hrs"}
             img={trans}
             link="/dashboard-wallet"
-            data={transactionData?.length}
+            data={transactionData?.totalTransactions}
           />
         </div>
       </div>

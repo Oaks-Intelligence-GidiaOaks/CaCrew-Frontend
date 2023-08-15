@@ -40,8 +40,10 @@ const Pagination = ({
   const handlePrev = () => {
     page > 1 && setPage(page - 1);
     pageNumbersLimit > 5 && setPageNumbersLimit(pageNumbersLimit - 1);
-    pageNumbersLimit > 5 && setStartNumber(startNumber - 1);
+    startNumber > 0 && setStartNumber(startNumber - 1);
   };
+  console.log(startNumber > 0, "ch");
+
   console.log(startNumber, "endpoints");
   console.log(pageNumbersLimit, "page");
   return (
@@ -57,8 +59,9 @@ const Pagination = ({
             }
             onClick={() => {
               setPage(pageNumber);
-              setPageNumbersLimit(Math.min(pageNumber + 4, totalPages))
-              setStartNumber(Math.max(pageNumber - 3, 0))
+              setPageNumbersLimit(Math.min(pageNumber + 4, totalPages));
+              // setStartNumber(Math.max(pageNumber - 3, 0))
+              pageNumber + 4 <= totalPages && setStartNumber(pageNumber - 1);
             }}
           >
             {pageNumber}
