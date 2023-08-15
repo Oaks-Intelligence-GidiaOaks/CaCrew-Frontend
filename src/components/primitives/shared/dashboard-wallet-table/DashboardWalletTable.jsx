@@ -12,8 +12,19 @@ const DashboardWalletTable = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [page, setPage] = useState(1);
 
+  const type =
+    activeTab === "sell"
+      ? "sell"
+      : activeTab === "buy"
+      ? "buy"
+      : activeTab === "retire"
+      ? "retire"
+      : null;
   const { data: userData } = useGetUserQuery();
-  const { data: dataMyTranscation } = useGetMyTransactionQuery({ page });
+  const { data: dataMyTranscation } = useGetMyTransactionQuery({
+    page,
+    type,
+  });
 
   const handleTabClick = (value) => {
     setActiveTab(value);
