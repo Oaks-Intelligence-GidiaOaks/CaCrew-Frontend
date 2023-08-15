@@ -24,12 +24,14 @@ const ProjectDetails = ({ data }) => {
                     {item?.project_name}
                   </div>
                 </div>
-                <div className="project_details_title">
-                  <Button
-                    text={"View Certificate"}
-                    className={"project_details_title_btn"}
-                  />
-                </div>
+                {item?.progress === "Phase6" && (
+                  <div className="project_details_title">
+                    <Button
+                      text={"View Certificate"}
+                      className={"project_details_title_btn"}
+                    />
+                  </div>
+                )}
               </div>
               <div className="project_details_info_wrap">
                 <div className="project_details_info">
@@ -69,12 +71,14 @@ const ProjectDetails = ({ data }) => {
                     Progress: {item?.progress}
                   </div>
                   <div className="text project_details_value">
-                    <TrackProjectProgress phase={item?.progress}/>
+                    <TrackProjectProgress phase={item?.progress} />
                   </div>
                 </div>
                 <div className="project_details_info">
                   <div className="text project_details_key">Start Date</div>
-                  <div className="text project_details_value">{convertDateToWord(item?.createdAt)}</div>
+                  <div className="text project_details_value">
+                    {convertDateToWord(item?.createdAt)}
+                  </div>
                 </div>
                 <div className="project_details_info">
                   <div className="text project_details_key">End Date</div>

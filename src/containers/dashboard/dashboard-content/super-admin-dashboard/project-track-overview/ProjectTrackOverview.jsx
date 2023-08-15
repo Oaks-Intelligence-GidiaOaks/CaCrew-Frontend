@@ -6,19 +6,30 @@ import {
   Input,
   TrackProjectProgress,
 } from "components";
-import { certificate } from "assets/images";
+// import { certificate } from "assets/images";
 import { Form, Field } from "react-final-form";
 import { useParams } from "react-router-dom";
 import { useAllProjectsQuery } from "services/project.service";
 import { useSendCreditMutation } from "services/user.service";
 import rtkMutation from "utils/rtkMutation";
+import { useDispatch } from "react-redux";
+import { openModal } from "redux/slices/modal.slice";
+import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const ProjectTrackOverview = () => {
-  const [sendCredit, { data: dataRes, isSuccess: isSuccessCredit, isLoading: loading }] =
-    useSendCreditMutation();
+  const [
+    sendCredit,
+    {
+      isSuccess: isSuccessCredit,
+      isLoading: loading,
+      isError: isErrorCredit,
+      error: errorCredit,
+    },
+  ] = useSendCreditMutation();
 
   const [amount, setAmount] = useState(0);
 
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   // console.log(id,  "id")
@@ -31,12 +42,32 @@ const ProjectTrackOverview = () => {
     value["organization_id"] = projectData?.created_by?.organization_id?._id;
     rtkMutation(sendCredit, value);
     setAmount(value.amount);
-    console.log(value, "val");
+    // console.log(value, "val");
   };
 
-  console.log(amount, "value");
+  // console.log(amount, "value");
 
-  // useEffect(() => {}, [amount]);
+  useEffect(() => {
+    isSuccessCredit &&
+      dispatch(
+        openModal({
+          title: "Carbon Credited Successfuly",
+          message: "carbon credit successfully credited to organization",
+          success: true,
+        })
+      );
+
+    isErrorCredit &&
+      dispatch(
+        openModal({
+          title: "Carbon Crediting Failed",
+          message: `${
+            formatErrorResponse(errorCredit) ||
+            "An error occured please try again later"
+          }`,
+        })
+      );
+  }, [isErrorCredit, isSuccessCredit, errorCredit, dispatch]);
 
   // console.log(projectData, error, isSuccess, isLoading, "oneProj");
 
@@ -127,7 +158,11 @@ const ProjectTrackOverview = () => {
       </div>
       <div className="proj_track_overview_update_wrap between">
         <div className="proj_track_overview_update_value">
-          <CustomProjectSelect data={projectData} amount={amount} isSuccessCredit={isSuccessCredit}/>
+          <CustomProjectSelect
+            data={projectData}
+            amount={amount}
+            isSuccessCredit={isSuccessCredit}
+          />
         </div>
         <div className="proj_track_overview_update_credit">
           <Form
