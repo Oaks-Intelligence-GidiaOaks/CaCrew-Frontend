@@ -34,6 +34,7 @@ export const SET_BUY_ORDER = "transaction/set_buy_order";
 export const GET_MY_TRANSACTIONS = "transaction/my_transactions";
 export const GET_ALL_TRANSACTIONS = "transaction/all_transactions";
 export const GET_ORG_ADMIN = "transaction/get_org_admin_id";
+export const GET_CHART_DATA = "dashboard/transactions";
 
 // Messaging constants
 export const MESSAGE = "message";

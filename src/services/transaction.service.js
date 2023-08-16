@@ -13,6 +13,7 @@ import {
   GET_ALL_TRANSACTIONS,
   INITIATE_SELL,
   GET_ORG_ADMIN,
+  GET_CHART_DATA,
 } from "./constants";
 
 const transactionApiSlice = apiSlice.injectEndpoints({
@@ -70,6 +71,18 @@ const transactionApiSlice = apiSlice.injectEndpoints({
       // providesTags: ["Transaction"],
       query: ({id}) => ({
         url: `${GET_ORG_ADMIN}/${id}`,
+        method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // get organisation admin id
+    getChartData: builder.query({
+      // providesTags: ["Transaction"],
+      query: () => ({
+        url: `${GET_CHART_DATA}`,
         method: "GET",
       }),
       transformResponse: (response) => {
@@ -189,6 +202,7 @@ export const {
   useGetMyTransactionQuery,
   useGetSellItemsQuery,
   useGetOrgAdminQuery,
+  useGetChartDataQuery,
   useInitiateBuyMutation,
   useInitiateSellMutation,
   usePaymentMadeMutation,
