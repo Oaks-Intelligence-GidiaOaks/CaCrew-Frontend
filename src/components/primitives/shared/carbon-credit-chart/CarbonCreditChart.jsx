@@ -102,9 +102,9 @@ function LineChart(props) {
   });
 
   // Now you have the transformed data in the format you need
-  console.log("boughtData:", boughtData);
-  console.log("retiredData:", retiredData);
-  console.log("soldData:", soldData);
+  // console.log("boughtData:", boughtData);
+  // console.log("retiredData:", retiredData);
+  // console.log("soldData:", soldData);
 
   // calculate dimensions and margins based on parent size
   const margin = {
@@ -246,7 +246,7 @@ function LineChart(props) {
               key={`point-${i}`}
               cx={xScale(d.date)}
               cy={yScale(d.value)}
-              r={4}
+              r={3}
               fill="white"
               stroke="#5F41B2"
               strokeWidth={1}
@@ -267,7 +267,7 @@ function LineChart(props) {
               key={`point-${i}`}
               cx={xScale(d.date)}
               cy={yScale(d.value)}
-              r={4}
+              r={3}
               fill="white"
               stroke="#5F41B2"
               strokeWidth={1}
@@ -288,7 +288,7 @@ function LineChart(props) {
               key={`point-${i}`}
               cx={xScale(d.date)}
               cy={yScale(d.value)}
-              r={4}
+              r={3}
               fill="white"
               stroke="#5F41B2"
               strokeWidth={1}
