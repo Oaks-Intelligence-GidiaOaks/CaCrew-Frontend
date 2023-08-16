@@ -67,20 +67,6 @@ function LineChart(props) {
 
   // I also created an array with month names
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const monthsToShow = [
     "Jan",
     "Feb",
     "Mar",
@@ -165,7 +151,7 @@ function LineChart(props) {
   // });
   const xScale = scalePoint({
     domain: months,
-      range: [margin.left, width - margin.right],
+    range: [margin.left, width - margin.right],
   });
 
   const yScale = scaleLinear({
