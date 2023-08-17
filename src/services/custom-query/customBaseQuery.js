@@ -1,7 +1,7 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import enviroment from "configs/enviroment.config";
 import { updateUser, logoutUser } from "redux/slices/user.slice";
-import { openModal } from "redux/slices/modal.slice";
+import { openModal, closeComponentModal } from "redux/slices/modal.slice";
 import { Mutex } from "async-mutex";
 import { success } from "assets/images";
 
@@ -48,6 +48,7 @@ const customBaseQuery = async (args, api, extraOptions) => {
     }
     else if (refreshResult.error.status) {
       api.dispatch(logoutUser());
+      api.dispatch(closeComponentModal());
       api.dispatch(
         openModal({
           title: "Refresh Token Expired",

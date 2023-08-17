@@ -7,8 +7,11 @@ import {
   //   useAllProjectsQuery,
 } from "services/project.service";
 import rtkMutation from "utils/rtkMutation";
+import { useDispatch } from "react-redux";
+import { openModal } from "redux/slices/modal.slice";
 
 const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
+  const dispatch = useDispatch();
   // List of my custom select options
   const options = [
     {
@@ -61,18 +64,8 @@ const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
   // const [update, setUpdate] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const [updateProject, { isLoading, isError, error }] =
+  const [updateProject, { isLoading }] =
     useUpdateProjectMutation();
-
-  const handleProjUpdate = (idx) => {
-    rtkMutation(updateProject, {
-      id: data?._id,
-      body: {
-        progress: options[idx]?.value,
-        amount_earned: amount,
-      },
-    });
-  };
 
   // update project with amount when carbon credit is succesful on parent component
   useEffect(() => {
@@ -123,7 +116,13 @@ const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
           <div
             className="custom_proj_select_option"
             onClick={() => {
-              handleProjUpdate(idx);
+              // handleProjUpdate(idx);
+              dispatch(
+                openModal({
+                  component: "ConfirmProjectPhase",
+                  data: { name: data?.project_name, progress: item.value, amount, id: data?._id },
+                })
+              );
             }}
             key={item.value}
           >

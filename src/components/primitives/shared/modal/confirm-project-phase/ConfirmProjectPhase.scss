@@ -1,5 +1,48 @@
 @import "base.scss";
 
-.confirm_proj_phase{
-    
+.confirm_proj_phase {
+  border-radius: 8px;
+  border: 1px solid #dedede;
+  background: #fff;
+  padding: 70px;
+  position: relative;
+  width: 60%;
+  @media (max-width: 991px) {
+    width: 90%;
+    padding: 20px;
+  }
+  .confirm_proj_phase_img {
+    position: absolute;
+    top: 21px;
+    right: 32px;
+    cursor: pointer;
+    @media (max-width: 991px) {
+      width: 30px;
+      top: 15px;
+      right: 12px;
+    }
+  }
+  .confirm_proj_phase_heading {
+    margin-bottom: 40px;
+  }
+  .confirm_proj_phase_text {
+    color: #4c5563;
+    font-size: 20px;
+    margin-bottom: 95px;
+    @media (max-width: 991px) {
+      font-size: 15px;
+    }
+  }
+  .confirm_proj_phase_btn_wrap {
+    .confirm_proj_phase_btn_one {
+      max-width: 142px;
+      color: $blue;
+      background-color: #fff;
+      border: 1px solid $blue;
+    }
+    .confirm_proj_phase_btn_two {
+      max-width: 142px;
+      margin-left: 16px;
+    }
+  }
 }

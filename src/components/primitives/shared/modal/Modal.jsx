@@ -64,7 +64,7 @@ const Modal = () => {
     UpdateOrganisationModal: <UpdateOrganisationModal />,
     UpdateProfileModal: <UpdateProfileModal />,
     StartProjectModal: <StartProjectModal />,
-    ConfirmProjectPhase: <ConfirmProjectPhase />,
+    ConfirmProjectPhase: <ConfirmProjectPhase data={data}/>,
     VerifyOtp: <VerifyOtp data={data} />,
   }[component];
 
