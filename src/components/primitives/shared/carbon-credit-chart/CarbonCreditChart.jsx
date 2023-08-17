@@ -192,7 +192,7 @@ function LineChart(props) {
           y={(d) => yScale(d.value)}
           stroke="#5F41B2"
           strokeWidth={2}
-          // fill="url(#my-gradient)"
+          fill="url(#my-gradient)"
         />
         <LinePath
           data={soldData}
@@ -200,7 +200,7 @@ function LineChart(props) {
           y={(d) => yScale(d.value)}
           stroke="#4277FF"
           strokeWidth={2}
-          // fill="url(#my-gradient)"
+          fill="url(#my-gradient)"
         />
         <LinePath
           data={retiredData}
