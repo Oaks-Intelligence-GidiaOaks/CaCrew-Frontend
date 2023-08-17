@@ -28,6 +28,8 @@ const ConfirmProjectPhase = ({ data }) => {
     dispatch(closeComponentModal());
   };
 
+//   console.log(data?.progress[data?.progress?.length - 1], "len")
+
   useEffect(() => {
     isSuccess &&
       dispatch(
@@ -64,8 +66,8 @@ const ConfirmProjectPhase = ({ data }) => {
       <div className="confirm_proj_phase_text">
         {"This action would move " +
           data?.name +
-          " project to " +
-          data?.progress}
+          " project to Phase " +
+          data?.progress[data?.progress?.length - 1]}
       </div>
       <div className="confirm_proj_phase_btn_wrap end">
         <Button
