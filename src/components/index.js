@@ -42,6 +42,8 @@ export { default as UpdateProfileModal } from "components/primitives/shared/moda
 export { default as ProjectDetails } from "components/primitives/shared/project-details/ProjectDetails";
 export { default as ProjectDetailAccordion } from "components/primitives/shared/project-detail-accordion/ProjectDetailAccordion";
 export { default as StartProjectModal } from "components/primitives/shared/modal/start-project-modal/StartProjectModal";
+export { default as VerifyOtp } from "components/primitives/shared/modal/verify-otp/VerifyOtp";
+export { default as ConfirmProjectPhase } from "components/primitives/shared/modal/confirm-project-phase/ConfirmProjectPhase";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
