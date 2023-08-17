@@ -12,11 +12,18 @@
       margin-top: 20px;
 
       .proj_track_overview_info_wrap_items {
-        align-self: flex-start;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 70px;
+        justify-content: space-between;
+        @media (max-width: 991px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: 767px) {
+          grid-template-columns: repeat(1, 1fr);
+        }
         .proj_track_overview_info_wrap_item {
-          width: 40%;
+          // width: 40%;
           .proj_track_overview_info_wrap_item_text {
             color: #212121;
             font-size: 15px;

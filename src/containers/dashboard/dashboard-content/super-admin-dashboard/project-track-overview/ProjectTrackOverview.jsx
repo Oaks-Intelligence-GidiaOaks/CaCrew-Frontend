@@ -15,6 +15,7 @@ import { openModal } from "redux/slices/modal.slice";
 import { useSendOtpMutation } from "services/transaction.service";
 import { required } from "validations/validations";
 import rtkMutation from "utils/rtkMutation";
+import { certificate } from "assets/images";
 
 const ProjectTrackOverview = () => {
   const [amount, setAmount] = useState(0);
@@ -32,9 +33,12 @@ const ProjectTrackOverview = () => {
 
   const onSubmit = (value) => {
     const id = projectData?.created_by?.organization_id?._id;
+    const project_id = projectData?._id;
     const newObj = {};
     newObj.amount = value.amount;
+    newObj.certificate_number = value.certificate_number;
     newObj.id = id;
+    newObj.project_id = project_id;
     setAmount(value.amount);
     // refetch()
     rtkMutation(sendOtp, null)
@@ -65,7 +69,7 @@ const ProjectTrackOverview = () => {
         </div>
         <div className="between">
           <div className="proj_track_overview_info_wrap">
-            <div className="proj_track_overview_info_wrap_items start">
+            <div className="proj_track_overview_info_wrap_items">
               <div className="proj_track_overview_info_wrap_item">
                 <div className="proj_track_overview_info_wrap_item_text">
                   Project ID
@@ -167,6 +171,14 @@ const ProjectTrackOverview = () => {
                   disabled={projectData?.progress === "Phase6" ? false : true}
                   placeholder="Allocate carbon credit"
                   validate={required("Amount")}
+                />
+                <Field
+                  name="certificate_number"
+                  label="Certificate Number"
+                  component={Input}
+                  disabled={projectData?.progress === "Phase6" ? false : true}
+                  placeholder="Enter certificate numer"
+                  validate={required("Certificate Number")}
                 />
                 <Button
                   type={"submit"}

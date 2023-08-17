@@ -41,9 +41,6 @@ const VerifyOtp = ({ data }) => {
 
   const handleSendCredit = () => {
     rtkMutation(verifyOtp, { otp: otpValue });
-    if (isSuccessOtp) {
-      rtkMutation(sendCredit, data?.value);
-    }
   };
 
   // Update the otp state when an input changes
@@ -97,8 +94,14 @@ const VerifyOtp = ({ data }) => {
     dispatch,
   ]);
 
-//   console.log(otpValue, "val");
-//   console.log(data, "data");
+  useEffect(() => {
+    if (isSuccessOtp) {
+      rtkMutation(sendCredit, data?.value);
+    }
+  }, [isSuccessOtp]);
+
+  //   console.log(otpValue, "val");
+  //   console.log(data, "data");
 
   return (
     <div className="verify_otp">
