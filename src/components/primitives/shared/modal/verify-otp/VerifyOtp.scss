@@ -1,5 +1,81 @@
 @import "base.scss";
 
-.verify_otp{
-    
+.verify_otp {
+  border-radius: 8px;
+  border: 1px solid #dedede;
+  background: #fff;
+  padding: 70px;
+  position: relative;
+  width: 40%;
+
+  @media (max-width: 991px) {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .verify_otp_img {
+    position: absolute;
+    top: 21px;
+    right: 32px;
+    cursor: pointer;
+
+    @media (max-width: 991px) {
+      width: 30px;
+      top: 15px;
+      right: 12px;
+    }
+  }
+
+  .verify_otp_heading {
+    margin-bottom: 40px;
+  }
+
+  .verify_otp_desc_wrap {
+    border-radius: 8px;
+    background: #f2f5ff;
+    padding: 16px;
+    margin-bottom: 15px;
+    .verify_otp_text {
+      color: #4c5563;
+      font-size: 14px;
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
+    .verify_otp_amount {
+      color: #212121;
+      font-size: 20px;
+      @media (max-width: 991px) {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .verify_otp_comp {
+    color: #4c5563;
+    font-size: 15px;
+    line-height: 23.968px;
+    margin-bottom: 100px;
+    padding-left: 16px;
+    @media (max-width: 991px) {
+      font-size: 12px;
+    }
+  }
+  .verify_otp_input_wrap{
+    margin-bottom: 90px;
+  }
+
+  .verify_otp_btn_wrap {
+    .verify_otp_btn_one {
+      max-width: 142px;
+      color: $blue;
+      background-color: #fff;
+      border: 1px solid $blue;
+    }
+
+    .verify_otp_btn_two {
+      max-width: 142px;
+      margin-left: 16px;
+    }
+  }
 }

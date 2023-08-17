@@ -35,6 +35,8 @@ export const GET_MY_TRANSACTIONS = "transaction/my_transactions";
 export const GET_ALL_TRANSACTIONS = "transaction/all_transactions";
 export const GET_ORG_ADMIN = "transaction/get_org_admin_id";
 export const GET_CHART_DATA = "dashboard/transactions";
+export const GET_OTP = "otp/send_otp";
+export const VERIFY_OTP = "otp/verify_otp";
 
 // Messaging constants
 export const MESSAGE = "message";

@@ -10,64 +10,45 @@ import {
 import { Form, Field } from "react-final-form";
 import { useParams } from "react-router-dom";
 import { useAllProjectsQuery } from "services/project.service";
-import { useSendCreditMutation } from "services/user.service";
-import rtkMutation from "utils/rtkMutation";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
-import { formatErrorResponse } from "utils/formatErrorResponse";
+import { useGetOtpQuery } from "services/transaction.service";
+import { required } from "validations/validations";
 
 const ProjectTrackOverview = () => {
-  const [
-    sendCredit,
-    {
-      isSuccess: isSuccessCredit,
-      isLoading: loading,
-      isError: isErrorCredit,
-      error: errorCredit,
-    },
-  ] = useSendCreditMutation();
-
   const [amount, setAmount] = useState(0);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  // console.log(id,  "id")
+  console.log(amount, "id");
 
   const { data, error, isSuccess, isLoading } = useAllProjectsQuery();
+  const { data: otpData } = useGetOtpQuery({ skip: !isButtonClicked });
 
   const projectData = data?.filter((item) => item?._id === id)[0];
 
   const onSubmit = (value) => {
-    value["organization_id"] = projectData?.created_by?.organization_id?._id;
-    rtkMutation(sendCredit, value);
+    const id = projectData?.created_by?.organization_id?._id;
+    const newObj = {}
+    newObj.amount = value.amount
+    newObj.id = id
     setAmount(value.amount);
+    dispatch(
+      openModal({
+        component: "VerifyOtp",
+        data: {
+          value: newObj,
+          name: projectData?.created_by?.organization_id?.organization_name,
+        },
+      })
+    );
+    setIsButtonClicked(false);
     // console.log(value, "val");
   };
 
-  // console.log(amount, "value");
-
-  useEffect(() => {
-    isSuccessCredit &&
-      dispatch(
-        openModal({
-          title: "Carbon Credited Successfuly",
-          message: "carbon credit successfully credited to organization",
-          success: true,
-        })
-      );
-
-    isErrorCredit &&
-      dispatch(
-        openModal({
-          title: "Carbon Crediting Failed",
-          message: `${
-            formatErrorResponse(errorCredit) ||
-            "An error occured please try again later"
-          }`,
-        })
-      );
-  }, [isErrorCredit, isSuccessCredit, errorCredit, dispatch]);
+  console.log(isButtonClicked, "value");
 
   // console.log(projectData, error, isSuccess, isLoading, "oneProj");
 
@@ -161,13 +142,13 @@ const ProjectTrackOverview = () => {
           <CustomProjectSelect
             data={projectData}
             amount={amount}
-            isSuccessCredit={isSuccessCredit}
+            // isSuccessCredit={isSuccessCredit}
           />
         </div>
         <div className="proj_track_overview_update_credit">
           <Form
             onSubmit={onSubmit}
-            render={({ handleSubmit }) => (
+            render={({ handleSubmit, valid }) => (
               <form
                 onSubmit={handleSubmit}
                 style={{
@@ -180,9 +161,16 @@ const ProjectTrackOverview = () => {
                   component={Input}
                   disabled={projectData?.progress === "Phase6" ? false : true}
                   placeholder="Allocate carbon credit"
-                  onChange={(e) => setAmount(e.target.value)}
+                  validate={required("Amount")}
                 />
-                <Button type={"submit"} text={"Submit"} loading={loading} />
+                <Button
+                  type={"submit"}
+                  text={"Submit"}
+                  disabled={!valid}
+                  onClick={() => {
+                    setIsButtonClicked(true);
+                  }}
+                />
               </form>
             )}
           />

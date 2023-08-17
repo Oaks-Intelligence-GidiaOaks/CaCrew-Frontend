@@ -14,6 +14,8 @@ import {
   INITIATE_SELL,
   GET_ORG_ADMIN,
   GET_CHART_DATA,
+  GET_OTP,
+  VERIFY_OTP,
 } from "./constants";
 
 const transactionApiSlice = apiSlice.injectEndpoints({
@@ -33,7 +35,7 @@ const transactionApiSlice = apiSlice.injectEndpoints({
     // get my transaction
     getMyTransaction: builder.query({
       providesTags: ["Transaction"],
-      query: ({page=1, type, status}) => ({
+      query: ({ page = 1, type, status }) => ({
         url: `${GET_MY_TRANSACTIONS}?page=${page}&type=${type}&status=${status}`,
         method: "GET",
       }),
@@ -69,7 +71,7 @@ const transactionApiSlice = apiSlice.injectEndpoints({
     // get organisation admin id
     getOrgAdmin: builder.query({
       // providesTags: ["Transaction"],
-      query: ({id}) => ({
+      query: ({ id }) => ({
         url: `${GET_ORG_ADMIN}/${id}`,
         method: "GET",
       }),
@@ -84,6 +86,29 @@ const transactionApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: `${GET_CHART_DATA}`,
         method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // get otp
+    getOtp: builder.query({
+      query: () => ({
+        url: `${GET_OTP}`,
+        method: "POST",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // verify otp
+    verifyOtp: builder.mutation({
+      query: (data) => ({
+        url: `${VERIFY_OTP}`,
+        method: "POST",
+        body: data,
       }),
       transformResponse: (response) => {
         return response;
@@ -203,6 +228,8 @@ export const {
   useGetSellItemsQuery,
   useGetOrgAdminQuery,
   useGetChartDataQuery,
+  useGetOtpQuery,
+  useVerifyOtpMutation,
   useInitiateBuyMutation,
   useInitiateSellMutation,
   usePaymentMadeMutation,
