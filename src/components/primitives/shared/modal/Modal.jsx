@@ -59,12 +59,12 @@ const Modal = () => {
     ),
     ConfirmPayment: <ConfirmPayment data={data} />,
     ModalBuyOrder: <ModalBuyOrder />,
-    ModalRetireCredit: <ModalRetireCredit />, 
-    ConfirmRetireCredit: <ConfirmRetireCredit data={data}/>, 
+    ModalRetireCredit: <ModalRetireCredit />,
+    ConfirmRetireCredit: <ConfirmRetireCredit data={data} />,
     UpdateOrganisationModal: <UpdateOrganisationModal />,
     UpdateProfileModal: <UpdateProfileModal />,
     StartProjectModal: <StartProjectModal />,
-    ConfirmProjectPhase: <ConfirmProjectPhase data={data}/>,
+    ConfirmProjectPhase: <ConfirmProjectPhase data={data} />,
     VerifyOtp: <VerifyOtp data={data} />,
   }[component];
 
@@ -81,13 +81,14 @@ const Modal = () => {
         className={`${isOpen ? "modal center col" : "modal_close center col"}`}
       >
         <div className="modal_content_wrap center col">
-          <div className="modal_content_title">{title}</div>
-          <div className="modal_message_text">{message}</div>
           {succeeded ? (
             <img className="modal_content_image" src={success} alt="icon" />
           ) : (
             <img className="modal_content_image" src={failed} alt="icon" />
           )}
+          <div className="modal_content_title">{title}</div>
+          <div className="modal_message_text">{message}</div>
+
           {
             <Button
               text={promptMessage ? promptMessage : "Close"}
