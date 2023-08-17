@@ -17,7 +17,9 @@ import {
   ConfirmRetireCredit,
   UpdateOrganisationModal,
   UpdateProfileModal,
-  StartProjectModal
+  StartProjectModal,
+  ConfirmProjectPhase,
+  VerifyOtp,
 } from "components";
 
 const Modal = () => {
@@ -62,6 +64,8 @@ const Modal = () => {
     UpdateOrganisationModal: <UpdateOrganisationModal />,
     UpdateProfileModal: <UpdateProfileModal />,
     StartProjectModal: <StartProjectModal />,
+    ConfirmProjectPhase: <ConfirmProjectPhase />,
+    VerifyOtp: <VerifyOtp data={data} />,
   }[component];
 
   return (

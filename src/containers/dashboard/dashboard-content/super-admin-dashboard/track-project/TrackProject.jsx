@@ -6,7 +6,7 @@ import { useAllProjectsQuery } from "services/project.service";
 const TrackProject = () => {
   const [activeTab, setActiveTab] = useState("new");
 
-  const { data: projData, isSuccess, errpr } = useAllProjectsQuery();
+  const { data: projData, } = useAllProjectsQuery();
 
   const dataNew = projData?.filter((item) => item?.progress === "Phase1");
   const dataProgress = projData?.filter((item) => item?.progress !== "Phase1" && item?.progress !== "Phase6");

@@ -9,6 +9,7 @@ import {
 import rtkMutation from "utils/rtkMutation";
 
 const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
+  // List of my custom select options
   const options = [
     {
       phase: (
@@ -57,24 +58,40 @@ const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
     },
   ];
 
-  const [index, setIndex] = useState();
+  const [update, setUpdate] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const [updateProject, { data: updata, isLoading, isSuccess, error }] =
+  const [updateProject, { isLoading, isError, error }] =
     useUpdateProjectMutation();
 
-  useEffect(() => {
+  const handleProjUpdate = (idx) => {
     rtkMutation(updateProject, {
       id: data?._id,
       body: {
-        progress: index >= 0 ? options[index]?.value : data?.progress,
+        progress: options[idx]?.value,
         amount_earned: amount,
       },
     });
-    // console.log(index, "idxxxxxxxxxxxx");
-  }, [index, amount]);
+  };
 
-  // console.log(data, "check***************", index);
+  // update project with amount when carbon credit is succesful on parent component
+  useEffect(() => {
+    isSuccessCredit && setUpdate(true);
+    update &&
+      rtkMutation(updateProject, {
+        id: data?._id,
+        body: {
+          progress: data?.progress,
+          amount_earned: amount,
+        },
+      });
+    return () => {
+      setUpdate(false);
+    };
+    // console.log(index, "idxxxxxxxxxxxx");
+  }, [isSuccessCredit]);
+
+  // console.log(amount, "check***************");
 
   return (
     <div className="custom_proj_select">
@@ -110,7 +127,7 @@ const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
           <div
             className="custom_proj_select_option"
             onClick={() => {
-              setIndex(idx);
+              handleProjUpdate(idx);
             }}
             key={item.value}
           >
