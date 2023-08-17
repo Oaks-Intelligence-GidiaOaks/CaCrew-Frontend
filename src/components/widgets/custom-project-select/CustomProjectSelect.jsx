@@ -58,7 +58,7 @@ const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
     },
   ];
 
-  const [update, setUpdate] = useState(false);
+  // const [update, setUpdate] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const [updateProject, { isLoading, isError, error }] =
@@ -76,8 +76,7 @@ const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
 
   // update project with amount when carbon credit is succesful on parent component
   useEffect(() => {
-    isSuccessCredit && setUpdate(true);
-    update &&
+    isSuccessCredit &&
       rtkMutation(updateProject, {
         id: data?._id,
         body: {
@@ -85,10 +84,7 @@ const CustomProjectSelect = ({ data, amount, isSuccessCredit }) => {
           amount_earned: amount,
         },
       });
-    return () => {
-      setUpdate(false);
-    };
-    // console.log(index, "idxxxxxxxxxxxx");
+    // console.log(isSuccessCredit, "idxxxxxxxxxxxx");
   }, [isSuccessCredit]);
 
   // console.log(amount, "check***************");
