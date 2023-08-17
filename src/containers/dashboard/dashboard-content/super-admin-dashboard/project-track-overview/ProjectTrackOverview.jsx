@@ -12,8 +12,9 @@ import { useParams } from "react-router-dom";
 import { useAllProjectsQuery } from "services/project.service";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
-import { useGetOtpQuery } from "services/transaction.service";
+import { useSendOtpMutation } from "services/transaction.service";
 import { required } from "validations/validations";
+import rtkMutation from "utils/rtkMutation";
 
 const ProjectTrackOverview = () => {
   const [amount, setAmount] = useState(0);
@@ -25,16 +26,18 @@ const ProjectTrackOverview = () => {
   console.log(amount, "id");
 
   const { data, error, isSuccess, isLoading } = useAllProjectsQuery();
-  const { data: otpData } = useGetOtpQuery({ skip: !isButtonClicked });
+  const [sendOtp, { data: otpData}] = useSendOtpMutation({ skip: !isButtonClicked });
 
   const projectData = data?.filter((item) => item?._id === id)[0];
 
   const onSubmit = (value) => {
     const id = projectData?.created_by?.organization_id?._id;
-    const newObj = {}
-    newObj.amount = value.amount
-    newObj.id = id
+    const newObj = {};
+    newObj.amount = value.amount;
+    newObj.id = id;
     setAmount(value.amount);
+    // refetch()
+    rtkMutation(sendOtp, null)
     dispatch(
       openModal({
         component: "VerifyOtp",
@@ -44,7 +47,9 @@ const ProjectTrackOverview = () => {
         },
       })
     );
-    setIsButtonClicked(false);
+    setTimeout(() => {
+      setIsButtonClicked(false);
+    }, 2000);
     // console.log(value, "val");
   };
 

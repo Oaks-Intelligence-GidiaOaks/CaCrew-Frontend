@@ -93,7 +93,7 @@ const transactionApiSlice = apiSlice.injectEndpoints({
     }),
 
     // get otp
-    getOtp: builder.query({
+    sendOtp: builder.mutation({
       query: () => ({
         url: `${GET_OTP}`,
         method: "POST",
@@ -228,7 +228,7 @@ export const {
   useGetSellItemsQuery,
   useGetOrgAdminQuery,
   useGetChartDataQuery,
-  useGetOtpQuery,
+  useSendOtpMutation,
   useVerifyOtpMutation,
   useInitiateBuyMutation,
   useInitiateSellMutation,
