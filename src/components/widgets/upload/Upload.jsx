@@ -4,37 +4,72 @@ import { fileImg, filesImg, trash } from "assets/images";
 import { Field, FormSpy, useForm } from "react-final-form";
 import { required } from "validations/validations";
 
-const Upload = ({ documentName, isDelete = null, setIsDelete = null }) => {
-  const [file, setFile] = useState(null);
-  const [progress, setProgress] = useState(0);
+const Upload = ({
+  documentName,
+  isDelete = null,
+  setIsDelete = null,
+  multiple = false,
+}) => {
+  const [files, setFiles] = useState([]);
+  const [progress, setProgress] = useState({});
 
   const fileRef = useRef(null);
   const form = useForm();
 
-  // handle file change
-  const handleChange = () => {
-    setProgress(0);
-    setTimeout(() => {
-      setProgress(100);
-    }, 1000);
+  const handleChange = (uploadedFiles) => {
+    const newFiles = [];
+    // Create a copy of the progress state
+    const newProgress = { ...progress }; 
+
+    uploadedFiles.forEach((file) => {
+      newFiles.push(file);
+      // Set initial progress to 0
+      newProgress[file.name] = 0; 
+    });
+
+    setFiles(newFiles);
+    setProgress(newProgress);
+
+    uploadedFiles.forEach((file) => {
+      // Simulate progress animation from 0 to 100
+      const interval = setInterval(() => {
+        setProgress((prevProgress) => ({
+          ...prevProgress,
+          // Increment by 2 for animation effect
+          [file.name]: prevProgress[file.name] + 2, 
+        }));
+      }, 50);
+
+      // Set progress to 100 after 1 second 
+      setTimeout(() => {
+        clearInterval(interval);
+        setProgress((prevProgress) => ({
+          ...prevProgress,
+          [file.name]: 100,
+        }));
+      }, 1000);
+    });
   };
 
-  // console.log(fileRef, "fileref");
+  const handleDelete = (fileToDelete) => {
+    const updatedFiles = files.filter((file) => file !== fileToDelete);
+    setFiles(updatedFiles);
+    setProgress((prevProgress) => {
+      const newProgress = { ...prevProgress };
+      delete newProgress[fileToDelete?.name];
+      return newProgress;
+    });
 
-  // handle file deletion
-  const handleDelete = () => {
-    fileRef.current.value = "";
-    setFile(null);
-    setProgress(0);
-    form.reset();
+    form.change(documentName, updatedFiles);
   };
 
   useEffect(() => {
     if (isDelete) {
       handleDelete();
-      setIsDelete(false);
+      setIsDelete(null);
     }
   }, [isDelete]);
+
   return (
     <div>
       <Field
@@ -55,9 +90,11 @@ const Upload = ({ documentName, isDelete = null, setIsDelete = null }) => {
               className="uplaod_input"
               accept="image/jpeg,image/png,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
               onChange={(e) => {
-                input.onChange(e.target.files[0]);
-                // handleChange(e);
+                const uploadedFiles = Array.from(e.target.files);
+                input.onChange([...input.value, ...uploadedFiles]);
+                handleChange(uploadedFiles);
               }}
+              multiple={multiple}
             />
             {meta.error && meta.touched && (
               <span className="input_error">{meta.error}</span>
@@ -65,17 +102,15 @@ const Upload = ({ documentName, isDelete = null, setIsDelete = null }) => {
           </div>
         )}
       />
-      <FormSpy
+      {/* <FormSpy
         subscription={{ values: true }}
         onChange={(props) => {
-          const file = props.values;
-          // console.log(file[documentName], "file");
-          setFile(file[documentName]);
-          handleChange();
+          const fileArray = props.values[documentName] || [];
+          setFiles(fileArray);
         }}
-      />
-      {file && (
-        <div className="upload_progress_wrap start">
+      /> */}
+      {files && files?.map((file) => (
+        <div className="upload_progress_wrap start" key={file?.name}>
           <img src={filesImg} alt="icon" />
           <div className="upload_progress">
             <div className="upload_progress_text">{file?.name}</div>
@@ -86,19 +121,19 @@ const Upload = ({ documentName, isDelete = null, setIsDelete = null }) => {
               <div className="upload_progress">
                 <div
                   className="upload_progress_track"
-                  style={{ width: `${progress}%` }}
+                  style={{ width: `${progress[file?.name]}%` }}
                 ></div>
               </div>
               <img
                 src={trash}
                 alt="icon"
                 className="upload_progress_trash"
-                onClick={handleDelete}
+                onClick={() => handleDelete(file)}
               />
             </div>
           </div>
         </div>
-      )}
+      ))}
     </div>
   );
 };

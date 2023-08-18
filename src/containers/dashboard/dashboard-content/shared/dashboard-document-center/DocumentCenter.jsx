@@ -16,28 +16,41 @@ const DocumentCenter = () => {
 
   const dispatch = useDispatch();
 
+  // const onSubmit = async (value) => {
+  //   console.log(value, "val");
+  //   const file = value.document;
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     let object = {};
+  //     let uploadObj = {};
+  //     reader.onload = () => {
+  //       // Get string result from file
+  //       const fileDataString = reader.result;
+  //       // Add to properties
+  //       object.name = file.name;
+  //       object.type = file.type;
+  //       object.string = fileDataString; // store the string result
+  //       object.path = URL.createObjectURL(file);
+  //       // Replace form value with object
+  //       uploadObj["document"] = object;
+  //       // rtkMutation(addDocument, uploadObj);
+  //     };
+  //     fileTypeReader(file, reader);
+  //   }
+  // };
 
-  const onSubmit = async (value) => {
+  const onSubmit = (value) => {
     const file = value.document;
     if (file) {
-      const reader = new FileReader();
-      let object = {};
-      let uploadObj = {};
-      reader.onload = () => {
-        // Get string result from file
-        const fileDataString = reader.result;
-        // Add to properties
-        object.name = file.name;
-        object.type = file.type;
-        object.string = fileDataString; // store the string result
-        object.path = URL.createObjectURL(file);
-        // Replace form value with object
+      fileTypeReader(file, (object) => {
+        const uploadObj = {};
         uploadObj["document"] = object;
+        // console.log(uploadObj, "val");
         rtkMutation(addDocument, uploadObj);
-      };
-      fileTypeReader(file, reader);
+      });
     }
   };
+
   useEffect(() => {
     if (isError) {
       dispatch(
@@ -57,7 +70,7 @@ const DocumentCenter = () => {
           success: true,
         })
       );
-      setIsDelete(true)
+      setIsDelete(true);
     }
   }, [isError, isSuccess, error]);
 

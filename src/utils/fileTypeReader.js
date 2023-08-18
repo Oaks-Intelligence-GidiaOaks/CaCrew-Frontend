@@ -1,25 +1,47 @@
 // import * as XLSX from "xlsx";
 // import * as docx from "docx";
 
-const fileTypeReader = (file, reader) => {
-  if (!file) {
-    alert("select file");
-    return undefined;
+const fileTypeReader = (files, callback) => {
+  if (!files || files.length === 0) {
+    alert("Select file(s)");
+    return;
   }
-  switch (file.type) {
-    case "image/jpeg":
-    case "image/png":
-    case "image/jpg":
-    case "application/pdf":
-      reader?.readAsDataURL(file);
-      break;
-    case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-    case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-      reader?.readAsBinaryString(file);
-      break;
-    default:
-      alert("Unsupported file type");
-  }
+
+  const processFile = (file) => {
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const result = event.target.result;
+      const fileDataString = result;
+      const object = {
+        name: file.name,
+        type: file.type,
+        string: fileDataString,
+        path: URL.createObjectURL(file),
+      };
+
+      callback(object);
+    };
+
+    switch (file.type) {
+      case "image/jpeg":
+      case "image/png":
+      case "image/jpg":
+      case "application/pdf":
+        reader.readAsDataURL(file);
+        break;
+      case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+      case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+        reader.readAsBinaryString(file);
+        break;
+      default:
+        alert("Unsupported file type");
+    }
+  };
+
+  files.forEach((file) => {
+    processFile(file);
+  });
 };
 
 export default fileTypeReader;

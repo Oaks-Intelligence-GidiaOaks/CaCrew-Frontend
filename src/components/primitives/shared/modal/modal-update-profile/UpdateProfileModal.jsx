@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./UpdateProfileModal.scss";
 import "../modal-component-sell-order/ModalSellOrder.scss";
-import { avartar, close } from "assets/images";
+import { avartar, close, fileImg } from "assets/images";
 import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
@@ -29,38 +29,53 @@ const UpdateProfileModal = () => {
     dispatch(closeComponentModal());
   };
 
-  const readFileAndReturnObject = async (imageFile) => {
-    if (!imageFile) {
-      return;
-    }
-    const reader = new FileReader();
-    imageFile && fileTypeReader(imageFile, reader);
-    return await new Promise((resolve) => {
-      reader.onload = () => {
-        const fileDataString = reader.result;
-        const object = {
-          name: imageFile.name,
-          type: imageFile.type,
-          string: fileDataString,
-          path: URL.createObjectURL(imageFile),
-        };
-        resolve(object);
-      };
-    });
-  };
+  // const readFileAndReturnObject = async (imageFile) => {
+  //   if (!imageFile) {
+  //     return;
+  //   }
+  //   const reader = new FileReader();
+  //   imageFile && fileTypeReader(imageFile, (object) => {
 
-  const onSubmit = async (values) => {
-    const imageObj = await readFileAndReturnObject(imageFile);
-    // console.log(imageObj, "obj");
-    if (imageObj) {
-      values["photo"] = imageObj;
-    }
-    else if (!imageObj) {
-      values["photo"] = data?.photo_url;
-    }
+  //   });
+  //   return await new Promise((resolve) => {
+  //     reader.onload = () => {
+  //       const fileDataString = reader.result;
+  //       const object = {
+  //         name: imageFile.name,
+  //         type: imageFile.type,
+  //         string: fileDataString,
+  //         path: URL.createObjectURL(imageFile),
+  //       };
+  //       resolve(object);
+  //     };
+  //   });
+  // };
 
-    console.log(values);
-    await rtkMutation(updateUser, values);
+  // const onSubmit = async (values) => {
+  //   const imageObj = await readFileAndReturnObject(imageFile);
+  //   // console.log(imageObj, "obj");
+  //   if (imageObj) {
+  //     values["photo"] = imageObj;
+  //   }
+  //   else if (!imageObj) {
+  //     values["photo"] = data?.photo_url;
+  //   }
+
+  //   console.log(values);
+  //   await rtkMutation(updateUser, values);
+  // };
+  const onSubmit = (values) => {
+    const file = [];
+    file.push(imageFile);
+    console.log(file, "val");
+
+    if (file) {
+      fileTypeReader(file, (object) => {
+        values["photo"] = object;
+        // console.log(uploadObj, "val");
+        rtkMutation(updateUser, values);
+      });
+    }
   };
 
   useEffect(() => {

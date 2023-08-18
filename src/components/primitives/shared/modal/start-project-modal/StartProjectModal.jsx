@@ -35,27 +35,15 @@ const StartProjectModal = () => {
     dispatch(closeComponentModal());
   };
 
-  const onSubmit = (values) => {
-    const file = values.document;
+  const onSubmit = (value) => {
+    const file = value.document;
     if (file) {
-      const reader = new FileReader();
-      let object = {};
-      fileTypeReader(file, reader);
-      // let uploadObj = {}
-      reader.onload = () => {
-        // Get string result from file
-        const fileDataString = reader.result;
-        // Add to properties
-        object.name = file.name;
-        object.type = file.type;
-        object.string = fileDataString; // store the string result
-        object.path = URL.createObjectURL(file);
-        // Replace form value with object
-        // uploadObj["document"] = object;
-        values["document"] = object;
-        rtkMutation(addProject, values);
-      };
-      console.log(values.document, "val");
+      fileTypeReader(file, (object) => {
+        const uploadObj = {};
+        uploadObj["document"] = object;
+        // console.log(uploadObj, "val");
+        rtkMutation(addProject, uploadObj);
+      });
     }
   };
 
@@ -143,7 +131,7 @@ const StartProjectModal = () => {
                   />
                 </div>
                 <div className=" ">
-                  <Upload documentName={"document"} />
+                  <Upload documentName={"document"} multiple/>
                 </div>
                 <div className="start_proj_modal_input_btn_wrap end">
                   <Button

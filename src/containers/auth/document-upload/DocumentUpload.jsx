@@ -18,6 +18,7 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
   const location = useLocation();
 
   const [isFile, setIsFile] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
 
   const [registerUser, { isLoading, error, isSuccess, isError }] =
     useRegisterUserMutation();
@@ -25,30 +26,44 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
   const currentUrl = location.pathname;
   // console.log(formData, "url");
 
+  // const handleSubmit = (value) => {
+  //   const file = value[documentName];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     const object = {};
+  //     const uploadObj = {};
+  //     fileTypeReader(file, reader);
+  //     reader.onload = () => {
+  //       // Get string result from file
+  //       const fileDataString = reader.result;
+  //       // Add to properties
+  //       object.name = file.name;
+  //       object.type = file.type;
+  //       object.string = fileDataString; // store the string result
+  //       object.path = URL.createObjectURL(file);
+  //       // Replace form value with object
+  //       // value[documentName] = object;
+  //       uploadObj[documentName] = object;
+
+  //       // console.log(value, "name");
+  //       dispatch(updateFormdata(uploadObj));
+  //       navigate(path);
+  //     };
+  //     // Check the file type and use different methods to read the file
+  //   }
+  // };
+
   const handleSubmit = (value) => {
     const file = value[documentName];
     if (file) {
-      const reader = new FileReader();
-      const object = {};
-      const uploadObj = {};
-      fileTypeReader(file, reader);
-      reader.onload = () => {
-        // Get string result from file
-        const fileDataString = reader.result;
-        // Add to properties
-        object.name = file.name;
-        object.type = file.type;
-        object.string = fileDataString; // store the string result
-        object.path = URL.createObjectURL(file);
-        // Replace form value with object
-        // value[documentName] = object;
+      fileTypeReader(file, (object) => {
+        const uploadObj = {};
         uploadObj[documentName] = object;
+        console.log(uploadObj)
 
-        // console.log(value, "name");
         dispatch(updateFormdata(uploadObj));
         navigate(path);
-      };
-      // Check the file type and use different methods to read the file
+      });
     }
   };
 
@@ -106,7 +121,12 @@ const DocumentUpload = ({ title, documentName = "document", path = "" }) => {
           onSubmit={handleSubmit}
           render={({ handleSubmit, valid }) => (
             <form onSubmit={handleSubmit}>
-              <Upload documentName={documentName} setIsFile={setIsFile} />
+              <Upload
+                documentName={documentName}
+                setIsFile={setIsFile}
+                isDelete={isDelete}
+                setIsDelete={setIsDelete}
+              />
               <Button
                 type={"Submit"}
                 text={"Next"}
