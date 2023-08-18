@@ -18,6 +18,7 @@ const ProjectDetailAccordion = ({ data }) => {
   const handleAccordianClick = () => {
     setIsExpanded(!isExpanded);
   };
+  console.log(data, "dt");
   return (
     <div className="project_accordion">
       <div
@@ -41,6 +42,10 @@ const ProjectDetailAccordion = ({ data }) => {
             style={{ transform: isExpanded && "rotate(180deg)" }}
             className="project_details_accordion_btn_img"
           />
+        </div>
+        <div className="text project_details_desc">
+          <div className="project_details_desc_head">Description</div>
+          <div>{data?.description}</div>
         </div>
         {data?.progress !== "Phase6" && (
           <div className="project_details_accordion_item_wrap">

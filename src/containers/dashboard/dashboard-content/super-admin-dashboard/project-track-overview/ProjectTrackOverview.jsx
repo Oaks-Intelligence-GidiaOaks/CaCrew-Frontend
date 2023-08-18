@@ -4,6 +4,7 @@ import {
   Button,
   CustomProjectSelect,
   Input,
+  ProjectDetailAccordion,
   TrackProjectProgress,
 } from "components";
 // import { certificate } from "assets/images";
@@ -27,7 +28,9 @@ const ProjectTrackOverview = () => {
   console.log(amount, "id");
 
   const { data, error, isSuccess, isLoading } = useAllProjectsQuery();
-  const [sendOtp, { data: otpData}] = useSendOtpMutation({ skip: !isButtonClicked });
+  const [sendOtp, { data: otpData }] = useSendOtpMutation({
+    skip: !isButtonClicked,
+  });
 
   const projectData = data?.filter((item) => item?._id === id)[0];
 
@@ -41,7 +44,7 @@ const ProjectTrackOverview = () => {
     newObj.project_id = project_id;
     setAmount(value.amount);
     // refetch()
-    rtkMutation(sendOtp, null)
+    rtkMutation(sendOtp, null);
     dispatch(
       openModal({
         component: "VerifyOtp",
@@ -67,9 +70,9 @@ const ProjectTrackOverview = () => {
         <div className="proj_track_overview_title sub_heading">
           Project Overview
         </div>
-        <div className="between">
+        <div className="between proj_track_overview_info_wrap_con">
           <div className="proj_track_overview_info_wrap">
-            <div className="proj_track_overview_info_wrap_items">
+            <div className="proj_track_overview_info_wrap_items start">
               <div className="proj_track_overview_info_wrap_item">
                 <div className="proj_track_overview_info_wrap_item_text">
                   Project ID
@@ -128,6 +131,9 @@ const ProjectTrackOverview = () => {
                   <TrackProjectProgress phase={projectData?.progress} />
                 </div>
               </div>
+            </div>
+            <div className="proj_track_overview_acc_wrap">
+              <ProjectDetailAccordion data={projectData} />
             </div>
           </div>
           {/* <div className="proj_track_overview_cert">

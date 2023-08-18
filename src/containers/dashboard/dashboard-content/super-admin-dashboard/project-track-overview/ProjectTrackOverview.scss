@@ -3,44 +3,49 @@
 .proj_track_overview {
   align-items: flex-start;
   .proj_track_overview_wrap {
+    .proj_track_overview_acc_wrap {
+      margin-top: 80px;
+    }
     .proj_track_overview_title {
     }
-    .proj_track_overview_info_wrap {
-      padding: 50px;
-      border-radius: 8px;
-      border: 1px solid #dedede;
-      margin-top: 20px;
-
-      .proj_track_overview_info_wrap_items {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 70px;
-        justify-content: space-between;
+    .proj_track_overview_info_wrap_con {
+      align-items: flex-start;
+      @media (max-width: 991px) {
+        flex-wrap: wrap;
+      }
+      .proj_track_overview_info_wrap {
+        padding: 50px;
+        border-radius: 8px;
+        border: 1px solid #dedede;
+        margin-top: 20px;
         @media (max-width: 991px) {
-          grid-template-columns: repeat(2, 1fr);
+          padding: 20px;
         }
-        @media (max-width: 767px) {
-          grid-template-columns: repeat(1, 1fr);
-        }
-        .proj_track_overview_info_wrap_item {
-          // width: 40%;
-          .proj_track_overview_info_wrap_item_text {
-            color: #212121;
-            font-size: 15px;
-            line-height: 23.968px;
-            margin-bottom: 14px;
-            white-space: nowrap;
-            @media (max-width: 991px) {
-              font-size: 12px;
+
+        .proj_track_overview_info_wrap_items {
+          align-self: flex-start;
+          flex-wrap: wrap;
+          gap: 70px;
+          .proj_track_overview_info_wrap_item {
+            width: 40%;
+            .proj_track_overview_info_wrap_item_text {
+              color: #212121;
+              font-size: 15px;
+              line-height: 23.968px;
+              margin-bottom: 14px;
+              white-space: nowrap;
+              @media (max-width: 991px) {
+                font-size: 12px;
+              }
             }
-          }
-          .proj_track_overview_info_wrap_item_value {
-            color: #4c5563;
-            font-size: 15px;
-            line-height: 23.968px;
-            white-space: nowrap;
-            @media (max-width: 991px) {
-              font-size: 12px;
+            .proj_track_overview_info_wrap_item_value {
+              color: #4c5563;
+              font-size: 15px;
+              line-height: 23.968px;
+              white-space: nowrap;
+              @media (max-width: 991px) {
+                font-size: 12px;
+              }
             }
           }
         }
@@ -64,8 +69,12 @@
     width: 100%;
     align-items: flex-start;
     margin-top: 34px;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    padding: 40px;
     @media (max-width: 991px) {
       flex-direction: column;
+      padding: 20px;
     }
     .proj_track_overview_update_value {
       width: 45%;

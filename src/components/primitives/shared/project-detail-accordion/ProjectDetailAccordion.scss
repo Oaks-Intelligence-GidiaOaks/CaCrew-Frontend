@@ -41,6 +41,21 @@
       }
     }
 
+    .project_details_desc {
+      margin-top: 20px;
+      padding: 15px 0px;
+      // border-bottom: 1px solid #dedede;
+      // border-top: 1px solid #dedede;
+      .project_details_desc_head {
+        color: $blue;
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-size: 18px;
+        @media (max-width: 991px) {
+          font-size: 15px;
+        }
+      }
+    }
     .project_details_complete_wrap {
       padding-top: 24px;
       align-items: start;
