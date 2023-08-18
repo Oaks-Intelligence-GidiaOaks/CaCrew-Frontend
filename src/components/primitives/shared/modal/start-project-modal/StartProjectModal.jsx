@@ -59,10 +59,10 @@ const StartProjectModal = () => {
 
     const updatedValue = {
       ...value,
-      document: listObj,
+      documents: listObj,
     };
 
-    console.log(updatedValue, "vals");
+    // console.log(updatedValue, "vals");
 
     await rtkMutation(addProject, updatedValue);
   };

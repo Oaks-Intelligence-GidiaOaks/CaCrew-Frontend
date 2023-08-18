@@ -48,77 +48,38 @@ const ProjectDetailAccordion = ({ data }) => {
           <div>{data?.description}</div>
         </div>
         {data?.progress !== "Phase6" && (
-          <div className="project_details_accordion_item_wrap">
-            <div className="project_details_accordion_item">
-              <span className="project_details_accordion_item_title">
-                Project Design Document
-              </span>
-              <div className="project_details_accordion_item_value_wrap">
-                <img
-                  src={imageProjDoc || fileImg}
-                  alt="icon"
-                  className="project_details_accordion_item_img"
-                />
-                <div className="project_details_accordion_item_download">
-                  <a
-                    className="project_details_accordion_item_value_sm"
-                    href={data?.letter_of_authorization_url}
-                  >
-                    {nameProjDoc || "Download"}
-                  </a>
-                  <span className="project_details_accordion_item_value_sm">
-                    Download
-                  </span>
-                </div>
-              </div>
+          <>
+            <div className="text project_details_desc">
+              <div className="project_details_desc_head">Project Documents</div>
             </div>
-            <div className="project_details_accordion_item">
-              <span className="project_details_accordion_item_title">
-                Letter of Authorization
-              </span>
-              <div className="project_details_accordion_item_value_wrap">
-                <img
-                  src={imageProjDoc || fileImg}
-                  alt="icon"
-                  className="project_details_accordion_item_img"
-                />
-                <div className="project_details_accordion_item_download">
-                  <a
-                    className="project_details_accordion_item_value_sm"
-                    href={data?.letter_of_authorization_url}
-                  >
-                    {nameProjDoc || "Download"}
-                  </a>
-                  <span className="project_details_accordion_item_value_sm">
-                    Download
-                  </span>
-                </div>
-              </div>
+            <div className="project_details_accordion_item_wrap">
+              {data?.document_urls?.map((item) => {
+                const { image, name } = getFileDetails(item);
+                return (
+                  <div className="project_details_accordion_item">
+                    <div className="project_details_accordion_item_value_wrap">
+                      <img
+                        src={image || name}
+                        alt="icon"
+                        className="project_details_accordion_item_img"
+                      />
+                      <div className="project_details_accordion_item_download">
+                        <a
+                          className="project_details_accordion_item_value_sm"
+                          href={data?.letter_of_authorization_url}
+                        >
+                          {nameProjDoc || "Download"}
+                        </a>
+                        <span className="project_details_accordion_item_value_sm">
+                          Download
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div className="project_details_accordion_item">
-              <span className="project_details_accordion_item_title">
-                Identity Document
-              </span>
-              <div className="project_details_accordion_item_value_wrap">
-                <img
-                  src={imageProjDoc || fileImg}
-                  alt="icon"
-                  className="project_details_accordion_item_img"
-                />
-                <div className="project_details_accordion_item_download">
-                  <a
-                    className="project_details_accordion_item_value_sm"
-                    href={data?.letter_of_authorization_url}
-                  >
-                    {nameProjDoc || "Download"}
-                  </a>
-                  <span className="project_details_accordion_item_value_sm">
-                    Download
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          </>
         )}
         {data?.progress === "Phase6" && (
           <div className="project_details_complete_wrap between">
@@ -127,75 +88,31 @@ const ProjectDetailAccordion = ({ data }) => {
                 Project Documentation
               </div>
               <div className="project_details_complete_item_wrap">
-                <div className="project_details_accordion_item">
-                  <span className="project_details_accordion_item_title">
-                    Project Design Document
-                  </span>
-                  <div className="project_details_accordion_item_value_wrap">
-                    <img
-                      src={imageProjDoc || fileImg}
-                      alt="icon"
-                      className="project_details_accordion_item_img"
-                    />
-                    <div className="project_details_accordion_item_download">
-                      <a
-                        className="project_details_accordion_item_value_sm"
-                        href={data?.letter_of_authorization_url}
-                      >
-                        {nameProjDoc || "Download"}
-                      </a>
-                      <span className="project_details_accordion_item_value_sm">
-                        Download
-                      </span>
+                {data?.document_urls?.map((item) => {
+                  const { image, name } = getFileDetails(item);
+                  return (
+                    <div className="project_details_accordion_item">
+                      <div className="project_details_accordion_item_value_wrap">
+                        <img
+                          src={image || name}
+                          alt="icon"
+                          className="project_details_accordion_item_img"
+                        />
+                        <div className="project_details_accordion_item_download">
+                          <a
+                            className="project_details_accordion_item_value_sm"
+                            href={data?.letter_of_authorization_url}
+                          >
+                            {nameProjDoc || "Download"}
+                          </a>
+                          <span className="project_details_accordion_item_value_sm">
+                            Download
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="project_details_accordion_item">
-                  <span className="project_details_accordion_item_title">
-                    Letter of Authorization
-                  </span>
-                  <div className="project_details_accordion_item_value_wrap">
-                    <img
-                      src={imageProjDoc || fileImg}
-                      alt="icon"
-                      className="project_details_accordion_item_img"
-                    />
-                    <div className="project_details_accordion_item_download">
-                      <a
-                        className="project_details_accordion_item_value_sm"
-                        href={data?.letter_of_authorization_url}
-                      >
-                        {nameProjDoc || "Download"}
-                      </a>
-                      <span className="project_details_accordion_item_value_sm">
-                        Download
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="project_details_accordion_item">
-                  <span className="project_details_accordion_item_title">
-                    Identity Document
-                  </span>
-                  <div className="project_details_accordion_item_value_wrap">
-                    <img
-                      src={imageProjDoc || fileImg}
-                      alt="icon"
-                      className="project_details_accordion_item_img"
-                    />
-                    <div className="project_details_accordion_item_download">
-                      <a
-                        className="project_details_accordion_item_value_sm"
-                        href={data?.letter_of_authorization_url}
-                      >
-                        {nameProjDoc || "Download"}
-                      </a>
-                      <span className="project_details_accordion_item_value_sm">
-                        Download
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
             <div className="project_details_complete_cert">
