@@ -60,7 +60,7 @@ const ProjectTrackOverview = () => {
     // console.log(value, "val");
   };
 
-  console.log(isButtonClicked, "value");
+  // console.log(isButtonClicked, "value");
 
   // console.log(projectData, error, isSuccess, isLoading, "oneProj");
 

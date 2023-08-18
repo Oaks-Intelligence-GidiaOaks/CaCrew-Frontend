@@ -18,7 +18,7 @@ const ProjectDetailAccordion = ({ data }) => {
   const handleAccordianClick = () => {
     setIsExpanded(!isExpanded);
   };
-  console.log(data, "dt");
+  // console.log(data, "dt");
   return (
     <div className="project_accordion">
       <div
