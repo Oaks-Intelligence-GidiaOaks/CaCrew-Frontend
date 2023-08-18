@@ -86,7 +86,11 @@ const Pagination = ({
 
       <div className="pagination_num center text">
         {currentCount ? (
-          page + " - " + currentCount + " of " + totalCount
+          (page === 1 ? 1 : (page - 1) * 10) +
+          " - " +
+          currentCount +
+          " of " +
+          totalCount
         ) : (
           <ThreeDots
             height="15"
