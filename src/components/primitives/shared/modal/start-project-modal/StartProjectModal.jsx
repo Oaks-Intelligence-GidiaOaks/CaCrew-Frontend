@@ -35,16 +35,36 @@ const StartProjectModal = () => {
     dispatch(closeComponentModal());
   };
 
-  const onSubmit = (value) => {
+  const onSubmit = async (value) => {
     const file = value.document;
+    const listObj = [];
+
     if (file) {
-      fileTypeReader(file, (object) => {
-        const uploadObj = {};
-        uploadObj["document"] = object;
-        // console.log(uploadObj, "val");
-        rtkMutation(addProject, uploadObj);
+      await new Promise((resolve) => {
+        const filePromises = file.map((fileItem) => {
+          return new Promise((innerResolve) => {
+            fileTypeReader([fileItem], (object) => {
+              listObj.push(object);
+              innerResolve();
+            });
+          });
+        });
+
+        // Wait for all file promises to resolve
+        Promise.all(filePromises).then(() => {
+          resolve();
+        });
       });
     }
+
+    const updatedValue = {
+      ...value,
+      document: listObj,
+    };
+
+    console.log(updatedValue, "vals");
+
+    await rtkMutation(addProject, updatedValue);
   };
 
   useEffect(() => {
@@ -131,7 +151,7 @@ const StartProjectModal = () => {
                   />
                 </div>
                 <div className=" ">
-                  <Upload documentName={"document"} multiple/>
+                  <Upload documentName={"document"} multiple />
                 </div>
                 <div className="start_proj_modal_input_btn_wrap end">
                   <Button
