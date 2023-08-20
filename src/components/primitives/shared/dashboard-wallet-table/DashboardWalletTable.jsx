@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 import { useGetUserQuery } from "services/user.service";
 import { useGetMyTransactionQuery } from "services/transaction.service";
+import { convertDateToWord } from "utils/convertToDateFormat";
 
 const DashboardWalletTable = () => {
   const dispatch = useDispatch();
@@ -186,7 +187,7 @@ const DashboardWalletTable = () => {
                 </div>
                 <div className="dashboard_table_body_item">{row?._id}</div>
                 <div className="dashboard_table_body_item">
-                  {row?.createdAt}
+                  {convertDateToWord(row?.createdAt)}
                 </div>
                 <a
                   href={row?.document_url}
