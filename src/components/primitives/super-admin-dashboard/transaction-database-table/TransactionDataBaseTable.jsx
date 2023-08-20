@@ -156,6 +156,7 @@ const TransactionDataBaseTable = () => {
           <div className="trans_db_table_head between">
             <div className="trans_db_table_head_item">Buyer</div>
             <div className="trans_db_table_head_item">Seller</div>
+            <div className="trans_db_table_head_item">Type</div>
             <div className="trans_db_table_head_item">Amount</div>
             <div className="trans_db_table_head_item">Transaction ID</div>
             <div className="trans_db_table_head_item">Time of Transaction</div>
@@ -179,6 +180,9 @@ const TransactionDataBaseTable = () => {
                   {row?.seller?.organization_name ||
                     row?.transaction_type ||
                     "Transaction fee"}
+                </div>
+                <div className="trans_db_table_body_item">
+                  {row?.transaction_type || "Transaction"}
                 </div>
                 <div className="trans_db_table_body_item">
                   {row?.transaction_fee
