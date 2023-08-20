@@ -117,7 +117,7 @@ const TransactionDataBaseTable = () => {
           )}
         />
       </div> */}
-      <div className="trans_db_table_tab between">
+      {/* <div className="trans_db_table_tab between">
         <div
           className={`trans_db_table_tab_item ${
             activeTab === "all" && "trans_db_table_tab_item_active"
@@ -150,7 +150,7 @@ const TransactionDataBaseTable = () => {
         >
           Retire History
         </div>
-      </div>
+      </div> */}
       <div className="trans_db_table_wrap">
         <div className="trans_db_table">
           <div className="trans_db_table_head between">
