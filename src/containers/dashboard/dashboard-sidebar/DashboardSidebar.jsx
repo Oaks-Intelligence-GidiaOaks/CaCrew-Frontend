@@ -17,6 +17,8 @@ import {
   docublue,
   messagewhte,
   messge,
+  dbwhite,
+  db,
 } from "assets/images";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -142,6 +144,24 @@ const DashboardSidebar = () => {
               className="dashboard_link_item_image"
             />
             Track Projects
+          </NavLink>
+        )}
+        {user && user?.role === "SuperAdmin" && (
+          <NavLink
+            to={"/dashboard-transaction-database"}
+            activeclassname="active"
+            className={"link dashboard_link_item start"}
+          >
+            <img
+              src={
+                pathname?.includes("dashboard-transaction-database")
+                  ? dbwhite
+                  : db
+              }
+              alt="icon"
+              className="dashboard_link_item_image"
+            />
+            Transaction Database
           </NavLink>
         )}
         <NavLink

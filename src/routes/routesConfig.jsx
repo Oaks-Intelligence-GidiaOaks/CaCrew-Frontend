@@ -21,6 +21,7 @@ import {
   MY_ACCOUNT,
   MESSAGE,
   DOCUMENT_CENTER,
+  TRANSACTION_DATABASE,
 } from "routes/constants";
 
 // Import auth pages
@@ -46,6 +47,7 @@ import {
   TrackProjectPage,
   ProjectTrackOverviewPage,
   MyAccountPage,
+  TransactionDatabasePage,
   // organisation admin dasboard pages
   OrgAdminDashboardHomePage,
   // staff
@@ -124,6 +126,10 @@ const RoutesConfig = () => {
       <Route
         path={DOCUMENT_CENTER}
         element={<ProtectedRoute component={DocumentCenterPage} />}
+      />
+      <Route
+        path={TRANSACTION_DATABASE}
+        element={<ProtectedRoute component={TransactionDatabasePage} />}
       />
     </Routes>
   );

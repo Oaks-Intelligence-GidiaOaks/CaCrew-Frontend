@@ -67,3 +67,5 @@ export const buildings = `${PATH}/buildings.svg`;
 export const buildingstwo = `${PATH}/buildingtwo.svg`;
 export const global = `${PATH}/global.svg`;
 export const marker = `${PATH}/marker.svg`;
+export const db = `${PATH}/db.svg`;
+export const dbwhite = `${PATH}/dbwhite.svg`;

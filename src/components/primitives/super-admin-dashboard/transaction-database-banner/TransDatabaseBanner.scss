@@ -1,0 +1,46 @@
+@import "base.scss";
+
+.trans_db_banner {
+  .trans_db_banner_heading {
+    margin-bottom: 48px;
+  }
+  .trans_db_banner_cards_wrap {
+    flex-wrap: wrap;
+    align-items: center;
+    @media (max-width: 991px) {
+      gap: 20px;
+    }
+    .trans_db_banner_card {
+      width: 32%;
+      position: relative;
+      border-radius: 8px;
+      padding: 36px 50px;
+      overflow: hidden;
+      @media (max-width: 991px) {
+        width: 47%;
+      }
+      @media (max-width: 467px) {
+        width: 100%;
+      }
+      .trans_db_banner_card_img {
+        width: 70%;
+        position: absolute;
+        left: 0;
+        top: -20%;
+      }
+      .trans_db_banner_card_title {
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      .trans_db_banner_card_val {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 23.968px;
+        @media (max-width: 991px) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
