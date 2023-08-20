@@ -11,7 +11,7 @@ const ViewMessages = () => {
   const skipQuery = chatId === null || chatId === undefined ? true : false;
   const { data, isLoading } = useGetMessageQuery(chatId, {
     skip: skipQuery,
-    pollingInterval: 1000,
+    // pollingInterval: 1000,
   });
   const { data: user } = useGetUserQuery();
   console.log(chatId, "message");
