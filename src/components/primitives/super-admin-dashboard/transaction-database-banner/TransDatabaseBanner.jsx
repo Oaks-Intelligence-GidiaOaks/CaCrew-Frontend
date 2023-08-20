@@ -1,8 +1,11 @@
 import React from "react";
 import "./TransDatabaseBanner.scss";
 import { pattern } from "assets/images";
+import { useAllTransactionsQuery } from "services/transaction.service";
 
 const TransDatabaseBanner = () => {
+  const { data } = useAllTransactionsQuery({});
+  console.log(data, "dat")
   return (
     <div className="trans_db_banner">
       <div className="sub_heading trans_db_banner_heading">
@@ -23,7 +26,7 @@ const TransDatabaseBanner = () => {
           <div className="trans_db_banner_card_title text">
             Total Transactions Volume
           </div>
-          <div className="trans_db_banner_card_val">3,600,420 tCO2e</div>
+          <div className="trans_db_banner_card_val">{data?.totalCarbonCredits} tCO2e</div>
         </div>
         <div
           className="trans_db_banner_card center col"
@@ -37,9 +40,9 @@ const TransDatabaseBanner = () => {
             className="trans_db_banner_card_img"
           />
           <div className="trans_db_banner_card_title text">
-            Total Transactions Volume
+            Total Active carbon Cretit
           </div>
-          <div className="trans_db_banner_card_val">3,600,420 tCO2e</div>
+          <div className="trans_db_banner_card_val">{data?.activeCarbonCredits} tCO2e</div>
         </div>
         <div
           className="trans_db_banner_card center col"
@@ -53,9 +56,9 @@ const TransDatabaseBanner = () => {
             className="trans_db_banner_card_img"
           />
           <div className="trans_db_banner_card_title text">
-            Total Transactions Volume
+            Total retired Carbon Credit
           </div>
-          <div className="trans_db_banner_card_val">3,600,420 tCO2e</div>
+          <div className="trans_db_banner_card_val">{data?.retiredCarbonCredits} tCO2e</div>
         </div>
       </div>
     </div>

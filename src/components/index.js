@@ -45,6 +45,7 @@ export { default as StartProjectModal } from "components/primitives/shared/modal
 export { default as VerifyOtp } from "components/primitives/shared/modal/verify-otp/VerifyOtp";
 export { default as ConfirmProjectPhase } from "components/primitives/shared/modal/confirm-project-phase/ConfirmProjectPhase";
 export { default as TransDatabaseBanner } from "components/primitives/super-admin-dashboard/transaction-database-banner/TransDatabaseBanner";
+export { default as TransactionDataBaseTable } from "components/primitives/super-admin-dashboard/transaction-database-table/TransactionDataBaseTable";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

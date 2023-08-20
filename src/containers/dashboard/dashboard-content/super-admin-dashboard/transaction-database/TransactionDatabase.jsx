@@ -1,12 +1,15 @@
 import React from "react";
 import "./TransactionDatabase.scss";
-import { TransDatabaseBanner } from "components";
+import { TransDatabaseBanner, TransactionDataBaseTable } from "components";
 
 const TransactionDatabase = () => {
   return (
     <div className="trans_db">
       <div className="dash_pad">
-        <TransDatabaseBanner />
+        <div className="trans_db_banner_wrap">
+          <TransDatabaseBanner />
+        </div>
+        <TransactionDataBaseTable />
       </div>
     </div>
   );
