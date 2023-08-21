@@ -30,7 +30,7 @@ const RegistryDetail = () => {
       acc += val?.count;
       return acc;
     }, 0);
-  console.log(data, "dat");
+  // console.log(data, "dat");
   // console.log(totalBought, totalRetired, "id");
 
   const activeComponent = {

@@ -5,7 +5,7 @@
   .dashboard_wrap {
     padding-top: 105px;
     .dashboard_sidebar {
-      width: 20%;
+      width: 40%;
       position: fixed;
       transition: all 0.3s linear;
       background-color: #fff;
@@ -17,13 +17,12 @@
         width: 0.1px;
       }
       @media (max-width: 767px) {
-        position: fixed;
         width: 45%;
         transform: translateX(-350px);
         top: 85px;
       }
       @media (max-width: 467px) {
-        width: 55%;
+        width: 60%;
       }
     }
     .dashboard_sidebar_open {
