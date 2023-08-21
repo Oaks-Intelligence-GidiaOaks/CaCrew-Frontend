@@ -45,3 +45,7 @@ export const MARK_AS_READ = "message/mark_as_read"
 // Documment center constants
 export const DOCUMENTS = "document"
 
+// Registry constants
+export const GET_REGISTRY = "registry/get_carbon_credit_registry"
+export const GET_REGISTRY_COUNT = "get_carbon_credit_registry_count"
+

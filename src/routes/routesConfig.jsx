@@ -23,6 +23,7 @@ import {
   DOCUMENT_CENTER,
   TRANSACTION_DATABASE,
   REGISTRY,
+  REGISTRY_DETAIL,
 } from "routes/constants";
 
 // Import auth pages
@@ -42,6 +43,7 @@ import {
   BuyCarbonCreditPage,
   DashboardMessagePage,
   RegistryPage,
+  RegistryDetailPage,
   // super admin dasboard pages
   DashboardOrganisationPage,
   SupAdminDashHomePage,
@@ -136,6 +138,10 @@ const RoutesConfig = () => {
       <Route
         path={REGISTRY}
         element={<ProtectedRoute component={RegistryPage} />}
+      />
+      <Route
+        path={REGISTRY_DETAIL}
+        element={<ProtectedRoute component={RegistryDetailPage} />}
       />
     </Routes>
   );

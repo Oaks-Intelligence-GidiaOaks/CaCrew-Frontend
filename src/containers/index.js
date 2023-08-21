@@ -17,6 +17,7 @@ export { default as DashboardMessage } from "containers/dashboard/dashboard-cont
 export { default as DocumentCenter } from "containers/dashboard/dashboard-content/shared/dashboard-document-center/DocumentCenter";
 export { default as TransactionDatabase } from "containers/dashboard/dashboard-content/super-admin-dashboard/transaction-database/TransactionDatabase";
 export { default as Registry } from "containers/dashboard/dashboard-content/shared/registry/Registry";
+export { default as RegistryDetail } from "containers/dashboard/dashboard-content/shared/registry-detail/RegistryDetail";
 
 
 // auth

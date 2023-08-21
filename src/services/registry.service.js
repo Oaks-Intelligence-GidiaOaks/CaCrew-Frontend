@@ -1,17 +1,13 @@
-import { GET_ALL_STAFFS, ADD_STAFF } from "services/constants";
+import { GET_REGISTRY, GET_REGISTRY_COUNT } from "services/constants";
 import apiSlice from "./api/apiSlice";
 
 export const staffApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    // get all staffs route
-    allStaffs: builder.query({
-      // providesTags: (result, error, arg) => [
-      //   { type: "Staff", id: "List" },
-      //   ...result?._id?.map((id) => ({ type: "Staff", id })),
-      // ],
-      providesTags: ["Staff"],
+    // get all registry data
+    getRegistry: builder.query({
+      providesTags: ["Registry"],
       query: () => ({
-        url: GET_ALL_STAFFS,
+        url: GET_REGISTRY,
         method: "GET",
       }),
       transformResponse: (response) => {
@@ -19,17 +15,14 @@ export const staffApiSlice = apiSlice.injectEndpoints({
       },
     }),
 
-    // Add staffs
-    addStaff: builder.mutation({
-      query: (data) => ({
-        url: `${ADD_STAFF}`,
-        method: "POST",
-        body: data,
+    // Get registry detail with id
+    getRegistryCount: builder.query({
+      query: (id) => ({
+        url: `${GET_REGISTRY_COUNT}/${id}`,
+        method: "GET",
       }),
-      invalidatesTags: { type: "Staff", id: "List" },
     }),
   }),
-  //   refetchOnMountOrArgChange: true,
 });
 
-export const { useAllStaffsQuery, useAddStaffMutation } = staffApiSlice;
+export const { useGetRegistryQuery, useGetRegistryCountQuery } = staffApiSlice;

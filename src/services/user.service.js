@@ -41,6 +41,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         "Transaction",
         "Message",
         "Document",
+        "Registry",
       ],
     }),
 
