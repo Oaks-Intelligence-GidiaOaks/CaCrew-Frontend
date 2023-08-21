@@ -13,13 +13,15 @@ const RegistryDetail = () => {
   const makeRequest = !id ? true : false;
   const { data } = useGetRegistryCountQuery({ id: id, skip: makeRequest });
   const dispatch = useDispatch();
+
+  const dataCount = data[0];
   console.log(data, "dat");
   console.log(id, "id");
 
   const activeComponent = {
-    earned: <RegistryCountTable />,
-    bought: <RegistryCountTable />,
-    retired: <RegistryCountTable />
+    earned: <RegistryCountTable data={dataCount?.earned}/>,
+    bought: <RegistryCountTable data={dataCount?.bought}/>,
+    retired: <RegistryCountTable data={dataCount?.retired}/>
   }[activeTab]
 
   const handleTabClick = (value) => {

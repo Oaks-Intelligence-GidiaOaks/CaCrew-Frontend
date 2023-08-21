@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import "./RegistryCountTable.scss";
 import { Button, Input, Pagination, SearchInput, Shimmer } from "components";
-import { useGetRegistryQuery } from "services/registry.service";
-import { convertDateToWord } from "utils/convertToDateFormat";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const RegistryCountTable = () => {
+const RegistryCountTable = ({data}) => {
   const [page, setPage] = useState(1);
-  const { data: dataRegistry } = useGetRegistryQuery({
-    page,
-  });
+
+  const {id} = useParams()
 
   return (
     <div className="registry_table">
@@ -19,11 +17,9 @@ const RegistryCountTable = () => {
             <div className="registry_table_head_item">ID</div>
             <div className="registry_table_head_item">Organisation</div>
             <div className="registry_table_head_item">Amount</div>
-            <div className="registry_table_head_item">Project</div>
-            <div className="registry_table_head_item">Created</div>
           </div>
-          {dataRegistry?.length >= 1 ? (
-            dataRegistry?.map((row, idx) => (
+          {data?.length >= 1 ? (
+            data?.map((row, idx) => (
               <Link
                to={`/dashboard-registry/detail/${row?.certificate_number}`}
                 key={row?._id || idx}
@@ -32,21 +28,17 @@ const RegistryCountTable = () => {
                 }`}
               >
                 <div className="registry_table_body_item">
-                  {row?.certificate_number || "------"}
+                  {id || "------"}
                 </div>
                 <div className="registry_table_body_item">
-                  {row?.organization_id?.organization_name || "------"}
+                  {row?.organization_name || "------"}
                 </div>
                 <div className="registry_table_body_item">
-                  {row?.amount || "------"}
-                </div>
-                <div className="registry_table_body_item">{row?.project_id?.project_name || "------"}</div>
-                <div className="registry_table_body_item">
-                  {convertDateToWord(row?.createdAt) || "------"}
+                  {row?.count || "------"}
                 </div>
               </Link>
             ))
-          ) : dataRegistry?.transactions?.length < 1 ? (
+          ) : data?.transactions?.length < 1 ? (
             <div className="text center mt_10">No Transactions yet</div>
           ) : (
             <div className="mt_10">
@@ -59,12 +51,12 @@ const RegistryCountTable = () => {
           )}
         </div>
       </div>
-      {dataRegistry?.transactions && (
+      {data?.transactions && (
         <Pagination
-          totalCount={dataRegistry?.totalTransactions}
+          totalCount={data?.totalTransactions}
           page={page}
           setPage={setPage}
-          dataLength={dataRegistry?.transactions?.length}
+          dataLength={data?.transactions?.length}
         />
       )}
     </div>
