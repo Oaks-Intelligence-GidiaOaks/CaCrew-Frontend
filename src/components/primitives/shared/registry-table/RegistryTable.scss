@@ -1,32 +1,6 @@
 @import "base.scss";
 
 .registry_table {
-  .registry_table_tab {
-    margin-top: 21px;
-
-    .registry_table_tab_item {
-      color: #4c5563;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 19.307px;
-      border-bottom: 1px solid #d3d4d8;
-      width: 50%;
-      padding-bottom: 8px;
-      cursor: pointer;
-
-      @media (max-width: 991px) {
-        font-size: 11px;
-      }
-    }
-
-    .registry_table_tab_item_active {
-      @extend .registry_table_tab_item;
-      color: #115ccd;
-      border-bottom: 2px solid #4277ff;
-    }
-  }
-
   .registry_table_wrap {
     margin-top: 30px;
     width: 100%;

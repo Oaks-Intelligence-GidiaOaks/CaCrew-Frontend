@@ -16,6 +16,7 @@
       padding: 24px;
       border-radius: 8px;
       border: 1px solid #dedede;
+      margin-bottom: 30px;
       @media (max-width: 991px) {
         gap: 20px;
       }
@@ -47,6 +48,31 @@
           }
         }
       }
+    }
+  }
+  .registry_details_tab {
+    margin-top: 21px;
+
+    .registry_details_tab_item {
+      color: #4c5563;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 19.307px;
+      border-bottom: 1px solid #d3d4d8;
+      width: 50%;
+      padding-bottom: 8px;
+      cursor: pointer;
+
+      @media (max-width: 991px) {
+        font-size: 11px;
+      }
+    }
+
+    .registry_details_tab_item_active {
+      @extend .registry_details_tab_item;
+      color: #115ccd;
+      border-bottom: 2px solid #4277ff;
     }
   }
 }

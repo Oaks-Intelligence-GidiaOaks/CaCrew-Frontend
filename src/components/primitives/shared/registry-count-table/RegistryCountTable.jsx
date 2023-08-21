@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import "./RegistryTable.scss";
+import "./RegistryCountTable.scss";
 import { Button, Input, Pagination, SearchInput, Shimmer } from "components";
 import { useGetRegistryQuery } from "services/registry.service";
 import { convertDateToWord } from "utils/convertToDateFormat";
 import { Link } from "react-router-dom";
 
-const RegistryTable = () => {
+const RegistryCountTable = () => {
   const [page, setPage] = useState(1);
   const { data: dataRegistry } = useGetRegistryQuery({
     page,
   });
-
-  // console.log(dataMyTranscation, "trans");
 
   return (
     <div className="registry_table">
@@ -73,4 +71,4 @@ const RegistryTable = () => {
   );
 };
 
-export default RegistryTable;
+export default RegistryCountTable;
