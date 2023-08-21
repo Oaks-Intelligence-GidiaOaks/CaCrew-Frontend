@@ -48,6 +48,7 @@ export { default as TransDatabaseBanner } from "components/primitives/super-admi
 export { default as TransactionDataBaseTable } from "components/primitives/super-admin-dashboard/transaction-database-table/TransactionDataBaseTable";
 export { default as RegistryBanner } from "components/primitives/shared/registry-banner/RegistryBanner";
 export { default as RegistrySearch } from "components/primitives/shared/registry-search/RegistrySearch";
+export { default as RegistryTable } from "components/primitives/shared/registry-table/RegistryTable";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

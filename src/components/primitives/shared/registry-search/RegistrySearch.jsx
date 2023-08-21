@@ -15,6 +15,7 @@ const RegistrySearch = () => {
       <div className="registry_search_input">
         <SearchInput />
       </div>
+      
     </div>
   );
 };
