@@ -1,14 +1,19 @@
-import { regimg } from "assets/images";
 import React from "react";
+import { regimg } from "assets/images";
+import { SearchInput } from "components";
+import "./RegistrySearch.scss";
 
 const RegistrySearch = () => {
   return (
-    <div className="center col m_10">
-      <img src={regimg} alt="banner" />
-      <div>Track Carbon Credit Life Cycle</div>
-      <div>
+    <div className="registry_search center col">
+      <img src={regimg} alt="banner" className="registry_search_img" />
+      <div className="registry_search_head">Track Carbon Credit Life Cycle</div>
+      <div className="registry_search_text text">
         Search by Verra Certificate ID, Carbonible ID, Organization or Project
         name
+      </div>
+      <div className="registry_search_input">
+        <SearchInput />
       </div>
     </div>
   );
