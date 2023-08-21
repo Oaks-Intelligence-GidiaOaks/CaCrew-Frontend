@@ -14,6 +14,7 @@ export {default as DashboardWalletPage} from "pages/shared/DashboardWalletPage"
 export {default as BuyCarbonCreditPage} from "pages/shared/BuyCarbonCreditPage"
 export {default as MyAccountPage} from "pages/shared/MyAccountPage"
 export {default as DashboardMessagePage} from "pages/shared/DashboardMessagePage"
+export {default as RegistryPage} from "pages/shared/RegistryPage"
 
 
 // Super admin pages exports

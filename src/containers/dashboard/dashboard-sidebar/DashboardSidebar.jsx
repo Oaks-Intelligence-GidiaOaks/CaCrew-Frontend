@@ -19,12 +19,16 @@ import {
   messge,
   dbwhite,
   db,
+  regw,
+  regb,
 } from "assets/images";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "redux/slices/user.slice";
 import { useSelector } from "react-redux";
 import { clearFormData } from "redux/slices/register.slice";
+import { REGISTRY } from "routes/constants";
+import { closeComponentModal } from "redux/slices/modal.slice";
 
 const DashboardSidebar = () => {
   const [pathname, setPathName] = useState();
@@ -42,7 +46,8 @@ const DashboardSidebar = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    dispatch(clearFormData())
+    dispatch(clearFormData());
+    dispatch(closeComponentModal())
   };
 
   return (
@@ -90,11 +95,7 @@ const DashboardSidebar = () => {
           className={"link dashboard_link_item start"}
         >
           <img
-            src={
-              pathname?.includes("document-center")
-                ? docu
-                : docublue
-            }
+            src={pathname?.includes("document-center") ? docu : docublue}
             alt="icon"
             className="dashboard_link_item_image"
           />
@@ -188,6 +189,20 @@ const DashboardSidebar = () => {
           />
           Notification
         </NavLink>
+        {user && user?.role === "SuperAdmin" && (
+          <NavLink
+            to={REGISTRY}
+            activeclassname="active"
+            className={"link dashboard_link_item start"}
+          >
+            <img
+              src={pathname?.includes(REGISTRY) ? regw : regb}
+              alt="icon"
+              className="dashboard_link_item_image"
+            />
+            Registry
+          </NavLink>
+        )}
         <NavLink
           to={"/login"}
           // activeclassname="active"

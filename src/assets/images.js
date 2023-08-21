@@ -69,3 +69,5 @@ export const global = `${PATH}/global.svg`;
 export const marker = `${PATH}/marker.svg`;
 export const db = `${PATH}/db.svg`;
 export const dbwhite = `${PATH}/dbwhite.svg`;
+export const regw = `${PATH}/reg.svg`;
+export const regb = `${PATH}/regb.svg`;
