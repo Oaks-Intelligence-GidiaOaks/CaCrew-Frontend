@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./RegistryDetail.scss";
-import { RegistryBanner } from "components";
+import { RegistryBanner, RegistryCountTable } from "components";
 import { useGetRegistryCountQuery } from "services/registry.service";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 
 const RegistryDetail = () => {
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState("earned");
 
   const { id } = useParams();
   const makeRequest = !id ? true : false;
@@ -15,6 +15,12 @@ const RegistryDetail = () => {
   const dispatch = useDispatch();
   console.log(data, "dat");
   console.log(id, "id");
+
+  const activeComponent = {
+    earned: <RegistryCountTable />,
+    bought: <RegistryCountTable />,
+    retired: <RegistryCountTable />
+  }[activeTab]
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -82,28 +88,31 @@ const RegistryDetail = () => {
         <div className="registry_details_tab between">
           <div
             className={`registry_details_tab_item ${
-              activeTab === "all" && "registry_details_tab_item_active"
+              activeTab === "earned" && "registry_details_tab_item_active"
             }`}
-            onClick={() => handleTabClick("all")}
+            onClick={() => handleTabClick("earned")}
           >
             Earned
           </div>
           <div
             className={`registry_details_tab_item ${
-              activeTab === "sell" && "registry_details_tab_item_active"
+              activeTab === "bought" && "registry_details_tab_item_active"
             }`}
-            onClick={() => handleTabClick("sell")}
+            onClick={() => handleTabClick("bought")}
           >
             Bought
           </div>
           <div
             className={`registry_details_tab_item ${
-              activeTab === "buy" && "registry_details_tab_item_active"
+              activeTab === "retired" && "registry_details_tab_item_active"
             }`}
-            onClick={() => handleTabClick("buy")}
+            onClick={() => handleTabClick("retired")}
           >
             Retired
           </div>
+        </div>
+        <div>
+          {activeComponent}
         </div>
       </div>
     </div>

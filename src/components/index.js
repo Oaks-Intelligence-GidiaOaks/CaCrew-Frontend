@@ -49,6 +49,7 @@ export { default as TransactionDataBaseTable } from "components/primitives/super
 export { default as RegistryBanner } from "components/primitives/shared/registry-banner/RegistryBanner";
 export { default as RegistrySearch } from "components/primitives/shared/registry-search/RegistrySearch";
 export { default as RegistryTable } from "components/primitives/shared/registry-table/RegistryTable";
+export { default as RegistryCountTable } from "components/primitives/shared/registry-count-table/RegistryCountTable";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
