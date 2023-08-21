@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
@@ -21,10 +21,20 @@ const userSlice = createSlice({
       newState.user = null;
       newState.token = null;
       newState.refreshToken = null;
-      return newState 
+      return newState;
     },
   },
 });
+
+// Define a selector that retrieves the user state from Redux
+const selectUserState = (state) => state.user;
+
+// Define a sub-selector that gets the id from the user state
+export const selectUserId = createSelector(
+  selectUserState,
+  (userState) => userState.user ? userState.user.id : null
+);
+
 
 export const { updateUser, logoutUser } = userSlice.actions;
 export default userSlice.reducer;

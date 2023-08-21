@@ -7,45 +7,38 @@ export const messageApiSlice = apiSlice.injectEndpoints({
     // get all messages
     getAllMessages: builder.query({
       providesTags: ["Message"],
-      query: ({ id = " " }) => ({
+      query: () => ({
         url: MESSAGE,
         method: "GET",
       }),
-      async onCacheEntryAdded(
-        arg,
+      // transformResponse: (response) => {
+      //   return response;
+      // },
+      onCacheEntryAdded: async (
+        id,
         { updateCachedData, cacheDataLoaded, cacheEntryRemoved }
-      ) {
+      ) => {
         // const ws = io("https://carbonible-46cc019868d0.herokuapp.com");
         const ws = io("http://localhost:5000");
-        // console.log(arg.id, "id")
 
         ws.on("connect", () => {
-          // console.log(arg, "Connected to Webws server");
-          ws.emit("join", arg.id);
+          ws.emit("join", id);
         });
-
-        // ws.on("newMessage", (notification) => {
-        //   alert("hi");
-
-        //   // Dispatch an action to update the global state (Redux)
-        //   // dispatch({ type: "ADD_NOTIFICATION", payload: notification });
-        //   console.log(notification, "Connected to Webws server");
-        // });
 
         try {
           await cacheDataLoaded;
 
           const listener = (event) => {
-            // const data = JSON.parse(event);
-            // console.log(data, "data");
-            // if (data.channel !== arg) return;
-            console.log(event, "draft");
-
+            console.log(event, "evn");
             updateCachedData((draft) => {
-              console.log(draft, "draft");
-              alert("hi");
-              draft.push(event);
+              // return Array.from(draft).push(event)
+              return [{...event}, ...draft];
             });
+            // use api.util.updateQueryData to update the cache data for getMessages endpoint
+            // apiSlice.util.updateQueryData("getAllMessages", arg, (draft) => {
+            //   // append the new message to the end of the array
+            //   draft.push(event);
+            // });
           };
 
           ws.addEventListener("newMessage", listener);
@@ -53,9 +46,6 @@ export const messageApiSlice = apiSlice.injectEndpoints({
         await cacheEntryRemoved;
         ws.close();
       },
-      // transformResponse: (response) => {
-      //   return response;
-      // },
     }),
 
     // get messages

@@ -10,7 +10,8 @@ import timeAgo from "utils/timeAgo";
 
 const MessagesList = () => {
   const { data: user } = useGetUserQuery();
-  const { data } = useGetAllMessagesQuery({id: user?._id});
+  const { data } = useGetAllMessagesQuery(user?._id);
+  console.log(data, "testDa");
 
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -46,13 +47,13 @@ const MessagesList = () => {
     }, []);
 
     return uniqueChats;
-  }, [data]);
+  }, [data, user?._id]);
 
   // console.log(filterData, "slice");
   // console.log(uniqueIds, "ids");
   // console.log(chatObj, "obj");
 
-  // console.log(message, "messaage"); 
+  // console.log(message, "messaage");
   useEffect(() => {
     const firstMessage = filterData && filterData[0];
     firstMessage &&
@@ -64,7 +65,7 @@ const MessagesList = () => {
       );
 
     // console.log(firstMessage, "first");
-  }, [filterData, dispatch]);
+  }, [filterData, dispatch, data]);
 
   return (
     <div className="messsage_list">
@@ -99,7 +100,9 @@ const MessagesList = () => {
                 </div>
               </div>
               <div className="messsage_list_text end col">
-                <div className="messsage_list_name_time">{timeAgo(item?.time)}</div>
+                <div className="messsage_list_name_time">
+                  {timeAgo(item?.time)}
+                </div>
                 <div className="messsage_list_new center">2</div>
               </div>
             </a>
