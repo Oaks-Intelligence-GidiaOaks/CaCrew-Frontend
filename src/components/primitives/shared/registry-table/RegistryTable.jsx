@@ -6,6 +6,8 @@ import { openModal } from "redux/slices/modal.slice";
 import { useGetUserQuery } from "services/user.service";
 import { useGetRegistryQuery } from "services/registry.service";
 import { convertDateToWord } from "utils/convertToDateFormat";
+import { Link } from "react-router-dom";
+import { REGISTRY_DETAIL } from "routes/constants";
 
 const RegistryTable = () => {
   const dispatch = useDispatch();
@@ -109,9 +111,10 @@ const RegistryTable = () => {
           </div>
           {dataRegistry?.length >= 1 ? (
             dataRegistry?.map((row, idx) => (
-              <div
+              <Link
+               to={`/dashboard-registry/detail/${row?.certificate_number}`}
                 key={row?._id || idx}
-                className={`registry_table_body between ${
+                className={`registry_table_body link between ${
                   (idx + 1) % 2 === 0 && "registry_table_body_bg"
                 }`}
                 onClick={() => handleOpenModal(row)}
@@ -129,7 +132,7 @@ const RegistryTable = () => {
                 <div className="registry_table_body_item">
                   {convertDateToWord(row?.createdAt) || "------"}
                 </div>
-              </div>
+              </Link>
             ))
           ) : dataRegistry?.transactions?.length < 1 ? (
             <div className="text center mt_10">No Transactions yet</div>
