@@ -1,5 +1,15 @@
 @import "base.scss";
 
-.reg_banner{
-    
+.reg_banner {
+  padding: 40px;
+  background: #f2f5ff;
+  @media (max-width: 991px) {
+    padding: 20px;
+  }
+  .reg_banner_img{
+    @media (max-width: 991px) {
+        width: 70px;
+        height: 70px;
+    }
+  }
 }
