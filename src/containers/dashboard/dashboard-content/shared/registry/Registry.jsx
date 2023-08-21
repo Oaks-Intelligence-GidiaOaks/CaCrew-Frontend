@@ -1,10 +1,11 @@
 import React from 'react'
-import { RegistryBanner } from 'components'
+import { RegistryBanner, RegistrySearch } from 'components'
 
 const Registry = () => {
   return (
     <div className='registry'>
         <RegistryBanner />
+        <RegistrySearch />
     </div>
   )
 }
