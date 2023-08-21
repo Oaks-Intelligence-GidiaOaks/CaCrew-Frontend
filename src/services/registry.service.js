@@ -17,7 +17,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
 
     // Get registry detail with id
     getRegistryCount: builder.query({
-      query: (id) => ({
+      query: ({id}) => ({
         url: `${GET_REGISTRY_COUNT}/${id}`,
         method: "GET",
       }),
