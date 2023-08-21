@@ -20,7 +20,7 @@ const RegistryCountTable = ({data}) => {
           </div>
           {data?.length >= 1 ? (
             data?.map((row, idx) => (
-              <Link
+              <div
                to={`/dashboard-registry/detail/${row?.certificate_number}`}
                 key={row?._id || idx}
                 className={`registry_table_body link between ${
@@ -36,7 +36,7 @@ const RegistryCountTable = ({data}) => {
                 <div className="registry_table_body_item">
                   {row?.count || "------"}
                 </div>
-              </Link>
+              </div>
             ))
           ) : data?.transactions?.length < 1 ? (
             <div className="text center mt_10">No Transactions yet</div>

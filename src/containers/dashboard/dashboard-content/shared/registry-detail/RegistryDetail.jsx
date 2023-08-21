@@ -14,15 +14,30 @@ const RegistryDetail = () => {
   const { data } = useGetRegistryCountQuery({ id: id, skip: makeRequest });
   const dispatch = useDispatch();
 
-  const dataCount = data[0];
+  const dataCount = data && data[0];
+
+  const totalBought =
+    dataCount &&
+    dataCount?.bought &&
+    dataCount?.bought?.reduce((acc, val) => {
+      acc += val?.count;
+      return acc;
+    }, 0);
+  const totalRetired =
+    dataCount &&
+    dataCount?.retired &&
+    dataCount?.retired?.reduce((acc, val) => {
+      acc += val?.count;
+      return acc;
+    }, 0);
   console.log(data, "dat");
-  console.log(id, "id");
+  // console.log(totalBought, totalRetired, "id");
 
   const activeComponent = {
-    earned: <RegistryCountTable data={dataCount?.earned}/>,
-    bought: <RegistryCountTable data={dataCount?.bought}/>,
-    retired: <RegistryCountTable data={dataCount?.retired}/>
-  }[activeTab]
+    earned: <RegistryCountTable data={dataCount?.earned} />,
+    bought: <RegistryCountTable data={dataCount?.bought} />,
+    retired: <RegistryCountTable data={dataCount?.retired} />,
+  }[activeTab];
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -54,9 +69,7 @@ const RegistryDetail = () => {
                 <div className="registry_details_overview_title">
                   Verra Certificate ID
                 </div>
-                <div className="registry_details_overview_value">
-                  56389357202 GH
-                </div>
+                <div className="registry_details_overview_value">{id}</div>
               </div>
             </div>
             <div className="registry_details_overview_text_wrap between">
@@ -65,7 +78,7 @@ const RegistryDetail = () => {
                   Total earned
                 </div>
                 <div className="registry_details_overview_value_two">
-                  500 tCO2e
+                  {dataCount?.earned && dataCount?.earned[0]?.count} tCO2e
                 </div>
               </div>
               <div className="registry_details_overview_text">
@@ -73,7 +86,7 @@ const RegistryDetail = () => {
                   Total bought
                 </div>
                 <div className="registry_details_overview_value_two">
-                  120 tCO2e
+                  {totalBought} tCO2e
                 </div>
               </div>
               <div className="registry_details_overview_text">
@@ -81,7 +94,7 @@ const RegistryDetail = () => {
                   Total retired
                 </div>
                 <div className="registry_details_overview_value_two">
-                  250 tCO2e
+                  {totalRetired} tCO2e
                 </div>
               </div>
             </div>
@@ -113,9 +126,7 @@ const RegistryDetail = () => {
             Retired
           </div>
         </div>
-        <div>
-          {activeComponent}
-        </div>
+        <div>{activeComponent}</div>
       </div>
     </div>
   );
