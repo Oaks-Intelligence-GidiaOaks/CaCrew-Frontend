@@ -1,16 +1,33 @@
 import React, { useState } from "react";
 import "./TrackProject.scss";
 import { SearchInput, TrackProjectTable, TrackTableComplete } from "components";
-import { useAllProjectsQuery } from "services/project.service";
+import {
+  useAllProjectsQuery,
+  useGetHandledProjectsQuery,
+} from "services/project.service";
+import { useSelector } from "react-redux";
 
 const TrackProject = () => {
   const [activeTab, setActiveTab] = useState("new");
 
-  const { data: projData, } = useAllProjectsQuery();
+  const user = useSelector((state) => state.user.user);
 
-  const dataNew = projData?.filter((item) => item?.progress === "Phase1");
-  const dataProgress = projData?.filter((item) => item?.progress !== "Phase1" && item?.progress !== "Phase6");
-  const dataComplete = projData?.filter((item) => item?.progress === "Phase6");
+  const { data: projData } = useAllProjectsQuery();
+  const { data: handledProj } = useGetHandledProjectsQuery();
+
+  const dataNew = user?.isAdminStaff
+    ? handledProj?.filter((item) => item?.progress === "Phase1")
+    : projData?.filter((item) => item?.progress === "Phase1");
+  const dataProgress = user?.isAdminStaff
+    ? handledProj?.filter(
+        (item) => item?.progress !== "Phase1" && item?.progress !== "Phase6"
+      )
+    : projData?.filter(
+        (item) => item?.progress !== "Phase1" && item?.progress !== "Phase6"
+      );
+  const dataComplete = user?.isAdminStaff
+    ? handledProj?.filter((item) => item?.progress === "Phase6")
+    : projData?.filter((item) => item?.progress === "Phase6");
 
   const data =
     activeTab === "new"

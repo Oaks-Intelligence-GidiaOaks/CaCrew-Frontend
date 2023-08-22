@@ -82,11 +82,11 @@ const ProjectDetailAccordion = ({ data }) => {
             <div className="project_details_complete_wrap between">
               <div className="project_details_complete_info">
                 <div className="project_details_complete_item_wrap">
-                  {data?.document_urls?.map((item) => {
+                  {data?.document_urls?.map((item, idx) => {
                     const { image, name } = getFileDetails(item);
                     const cleanedName = name.replace("%2F", "");
                     return (
-                      <div className="project_details_accordion_item">
+                      <div className="project_details_accordion_item" key={idx}>
                         <div className="project_details_accordion_item_value_wrap">
                           <img
                             src={image || name}

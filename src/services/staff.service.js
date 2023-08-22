@@ -77,7 +77,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
     assignStaffProject: builder.mutation({
       query: (body) => ({
         url: `${STAFF_ASSIGN_PROJ}`,
-        method: "PUT",
+        method: "POST",
         body,
       }),
       transformResponse: (response) => {
@@ -90,7 +90,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
     assignStaffProjectHandler: builder.mutation({
       query: (body) => ({
         url: `${STAFF_ASSIGN_PROJ_HANDLER}`,
-        method: "PUT",
+        method: "POST",
         body,
       }),
       transformResponse: (response) => {

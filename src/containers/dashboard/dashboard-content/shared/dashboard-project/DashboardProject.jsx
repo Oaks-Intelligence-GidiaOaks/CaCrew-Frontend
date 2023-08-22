@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import "./DashboardProject.scss";
 import { Button, ProjectDetails } from "components";
 // import { DashboardProjectCreate, DashboardProjectReview } from "components";
-import { useAllProjectsQuery } from "services/project.service";
+import {
+  useAllProjectsQuery,
+  useGetHandledProjectsQuery,
+} from "services/project.service";
 import { useGetUserQuery } from "services/user.service";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
@@ -21,14 +24,23 @@ const DashboardProject = () => {
   };
 
   const { data, isSuccess, error } = useAllProjectsQuery();
+  const { data: handledProj } = useGetHandledProjectsQuery();
   const { data: userData } = useGetUserQuery();
 
   const dataInComplete =
-    data?.length > 0 ? data?.filter((item) => item?.progress !== "Phase6") : [];
+    data?.length > 0
+      ? data?.filter((item) => item?.progress !== "Phase6")
+      : user?.isAdminStaff && handledProj
+      ? handledProj?.filter((item) => item?.progress !== "Phase6")
+      : [];
   const dataComplete =
-    data?.length > 0 ? data?.filter((item) => item?.progress === "Phase6") : [];
+    data?.length > 0
+      ? data?.filter((item) => item?.progress === "Phase6")
+      : user?.isAdminStaff && handledProj
+      ? handledProj?.filter((item) => item?.progress !== "Phase6")
+      : [];
 
-  console.log(userData, "projtesr*******");
+  console.log(handledProj, "projtesr*******");
 
   const tabItems = {
     // create: <DashboardProjectCreate />,

@@ -3,12 +3,14 @@ import "./ProjectPreview.scss";
 import { square } from "assets/images";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useAllProjectsQuery } from "services/project.service";
+import { useAllProjectsQuery, useGetHandledProjectsQuery } from "services/project.service";
 import { Shimmer, TrackProjectProgress } from "components";
 
 const ProjectPreview = () => {
   const user = useSelector((state) => state.user.user);
-  const { data } = useAllProjectsQuery();
+  const { data: allProj } = useAllProjectsQuery();
+  const { data: handledProj } = useGetHandledProjectsQuery();
+  const data = user?.isAdminStaff ? handledProj : allProj
   console.log(data, "test");
 
   return (
