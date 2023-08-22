@@ -4,13 +4,14 @@ import { Button, ProjectDetails } from "components";
 // import { DashboardProjectCreate, DashboardProjectReview } from "components";
 import { useAllProjectsQuery } from "services/project.service";
 import { useGetUserQuery } from "services/user.service";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 
 const DashboardProject = () => {
   const [active, setActive] = useState("review");
 
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
 
   const handleTabSwitch = (value) => {
     setActive(value);
@@ -41,13 +42,15 @@ const DashboardProject = () => {
         <div className="dashboard_project_btn_wrap">
           <div className="dashboard_project_title">Projects</div>
           <div className="dashboard_project_btns start">
-            <Button
-              text={"Create Project"}
-              className={`dashboard_project_btn ${
-                active === "create" && "dashboard_project_btn_active"
-              }`}
-              onClick={handleOpenCreateProjModal}
-            />
+            {(user?.role === "SuperAdmin" || user?.role === "OrgAdmin") && (
+              <Button
+                text={"Create Project"}
+                className={`dashboard_project_btn ${
+                  active === "create" && "dashboard_project_btn_active"
+                }`}
+                onClick={handleOpenCreateProjModal}
+              />
+            )}
             <Button
               text={"Project in Review " + `(${dataInComplete?.length})`}
               className={`dashboard_project_btn ${

@@ -20,6 +20,7 @@
     .org_dash_home_project_wrap_heading_wrap {
       border-bottom: 1px solid #dedede;
       padding: 17px;
+      margin-bottom: 10px;
       .org_dash_home_project_wrap_heading {
         color: #212121;
         font-size: 15px;
@@ -30,10 +31,11 @@
       }
     }
     .org_dash_home_project_wrap_heading_item {
-      padding: 17px;
+      padding: 10px;
+      align-items: center;
       .org_dash_home_project_wrap_heading {
         color: #212121;
-        font-size: 15px;
+        font-size: 12px;
         font-weight: 400;
         width: 45%;
         @media (max-width: 991px) {

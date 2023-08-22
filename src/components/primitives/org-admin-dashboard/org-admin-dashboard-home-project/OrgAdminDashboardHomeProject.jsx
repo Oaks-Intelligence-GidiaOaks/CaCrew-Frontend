@@ -18,7 +18,12 @@ const OrgAdminDashboardHomeProject = () => {
         <div className="org_dash_home_project_wrap_heading_wrap between">
           <div className="org_dash_home_project_wrap_heading">Title</div>
           <div className="org_dash_home_project_wrap_heading">Progress</div>
-          <div className="org_dash_home_project_wrap_heading">View All</div>
+          <Link
+            to={user?.organization_id?.isVerified ? "/dashboard-project" : ""}
+            className="org_dash_home_project_wrap_heading link"
+          >
+            View All
+          </Link>
         </div>
         {data && data?.length < 1 ? (
           <div className="org_dash_home_project_empty center col">
@@ -30,26 +35,35 @@ const OrgAdminDashboardHomeProject = () => {
                 "org_dash_home_project_empty_notallowed"
               }`}
             >
-              Create a Project
+              {user?.role === "Staff" ? "No projects assigned" : "Create a Project"}
             </Link>
           </div>
         ) : data?.length > 0 ? (
           <div>
-            {data?.slice(0, 3)?.map((item) => (
-              <div className="org_dash_home_project_wrap_heading_item start" key={item?._id}>
-                <div className="org_dash_home_project_wrap_heading">{item?.project_name}</div>
+            {data?.slice(0, 2)?.map((item) => (
+              <div
+                className="org_dash_home_project_wrap_heading_item start"
+                key={item?._id}
+              >
                 <div className="org_dash_home_project_wrap_heading">
-                  <TrackProjectProgress phase={item?.progress}/>
+                  {item?.project_name}
+                </div>
+                <div className="org_dash_home_project_wrap_heading">
+                  <TrackProjectProgress phase={item?.progress} />
                   Phase {item?.progress[item?.progress?.length - 1]}
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div>
-            {Array(3).map(() => (
-              <Shimmer height={"40px"} />
-            ))}
+          <div style={{ padding: "17px" }}>
+            {Array(3)
+              .fill(1)
+              .map((_, idx) => (
+                <div key={idx} className="mb_10 mt_10">
+                  <Shimmer height={"20px"} />
+                </div>
+              ))}
           </div>
         )}
       </div>
