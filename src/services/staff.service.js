@@ -107,4 +107,13 @@ export const staffApiSlice = apiSlice.injectEndpoints({
   //   refetchOnMountOrArgChange: true,
 });
 
-export const { useAllStaffsQuery, useAddStaffMutation } = staffApiSlice;
+export const {
+  useAllStaffsQuery,
+  useAddStaffMutation,
+  useAssignStaffProjectHandlerMutation,
+  useAssignStaffProjectMutation,
+  useGetStaffQuery,
+  useMakeStaffAdminMutation,
+  useRemoveStaffMutation,
+  useUpdateStaffMutation,
+} = staffApiSlice;
