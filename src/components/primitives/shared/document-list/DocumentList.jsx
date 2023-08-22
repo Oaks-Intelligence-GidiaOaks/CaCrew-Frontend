@@ -51,7 +51,7 @@ const DocumentList = () => {
           <div className="text">No documents</div>
         ) : (
           [1, 2, 3].map((_, idx) => (
-            <div key={idx}>
+            <div key={idx} className="document_shimmer">
               <Shimmer height={"200px"} />
             </div>
           ))
