@@ -47,7 +47,6 @@ import {
   // super admin dasboard pages
   DashboardOrganisationPage,
   SupAdminDashHomePage,
-  StaffDashboardHomePage,
   TrackProjectPage,
   ProjectTrackOverviewPage,
   MyAccountPage,
@@ -55,6 +54,7 @@ import {
   // organisation admin dasboard pages
   OrgAdminDashboardHomePage,
   // staff
+  OrgStaffDashboardPage
 } from "pages";
 import DocumentCenterPage from "pages/shared/DocumentCenterPage";
 
@@ -85,7 +85,7 @@ const RoutesConfig = () => {
                 : user?.role === "OrgAdmin"
                 ? OrgAdminDashboardHomePage
                 : user?.role === "Staff"
-                ? StaffDashboardHomePage
+                ? OrgStaffDashboardPage
                 : LoginPage
             }
           />

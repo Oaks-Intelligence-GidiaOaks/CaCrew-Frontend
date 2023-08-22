@@ -11,8 +11,12 @@ export const SET_SALE_ORGANISATION = "organization/wallet";
 export const UPDATE_ORGANISATION = "organization";
 
 // Staff constants
-export const GET_ALL_STAFFS = "staff";
+export const STAFF = "staff";
 export const ADD_STAFF = "staff/create";
+export const REMOVE_STAFF = "staff/remove";
+export const MAKE_STAFF_ADMIN = "staff/make_admin";
+export const STAFF_ASSIGN_PROJ = "staff/assign_project";
+export const STAFF_ASSIGN_PROJ_HANDLER = "staff/assign_project_handler";
 
 // Project constants
 export const ADD_PROJECT = "project/create";

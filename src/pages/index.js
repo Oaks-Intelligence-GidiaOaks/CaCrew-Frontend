@@ -29,7 +29,7 @@ export {default as TransactionDatabasePage} from "pages/super-admin-dashboard/Tr
 export {default as OrgAdminDashboardHomePage} from "pages/org-admin-dashboard/OrgAdminDashboardHomePage"
 
 // staffs
-export {default as StaffDashboardHomePage} from "pages/staff-dashboard/StaffDashboardHomePage"
+export {default as OrgStaffDashboardPage} from "pages/org-staff-dashboard/OrgStaffDashboardPage"
 
 
 

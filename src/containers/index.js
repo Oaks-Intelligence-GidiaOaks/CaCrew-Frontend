@@ -18,6 +18,7 @@ export { default as DocumentCenter } from "containers/dashboard/dashboard-conten
 export { default as TransactionDatabase } from "containers/dashboard/dashboard-content/super-admin-dashboard/transaction-database/TransactionDatabase";
 export { default as Registry } from "containers/dashboard/dashboard-content/shared/registry/Registry";
 export { default as RegistryDetail } from "containers/dashboard/dashboard-content/shared/registry-detail/RegistryDetail";
+export { default as OrgStaffDashboard } from "containers/dashboard/dashboard-content/org-staff-dashboard/OrgStaffDashboard";
 
 
 // auth

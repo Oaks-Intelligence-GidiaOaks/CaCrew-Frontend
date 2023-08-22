@@ -1,4 +1,11 @@
-import { GET_ALL_STAFFS, ADD_STAFF } from "services/constants";
+import {
+  ADD_STAFF,
+  MAKE_STAFF_ADMIN,
+  REMOVE_STAFF,
+  STAFF,
+  STAFF_ASSIGN_PROJ,
+  STAFF_ASSIGN_PROJ_HANDLER,
+} from "services/constants";
 import apiSlice from "./api/apiSlice";
 
 export const staffApiSlice = apiSlice.injectEndpoints({
@@ -11,8 +18,76 @@ export const staffApiSlice = apiSlice.injectEndpoints({
       // ],
       providesTags: ["Staff"],
       query: () => ({
-        url: GET_ALL_STAFFS,
+        url: STAFF,
         method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // Get staff by Id
+    getStaff: builder.query({
+      query: (id) => ({
+        url: `${STAFF}/${id}`,
+        method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // Update staff
+    updateStaff: builder.mutation({
+      query: (id) => ({
+        url: `${STAFF}/${id}`,
+        method: "PUT",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // Update staff
+    removeStaff: builder.mutation({
+      query: (id) => ({
+        url: `${REMOVE_STAFF}/${id}`,
+        method: "PUT",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // make staff admin
+    makeStaffAdmin: builder.mutation({
+      query: (id) => ({
+        url: `${MAKE_STAFF_ADMIN}/${id}`,
+        method: "PUT",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // assign project
+    assignStaffProject: builder.mutation({
+      query: (body) => ({
+        url: `${STAFF_ASSIGN_PROJ}`,
+        method: "PUT",
+        body,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
+
+    // assign project handler
+    assignStaffProjectHandler: builder.mutation({
+      query: (body) => ({
+        url: `${STAFF_ASSIGN_PROJ_HANDLER}`,
+        method: "PUT",
+        body,
       }),
       transformResponse: (response) => {
         return response;
@@ -26,7 +101,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: { type: "Staff", id: "List" },
+      invalidatesTags: ["Staff"],
     }),
   }),
   //   refetchOnMountOrArgChange: true,
