@@ -1,12 +1,12 @@
 import React from "react";
-import "./OrgAdminDashboardHomeProject.scss";
+import "./ProjectPreview.scss";
 import { square } from "assets/images";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAllProjectsQuery } from "services/project.service";
 import { Shimmer, TrackProjectProgress } from "components";
 
-const OrgAdminDashboardHomeProject = () => {
+const ProjectPreview = () => {
   const user = useSelector((state) => state.user.user);
   const { data } = useAllProjectsQuery();
   console.log(data, "test");
@@ -73,4 +73,4 @@ const OrgAdminDashboardHomeProject = () => {
   );
 };
 
-export default OrgAdminDashboardHomeProject;
+export default ProjectPreview;

@@ -2,7 +2,7 @@ import React from "react";
 import "./OrgAdminDashboardHome.scss";
 import {
   OrgAdminDashboardHomeCredit,
-  OrgAdminDashboardHomeProject,
+  ProjectPreview,
   DashboardWallet,
   OrgVerifyDashboardBanner,
   CarbonCreditChart,
@@ -19,7 +19,7 @@ const OrgAdminDashboardHome = () => {
           <DashboardWallet />
         </div>
         <div className="wallet_project_wrap_right">
-          <OrgAdminDashboardHomeProject />
+          <ProjectPreview />
         </div>
       </div>
       <div className="dashboard_home_chart_wrap">

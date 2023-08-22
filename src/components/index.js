@@ -1,7 +1,7 @@
 // primitives
 export { default as CarbonCreditChart } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";
 export { default as OrgAdminDashboardHomeCredit } from "components/primitives/org-admin-dashboard/org-admin-dashboard-home-credit/OrgAdminDashboardHomeCredit";
-export { default as OrgAdminDashboardHomeProject } from "components/primitives/org-admin-dashboard/org-admin-dashboard-home-project/OrgAdminDashboardHomeProject";
+export { default as ProjectPreview } from "components/primitives/shared/project-preview/ProjectPreview";
 export { default as OrgVerifyDashboardBanner } from "components/primitives/org-admin-dashboard/org-verify-dashboard-banner/OrgVerifyDashboardBanner";
 export { default as DashboardProjectCreate } from "components/primitives/shared/dashboard-project-create/DashboardProjectCreate";
 export { default as DashboardProjectReview } from "components/primitives/shared/dashboard-project-review/DashboardProjectReview";
@@ -51,7 +51,7 @@ export { default as RegistrySearch } from "components/primitives/shared/registry
 export { default as RegistryTable } from "components/primitives/shared/registry-table/RegistryTable";
 export { default as RegistryCountTable } from "components/primitives/shared/registry-count-table/RegistryCountTable";
 export { default as AssignProjectStaff } from "components/primitives/shared/modal/assign-project-staff/AssignProjectStaff";
-export { default as StaffDashBanner } from "components/primitives/staff-dashboard/staff-dashboard-banner/StaffDashBanner";
+export { default as StaffDashBanner } from "components/primitives/staff-dashboard/staff-dashboard-home-banner/StaffDashBanner";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
