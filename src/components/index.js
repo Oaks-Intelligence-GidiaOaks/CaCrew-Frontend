@@ -52,7 +52,7 @@ export { default as RegistryTable } from "components/primitives/shared/registry-
 export { default as RegistryCountTable } from "components/primitives/shared/registry-count-table/RegistryCountTable";
 export { default as AssignProjectStaff } from "components/primitives/shared/modal/assign-project-staff/AssignProjectStaff";
 export { default as StaffDashBanner } from "components/primitives/staff-dashboard/staff-dashboard-home-banner/StaffDashBanner";
-export { default as ChangePasword } from "components/primitives/shared/modal/change-password/ChangePasword";
+export { default as ChangePassword } from "components/primitives/shared/modal/change-password/ChangePassword";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

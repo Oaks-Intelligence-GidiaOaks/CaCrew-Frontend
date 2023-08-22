@@ -2,6 +2,7 @@
 export const LOGIN = "user/login";
 export const REGISTER = "user";
 export const GETUSER = "user/me";
+export const UPDATE_USER_PASSWORD = "user/password_update";
 
 // Organisation constants
 export const UNVERIFIED_ORGANISATION = "organization/unverified";

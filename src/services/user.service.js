@@ -1,4 +1,4 @@
-import { GETUSER, LOGIN, REGISTER } from "services/constants";
+import { GETUSER, LOGIN, REGISTER, UPDATE_USER_PASSWORD } from "services/constants";
 import apiSlice from "./api/apiSlice";
 import { updateUser } from "redux/slices/user.slice";
 // import { SkipToken } from "@reduxjs/toolkit/dist/query";
@@ -73,10 +73,20 @@ export const userApiSlice = apiSlice.injectEndpoints({
       providesTags: ["User"],
     }),
 
-    // Get user route
+    // update user route
     updateUser: builder.mutation({
       query: (data) => ({
         url: GETUSER,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["User"],
+    }),
+
+    // Update user password
+    updatePassword: builder.mutation({
+      query: (data) => ({
+        url: UPDATE_USER_PASSWORD,
         method: "PUT",
         body: data,
       }),
@@ -94,4 +104,5 @@ export const {
   useSendCreditMutation,
   useGetUserQuery,
   useUpdateUserMutation,
+  useUpdatePasswordMutation,
 } = userApiSlice;

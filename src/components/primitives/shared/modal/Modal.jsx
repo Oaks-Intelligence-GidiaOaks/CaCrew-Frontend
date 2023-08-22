@@ -21,6 +21,7 @@ import {
   ConfirmProjectPhase,
   VerifyOtp,
   AssignProjectStaff,
+  ChangePassword,
 } from "components";
 
 const Modal = () => {
@@ -60,6 +61,7 @@ const Modal = () => {
     ),
     ConfirmPayment: <ConfirmPayment data={data} />,
     ModalBuyOrder: <ModalBuyOrder />,
+    ChangePassword: <ChangePassword />,
     ModalRetireCredit: <ModalRetireCredit />,
     ConfirmRetireCredit: <ConfirmRetireCredit data={data} />,
     UpdateOrganisationModal: <UpdateOrganisationModal />,

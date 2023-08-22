@@ -5,25 +5,14 @@ import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
-import { useAllProjectsQuery } from "services/project.service";
-import { useAssignStaffProjectHandlerMutation } from "services/staff.service";
+import { useUpdatePasswordMutation } from "services/user.service";
 import rtkMutation from "utils/rtkMutation";
 import { required } from "validations/validations";
 import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const ChangePassword = ({ data }) => {
   const [assignProjectHandler, { error, isError, isSuccess, isLoading }] =
-    useAssignStaffProjectHandlerMutation();
-
-  const { data: allProj } = useAllProjectsQuery();
-
-  let projects = {};
-
-  allProj?.forEach((item) => {
-    const key = item?.project_name;
-    const val = item?._id;
-    projects[key] = val;
-  });
+    useUpdatePasswordMutation();
 
   const dispatch = useDispatch();
 
@@ -32,8 +21,7 @@ const ChangePassword = ({ data }) => {
   };
 
   const onSubmit = async (value) => {
-    value["staff_id"] = data?._id;
-    // console.log(value, "vals");
+    console.log(value, "vals");
 
     await rtkMutation(assignProjectHandler, value);
   };
@@ -61,51 +49,59 @@ const ChangePassword = ({ data }) => {
       );
   }, [isSuccess, isError, error, dispatch]);
 
-//   console.log(projects, "s");
+  //   console.log(projects, "s");
 
   return (
-    <div className="assign_proj_modal">
-      <div className="assign_proj_modal_title sub_heading">
-        Assign a Project
-      </div>
-      <img
+    <div className="change_pass_modal">
+      <div className="change_pass_modal_title sub_heading">Change Password</div>
+      {/* <img
         src={close}
         alt="icon"
-        className="assign_proj_modal_close"
+        className="change_pass_modal_close"
         onClick={handleCloseModal}
-      />
-      <div className="assign_proj_modal_info_wrap ">
-        <div className="assign_proj_modal_info_bold">
-          Assign a Project to {data?.name}
+      /> */}
+      <div className="change_pass_modal_info_wrap ">
+        <div className="change_pass_modal_info_bold">
+          Change your password to continue to your dashboard
         </div>
       </div>
-      <div className="assign_proj_modal_input_warp">
-        <div className="assign_proj_modal_input">
+      <div className="change_pass_modal_input_warp">
+        <div className="change_pass_modal_input">
           <Form
             onSubmit={onSubmit}
             render={({ handleSubmit, valid }) => (
               <form onSubmit={handleSubmit}>
-                <div className="assign_proj_modal_input_item"></div>
-                <div className="assign_proj_modal_input_item">
+                <div className="change_pass_modal_input_item"></div>
+                <div className="change_pass_modal_input_item">
                   <Field
-                    name="project_id"
+                    name="oldPassword"
                     component={Input}
-                    label={"Select Project"}
-                    select
-                    options={projects}
-                    validate={required("Select Project")}
+                    label={"Old Password"}
+                    validate={required("Old Password")}
+                  />
+                  <Field
+                    name="password"
+                    component={Input}
+                    label={"Password"}
+                    validate={required("Password")}
+                  />
+                  <Field
+                    name="confirmPassword"
+                    component={Input}
+                    label={"Confirm Password"}
+                    validate={required("Confirm Password")}
                   />
                 </div>
 
-                <div className="assign_proj_modal_input_btn_wrap end">
-                  <Button
+                <div className="change_pass_modal_input_btn_wrap end">
+                  {/* <Button
                     text={"Cancel"}
-                    className={"assign_proj_modal_input_btn_two"}
+                    className={"change_pass_modal_input_btn_two"}
                     onClick={handleCloseModal}
-                  />
+                  /> */}
                   <Button
-                    text={"Add"}
-                    className={"assign_proj_modal_input_btn"}
+                    text={"Update"}
+                    className={"change_pass_modal_input_btn"}
                     type={"submit"}
                     loading={isLoading}
                     disabled={!valid}
