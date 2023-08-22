@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DashboardStaff.scss";
 import { Button, Input } from "components";
 import { close, search } from "assets/images";
@@ -8,19 +8,29 @@ import { useAllStaffsQuery, useAddStaffMutation } from "services/staff.service";
 import { useGetUserQuery } from "services/user.service";
 import rtkMutation from "utils/rtkMutation";
 import { formatErrorResponse } from "utils/formatErrorResponse";
+import { useDispatch } from "react-redux";
+import { openModal } from "redux/slices/modal.slice";
 
 const DashboardStaff = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data: staffs } = useAllStaffsQuery();
-  const [addStaff, { isLoading: loadingAddStaff, error }] =
-    useAddStaffMutation();
+  const [
+    addStaff,
+    {
+      isLoading: loadingAddStaff,
+      error: errorAddStaff,
+      isError: isErrorAddStaff,
+      isSuccess: isSuccessAddStaff,
+    },
+  ] = useAddStaffMutation();
 
   const { data: userData } = useGetUserQuery();
+
+  const dispatch = useDispatch();
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   };
-
 
   const onSubmit = async (values) => {
     await rtkMutation(addStaff, values).then(() => {
@@ -28,6 +38,27 @@ const DashboardStaff = () => {
     });
     console.log(values, "Created");
   };
+
+  useEffect(() => {
+    isSuccessAddStaff &&
+      dispatch(
+        openModal({
+          title: "Staff Created Successful",
+          message: `You have succesfuly created a staff`,
+          success: true,
+        })
+      );
+    isErrorAddStaff &&
+      dispatch(
+        openModal({
+          title: "Staff Creation Failed",
+          message: `${
+            formatErrorResponse(errorAddStaff) ||
+            "An error has occured, please try again later"
+          }`,
+        })
+      );
+  }, [errorAddStaff, isErrorAddStaff, isSuccessAddStaff]);
   return (
     <>
       {" "}
@@ -120,7 +151,6 @@ const DashboardStaff = () => {
                       options={{ "Admin User": "OrgAdmin", Staff: "Staff" }}
                     />
                   </div>
-                  {error && <div>{formatErrorResponse(error)}</div>}
                   <Button
                     text={"Add"}
                     type={"submit"}
@@ -133,7 +163,12 @@ const DashboardStaff = () => {
         </div>
       </div>
       <div className="dashboard_staff_wrap dash_pad">
-        {staffs && staffs?.map((data) => <div key={data?._id}><DashboardStaffCard data={data} /></div>)}
+        {staffs &&
+          staffs?.map((data) => (
+            <div key={data?._id}>
+              <DashboardStaffCard data={data} />
+            </div>
+          ))}
       </div>
     </>
   );
