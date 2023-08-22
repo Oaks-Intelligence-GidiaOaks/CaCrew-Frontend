@@ -18,8 +18,6 @@ const Button = ({ text, loading, disabled, className, type, loadColor, ...rest }
           radius="9"
           color={loadColor ? "" :"#ffffff"}
           ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClassName=""
           visible={true}
         />
       ) : (

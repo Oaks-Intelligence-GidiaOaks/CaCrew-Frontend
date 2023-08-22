@@ -46,6 +46,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
       transformResponse: (response) => {
         return response;
       },
+      invalidatesTags: ["Staff"]
     }),
 
     // Update staff
@@ -57,6 +58,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
       transformResponse: (response) => {
         return response;
       },
+      invalidatesTags: ["Staff"]
     }),
 
     // make staff admin
@@ -68,6 +70,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
       transformResponse: (response) => {
         return response;
       },
+      invalidatesTags: ["Staff"]
     }),
 
     // assign project
@@ -80,6 +83,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
       transformResponse: (response) => {
         return response;
       },
+      invalidatesTags: ["Staff"]
     }),
 
     // assign project handler
@@ -92,6 +96,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
       transformResponse: (response) => {
         return response;
       },
+      invalidatesTags: ["Staff"]
     }),
 
     // Add staffs
