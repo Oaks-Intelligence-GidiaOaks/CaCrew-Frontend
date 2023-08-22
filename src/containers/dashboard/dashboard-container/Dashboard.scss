@@ -5,7 +5,7 @@
   .dashboard_wrap {
     padding-top: 105px;
     .dashboard_sidebar {
-      width: 40%;
+      width: 20%;
       position: fixed;
       transition: all 0.3s linear;
       background-color: #fff;
@@ -13,13 +13,12 @@
       z-index: 2;
       overflow-y: scroll;
       height: 90%;
-      &::-webkit-scrollbar{
+      &::-webkit-scrollbar {
         width: 0.1px;
       }
-      @media (max-width: 767px) {
-        width: 45%;
-        transform: translateX(-350px);
-        top: 85px;
+      @media (max-width: 991px) {
+        width: 40%;
+        transform: translateX(-500px);
       }
       @media (max-width: 467px) {
         width: 60%;
@@ -31,7 +30,7 @@
     .dashboard_content {
       width: 80%;
       margin-left: 20%;
-      @media (max-width: 767px) {
+      @media (max-width: 991px) {
         width: 100%;
         margin-left: 0;
         // padding: 20px;
