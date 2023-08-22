@@ -51,6 +51,7 @@ export { default as RegistrySearch } from "components/primitives/shared/registry
 export { default as RegistryTable } from "components/primitives/shared/registry-table/RegistryTable";
 export { default as RegistryCountTable } from "components/primitives/shared/registry-count-table/RegistryCountTable";
 export { default as AssignProjectStaff } from "components/primitives/shared/modal/assign-project-staff/AssignProjectStaff";
+export { default as StaffDashBanner } from "components/primitives/staff-dashboard/staff-dashboard-banner/StaffDashBanner";
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
