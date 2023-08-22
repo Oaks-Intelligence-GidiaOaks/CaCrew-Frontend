@@ -27,7 +27,7 @@ const OrgAdminDashboardHomeProject = () => {
         </div>
         {data && data?.length < 1 ? (
           <div className="org_dash_home_project_empty center col">
-            <img src={square} alt="icon" />
+            {user?.role === "OrgAdmin" && <img src={square} alt="icon" />}
             <Link
               to={user?.organization_id?.isVerified ? "/dashboard-project" : ""}
               className={`org_dash_home_project_empty_text ${
@@ -35,7 +35,9 @@ const OrgAdminDashboardHomeProject = () => {
                 "org_dash_home_project_empty_notallowed"
               }`}
             >
-              {user?.role === "Staff" ? "No projects assigned" : "Create a Project"}
+              {user?.role === "Staff"
+                ? "No projects assigned"
+                : "Create a Project"}
             </Link>
           </div>
         ) : data?.length > 0 ? (
