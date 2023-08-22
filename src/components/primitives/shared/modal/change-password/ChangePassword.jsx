@@ -1,37 +1,39 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ChangePassword.scss";
 import { close } from "assets/images";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
 import { useUpdatePasswordMutation } from "services/user.service";
 import rtkMutation from "utils/rtkMutation";
-import { required } from "validations/validations";
+import { composeValidators, required, passwordMatch } from "validations/validations";
 import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const ChangePassword = ({ data }) => {
-  const [assignProjectHandler, { error, isError, isSuccess, isLoading }] =
+  const [updatePassword, { error, isError, isSuccess, isLoading }] =
     useUpdatePasswordMutation();
+
+  const user = useSelector((state) => state.user.user);
 
   const dispatch = useDispatch();
 
-  const handleCloseModal = () => {
-    dispatch(closeComponentModal());
-  };
+  // const handleCloseModal = () => {
+  //   dispatch(closeComponentModal());
+  // };
 
   const onSubmit = async (value) => {
     console.log(value, "vals");
 
-    await rtkMutation(assignProjectHandler, value);
+    await rtkMutation(updatePassword, value);
   };
 
   useEffect(() => {
     isSuccess &&
       dispatch(
         openModal({
-          title: "Project Assigned Successfuly",
-          message: `Project has successfuly been assigned to ${data?.name}`,
+          title: "Password Updated Successfuly",
+          message: `Password has updated successfuly, continue to dashboard`,
           success: true,
         })
       );
@@ -40,7 +42,7 @@ const ChangePassword = ({ data }) => {
     isError &&
       dispatch(
         openModal({
-          title: "Project Assigning Failed",
+          title: "Password Updated Failed",
           message: `${
             formatErrorResponse(error) ||
             "An error occured please try again later"
@@ -53,7 +55,9 @@ const ChangePassword = ({ data }) => {
 
   return (
     <div className="change_pass_modal">
-      <div className="change_pass_modal_title sub_heading">Change Password</div>
+      <div className="change_pass_modal_title sub_heading">
+        Welcome {user?.name}
+      </div>
       {/* <img
         src={close}
         alt="icon"
@@ -77,19 +81,25 @@ const ChangePassword = ({ data }) => {
                     name="oldPassword"
                     component={Input}
                     label={"Old Password"}
+                    password
                     validate={required("Old Password")}
                   />
                   <Field
                     name="password"
                     component={Input}
                     label={"Password"}
+                    password
                     validate={required("Password")}
                   />
                   <Field
                     name="confirmPassword"
                     component={Input}
                     label={"Confirm Password"}
-                    validate={required("Confirm Password")}
+                    password
+                    validate={composeValidators(
+                      required("Confirm Password"),
+                      passwordMatch
+                    )}
                   />
                 </div>
 
