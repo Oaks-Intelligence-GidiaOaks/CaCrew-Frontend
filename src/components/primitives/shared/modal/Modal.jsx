@@ -20,6 +20,7 @@ import {
   StartProjectModal,
   ConfirmProjectPhase,
   VerifyOtp,
+  AssignProjectStaff,
 } from "components";
 
 const Modal = () => {
@@ -66,6 +67,7 @@ const Modal = () => {
     StartProjectModal: <StartProjectModal />,
     ConfirmProjectPhase: <ConfirmProjectPhase data={data} />,
     VerifyOtp: <VerifyOtp data={data} />,
+    AssignProjectStaff: <AssignProjectStaff data={data} />,
   }[component];
 
   return (

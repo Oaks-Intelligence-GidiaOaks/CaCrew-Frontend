@@ -17,7 +17,7 @@ import {
   useRemoveStaffMutation,
 } from "services/staff.service";
 import rtkMutation from "utils/rtkMutation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 import { formatErrorResponse } from "utils/formatErrorResponse";
 
@@ -44,8 +44,9 @@ const DashboardStaffCard = ({ data }) => {
   ] = useRemoveStaffMutation();
 
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
 
-  console.log(data?._id, "d");
+  // console.log(data?._id, "d");
 
   const handleOptionOpen = () => {
     setClose(!close);
@@ -129,32 +130,46 @@ const DashboardStaffCard = ({ data }) => {
             close && "dashboard_staff_card_detail_options_close"
           }`}
         >
-          <div
-            className="dashboard_staff_card_detail_options_wrap start"
-            onClick={handleOptionOpen}
-          >
-            <img
-              src={assign}
-              alt="icon"
-              className="dashboard_staff_card_detail_options_img"
-            />
-            <span className="dashboard_staff_card_detail_options_text">
-              Assign a project
-            </span>
-          </div>
-          <div
-            className="dashboard_staff_card_detail_options_wrap start"
-            onClick={handleOptionOpen}
-          >
-            <img
-              src={assign}
-              alt="icon"
-              className="dashboard_staff_card_detail_options_img"
-            />
-            <span className="dashboard_staff_card_detail_options_text">
-              Track a project
-            </span>
-          </div>
+          {user?.role === "OrgAdmin" && (
+            <div
+              className="dashboard_staff_card_detail_options_wrap start"
+              onClick={() => {
+                handleOptionOpen();
+                dispatch(
+                  openModal({ component: "AssignProjectStaff", data: data })
+                );
+              }}
+            >
+              <img
+                src={assign}
+                alt="icon"
+                className="dashboard_staff_card_detail_options_img"
+              />
+              <span className="dashboard_staff_card_detail_options_text">
+                Assign a project
+              </span>
+            </div>
+          )}
+          {user?.role === "SuperAdmin" && (
+            <div
+              className="dashboard_staff_card_detail_options_wrap start"
+              onClick={() => {
+                handleOptionOpen();
+                dispatch(
+                  openModal({ component: "AssignProjectStaff", data: data })
+                );
+              }}
+            >
+              <img
+                src={assign}
+                alt="icon"
+                className="dashboard_staff_card_detail_options_img"
+              />
+              <span className="dashboard_staff_card_detail_options_text">
+                Track a project
+              </span>
+            </div>
+          )}
           <div
             className="dashboard_staff_card_detail_options_wrap start"
             onClick={() => {
