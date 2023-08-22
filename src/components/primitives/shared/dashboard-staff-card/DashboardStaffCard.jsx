@@ -74,15 +74,15 @@ const DashboardStaffCard = ({ data }) => {
     rmStaffIsSuccess &&
       dispatch(
         openModal({
-          title: "Role Update Successful",
-          message: `You have succesfuly made ${data?.name} an Admin`,
+          title: "Staff Removed Successful",
+          message: `You have succesfuly removed ${data?.name}`,
           success: true,
         })
       );
     rmStaffIsError &&
       dispatch(
         openModal({
-          title: "Role Update Failed",
+          title: "Staff Removal Failed",
           message: `${
             formatErrorResponse(rmStaffError) ||
             "An error has occured, please try again later"

@@ -47,7 +47,7 @@ const DashboardSidebar = () => {
   const handleLogout = () => {
     dispatch(logoutUser());
     dispatch(clearFormData());
-    dispatch(closeComponentModal())
+    dispatch(closeComponentModal());
   };
 
   return (
@@ -73,22 +73,24 @@ const DashboardSidebar = () => {
           />
           Dashboard
         </NavLink>
-        <NavLink
-          to={"/dashboard-wallet"}
-          activeclassname="active"
-          className={"link dashboard_link_item start"}
-        >
-          <img
-            src={
-              pathname?.includes("dashboard-wallet")
-                ? wallet_white
-                : wallet_blue
-            }
-            alt="icon"
-            className="dashboard_link_item_image"
-          />
-          Carbon Wallet
-        </NavLink>
+        {(user?.role === "OrgAdmin" || user?.role === "SuperAdmin") && (
+          <NavLink
+            to={"/dashboard-wallet"}
+            activeclassname="active"
+            className={"link dashboard_link_item start"}
+          >
+            <img
+              src={
+                pathname?.includes("dashboard-wallet")
+                  ? wallet_white
+                  : wallet_blue
+              }
+              alt="icon"
+              className="dashboard_link_item_image"
+            />
+            Carbon Wallet
+          </NavLink>
+        )}
         <NavLink
           to={"/document-center"}
           activeclassname="active"
@@ -129,7 +131,7 @@ const DashboardSidebar = () => {
           />
           Projects
         </NavLink>
-        {user && user?.role === "SuperAdmin" && (
+        {(user?.isAdminStaff === true || user?.role === "SuperAdmin") && (
           <NavLink
             to={"/dashboard-track-project"}
             activeclassname="active"
@@ -165,18 +167,20 @@ const DashboardSidebar = () => {
             Transaction Database
           </NavLink>
         )}
-        <NavLink
-          to={"/dashboard-staff"}
-          activeclassname="active"
-          className={"link dashboard_link_item start"}
-        >
-          <img
-            src={pathname === "/dashboard-staff" ? staffwhite : staffblue}
-            alt="icon"
-            className="dashboard_link_item_image"
-          />
-          Staff
-        </NavLink>
+        {(user?.role === "OrgAdmin" || user?.role === "SuperAdmin") && (
+          <NavLink
+            to={"/dashboard-staff"}
+            activeclassname="active"
+            className={"link dashboard_link_item start"}
+          >
+            <img
+              src={pathname === "/dashboard-staff" ? staffwhite : staffblue}
+              alt="icon"
+              className="dashboard_link_item_image"
+            />
+            Staff
+          </NavLink>
+        )}
         <NavLink
           to={"/messages"}
           activeclassname="active"
