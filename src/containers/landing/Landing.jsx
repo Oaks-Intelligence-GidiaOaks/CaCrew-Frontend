@@ -40,13 +40,12 @@ const Landing = () => {
         image={howtoone}
         background={"#F4F3FF"}
         list={[
-          "Get your projects certified by recognized standards like Verra and ICR.",
-          "Stay updated on emission reduction projects and track the progress of your project.",
-          "We allow several project types such as renewable energy, afforestation, waste management, etc.",
-          "Assign an employee to a project to keep track and follow up on the progress of a project. ",
+          "Choose from a diverse portfolio of certified carbon credit projects.",
+          "Select the carbon credit that aligns with your sustainability goals.",
+          "Purchase your carbon credit through our secure platform.",
         ]}
         heading={
-          "Start Projects to Generate Carbon Credits From Your <span> Green Practices</span>"
+          "Buy Carbon Credit From <span>Verified Organizations</span>"
         }
       />
     </div>
