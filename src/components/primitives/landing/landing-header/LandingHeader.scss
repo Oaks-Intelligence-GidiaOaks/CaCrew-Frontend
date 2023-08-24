@@ -36,14 +36,14 @@
     .landing_header_textbtn_wrap {
       @media (max-width: 991px) {
         font-size: 12px;
-        display: none;
+        // display: none;
       }
 
       .landing_avartar {
         object-fit: cover;
         width: 50px;
         height: 50px;
-        border: 3px solid #dcdddf;
+        border: 3px solid #fff;
         // background: #dcdddf;
         border-radius: 50%;
         margin-left: 44px;
@@ -51,6 +51,7 @@
         @media (max-width: 767px) {
           width: 30px;
           height: 30px;
+          border: 2px solid #fff;
         }
       }
     }
@@ -78,6 +79,9 @@
       align-items: center;
       margin-left: 40px;
       width: 240px;
+      @media (max-width: 991px) {
+        display: none;
+      }
       .landing_btn_one {
         border: 1px solid #fff;
         background: rgba(255, 255, 255, 0.08);
@@ -93,6 +97,9 @@
       }
     }
     .landing_logowrap_links {
+      @media (max-width: 991px) {
+        display: none;
+      }
       .landing_header_text {
         color: #fff;
         font-size: 15px;
