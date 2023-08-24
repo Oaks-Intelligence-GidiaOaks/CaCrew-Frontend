@@ -82,3 +82,4 @@ export const escrow = `${PATH}/escrow.png`;
 export const oaks = `${PATH}/oaks.png`;
 export const tick = `${PATH}/tick.png`;
 export const howtoone = `${PATH}/howtoone.png`;
+export const howtotwo = `${PATH}/howtotwo.png`;

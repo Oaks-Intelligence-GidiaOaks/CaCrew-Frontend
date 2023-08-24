@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Hero, LandingHeader, WhatWeDo } from "components";
-import { howtoone } from "assets/images";
+import { howtoone, howtotwo } from "assets/images";
 
 const Landing = () => {
   const [isMenuOpen, setMenuIsOpen] = useState(false);
@@ -24,7 +24,7 @@ const Landing = () => {
       />
       <WhatWeDo
         reverse
-        image={howtoone}
+        image={howtotwo}
         background={"#F4F3FF"}
         list={[
           "Sell certified carbon credits generated from your sustainable initiatives.",
