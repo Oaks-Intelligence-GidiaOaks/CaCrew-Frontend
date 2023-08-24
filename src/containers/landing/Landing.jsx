@@ -27,6 +27,19 @@ const Landing = () => {
         image={howtoone}
         background={"#F4F3FF"}
         list={[
+          "Sell certified carbon credits generated from your sustainable initiatives.",
+          "List your carbon credit for sale and set you desired price and quantity you wish to sell.",
+          "Follow our simple steps, and you'll have your carbon credits listed and ready to sell in no time.",
+          "Engage with potential buyers, negotiate terms and finalize transactions.",
+        ]}
+        heading={
+          "Sell certified carbon credits generated from your <span> sustainable initiatives.</span>"
+        }
+      />
+      <WhatWeDo
+        image={howtoone}
+        background={"#F4F3FF"}
+        list={[
           "Get your projects certified by recognized standards like Verra and ICR.",
           "Stay updated on emission reduction projects and track the progress of your project.",
           "We allow several project types such as renewable energy, afforestation, waste management, etc.",
