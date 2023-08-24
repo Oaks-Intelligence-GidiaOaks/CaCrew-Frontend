@@ -1,7 +1,8 @@
 import React from "react";
 import "./Hero.scss";
 import { Button, Container } from "components";
-import { dash, demo } from "assets/images";
+import { adjust, dash, demo, escrow, gidia, inv, oaks } from "assets/images";
+import Marquee from "react-fast-marquee";
 
 const Hero = () => {
   return (
@@ -25,7 +26,22 @@ const Hero = () => {
             <img src={demo || dash} alt="demo" className="hero_img" />
           </div>
         </div>
-        <div className="hero_marquee"></div>
+        <div className="hero_marquee center col">
+          <div className="hero_marquee_grad"></div>
+          <div className="hero_marquee_head"> TRUSTED BY </div>
+          <Marquee
+            className="hero_marquee_wrap"
+            gradient
+            gradientColor={[17, 92, 205]}
+          >
+            <img src={adjust} alt="adjust" className="hero_logos" />
+            <img src={oaks} alt="oaks" className="hero_logos" />
+            <img src={inv} alt="inv" className="hero_logos_d" />
+            <img src={escrow} alt="escrow" className="hero_logos" />
+            <img src={gidia} alt="gidia" className="hero_logos" />
+          </Marquee>
+          <div className="hero_marquee_grad_two"></div>
+        </div>
       </Container>
     </div>
   );
