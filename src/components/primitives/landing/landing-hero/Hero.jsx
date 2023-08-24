@@ -40,7 +40,6 @@ const Hero = () => {
             <img src={escrow} alt="escrow" className="hero_logos" />
             <img src={gidia} alt="gidia" className="hero_logos" />
           </Marquee>
-          <div className="hero_marquee_grad_two"></div>
         </div>
       </Container>
     </div>

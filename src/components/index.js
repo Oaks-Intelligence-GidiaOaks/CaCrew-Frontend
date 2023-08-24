@@ -75,6 +75,7 @@ export { default as OtpInput } from "components/widgets/otp-input/OtpInput";
 export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";
 
 // Landing
-
-export {default as LandingHeader} from "components/primitives/landing/landing-header/LandingHeader"
-export {default as Hero} from "components/primitives/landing/landing-hero/Hero"
+export { default as LandingHeader } from "components/primitives/landing/landing-header/LandingHeader";
+export { default as Hero } from "components/primitives/landing/landing-hero/Hero";
+export { default as WhatWeDo } from "components/primitives/landing/what-we-do/WhatWeDo";
+export { default as TextList } from "components/primitives/landing/text-list/TextList";
