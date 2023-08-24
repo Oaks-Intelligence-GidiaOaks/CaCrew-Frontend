@@ -1,0 +1,107 @@
+@import "base.scss";
+
+.landing_header {
+  background: #115ccd;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  padding: 24px 0px;
+  top: 0;
+  .landing_header_wrap {
+    align-items: center;
+    .landing_header_logo {
+      font-size: 35px;
+      color: #fff;
+
+      @media (max-width: 991px) {
+        font-size: 20px;
+      }
+
+      .landing_header_logo_img {
+        width: 40px;
+        margin-right: 9px;
+      }
+    }
+
+    .landing_header_logo_bold {
+      font-size: 15px;
+
+      @media (max-width: 991px) {
+        font-size: 13px;
+      }
+
+      font-weight: 700;
+    }
+
+    .landing_header_textbtn_wrap {
+      @media (max-width: 991px) {
+        font-size: 12px;
+        display: none;
+      }
+
+      .landing_avartar {
+        object-fit: cover;
+        width: 50px;
+        height: 50px;
+        border: 3px solid #dcdddf;
+        // background: #dcdddf;
+        border-radius: 50%;
+        margin-left: 44px;
+
+        @media (max-width: 767px) {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    .landing_icon {
+      margin-left: 20px;
+
+      @media (max-width: 767px) {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .landing_header_menu {
+      display: none;
+
+      @media (max-width: 991px) {
+        display: block;
+        margin-left: 22px;
+      }
+    }
+  }
+  .landing_logowrap {
+    .landing_btn_wrap {
+      align-items: center;
+      margin-left: 40px;
+      width: 240px;
+      .landing_btn_one {
+        border: 1px solid #fff;
+        background: rgba(255, 255, 255, 0.08);
+        min-width: 110px;
+        width: 100%;
+      }
+      .landing_btn_two {
+        min-width: 110px;
+        width: 100%;
+        background: #5f41b2;
+        border: 1px solid #5f41b2;
+        //   margin-left: 20px;
+      }
+    }
+    .landing_logowrap_links {
+      .landing_header_text {
+        color: #fff;
+        font-size: 15px;
+        margin-right: 100px;
+        white-space: nowrap;
+        @media (max-width: 991px) {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}

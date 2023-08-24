@@ -7,7 +7,7 @@ import { carbon } from "assets/images";
 const AuthHeader = ({ text, buttonText, link }) => {
   return (
     <div className="auth_header between">
-      <div className="auth_header_logo center col">
+      <div className="auth_header_logo center">
         <img src={carbon} className="auth_header_logo_img" alt="logo" />
         <div className="auth_header_logo_bold">Carbonible</div>
         {/* <span className="auth_header_logo_bold">Carbon</span>Nible */}

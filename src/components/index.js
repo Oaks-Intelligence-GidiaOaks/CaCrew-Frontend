@@ -57,6 +57,7 @@ export { default as ChangePassword } from "components/primitives/shared/modal/ch
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
 export { default as AutoLogout } from "components/guards/AutoLogout";
+export { default as Container } from "components/guards/wrapper/Container";
 
 // widgets
 export { default as Button } from "components/widgets/button/Button";
@@ -72,3 +73,7 @@ export { default as Pagination } from "components/widgets/pagination/Pagination"
 export { default as OtpInput } from "components/widgets/otp-input/OtpInput";
 
 export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/CarbonCreditChart";
+
+// Landing
+
+export {default as LandingHeader} from "components/primitives/landing/landing-header/LandingHeader"

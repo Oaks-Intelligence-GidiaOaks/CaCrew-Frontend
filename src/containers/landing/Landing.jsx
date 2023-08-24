@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from "react";
+import { LandingHeader } from "components";
 
 const Landing = () => {
-  return (
-    <div>Landing</div>
-  )
-}
+  const [isMenuOpen, setMenuIsOpen] = useState(false);
 
-export default Landing
+  return (
+    <div>
+      <LandingHeader menuIsOpen={isMenuOpen} setMenuIsOpen={setMenuIsOpen} />
+    </div>
+  );
+};
+
+export default Landing;

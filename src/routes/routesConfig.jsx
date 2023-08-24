@@ -56,7 +56,7 @@ import {
   OrgAdminDashboardHomePage,
   // staff
   OrgStaffDashboardPage,
-  LandingPage
+  LandingPage,
 } from "pages";
 import DocumentCenterPage from "pages/shared/DocumentCenterPage";
 
@@ -69,6 +69,7 @@ const RoutesConfig = () => {
     <Routes>
       {/* Public Routes */}
       {/* <Route path={HOME} element={<HomeScreen />} /> */}
+      <Route path={LANDING} element={<LandingPage />} />
       <Route path={LOGIN} element={<LoginPage />} />
       <Route path={REGISTER_COMPANY} element={<RegisterCompanyPage />} />
       <Route path={REGISTER_ADMIN} element={<RegisterAdminPage />} />
@@ -92,10 +93,6 @@ const RoutesConfig = () => {
             }
           />
         }
-      />
-      <Route
-        path={LANDING}
-        element={<ProtectedRoute component={LandingPage} />}
       />
       <Route
         path={ORGANISATION}
