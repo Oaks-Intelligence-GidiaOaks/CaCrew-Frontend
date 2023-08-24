@@ -146,3 +146,22 @@ $purple: #5f41b2;
     font-size: 11px;
   }
 }
+
+.grad_text {
+  color: #212529;
+  font-size: 32px;
+  line-height: 37.12px;
+  letter-spacing: -0.64px;
+  span {
+    background: linear-gradient(159deg, #115ccd 0%, #9c8bfb 81.65%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    line-height: 37.12px;
+    letter-spacing: -0.64px;
+  }
+  @media (max-width: 991px) {
+    font-size: 20px;
+  }
+}

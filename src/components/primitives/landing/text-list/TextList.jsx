@@ -1,14 +1,29 @@
 import React from "react";
+import "./TextList.scss";
+import { Button } from "components";
+import { tick } from "assets/images";
 
-const TextList = ({ list, heading }) => {
+const TextList = ({ list, heading, buttonBg }) => {
   return (
     <div className="text_list">
-      <div dangerouslySetInnerHTML={heading} className="text_list_heading" />
+      <div className="text_list_heading_wrap">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: heading,
+          }}
+          className="text_list_heading grad_text"
+        />
+      </div>
+
       {list?.map((item, idx) => (
-        <div key={idx} className="text_list_text">
-          {item}
+        <div className="start text_list_wrap">
+          <img src={tick} alt="tick" className="text_list_tick_img"/>
+          <div key={idx} className="text_list_text">
+            {item}
+          </div>
         </div>
       ))}
+      <Button className={"text_list_btn"} style={{ background: `${buttonBg}` }} text={"Get Started"}/>
     </div>
   );
 };

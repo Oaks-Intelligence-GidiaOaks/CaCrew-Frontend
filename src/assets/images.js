@@ -80,3 +80,5 @@ export const adjust = `${PATH}/adjust.png`;
 export const inv = `${PATH}/inv.png`;
 export const escrow = `${PATH}/escrow.png`;
 export const oaks = `${PATH}/oaks.png`;
+export const tick = `${PATH}/tick.png`;
+export const howtoone = `${PATH}/howtoone.png`;

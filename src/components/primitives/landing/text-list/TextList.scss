@@ -1,5 +1,27 @@
 @import "base.scss";
 
-.text_list{
-    
+.text_list {
+  .text_list_heading_wrap {
+    margin-bottom: 32px;
+  }
+  .text_list_wrap {
+    margin-bottom: 25px;
+    .text_list_tick_img {
+      margin-right: 30px;
+      margin-top: 8px;
+    }
+    .text_list_text {
+      color: #667085;
+      font-size: 18px;
+      line-height: 28.08px;
+      max-width: 419px;
+      @media (max-width: 991px) {
+        font-size: 14px;
+      }
+    }
+  }
+  .text_list_btn{
+    max-width: 189px;
+    margin-top: 30px;
+  }
 }

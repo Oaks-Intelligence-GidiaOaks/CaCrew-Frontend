@@ -1,5 +1,32 @@
 @import "base.scss";
 
-.what_we_do{
-    
+.what_we_do {
+  padding: 100px 0px;
+  @media (max-width: 991px) {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .what_we_do_img {
+    width: 45%;
+    @media (max-width: 991px) {
+      width: 70%;
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+    .img {
+      padding: 30px 70px 0px 70px;
+      width: 100%;
+    }
+  }
+  .what_we_do_list {
+    width: 45%;
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
+}
+
+.reverse {
+  flex-direction: row-reverse;
 }
