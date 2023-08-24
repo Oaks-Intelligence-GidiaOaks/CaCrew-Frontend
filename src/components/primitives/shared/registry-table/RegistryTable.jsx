@@ -11,7 +11,7 @@ const RegistryTable = () => {
     page,
   });
 
-  // console.log(dataMyTranscation, "trans");
+  console.log(dataRegistry, "trans");
 
   return (
     <div className="registry_table">

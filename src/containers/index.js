@@ -27,3 +27,5 @@ export { default as DocumentUpload } from "containers/auth/document-upload/Docum
 export { default as Login } from "containers/auth/login/Login";
 export { default as RegisterAdmin } from "containers/auth/register-admin/RegisterAdmin";
 export { default as RegisterCompany } from "containers/auth/register-company/RegisterCompany";
+
+// Landing page

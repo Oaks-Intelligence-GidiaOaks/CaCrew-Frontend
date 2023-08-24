@@ -9,7 +9,7 @@ const RegistrySearch = () => {
       <img src={regimg} alt="banner" className="registry_search_img" />
       <div className="registry_search_head">Track Carbon Credit Life Cycle</div>
       <div className="registry_search_text text">
-        Search by Verra Certificate ID
+        Search by Certificate ID
       </div>
       <div className="registry_search_input">
         <SearchInput />
