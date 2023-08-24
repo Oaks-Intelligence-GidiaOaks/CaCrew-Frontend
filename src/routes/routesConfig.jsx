@@ -24,6 +24,7 @@ import {
   TRANSACTION_DATABASE,
   REGISTRY,
   REGISTRY_DETAIL,
+  LANDING,
 } from "routes/constants";
 
 // Import auth pages
@@ -54,7 +55,8 @@ import {
   // organisation admin dasboard pages
   OrgAdminDashboardHomePage,
   // staff
-  OrgStaffDashboardPage
+  OrgStaffDashboardPage,
+  LandingPage
 } from "pages";
 import DocumentCenterPage from "pages/shared/DocumentCenterPage";
 
@@ -90,6 +92,10 @@ const RoutesConfig = () => {
             }
           />
         }
+      />
+      <Route
+        path={LANDING}
+        element={<ProtectedRoute component={LandingPage} />}
       />
       <Route
         path={ORGANISATION}

@@ -22,3 +22,6 @@ export const DOCUMENT_CENTER = "/document-center"
 export const TRANSACTION_DATABASE = "/dashboard-transaction-database"
 export const REGISTRY = "/dashboard-registry"
 export const REGISTRY_DETAIL = "/dashboard-registry/detail/:id"
+
+// landing
+export const LANDING = "/landing";

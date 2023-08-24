@@ -29,3 +29,4 @@ export { default as RegisterAdmin } from "containers/auth/register-admin/Registe
 export { default as RegisterCompany } from "containers/auth/register-company/RegisterCompany";
 
 // Landing page
+export { default as Landing } from "containers/landing/Landing";
