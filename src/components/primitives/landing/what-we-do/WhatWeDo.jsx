@@ -2,10 +2,10 @@ import React from "react";
 import "./WhatWeDo.scss";
 import { Container, TextList } from "components";
 
-const WhatWeDo = ({ image, background, list, heading, buttonBg }) => {
+const WhatWeDo = ({ image, background, list, heading, buttonBg, reverse }) => {
   return (
     <Container>
-      <div className="what_we_do between">
+      <div className={`what_we_do between ${reverse && "reverse"}`}>
         <div className="what_we_do_img">
           <img
             src={image}
