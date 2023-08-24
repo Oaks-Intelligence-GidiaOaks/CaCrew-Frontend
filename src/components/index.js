@@ -77,3 +77,4 @@ export { ChartFilter } from "components/primitives/shared/carbon-credit-chart/Ca
 // Landing
 
 export {default as LandingHeader} from "components/primitives/landing/landing-header/LandingHeader"
+export {default as Hero} from "components/primitives/landing/landing-hero/Hero"

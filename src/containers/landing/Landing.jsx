@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LandingHeader } from "components";
+import { Hero, LandingHeader } from "components";
 
 const Landing = () => {
   const [isMenuOpen, setMenuIsOpen] = useState(false);
@@ -7,6 +7,7 @@ const Landing = () => {
   return (
     <div>
       <LandingHeader menuIsOpen={isMenuOpen} setMenuIsOpen={setMenuIsOpen} />
+      <Hero />
     </div>
   );
 };

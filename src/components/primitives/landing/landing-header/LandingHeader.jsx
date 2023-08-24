@@ -25,6 +25,7 @@ const LandingHeader = ({ menuIsOpen, setMenuIsOpen }) => {
             <div className="landing_logowrap_links start">
               <div className="landing_header_text">Home</div>
               <div className="landing_header_text">About</div>
+              <div className="landing_header_text">About</div>
             </div>
             {user && (
               <Link

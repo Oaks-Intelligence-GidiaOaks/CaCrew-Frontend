@@ -73,3 +73,5 @@ export const regw = `${PATH}/reg.svg`;
 export const regb = `${PATH}/regb.svg`;
 export const regimg = `${PATH}/regimg.png`;
 export const logoland = `${PATH}/logoland.png`;
+export const demo = `${PATH}/demo.gif`;
+export const dash = `${PATH}/dash.gif`;
