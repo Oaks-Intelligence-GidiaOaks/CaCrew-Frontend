@@ -28,7 +28,7 @@ const GetStarted = () => {
         <div className="grad_text">
           How to get started with <span>Carbonible</span>
         </div>
-        <div className="get_started_wrap between">
+        <div className="get_started_wrap">
           {list.map((item, idx) => (
             <div key={idx} className="get_started_item">
               <GetStartedCard
