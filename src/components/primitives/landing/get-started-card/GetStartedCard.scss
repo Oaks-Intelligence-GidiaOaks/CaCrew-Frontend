@@ -1,21 +1,36 @@
 @import "base.scss";
 
 .get_started_card {
-  border-radius: 8px;
-  border: 1px solid #fff;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 30px 50px;
+  position: relative;
+  padding: 50px 20px;
+  .get_started_card_number {
+    color: #212529;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 37.12px;
+    letter-spacing: -0.64px;
+    @media (max-width: 991px) {
+      font-size: 24px;
+    }
+  }
   .get_started_card_img {
     width: 70%;
-    margin-bottom: 26px;
+    object-fit: contain;
   }
-  .get_started_card_text {
-    color: #fff;
+  .get_started_card_heading {
+    color: #212121;
+    text-align: center;
     font-size: 24px;
     line-height: 37.12px;
     letter-spacing: -0.64px;
     @media (max-width: 991px) {
-      font-size: 15px;
+      font-size: 14px;
     }
+  }
+  .get_started_card_text {
+    color: #4c5563;
+    text-align: center;
+    font-size: 18px;
+    line-height: 28.08px;
   }
 }

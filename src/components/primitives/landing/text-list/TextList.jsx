@@ -14,15 +14,16 @@ const TextList = ({ list, heading, buttonBg, noButtton }) => {
           className="text_list_heading grad_text"
         />
       </div>
-
-      {list?.map((item, idx) => (
-        <div className="start text_list_wrap">
-          <img src={tick} alt="tick" className="text_list_tick_img" />
-          <div key={idx} className="text_list_text">
-            {item}
+      <div className="start col">
+        {list?.map((item, idx) => (
+          <div className="start text_list_wrap">
+            <img src={tick} alt="tick" className="text_list_tick_img" />
+            <div key={idx} className="text_list_text">
+              {item}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
       {!noButtton && (
         <Button
           className={"text_list_btn"}
