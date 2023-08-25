@@ -82,7 +82,7 @@ const transactionApiSlice = apiSlice.injectEndpoints({
 
     // get organisation admin id
     getChartData: builder.query({
-      // providesTags: ["Transaction"],
+      providesTags: ["Transaction"],
       query: () => ({
         url: `${GET_CHART_DATA}`,
         method: "GET",
