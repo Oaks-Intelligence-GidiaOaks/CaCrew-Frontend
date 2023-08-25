@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Hero, LandingHeader, Steps, WhatWeDo } from "components";
+import { Hero, LandingHeader, Steps, WhatWeDo, WhyUs } from "components";
 import { howtoone, howtotwo } from "assets/images";
 
 const Landing = () => {
@@ -47,6 +47,7 @@ const Landing = () => {
         heading={"Buy Carbon Credit From <span>Verified Organizations</span>"}
       />
       <Steps />
+      <WhyUs />
     </div>
   );
 };

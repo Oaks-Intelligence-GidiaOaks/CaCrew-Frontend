@@ -81,3 +81,5 @@ export { default as WhatWeDo } from "components/primitives/landing/what-we-do/Wh
 export { default as TextList } from "components/primitives/landing/text-list/TextList";
 export { default as StepsCard } from "components/primitives/landing/steps-card/StepsCard";
 export { default as Steps } from "components/primitives/landing/steps/Steps";
+export { default as WhyUs } from "components/primitives/landing/why-us/WhyUs";
+

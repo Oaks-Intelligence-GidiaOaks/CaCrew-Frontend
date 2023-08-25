@@ -12,9 +12,9 @@ import {
 
 const list = [
   { image: stepone, text: "Create a Project" },
-  { image: steptwo, text: "Create a Project" },
-  { image: stepthree, text: "Create a Project" },
-  { image: stepfour, text: "Create a Project" },
+  { image: steptwo, text: "Submit Project Docs" },
+  { image: stepthree, text: "Assign Staff to Project" },
+  { image: stepfour, text: "Real time update of project progress" },
   { image: stepfive, text: "Create a Project" },
   { image: stepsix, text: "Create a Project" },
 ];
