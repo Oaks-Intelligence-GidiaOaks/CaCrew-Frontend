@@ -67,9 +67,8 @@
         }
         .orbitfive {
           @extend .orbitseven;
-          right: 0;
-          // animation: move 15s linear infinite;
-          animation-direction: reverse;
+          animation: move 5.5s linear infinite;
+          // animation-direction: reverse;
           width: 20px;
           height: 20px;
         }
@@ -97,7 +96,7 @@
         @extend .orbit;
         bottom: 0%;
         animation: move 22s linear infinite;
-        animation-direction: reverse;
+        // animation-direction: reverse;
         width: 55px;
         height: 55px;
 
@@ -121,7 +120,7 @@
       .orbitfour {
         @extend .orbit;
         animation: move 30s linear infinite;
-        animation-direction: reverse;
+        // animation-direction: reverse;
         width: 65px;
         height: 65px;
         @media (max-width: 767px) {
