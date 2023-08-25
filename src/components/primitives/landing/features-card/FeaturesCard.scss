@@ -1,21 +1,22 @@
 @import "base.scss";
 
-.get_started_card {
+.feature_card {
   border-radius: 8px;
   border: 1px solid #fff;
   background: rgba(255, 255, 255, 0.05);
   padding: 30px 50px;
-  .get_started_card_img {
-    width: 70%;
+  .feature_card_img {
+    width: 50%;
     margin-bottom: 26px;
   }
-  .get_started_card_text {
+  .feature_card_text {
     color: #fff;
-    font-size: 24px;
+    font-size: 21px;
     line-height: 37.12px;
     letter-spacing: -0.64px;
+    text-align: center;
     @media (max-width: 991px) {
-      font-size: 15px;
+      font-size: 12px;
     }
   }
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import "./Feature.scss";
-import { strone, strtwo, strthree, strfour, strfive,  } from "assets/images";
+import { strone, strtwo, strthree, strfour, strfive } from "assets/images";
+import FeaturesCard from "../features-card/FeaturesCard";
+import { Container } from "components";
 
 const list = [
   {
@@ -32,7 +34,18 @@ const list = [
 const Feature = () => {
   return (
     <div className="feature">
-      <div className="feature_head">Features at a Glance</div>
+      <Container>
+        <div className="center col">
+          <div className="feature_head">Features at a Glance</div>
+          <div className="feature_wrap">
+            {list.map((item, idx) => (
+              <div className="feature_wrap_item" key={idx}>
+                <FeaturesCard image={item.image} text={item.text} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </Container>
     </div>
   );
 };

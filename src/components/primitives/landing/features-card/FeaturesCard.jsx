@@ -1,10 +1,11 @@
 import React from "react";
+import "./FeaturesCard.scss";
 
 const FeaturesCard = ({ image, text }) => {
   return (
-    <div className="get_started_card">
-      <img src={image} alt="" className="get_started_card_img" />
-      <div className="get_started_card_text">{text}</div>
+    <div className="feature_card center col">
+      <img src={image} alt="feature" className="feature_card_img" />
+      <div className="feature_card_text">{text}</div>
     </div>
   );
 };

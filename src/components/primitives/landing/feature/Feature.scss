@@ -1,5 +1,30 @@
 @import "base.scss";
 
-.feature{
-    
+.feature {
+  background: #115ccd;
+  padding: 100px 0px;
+  .feature_head {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 50px;
+    @media (max-width: 991px) {
+      font-size: 26px;
+    }
+  }
+  .feature_wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    @media (max-width: 991px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 467px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .feature_wrap_item {
+      height: 100%;
+    }
+  }
 }
