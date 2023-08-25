@@ -3,7 +3,7 @@ import "./TextList.scss";
 import { Button } from "components";
 import { tick } from "assets/images";
 
-const TextList = ({ list, heading, buttonBg }) => {
+const TextList = ({ list, heading, buttonBg, noButtton }) => {
   return (
     <div className="text_list">
       <div className="text_list_heading_wrap">
@@ -17,13 +17,19 @@ const TextList = ({ list, heading, buttonBg }) => {
 
       {list?.map((item, idx) => (
         <div className="start text_list_wrap">
-          <img src={tick} alt="tick" className="text_list_tick_img"/>
+          <img src={tick} alt="tick" className="text_list_tick_img" />
           <div key={idx} className="text_list_text">
             {item}
           </div>
         </div>
       ))}
-      <Button className={"text_list_btn"} style={{ background: `${buttonBg}` }} text={"Get Started"}/>
+      {!noButtton && (
+        <Button
+          className={"text_list_btn"}
+          style={{ background: `${buttonBg}` }}
+          text={"Get Started"}
+        />
+      )}
     </div>
   );
 };

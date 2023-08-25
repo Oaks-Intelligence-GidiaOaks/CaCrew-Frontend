@@ -1,9 +1,21 @@
 @import "base.scss";
 
 .eco_system {
-    flex-wrap: wrap;
-    gap: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 100px 0px;
+  .eco_system_list {
+    width: 45%;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
   .eco_system_anim_wrap {
+    width: 45%;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
     .eco_system_anim_circle {
       width: 300px;
       height: 300px;
@@ -21,9 +33,45 @@
         border: 3px solid (to bottom, #cfcfff, #a4a4ff);
         border-radius: 50%;
         border: 3px solid #a4a4ff;
+        position: relative;
+        @media (max-width: 767px) {
+          width: 150px;
+          height: 150px;
+        }
         .orbittwo {
           width: 60%;
           object-fit: contain;
+        }
+        .orbitthree {
+          position: absolute;
+          width: 35%;
+          left: 60%;
+          bottom: 0;
+          animation: point 1s linear infinite;
+        }
+        .orbitseven {
+          position: absolute;
+          left: 0%;
+          top: 0;
+          width: 30px;
+          height: 30px;
+          animation: move 5s linear infinite;
+          offset-rotate: auto;
+          offset-path: path(
+            "M 100,0 A 100,100 0 1 1 100,200 A 100,100 0 1 1 100,0"
+          );
+
+          @media (max-width: 767px) {
+            offset-path: path("M 75,0 A 75,75 0 1 1 75,150 A 75,75 0 1 1 75,0");
+          }
+        }
+        .orbitfive {
+          @extend .orbitseven;
+          right: 0;
+          // animation: move 15s linear infinite;
+          animation-direction: reverse;
+          width: 20px;
+          height: 20px;
         }
       }
       .orbit {
@@ -32,39 +80,54 @@
         top: 0;
         width: 40px;
         height: 40px;
-        animation: move 5s linear infinite;
+        animation: move 15s linear infinite;
         offset-rotate: auto;
         offset-path: path(
           "M150,0 C67,0 0,67 0,150 C0,233 65,300 150,300 233,300 300,233 300,150 C300,67 233,0 150,0 Z"
         );
         @media (max-width: 767px) {
-        offset-path: path("M 100,0 A 100,100 0 1 1 100,200 A 100,100 0 1 1 100,0");
+          offset-path: path(
+            "M 100,0 A 100,100 0 1 1 100,200 A 100,100 0 1 1 100,0"
+          );
+          width: 25px;
+          height: 25px;
         }
       }
       .orbiteight {
         @extend .orbit;
-        animation: move 15s linear infinite;
+        bottom: 0%;
+        animation: move 22s linear infinite;
         animation-direction: reverse;
+        width: 55px;
+        height: 55px;
+
+        @media (max-width: 767px) {
+          width: 30px;
+          height: 30px;
+        }
       }
-      .orbitfive {
-        @extend .orbit;
-        animation: move 15s linear infinite;
-        animation-direction: reverse;
-      }
-      .orbitseven {
-        @extend .orbit;
-        animation: move 20s linear infinite;
-        animation-direction: reverse;
-      }
+
       .orbitsix {
         @extend .orbit;
-        animation: move 5s linear infinite;
+        animation: move 20s linear infinite;
+        width: 45px;
+        height: 45px;
 
+        @media (max-width: 767px) {
+          width: 28px;
+          height: 28px;
+        }
       }
       .orbitfour {
         @extend .orbit;
-        animation: move 10s linear infinite;
-        
+        animation: move 30s linear infinite;
+        animation-direction: reverse;
+        width: 65px;
+        height: 65px;
+        @media (max-width: 767px) {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
   }
@@ -82,15 +145,15 @@
     /* End at 100% of the path length */
   }
 }
+@keyframes point {
+  0% {
+    transform: scale(1);
+  }
 
-// /* Apply the animation to the image element */
-// img {
-//     width: 100px;
-//     /* Set the width of the image */
-//     height: 100px;
-//     /* Set the height of the image */
-//     /* Define a cubic bezier curve as the path */
-//     offset-rotate: auto;
-//     /* Rotate the image according to the path direction */
-//     /* Name, duration, timing function, and iteration count of the animation */
-// }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
