@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const StepsCard = () => {
+const StepsCard = ({ image, text }) => {
   return (
-    <div>StepsCard</div>
-  )
-}
+    <div className="step_card center">
+      <img src={image} alt="steps" className="step_card_img" />
+      <div className="step_card_text">{text}</div>
+    </div>
+  );
+};
 
-export default StepsCard
+export default StepsCard;

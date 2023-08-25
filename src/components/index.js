@@ -79,3 +79,5 @@ export { default as LandingHeader } from "components/primitives/landing/landing-
 export { default as Hero } from "components/primitives/landing/landing-hero/Hero";
 export { default as WhatWeDo } from "components/primitives/landing/what-we-do/WhatWeDo";
 export { default as TextList } from "components/primitives/landing/text-list/TextList";
+export { default as StepsCard } from "components/primitives/landing/steps-card/StepsCard";
+export { default as Steps } from "components/primitives/landing/steps/Steps";
