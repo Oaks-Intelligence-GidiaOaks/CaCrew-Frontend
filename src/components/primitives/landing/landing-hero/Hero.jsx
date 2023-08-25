@@ -3,6 +3,7 @@ import "./Hero.scss";
 import { Button, Container } from "components";
 import { adjust, dash, demo, escrow, gidia, inv, oaks } from "assets/images";
 import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -18,7 +19,9 @@ const Hero = () => {
               reputable and verified projects Worldwide.
             </div>
             <div className="hero_text_wrap_btn start">
-              <Button text={"Get Started"} className={"hero_text_btn"} />
+              <Link to={"/register-company"} className="link" style={{marginRight: "10px"}}>
+                <Button text={"Get Started"} className={"hero_text_btn"} />
+              </Link>
               <Button text={"Learn More"} className={"hero_text_btn_two"} />
             </div>
           </div>

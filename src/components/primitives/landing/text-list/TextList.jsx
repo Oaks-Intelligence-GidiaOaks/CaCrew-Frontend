@@ -2,6 +2,7 @@ import React from "react";
 import "./TextList.scss";
 import { Button } from "components";
 import { tick } from "assets/images";
+import { Link } from "react-router-dom";
 
 const TextList = ({ list, heading, buttonBg, noButtton }) => {
   return (
@@ -25,11 +26,13 @@ const TextList = ({ list, heading, buttonBg, noButtton }) => {
         ))}
       </div>
       {!noButtton && (
-        <Button
-          className={"text_list_btn"}
-          style={{ background: `${buttonBg}` }}
-          text={"Get Started"}
-        />
+        <Link to={"/register-company"} className="link">
+          <Button
+            className={"text_list_btn"}
+            style={{ background: `${buttonBg}` }}
+            text={"Get Started"}
+          />
+        </Link>
       )}
     </div>
   );
