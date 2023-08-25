@@ -85,4 +85,5 @@ export { default as WhyUs } from "components/primitives/landing/why-us/WhyUs";
 export { default as WhyUsCard } from "components/primitives/landing/why-us-card/WhyUsCard";
 export { default as EcoSystem } from "components/primitives/landing/our-eco-system/EcoSystem";
 export { default as GetStarted } from "components/primitives/landing/get-started/GetStarted";
+export { default as GetStartedCard } from "components/primitives/landing/get-started-card/GetStartedCard";
 export { default as FeaturesCard } from "components/primitives/landing/features-card/FeaturesCard";

@@ -1,5 +1,16 @@
 @import "base.scss";
 
-.get_started{
-    
+.get_started {
+  .grad_text {
+    margin-bottom: 60px;
+  }
+  .get_started_wrap{
+
+    // gap: 19px;
+    // flex-wrap: wrap;
+    width: 100%;
+    .get_started_item{
+
+    }
+  }
 }

@@ -2,7 +2,9 @@
 
 .get_started_card {
   position: relative;
-  padding: 50px 20px;
+  padding: 40px 20px;
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
   .get_started_card_number {
     color: #212529;
     font-size: 32px;
@@ -14,7 +16,7 @@
     }
   }
   .get_started_card_img {
-    width: 70%;
+    width: 50%;
     object-fit: contain;
   }
   .get_started_card_heading {
