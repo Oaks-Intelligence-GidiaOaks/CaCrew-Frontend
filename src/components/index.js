@@ -87,3 +87,4 @@ export { default as EcoSystem } from "components/primitives/landing/our-eco-syst
 export { default as GetStarted } from "components/primitives/landing/get-started/GetStarted";
 export { default as GetStartedCard } from "components/primitives/landing/get-started-card/GetStartedCard";
 export { default as FeaturesCard } from "components/primitives/landing/features-card/FeaturesCard";
+export { default as Feature } from "components/primitives/landing/feature/Feature";

@@ -1,7 +1,8 @@
 import React from "react";
 import "./GetStarted.scss";
-import { Container, GetStartedCard } from "components";
+import { Button, Container, GetStartedCard } from "components";
 import { lapone, lapthree, laptwo } from "assets/images";
+import { Link } from "react-router-dom";
 
 const list = [
   {
@@ -40,6 +41,9 @@ const GetStarted = () => {
             </div>
           ))}
         </div>
+        <Link to={"/register-company"} className="link">
+          <Button text={"Register Now"} className={"get_started_btn"}/>
+        </Link>
       </div>
     </Container>
   );
