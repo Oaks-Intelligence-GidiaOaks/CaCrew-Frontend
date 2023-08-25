@@ -1,5 +1,6 @@
 import React from "react";
-import { StepsCard } from "components";
+import "./Steps.scss";
+import { Container, StepsCard } from "components";
 import {
   stepfive,
   stepfour,
@@ -20,16 +21,24 @@ const list = [
 
 const Steps = () => {
   return (
-    <div className="steps">
-      <div className="grad_text">
-        Generate Carbon Credit on <span>Carbonible</span>
-      </div>
-      {list.map((item, idx) => (
-        <div key={idx}>
-          <StepsCard image={item.image} text={item.text}/>
+    <Container>
+      <div className="steps">
+        <div className="text_wrap">
+          <div className="grad_text">
+            Generate Carbon Credit on <br /> <span>Carbonible</span>
+          </div>
+          <div className="steps_text">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+            nonummy n
+          </div>
         </div>
-      ))}
-    </div>
+        {list.map((item, idx) => (
+          <div key={idx}>
+            <StepsCard image={item.image} text={item.text} />
+          </div>
+        ))}
+      </div>
+    </Container>
   );
 };
 
