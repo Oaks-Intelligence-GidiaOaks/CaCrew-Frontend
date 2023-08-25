@@ -83,3 +83,4 @@ export { default as StepsCard } from "components/primitives/landing/steps-card/S
 export { default as Steps } from "components/primitives/landing/steps/Steps";
 export { default as WhyUs } from "components/primitives/landing/why-us/WhyUs";
 export { default as WhyUsCard } from "components/primitives/landing/why-us-card/WhyUsCard";
+export { default as EcoSystem } from "components/primitives/landing/our-eco-system/EcoSystem";

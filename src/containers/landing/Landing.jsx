@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Hero, LandingHeader, Steps, WhatWeDo, WhyUs } from "components";
+import { EcoSystem, Hero, LandingHeader, Steps, WhatWeDo, WhyUs } from "components";
 import { howtoone, howtotwo } from "assets/images";
 
 const Landing = () => {
@@ -48,6 +48,7 @@ const Landing = () => {
       />
       <Steps />
       <WhyUs />
+      <EcoSystem />
     </div>
   );
 };

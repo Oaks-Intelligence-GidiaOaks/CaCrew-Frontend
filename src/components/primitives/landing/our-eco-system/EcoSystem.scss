@@ -1,0 +1,96 @@
+@import "base.scss";
+
+.eco_system {
+    flex-wrap: wrap;
+    gap: 20px;
+  .eco_system_anim_wrap {
+    .eco_system_anim_circle {
+      width: 300px;
+      height: 300px;
+      border: 3px solid linear-gradient(to bottom, #cfcfff, #a4a4ff);
+      border-radius: 50%;
+      border: 3px solid #cfcfff;
+      position: relative;
+      @media (max-width: 767px) {
+        width: 200px;
+        height: 200px;
+      }
+      .eco_system_anim_circle_two {
+        width: 200px;
+        height: 200px;
+        border: 3px solid (to bottom, #cfcfff, #a4a4ff);
+        border-radius: 50%;
+        border: 3px solid #a4a4ff;
+        .orbittwo {
+          width: 60%;
+          object-fit: contain;
+        }
+      }
+      .orbit {
+        position: absolute;
+        left: 0%;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        animation: move 5s linear infinite;
+        offset-rotate: auto;
+        offset-path: path(
+          "M150,0 C67,0 0,67 0,150 C0,233 65,300 150,300 233,300 300,233 300,150 C300,67 233,0 150,0 Z"
+        );
+        @media (max-width: 767px) {
+        offset-path: path("M 100,0 A 100,100 0 1 1 100,200 A 100,100 0 1 1 100,0");
+        }
+      }
+      .orbiteight {
+        @extend .orbit;
+        animation: move 15s linear infinite;
+        animation-direction: reverse;
+      }
+      .orbitfive {
+        @extend .orbit;
+        animation: move 15s linear infinite;
+        animation-direction: reverse;
+      }
+      .orbitseven {
+        @extend .orbit;
+        animation: move 20s linear infinite;
+        animation-direction: reverse;
+      }
+      .orbitsix {
+        @extend .orbit;
+        animation: move 5s linear infinite;
+
+      }
+      .orbitfour {
+        @extend .orbit;
+        animation: move 10s linear infinite;
+        
+      }
+    }
+  }
+}
+
+// /* Define the name and keyframes of the animation */
+@keyframes move {
+  from {
+    offset-distance: 0%;
+    /* Start from 0% of the path length */
+  }
+
+  to {
+    offset-distance: 100%;
+    /* End at 100% of the path length */
+  }
+}
+
+// /* Apply the animation to the image element */
+// img {
+//     width: 100px;
+//     /* Set the width of the image */
+//     height: 100px;
+//     /* Set the height of the image */
+//     /* Define a cubic bezier curve as the path */
+//     offset-rotate: auto;
+//     /* Rotate the image according to the path direction */
+//     /* Name, duration, timing function, and iteration count of the animation */
+// }
