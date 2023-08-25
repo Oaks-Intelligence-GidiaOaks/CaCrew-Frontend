@@ -1,0 +1,30 @@
+@import "base.scss";
+
+.why_us_card {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 24px 50px;
+  .why_us_card_img {
+    margin-bottom: 12px;
+  }
+  .why_us_card_heading {
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20.88px;
+    letter-spacing: -0.36px;
+    @media (max-width: 991px) {
+      font-size: 15px;
+    }
+  }
+  .why_us_card_text {
+    color: #d0d5dd;
+    font-size: 14px;
+    line-height: 20.16px;
+    @media (max-width: 991px) {
+      font-size: 12px;
+    }
+  }
+}

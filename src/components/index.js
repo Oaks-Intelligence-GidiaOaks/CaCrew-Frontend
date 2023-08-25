@@ -82,4 +82,4 @@ export { default as TextList } from "components/primitives/landing/text-list/Tex
 export { default as StepsCard } from "components/primitives/landing/steps-card/StepsCard";
 export { default as Steps } from "components/primitives/landing/steps/Steps";
 export { default as WhyUs } from "components/primitives/landing/why-us/WhyUs";
-
+export { default as WhyUsCard } from "components/primitives/landing/why-us-card/WhyUsCard";
