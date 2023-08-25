@@ -2,15 +2,16 @@
 
 .what_we_do {
   padding: 50px 0px;
-  @media (max-width: 991px) {
+  @media (max-width: 767px) {
     flex-direction: column;
-    gap: 50px;
+    padding: 30px 0px;
+    gap: 30px;
   }
   .what_we_do_img {
     width: 45%;
-    @media (max-width: 991px) {
-      width: 70%;
-    }
+    // @media (max-width: 991px) {
+    //   width: 70%;
+    // }
     @media (max-width: 767px) {
       width: 100%;
     }
@@ -21,12 +22,17 @@
   }
   .what_we_do_list {
     width: 45%;
-    @media (max-width: 991px) {
+    @media (max-width: 767px) {
       width: 100%;
     }
   }
 }
 
 .reverse {
+  @extend .what_we_do;
   flex-direction: row-reverse;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    // gap: 50px;
+  }
 }
