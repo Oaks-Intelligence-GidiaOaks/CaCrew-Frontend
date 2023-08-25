@@ -24,8 +24,8 @@
       border: 3px solid #cfcfff;
       position: relative;
       @media (max-width: 767px) {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
       }
       .eco_system_anim_circle_two {
         width: 200px;
@@ -86,7 +86,7 @@
         );
         @media (max-width: 767px) {
           offset-path: path(
-            "M 100,0 A 100,100 0 1 1 100,200 A 100,100 0 1 1 100,0"
+            "M 125,0 A 125,125 0 1 1 125,250 A 125,125 0 1 1 125,0"
           );
           width: 25px;
           height: 25px;
