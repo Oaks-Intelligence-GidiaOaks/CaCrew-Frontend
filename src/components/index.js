@@ -88,3 +88,5 @@ export { default as GetStarted } from "components/primitives/landing/get-started
 export { default as GetStartedCard } from "components/primitives/landing/get-started-card/GetStartedCard";
 export { default as FeaturesCard } from "components/primitives/landing/features-card/FeaturesCard";
 export { default as Feature } from "components/primitives/landing/feature/Feature";
+export { default as AskedAccordion } from "components/primitives/landing/asked-accordion/AskedAccordion";
+export { default as FrequentlyAsked } from "components/primitives/landing/frequently-asked/FrequentlyAsked";
