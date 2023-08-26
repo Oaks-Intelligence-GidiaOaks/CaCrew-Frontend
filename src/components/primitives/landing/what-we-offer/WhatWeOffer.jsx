@@ -16,7 +16,7 @@ const WhatWeOffer = () => {
   return (
     <div className="we_offer">
       <Container>
-        <div className="between">
+        <div className="between we_offer_wrap">
           <div className="we_offer_text_wrap">
             <div className="we_offer_title">
               Buy, Sell and Retire Carbon Credits
@@ -26,7 +26,7 @@ const WhatWeOffer = () => {
               reputable and verified projects Worldwide.
             </div>
           </div>
-          <div className="we_offer_img_wrap">
+          <div className="we_offer_img_wrap center">
             <div className="we_offer_imges">
               {Array(9)
                 .fill(1)
