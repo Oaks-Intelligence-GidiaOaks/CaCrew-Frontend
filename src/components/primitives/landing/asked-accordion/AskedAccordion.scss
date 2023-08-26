@@ -1,5 +1,28 @@
 @import "base.scss";
 
-.asked_accordion{
-    
+.asked_accordion {
+  border-radius: 8px;
+  border: 1px solid #dedede;
+  background: #fff;
+  padding: 14px 30px;
+  .asked_accordion_title_wrap {
+    cursor: pointer;
+    padding-bottom: 18px;
+    .asked_accordion_title {
+      color: #212529;
+      font-size: 24px;
+      line-height: 37.12px;
+      letter-spacing: -0.64px;
+      @media (max-width: 991px) {
+        font-size: 18px;
+      }
+    }
+    .asked_accordion_img_wrap {
+      border-radius: 3.218px;
+      border: 1px solid #dedede;
+      background: #f7f8fb;
+      .asked_accordion_img {
+      }
+    }
+  }
 }
