@@ -8,6 +8,7 @@ import {
   LandingHeader,
   Steps,
   WhatWeDo,
+  WhatWeOffer,
   WhyUs,
 } from "components";
 import { howtoone, howtotwo } from "assets/images";
@@ -62,6 +63,7 @@ const Landing = () => {
       <GetStarted />
       <Feature />
       <FrequentlyAsked />
+      <WhatWeOffer />
     </div>
   );
 };

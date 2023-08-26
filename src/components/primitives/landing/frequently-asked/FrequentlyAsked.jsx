@@ -2,6 +2,7 @@ import React from "react";
 import "./FrequentlyAsked.scss";
 import AskedAccordion from "../asked-accordion/AskedAccordion";
 import { Container } from "components";
+import { sphere, spheretwo } from "assets/images";
 
 const list = [
   {

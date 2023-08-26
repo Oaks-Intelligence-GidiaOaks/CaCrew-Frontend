@@ -112,3 +112,4 @@ export const strsix = `${PATH}/strsix.png`;
 export const lapone = `${PATH}/lapone.png`;
 export const laptwo = `${PATH}/laptwo.png`;
 export const lapthree = `${PATH}/lapthree.png`;
+export const sphereone = `${PATH}/sphereone.png`;

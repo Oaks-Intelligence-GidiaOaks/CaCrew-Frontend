@@ -90,3 +90,4 @@ export { default as FeaturesCard } from "components/primitives/landing/features-
 export { default as Feature } from "components/primitives/landing/feature/Feature";
 export { default as AskedAccordion } from "components/primitives/landing/asked-accordion/AskedAccordion";
 export { default as FrequentlyAsked } from "components/primitives/landing/frequently-asked/FrequentlyAsked";
+export { default as WhatWeOffer } from "components/primitives/landing/what-we-offer/WhatWeOffer";
