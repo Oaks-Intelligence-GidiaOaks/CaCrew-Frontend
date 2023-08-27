@@ -61,13 +61,13 @@ const DashboardSidebar = () => {
       )}
       <div className="dashboard_link_items_wrap center col">
         <NavLink
-          to={"/"}
+          to={"/dashboard"}
           activeclassname="active"
           className={"link dashboard_link_item start"}
           // style={{zIndex: "3"}}
         >
           <img
-            src={pathname === "/" ? gridwhite : gridblue}
+            src={pathname === "dashboard" ? gridwhite : gridblue}
             alt="icon"
             className="dashboard_link_item_image"
           />

@@ -7,24 +7,24 @@ import { useGetUserQuery } from "services/user.service";
 import { useSelector } from "react-redux";
 
 const ViewMessages = () => {
-  const chatId = useSelector((store) => store.message.chat_id);
-  const skipQuery = chatId === null || chatId === undefined ? true : false;
-  const { data, isLoading } = useGetMessageQuery(chatId, {
+  const message = useSelector((store) => store.message);
+  const skipQuery = message.chat_id === null || message.chat_id === undefined ? true : false;
+  const { data, isLoading } = useGetMessageQuery(message.chat_id, {
     skip: skipQuery,
     // pollingInterval: 1000,
   });
   const { data: user } = useGetUserQuery();
-  console.log(chatId, "message");
+  // console.log(message, "message");
 
   useEffect(() => {
     console.log(null);
-  }, [chatId]);
+  }, [message]);
 
   return (
     <div className="view_message">
       <div className="view_message_banner start">
         <img src={support} alt="icon" className="view_message_banner_img" />
-        <div className="view_message_banner_text">Cabornible Support</div>
+        <div className="view_message_banner_text">{message.name || " "}</div>
         <div className="view_message_banner_online" />
       </div>
       <div className="view_message_wrap center">

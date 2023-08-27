@@ -16,7 +16,7 @@ export const messageApiSlice = apiSlice.injectEndpoints({
       // },
       onCacheEntryAdded: async (
         id,
-        { updateCachedData, cacheDataLoaded, cacheEntryRemoved }
+        { updateCachedData, cacheDataLoaded, cacheEntryRemoved, dispatch }
       ) => {
         // const ws = io("https://carbonible-46cc019868d0.herokuapp.com");
         const ws = io("http://localhost:5000");
@@ -30,19 +30,27 @@ export const messageApiSlice = apiSlice.injectEndpoints({
 
           const listener = (event) => {
             console.log(event, "evn");
-            updateCachedData((draft) => {
-              // return Array.from(draft).push(event)
-              return [{...event}, ...draft];
+            
+            apiSlice.util.updateQueryData("getMessage", id, (draft) => {
+              // append the new message to the end of the array
+              console.log([{ ...event }, ...draft], "evn");
+              console.log(event, "evn");
+              return [{ ...event }, ...draft];
             });
-            // use api.util.updateQueryData to update the cache data for getMessages endpoint
-            // apiSlice.util.updateQueryData("getAllMessages", arg, (draft) => {
-            //   // append the new message to the end of the array
-            //   draft.push(event);
+
+            // res();
+
+            // updateCachedData((draft) => {
+            // console.log([{ ...event }, ...draft], "evn");
+            // return [{...event}, ...draft];
             // });
+            // use api.util.updateQueryData to update the cache data for getMessages endpoint
           };
 
           ws.addEventListener("newMessage", listener);
-        } catch (error) {}
+        } catch (error) {
+          // res.undo()
+        }
         await cacheEntryRemoved;
         ws.close();
       },
@@ -72,8 +80,8 @@ export const messageApiSlice = apiSlice.injectEndpoints({
 
     // mark message read
     markAsRead: builder.mutation({
-      query: (data) => ({
-        url: `${MARK_AS_READ}/${data}`,
+      query: (id) => ({
+        url: `${MARK_AS_READ}/${id}`,
         method: "PUT",
         // body: data.body,
       }),
