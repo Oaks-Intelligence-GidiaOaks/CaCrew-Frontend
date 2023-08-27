@@ -1,0 +1,72 @@
+@import "base.scss";
+
+.for_ent {
+  padding: 100px 0px;
+  .for_ent_wrap {
+    flex-wrap: wrap;
+    border-radius: 16px;
+    background: #e5f3ff;
+    padding: 70px;
+
+    @media (max-width: 991px) {
+      pad: 30px;
+    }
+    .for_ent_text_wrap {
+      width: 45%;
+      .for_ent_text_sub {
+        color: #5f41b2;
+        font-family: DM Sans;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24.864px;
+        margin-bottom: 10px;
+
+        @media (max-width: 991px) {
+          font-size: 14px;
+        }
+      }
+
+      .for_ent_text_head {
+        color: #101828;
+        font-size: 25.2px;
+        font-weight: 500;
+        line-height: 29.232px;
+        letter-spacing: -0.504px;
+        margin-bottom: 10px;
+
+        @media (max-width: 991px) {
+          font-size: 17px;
+        }
+      }
+
+      .for_ent_text {
+        color: #667085;
+        font-size: 18px;
+        line-height: 28.08px;
+        margin-bottom: 40px;
+
+        @media (max-width: 991px) {
+          font-size: 12px;
+        }
+      }
+
+      .for_ent_btn {
+      }
+    }
+    .for_ent_list_wrap {
+      width: 45%;
+      .for_ent_list_items {
+        .for_ent_list_item {
+          align-items: center;
+          margin-bottom: 15px;
+          .for_ent_list_img {
+            margin-right: 13px;
+          }
+          .for_ent_list_text {
+          }
+        }
+      }
+    }
+  }
+}

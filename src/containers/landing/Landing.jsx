@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   EcoSystem,
   Feature,
+  ForEnterprise,
   FrequentlyAsked,
   GetStarted,
   Hero,
@@ -64,6 +65,7 @@ const Landing = () => {
       <Feature />
       <FrequentlyAsked />
       <WhatWeOffer />
+      <ForEnterprise />
     </div>
   );
 };

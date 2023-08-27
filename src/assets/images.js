@@ -113,3 +113,4 @@ export const lapone = `${PATH}/lapone.png`;
 export const laptwo = `${PATH}/laptwo.png`;
 export const lapthree = `${PATH}/lapthree.png`;
 export const sphereone = `${PATH}/sphereone.png`;
+export const fade = `${PATH}/fade.png`;
