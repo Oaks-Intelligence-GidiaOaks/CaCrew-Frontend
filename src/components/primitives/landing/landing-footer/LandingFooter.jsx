@@ -30,9 +30,9 @@ const LandingFooter = () => {
           </div>
           <div className="footer_wrap_list">
             <div className="footer_wrap_list_item_head">About</div>
-            <div className="footer_input">
-              <input type="text" />
-              <Button className={"footer_btn"} />
+            <div className="footer_input_wrap between">
+              <input type="text" className="footer_input" placeholder="Enter your email"/>
+              <Button className={"footer_btn"} text={"Submit"}/>
             </div>
           </div>
         </div>

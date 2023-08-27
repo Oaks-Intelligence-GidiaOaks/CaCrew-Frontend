@@ -8,6 +8,13 @@
     grid-template-columns: repeat(4, 1fr);
     padding-bottom: 100px;
     align-items: center;
+    gap: 80px;
+    @media (max-width: 991px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
     .footer_wrap_logo_con {
       .footer_wrap_logo {
         margin-bottom: 25px;
@@ -47,6 +54,37 @@
       .footer_wrap_list_item {
         @extend .footer_wrap_list_item_head;
         text-transform: capitalize;
+        color: #a7a8b4;
+      }
+      .footer_input_wrap {
+        border-radius: 40px;
+        border: 1px solid #9f9f9f;
+        padding: 10px;
+        margin-top: 13px;
+        .footer_input {
+          background: transparent;
+          border: none;
+          outline: none;
+          height: 100%;
+          font-size: 14px;
+          color: #fff;
+          font-family: DM Sans;
+          @media (max-width: 991px) {
+            width: 60%;
+          }
+          @media (max-width: 767px) {
+            width: 65%;
+          }
+          &::placeholder {
+            color: #748093;
+            font-size: 14px;
+          }
+        }
+        .footer_btn {
+          max-width: 126px;
+          border: 1px solid #fff;
+          background: rgba(255, 255, 255, 0.08);
+        }
       }
     }
   }
