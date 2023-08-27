@@ -35,13 +35,26 @@ const ForEnterprise = () => {
               <Button text={"Get Started"} className={"for_ent_btn"} />
             </Link>
           </div>
-          <div className="for_ent_list_wrap">
+          <div className="for_ent_list_wrap center">
             <div className="for_ent_list_items">
               {listone.map((item, idx) => (
                 <div className="for_ent_list_item start" key={idx}>
                   <img src={tick} alt="tick" className="for_ent_list_img" />
                   <div className="for_ent_list_text">{item}</div>
                 </div>
+              ))}
+            </div>
+            <div className="for_ent_list_items">
+              {listtwo.map((item, idx) => (
+                <>
+                  {idx !== 3 && (
+                    <div className="for_ent_list_item start" key={idx}>
+                      <img src={tick} alt="tick" className="for_ent_list_img" />
+                      <div className="for_ent_list_text">{item}</div>
+                    </div>
+                  )}
+                  {idx === 3 && <img src={item} alt="house" />}
+                </>
               ))}
             </div>
           </div>
