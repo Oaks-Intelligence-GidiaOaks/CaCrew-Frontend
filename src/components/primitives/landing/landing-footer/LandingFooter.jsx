@@ -37,6 +37,9 @@ const LandingFooter = () => {
           </div>
         </div>
       </Container>
+      <div className="center footer_terms">
+        Carbonible ©2023. All Rights Reserved
+      </div>
     </div>
   );
 };

@@ -88,4 +88,14 @@
       }
     }
   }
+  .footer_terms {
+    padding: 10px 0px;
+    background: #052048;
+    color: #dedede;
+    font-size: 16px;
+    line-height: 28.08px;
+    @media (max-width: 991px) {
+      font-size: 14px;
+    }
+  }
 }
