@@ -6,6 +6,7 @@ import {
   FrequentlyAsked,
   GetStarted,
   Hero,
+  LandingFooter,
   LandingHeader,
   Steps,
   WhatWeDo,
@@ -66,6 +67,7 @@ const Landing = () => {
       <FrequentlyAsked />
       <WhatWeOffer />
       <ForEnterprise />
+      <LandingFooter />
     </div>
   );
 };

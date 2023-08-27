@@ -92,3 +92,4 @@ export { default as AskedAccordion } from "components/primitives/landing/asked-a
 export { default as FrequentlyAsked } from "components/primitives/landing/frequently-asked/FrequentlyAsked";
 export { default as WhatWeOffer } from "components/primitives/landing/what-we-offer/WhatWeOffer";
 export { default as ForEnterprise } from "components/primitives/landing/carbon-for-enterprise/ForEnterprise";
+export { default as LandingFooter } from "components/primitives/landing/landing-footer/LandingFooter";
