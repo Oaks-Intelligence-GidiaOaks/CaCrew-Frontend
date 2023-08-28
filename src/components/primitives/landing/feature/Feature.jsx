@@ -27,7 +27,7 @@ const list = [
   },
   {
     image: strsix,
-    text: "Track Carbon Credit Registry",
+    text: "Track Carbon Credit",
   },
 ];
 
