@@ -105,9 +105,10 @@ const MessagesList = () => {
                 ? item.reciever?._id
                 : item.sender?._id;
 
-            const unreadCount = item?.message?.filter(
-              (item) => item?.read === false
-            );
+            const unreadCount =
+              user?._id !== item?.sender?._id
+                ? item?.message?.filter((item) => item?.read === false)
+                : [];
 
             return (
               <a
