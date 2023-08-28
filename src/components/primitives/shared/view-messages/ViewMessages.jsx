@@ -17,9 +17,10 @@ const ViewMessages = () => {
     id: message.chat_id,
     // pollingInterval: 1000,
   });
-  // console.log(message, "message");
 
-  useEffect(() => {}, [message.refetch]);
+  // const data = typeof messages === "object" ? [] : messages;
+  // console.log(messages, "*message");
+  // console.log(data && Array.from(data), "*message");
 
   return (
     <div className="view_message">
@@ -31,8 +32,9 @@ const ViewMessages = () => {
       <div className="view_message_wrap center">
         <div className="view_message_time">Today</div>
         <div className="view_message_all">
-          {!isLoading && data
-            ? data?.map((item) => (
+          {!isLoading
+            ? data &&
+              Array.from(data)?.map((item) => (
                 <>
                   {item?.message !== " " && (
                     <div key={item?._id}>

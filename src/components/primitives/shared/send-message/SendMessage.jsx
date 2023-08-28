@@ -11,7 +11,8 @@ import { useDispatch } from "react-redux";
 
 const SendMessage = () => {
   const recieverId = useSelector((store) => store.message.reciever);
-  const skipQuery = recieverId === null ? true : false;
+  const skipQuery =
+    recieverId === null || recieverId === undefined ? true : false;
   const [sendMessageMutation, { isError, isLoading, isSuccess, error }] =
     useSendMessageMutation({ skip: skipQuery });
 

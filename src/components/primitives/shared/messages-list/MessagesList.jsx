@@ -13,10 +13,12 @@ import timeAgo from "utils/timeAgo";
 import rtkMutation from "utils/rtkMutation";
 
 const MessagesList = () => {
-  const { data: user } = useGetUserQuery();
+  const user = useSelector((state) => state.user.user);
+  // const { data: user } = useGetUserQuery();
   const [markAsRead, { isSuccess }] = useMarkAsReadMutation();
-  const { data } = useGetAllMessagesQuery(user?._id);
-  console.log(data, "testDa");
+  const id = user?._id;
+  const { data } = useGetAllMessagesQuery(id);
+  console.log(data, "****testDa");
 
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -68,10 +70,16 @@ const MessagesList = () => {
   // console.log(message, "messaage");
   useEffect(() => {
     const firstMessage = data && data[0];
+    const reciever =
+      user?._id === firstMessage?.sender?._id
+        ? firstMessage?.reciever?._id
+        : firstMessage?.sender?._id;
+    console.log(firstMessage, "*first");
     firstMessage &&
       dispatch(
         updateMessageId({
           chat_id: firstMessage?._id,
+          reciever,
         })
       );
 
