@@ -7,18 +7,19 @@ import { useGetUserQuery } from "services/user.service";
 import { useSelector } from "react-redux";
 
 const ViewMessages = () => {
+  const { data: user } = useGetUserQuery();
   const message = useSelector((store) => store.message);
-  const skipQuery = message.chat_id === null || message.chat_id === undefined ? true : false;
-  const { data, isLoading } = useGetMessageQuery(message.chat_id, {
+  const skipQuery =
+    message.chat_id === null || message.chat_id === undefined ? true : false;
+  const { data, isLoading } = useGetMessageQuery({
     skip: skipQuery,
+    userId: user?._id,
+    id: message.chat_id,
     // pollingInterval: 1000,
   });
-  const { data: user } = useGetUserQuery();
   // console.log(message, "message");
 
-  useEffect(() => {
-    console.log(null);
-  }, [message]);
+  useEffect(() => {}, [message.refetch]);
 
   return (
     <div className="view_message">

@@ -71,7 +71,6 @@ const MessagesList = () => {
     firstMessage &&
       dispatch(
         updateMessageId({
-          message_id: firstMessage?.message_id,
           chat_id: firstMessage?._id,
         })
       );

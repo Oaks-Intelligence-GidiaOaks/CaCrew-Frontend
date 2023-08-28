@@ -4,7 +4,7 @@ import { avartar } from "assets/images";
 import timeAgo from "utils/timeAgo";
 
 const MessageItem = ({ send, message, time, read }) => {
-    console.log(send, "**send")
+    // console.log(send, "**send")
   return (
     <div className={`message_item ${send ? "end" : "start"}`}>
       {!send && <img src={avartar} alt="" className="message_item_img" />}

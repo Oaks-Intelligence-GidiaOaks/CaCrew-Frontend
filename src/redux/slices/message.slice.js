@@ -4,6 +4,7 @@ const initialState = {
   reciever: null,
   name: null,
   chat_id: null,
+  refetch: false
 };
 
 const messageSlice = createSlice({
