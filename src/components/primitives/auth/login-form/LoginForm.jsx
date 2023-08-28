@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 import rtkMutation from "utils/rtkMutation";
 import { formatErrorResponse } from "utils/formatErrorResponse";
-import validate, {required} from "validations/validations";
+import validate, { required } from "validations/validations";
 
 const LoginForm = () => {
   const [loginUser, { isLoading, error, isSuccess }] = useLoginUserMutation({
@@ -55,7 +55,9 @@ const LoginForm = () => {
               />
             </div>
             {/* <Link to={"/register_company"} className="auth_button_wrap"> */}
-            {error && <div className="input_error">{formatErrorResponse(error)}</div>}
+            {error && (
+              <div className="input_error">{formatErrorResponse(error)}</div>
+            )}
             <Button
               type="submit"
               text={"Submit"}
@@ -77,6 +79,9 @@ const LoginForm = () => {
           </form>
         )}
       />
+      <div className="center footer_terms">
+        Copyright © Escrow-Tech 2023. All Rights Reserved.
+      </div>
     </div>
   );
 };

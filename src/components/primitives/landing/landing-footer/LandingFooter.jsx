@@ -38,7 +38,7 @@ const LandingFooter = () => {
         </div>
       </Container>
       <div className="center footer_terms">
-        Carbonible ©2023. All Rights Reserved
+        Copyright © Escrow-Tech 2023. All Rights Reserved.
       </div>
     </div>
   );

@@ -99,6 +99,9 @@ const RegisterCompanyForm = () => {
           </form>
         )}
       />
+      <div className="center footer_terms">
+        Copyright © Escrow-Tech 2023. All Rights Reserved.
+      </div>
     </div>
   );
 };

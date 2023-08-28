@@ -65,7 +65,11 @@ const DashboardWalletTable = () => {
   //   }
   // };
 
-  // console.log(dataMyTranscation, "trans");
+  console.log(dataMyTranscation, userData?.organization_id?._id, "trans");
+  // console.log(
+  //   userData?.organization_id?._id === dataMyTranscation[0]?.buyer?._id,
+  //   "check"
+  // );
 
   return (
     <div className="dashboard_table">
@@ -181,9 +185,9 @@ const DashboardWalletTable = () => {
                     "Transaction fee"}
                 </div>
                 <div className="dashboard_table_body_item">
-                  {row?.transaction_type === "Retire"
-                    ? row?.amount + row?.transaction_fee
-                    : row?.amount - row?.transaction_fee || row?.amount}
+                  {userData?.organization_id?._id === row?.buyer?._id
+                    ? row?.amount - row?.transaction_fee || row?.amount
+                    : row?.amount + row?.transaction_fee || row?.amount}
                 </div>
                 <div className="dashboard_table_body_item">{row?._id}</div>
                 <div className="dashboard_table_body_item">

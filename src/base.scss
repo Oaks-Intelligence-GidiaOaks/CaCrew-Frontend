@@ -127,6 +127,18 @@ $purple: #5f41b2;
   .auth_button_wrap {
     margin-top: 30px;
   }
+  .footer_terms {
+    padding: 10px 0px;
+    color: #605f5f;
+    font-size: 12px;
+    line-height: 28.08px;
+    bottom: 0;
+    margin-bottom: -50px;
+
+    @media (max-width: 991px) {
+      font-size: 10px;
+    }
+  }
 }
 
 .dash_pad {
