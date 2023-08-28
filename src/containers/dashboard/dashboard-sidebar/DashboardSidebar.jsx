@@ -38,11 +38,13 @@ const DashboardSidebar = () => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
-  // console.log(user?.organization_id?.isVerified)
 
   useEffect(() => {
     setPathName(location.pathname);
   }, [location]);
+
+  console.log(pathname, "path")
+
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -67,7 +69,7 @@ const DashboardSidebar = () => {
           // style={{zIndex: "3"}}
         >
           <img
-            src={pathname === "dashboard" ? gridwhite : gridblue}
+            src={pathname === "/dashboard" ? gridwhite : gridblue}
             alt="icon"
             className="dashboard_link_item_image"
           />
