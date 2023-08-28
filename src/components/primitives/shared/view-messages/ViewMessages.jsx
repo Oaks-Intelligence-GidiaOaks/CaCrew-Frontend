@@ -31,7 +31,7 @@ const ViewMessages = () => {
       <div className="view_message_wrap center">
         <div className="view_message_time">Today</div>
         <div className="view_message_all">
-          {!isLoading
+          {!isLoading && data
             ? data?.map((item) => (
                 <>
                   {item?.message !== " " && (

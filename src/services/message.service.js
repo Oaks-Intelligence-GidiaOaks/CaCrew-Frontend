@@ -102,6 +102,7 @@ export const messageApiSlice = apiSlice.injectEndpoints({
 
             updateCachedData((draft) => {
               console.log([{ ...event }, ...draft], "evn");
+              console.log(draft, "draft");
               return [...draft, { ...event }];
             });
             // dispatch(updateMessageId({ refectch: true }));
