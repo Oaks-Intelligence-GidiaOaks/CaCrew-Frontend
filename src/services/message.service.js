@@ -30,12 +30,14 @@ export const messageApiSlice = apiSlice.injectEndpoints({
 
           const listener = (event) => {
             console.log(event, "evn");
-            
+
             apiSlice.util.updateQueryData("getMessage", id, (draft) => {
               // append the new message to the end of the array
-              console.log([{ ...event }, ...draft], "evn");
-              console.log(event, "evn");
-              return [{ ...event }, ...draft];
+              // console.log([{ ...event }, ...draft], "evn");
+              // console.log(event, "evn");
+              // return [{ ...event }, ...draft];
+              alert("Hi")
+              Object.assign(draft, event);
             });
 
             // res();
@@ -47,7 +49,7 @@ export const messageApiSlice = apiSlice.injectEndpoints({
             // use api.util.updateQueryData to update the cache data for getMessages endpoint
           };
 
-          ws.addEventListener("newMessage", listener);
+          ws.on("newMessage", listener);
         } catch (error) {
           // res.undo()
         }

@@ -29,7 +29,7 @@ const LandingHeader = ({ menuIsOpen, setMenuIsOpen }) => {
             </div>
             {user && (
               <Link
-                to={"/"}
+              to={"/dashboard"}
                 className="landing_header_textbtn_wrap center link"
               >
                 <img
