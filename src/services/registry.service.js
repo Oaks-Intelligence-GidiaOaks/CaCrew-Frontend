@@ -6,8 +6,8 @@ export const staffApiSlice = apiSlice.injectEndpoints({
     // get all registry data
     getRegistry: builder.query({
       providesTags: ["Registry"],
-      query: () => ({
-        url: GET_REGISTRY,
+      query: ({ page = 1 }) => ({
+        url: `${GET_REGISTRY}?page=${page}`,
         method: "GET",
       }),
       transformResponse: (response) => {
@@ -17,7 +17,7 @@ export const staffApiSlice = apiSlice.injectEndpoints({
 
     // Get registry detail with id
     getRegistryCount: builder.query({
-      query: ({id}) => ({
+      query: ({ id }) => ({
         url: `${GET_REGISTRY_COUNT}/${id}`,
         method: "GET",
       }),

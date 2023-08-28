@@ -109,7 +109,7 @@ const DashboardWalletTable = () => {
                 subscription={{ values: true }}
                 onChange={(props) => {
                   const val = props.values;
-                  setStatus(val.status)
+                  setStatus(val.status);
                   console.log(val, "file");
                 }}
               />
@@ -181,9 +181,9 @@ const DashboardWalletTable = () => {
                     "Transaction fee"}
                 </div>
                 <div className="dashboard_table_body_item">
-                  {row?.transaction_fee
-                    ? row?.amount - row?.transaction_fee
-                    : row?.amount}
+                  {row?.transaction_type === "Retire"
+                    ? row?.amount + row?.transaction_fee
+                    : row?.amount - row?.transaction_fee || row?.amount}
                 </div>
                 <div className="dashboard_table_body_item">{row?._id}</div>
                 <div className="dashboard_table_body_item">

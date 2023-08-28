@@ -65,7 +65,7 @@ const TransactionDataBaseTable = () => {
   //   }
   // };
 
-  // console.log(dataMyTranscation, "trans");
+  console.log(dataMyTranscation, "trans");
 
   return (
     <div className="trans_db_table">
@@ -185,9 +185,9 @@ const TransactionDataBaseTable = () => {
                   {row?.transaction_type || "Transaction"}
                 </div>
                 <div className="trans_db_table_body_item">
-                  {row?.transaction_fee
-                    ? row?.amount - row?.transaction_fee
-                    : row?.amount}
+                  {row?.transaction_type === "Retire"
+                    ? row?.amount + row?.transaction_fee
+                    : row?.amount - row?.transaction_fee || row?.amount}
                 </div>
                 <div className="trans_db_table_body_item">{row?._id}</div>
                 <div className="trans_db_table_body_item">

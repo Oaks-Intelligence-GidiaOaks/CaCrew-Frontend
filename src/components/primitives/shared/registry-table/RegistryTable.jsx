@@ -24,8 +24,8 @@ const RegistryTable = () => {
             <div className="registry_table_head_item">Project</div>
             <div className="registry_table_head_item">Created</div>
           </div>
-          {dataRegistry?.length >= 1 ? (
-            dataRegistry?.map((row, idx) => (
+          {dataRegistry?.registry?.length >= 1 ? (
+            dataRegistry?.registry?.map((row, idx) => (
               <Link
                to={`/dashboard-registry/detail/${row?.certificate_number}`}
                 key={row?._id || idx}
@@ -48,7 +48,7 @@ const RegistryTable = () => {
                 </div>
               </Link>
             ))
-          ) : dataRegistry?.transactions?.length < 1 ? (
+          ) : dataRegistry?.registry?.length < 1 ? (
             <div className="text center mt_10">No Transactions yet</div>
           ) : (
             <div className="mt_10">
@@ -61,12 +61,13 @@ const RegistryTable = () => {
           )}
         </div>
       </div>
-      {dataRegistry?.transactions && (
+      {dataRegistry?.registry && (
         <Pagination
-          totalCount={dataRegistry?.totalTransactions}
+          totalCount={dataRegistry?.total}
           page={page}
           setPage={setPage}
-          dataLength={dataRegistry?.transactions?.length}
+          dataLength={dataRegistry?.registry?.length}
+          limit={20}
         />
       )}
     </div>

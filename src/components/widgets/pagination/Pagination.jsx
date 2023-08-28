@@ -86,7 +86,7 @@ const Pagination = ({
 
       <div className="pagination_num center text">
         {currentCount ? (
-          (page === 1 ? 1 : (page - 1) * 10) +
+          (page === 1 ? 1 : (page - 1) * limit) +
           " - " +
           currentCount +
           " of " +
