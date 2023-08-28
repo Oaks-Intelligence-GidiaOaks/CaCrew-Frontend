@@ -1,6 +1,6 @@
 import React from "react";
 import "./Feature.scss";
-import { strone, strtwo, strthree, strfour, strfive } from "assets/images";
+import { strone, strtwo, strthree, strfour, strfive, strsix } from "assets/images";
 import FeaturesCard from "../features-card/FeaturesCard";
 import { Container } from "components";
 
@@ -26,8 +26,8 @@ const list = [
     text: "Safe Carbon Credit Storage",
   },
   {
-    image: strfive,
-    text: "Safe Carbon Credit Storage",
+    image: strsix,
+    text: "Track Carbon Credit Registry",
   },
 ];
 
