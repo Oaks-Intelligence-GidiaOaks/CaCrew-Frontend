@@ -70,21 +70,30 @@ const Hero = () => {
             </div>
           </ScrollEffect>
         </div>
-        <div className="hero_marquee center col">
-          <div className="hero_marquee_grad"></div>
-          <div className="hero_marquee_head"> TRUSTED BY </div>
-          <Marquee
-            className="hero_marquee_wrap"
-            gradient
-            gradientColor={[17, 92, 205]}
-          >
-            <img src={adjust} alt="adjust" className="hero_logos" />
-            <img src={oaks} alt="oaks" className="hero_logos" />
-            <img src={inv} alt="inv" className="hero_logos_d" />
-            <img src={escrow} alt="escrow" className="hero_logos" />
-            <img src={gidia} alt="gidia" className="hero_logos" />
-          </Marquee>
-        </div>
+        <ScrollEffect
+          inViewProperties={{
+            opacity: [0, 1],
+          }}
+          inViewDelay={1.8}
+          inViewTransitionTime={0.8}
+          className="hero_img_wrap_anim"
+        >
+          <div className="hero_marquee center col">
+            <div className="hero_marquee_grad"></div>
+            <div className="hero_marquee_head"> TRUSTED BY </div>
+            <Marquee
+              className="hero_marquee_wrap"
+              gradient
+              gradientColor={[17, 92, 205]}
+            >
+              <img src={adjust} alt="adjust" className="hero_logos" />
+              <img src={oaks} alt="oaks" className="hero_logos" />
+              <img src={inv} alt="inv" className="hero_logos_d" />
+              <img src={escrow} alt="escrow" className="hero_logos" />
+              <img src={gidia} alt="gidia" className="hero_logos" />
+            </Marquee>
+          </div>
+        </ScrollEffect>
       </Container>
     </div>
   );
