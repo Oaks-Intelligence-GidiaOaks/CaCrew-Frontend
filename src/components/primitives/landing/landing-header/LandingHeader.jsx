@@ -9,7 +9,7 @@ import Container from "components/guards/wrapper/Container";
 const LandingHeader = ({ menuIsOpen, setMenuIsOpen }) => {
   const user = useSelector((state) => state.user.user);
   return (
-    <div className="landing_header">
+    <div className="landing_header center">
       <Container>
         <div className="landing_header_wrap between">
           <Link to={"/"} className="landing_header_logo center link">
