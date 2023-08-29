@@ -18,9 +18,15 @@ const ViewMessages = () => {
     // pollingInterval: 1000,
   });
 
+  function scrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }
   // const data = typeof messages === "object" ? [] : messages;
   // console.log(messages, "*message");
   // console.log(data && Array.from(data), "*message");
+  useEffect(() => {
+    scrollToBottom();
+  }, [data, message]);
 
   return (
     <div className="view_message">
