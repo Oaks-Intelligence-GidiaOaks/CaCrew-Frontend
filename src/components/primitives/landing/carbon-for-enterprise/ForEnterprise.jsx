@@ -3,6 +3,7 @@ import "./ForEnterprise.scss";
 import { Button, Container } from "components";
 import { Link } from "react-router-dom";
 import { tick, fade } from "assets/images";
+import ScrollEffect from "components/animation/ScrollEfect";
 
 const listone = [
   "Lorem ipsum dolo",
@@ -20,7 +21,15 @@ const listtwo = [
 const ForEnterprise = () => {
   return (
     <Container>
-      <div className="for_ent ">
+      <ScrollEffect
+        inViewProperties={{
+          y: [-20, 0],
+          opacity: [0, 1],
+        }}
+        inViewDelay={0.4}
+        inViewTransitionTime={0.5}
+        className="for_ent"
+      >
         <div className="for_ent_wrap between">
           <div className="for_ent_text_wrap">
             <div className="for_ent_text_sub">CARBONIBLE FOR ENTERPRISE</div>
@@ -59,7 +68,7 @@ const ForEnterprise = () => {
             </div>
           </div>
         </div>
-      </div>
+      </ScrollEffect>
     </Container>
   );
 };
