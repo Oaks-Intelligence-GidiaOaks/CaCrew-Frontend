@@ -10,8 +10,9 @@ const WhatWeDo = ({ image, background, list, heading, buttonBg, reverse }) => {
         <div className="what_we_do_img">
           <ScrollEffect
             properties={{
-              scale: [1, 1.2, 1],
+              scale: [1, 1.2],
             }}
+            
             // inViewDelay={0.2}
             // inViewTransitionTime={0.5}
           >

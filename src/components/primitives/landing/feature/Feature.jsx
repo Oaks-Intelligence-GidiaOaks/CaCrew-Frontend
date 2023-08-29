@@ -1,8 +1,16 @@
 import React from "react";
 import "./Feature.scss";
-import { strone, strtwo, strthree, strfour, strfive, strsix } from "assets/images";
+import {
+  strone,
+  strtwo,
+  strthree,
+  strfour,
+  strfive,
+  strsix,
+} from "assets/images";
 import FeaturesCard from "../features-card/FeaturesCard";
 import { Container } from "components";
+import ScrollEffect from "components/animation/ScrollEfect";
 
 const list = [
   {
@@ -36,12 +44,31 @@ const Feature = () => {
     <div className="feature">
       <Container>
         <div className="center col">
-          <div className="feature_head">Features at a Glance</div>
+          <ScrollEffect
+            inViewProperties={{
+              y: [20, 0],
+              opacity: [0, 1],
+            }}
+            inViewDelay={0.2}
+            inViewTransitionTime={0.5}
+            className="feature_head"
+          >
+            Features at a Glance
+          </ScrollEffect>
           <div className="feature_wrap">
             {list.map((item, idx) => (
-              <div className="feature_wrap_item" key={idx}>
-                <FeaturesCard image={item.image} text={item.text} />
-              </div>
+              <ScrollEffect
+                inViewProperties={{
+                  y: [20, 0],
+                  opacity: [0, 1],
+                }}
+                inViewDelay={(idx + 1) * 0.3}
+                inViewTransitionTime={0.5}
+              >
+                <div className="feature_wrap_item" key={idx}>
+                  <FeaturesCard image={item.image} text={item.text} />
+                </div>
+              </ScrollEffect>
             ))}
           </div>
         </div>

@@ -13,6 +13,7 @@ import {
   orbittwo,
   whyfive,
 } from "assets/images";
+import ScrollEffect from "components/animation/ScrollEfect";
 
 const EcoSystem = () => {
   return (
@@ -30,7 +31,14 @@ const EcoSystem = () => {
             noButtton
           />
         </div>
-        <div className="eco_system_anim_wrap center">
+        <ScrollEffect
+          inViewProperties={{
+            opacity: [0, 1],
+          }}
+          inViewDelay={0.8}
+          inViewTransitionTime={0.5}
+          className="eco_system_anim_wrap center"
+        >
           <div class="eco_system_anim_circle center">
             <img src={orbit} alt="orbit" className="orbit" />
             <img src={orbitfour} alt="orbit" className="orbitfour" />
@@ -43,7 +51,7 @@ const EcoSystem = () => {
               <img src={orbitfive} alt="orbit" className="orbitfive" />
             </div>
           </div>
-        </div>
+        </ScrollEffect>
       </div>
     </Container>
   );

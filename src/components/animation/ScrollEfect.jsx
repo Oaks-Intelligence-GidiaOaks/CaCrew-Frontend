@@ -5,26 +5,33 @@ import { ScrollCtx } from "context/scrollContext";
 
 const StaticRender = ({
   scrollY,
-  //   style = {},
+  transformOrigin = "center center",
   properties = {},
   inViewProperties = {},
   inViewTransitionTime,
   inViewDelay,
   runOnce,
+  isPast,
   children,
 }) => {
   const [zProps] = React.useState(properties);
   const props = useTransformArray({ properties: zProps, scrollY });
   return (
     <motion.div
-      style={{ ...props }}
-      initial={{
-        ...Object.fromEntries(
-          Object.entries(inViewProperties).map(([k, v]) => {
-            return [k, v[0]];
-          })
-        ),
-      }}
+      style={{ ...props, transformOrigin, transition: "0.05s" }}
+      initial={
+        !isPast || !runOnce
+          ? {
+              ...Object.fromEntries(
+                Object.entries(inViewProperties).map(([k, v]) => [k, v[0]])
+              ),
+            }
+          : {
+              ...Object.fromEntries(
+                Object.entries(inViewProperties).map(([k, v]) => [k, v[1]])
+              ),
+            }
+      }
       whileInView={{
         ...Object.fromEntries(
           Object.entries(inViewProperties).map(([k, v]) => {
@@ -48,11 +55,13 @@ const ScrollEffect = ({
   inViewTransitionTime = 0.4,
   inViewDelay = 0,
   runOnce = true,
+  isPast = false,
   pin = false,
   children,
   internalScroller = false,
   className = "",
-  style = {},
+//   style = {},
+  props,
 }) => {
   const ctx = React.useContext(ScrollCtx);
 
@@ -63,7 +72,7 @@ const ScrollEffect = ({
   });
 
   return (
-    <div ref={ref} style={style} className={className}>
+    <div ref={ref} className={className} {...props}>
       <StaticRender
         key={JSON.stringify(properties)}
         // style={{ width: "100%", height: "100%" }}
@@ -77,6 +86,7 @@ const ScrollEffect = ({
         inViewTransitionTime={inViewTransitionTime}
         inViewDelay={inViewDelay}
         runOnce={runOnce}
+        isPast={isPast}
       >
         {children}
       </StaticRender>

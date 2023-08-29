@@ -2,7 +2,8 @@ import React from "react";
 import "./FrequentlyAsked.scss";
 import AskedAccordion from "../asked-accordion/AskedAccordion";
 import { Container } from "components";
-import { sphere, spheretwo } from "assets/images";
+import ScrollEffect from "components/animation/ScrollEfect";
+// import { sphere, spheretwo } from "assets/images";
 
 const list = [
   {
@@ -27,14 +28,31 @@ const FrequentlyAsked = () => {
   return (
     <Container>
       <div className="asked center col">
-        <div className="grad_text">
+        <ScrollEffect
+          inViewProperties={{
+            y: [20, 0],
+            opacity: [0, 1],
+          }}
+          inViewDelay={0.2}
+          inViewTransitionTime={0.5}
+          className="grad_text"
+        >
           Frequently Asked <span>Questions</span>
-        </div>
+        </ScrollEffect>
         <div className="asked_wrap">
           {list.map((item, idx) => (
-            <div key={idx}>
-              <AskedAccordion title={item.title} text={item.text} />
-            </div>
+            <ScrollEffect
+              inViewProperties={{
+                y: [20, 0],
+                opacity: [0, 1],
+              }}
+              inViewDelay={(idx + 1) * 0.3}
+              inViewTransitionTime={0.5}
+            >
+              <div key={idx}>
+                <AskedAccordion title={item.title} text={item.text} />
+              </div>
+            </ScrollEffect>
           ))}
         </div>
       </div>

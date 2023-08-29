@@ -3,6 +3,7 @@ import "./GetStarted.scss";
 import { Button, Container, GetStartedCard } from "components";
 import { lapone, lapthree, laptwo } from "assets/images";
 import { Link } from "react-router-dom";
+import ScrollEffect from "components/animation/ScrollEfect";
 
 const list = [
   {
@@ -26,24 +27,50 @@ const GetStarted = () => {
   return (
     <Container>
       <div className="get_started center col">
-        <div className="grad_text">
+        <ScrollEffect
+          inViewProperties={{
+            y: [20, 0],
+            opacity: [0, 1],
+          }}
+          inViewDelay={0.2}
+          inViewTransitionTime={0.5}
+          className="grad_text"
+        >
           How to get started with <span>Carbonible</span>
-        </div>
+        </ScrollEffect>
         <div className="get_started_wrap">
           {list.map((item, idx) => (
-            <div key={idx} className="get_started_item">
-              <GetStartedCard
-                image={item.image}
-                heading={item.heading}
-                text={item.text}
-                number={idx + 1}
-              />
-            </div>
+            <ScrollEffect
+              inViewProperties={{
+                y: [20, 0],
+                opacity: [0, 1],
+              }}
+              inViewDelay={(idx + 1) * 0.3}
+              inViewTransitionTime={0.5}
+            >
+              <div key={idx} className="get_started_item">
+                <GetStartedCard
+                  image={item.image}
+                  heading={item.heading}
+                  text={item.text}
+                  number={idx + 1}
+                />
+              </div>
+            </ScrollEffect>
           ))}
         </div>
-        <Link to={"/register-company"} className="link">
-          <Button text={"Register Now"} className={"get_started_btn"}/>
-        </Link>
+        <ScrollEffect
+          inViewProperties={{
+            y: [20, 0],
+            opacity: [0, 1],
+          }}
+          inViewDelay={0.4}
+          inViewTransitionTime={0.5}
+        >
+          <Link to={"/register-company"} className="link">
+            <Button text={"Register Now"} className={"get_started_btn"} />
+          </Link>
+        </ScrollEffect>
       </div>
     </Container>
   );

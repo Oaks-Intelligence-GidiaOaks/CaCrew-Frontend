@@ -9,6 +9,7 @@ import {
   stepthree,
   steptwo,
 } from "assets/images";
+import ScrollEffect from "components/animation/ScrollEfect";
 
 const list = [
   { image: stepone, text: "Create a Project" },
@@ -24,18 +25,35 @@ const Steps = () => {
     <Container>
       <div className="steps">
         <div className="text_wrap">
-          <div className="grad_text">
+          <ScrollEffect
+            inViewProperties={{
+              y: [20, 0],
+              opacity: [0, 1],
+            }}
+            inViewDelay={0.2}
+            inViewTransitionTime={0.5}
+            className="grad_text"
+          >
             Generate Carbon Credit on <br /> <span>Carbonible</span>
-          </div>
+          </ScrollEffect>
           {/* <div className="steps_text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
             nonummy n
           </div> */}
         </div>
         {list.map((item, idx) => (
-          <div key={idx}>
-            <StepsCard image={item.image} text={item.text} />
-          </div>
+          <ScrollEffect
+            inViewProperties={{
+              x: [20, 0],
+              opacity: [0, 1],
+            }}
+            inViewDelay={(idx + 1) * 0.3}
+            inViewTransitionTime={0.5}
+          >
+            <div key={idx}>
+              <StepsCard image={item.image} text={item.text} />
+            </div>
+          </ScrollEffect>
         ))}
       </div>
     </Container>
