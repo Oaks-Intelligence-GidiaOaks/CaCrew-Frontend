@@ -17,7 +17,7 @@ const StaticRender = ({
   const props = useTransformArray({ properties: zProps, scrollY });
   return (
     <motion.div
-      //   style={{ ...props, ...style }}
+      style={{ ...props }}
       initial={{
         ...Object.fromEntries(
           Object.entries(inViewProperties).map(([k, v]) => {
