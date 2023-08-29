@@ -4,6 +4,7 @@ import { Button, Container } from "components";
 import { adjust, dash, demo, escrow, gidia, inv, oaks } from "assets/images";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
+import ScrollEffect from "components/animation/ScrollEfect";
 
 const Hero = () => {
   return (
@@ -11,15 +12,26 @@ const Hero = () => {
       <Container>
         <div className="hero_wrap between">
           <div className="hero_text_wrap">
-            <div className="hero_text_heading">
-              Buy, Sell and Retire Carbon Credits
-            </div>
+            <ScrollEffect
+              inViewProperties={{
+                y: [30, 0],
+                opacity: [0, 1],
+              }}
+            >
+              <div className="hero_text_heading">
+                Buy, Sell and Retire Carbon Credits
+              </div>
+            </ScrollEffect>
             <div className="hero_text">
               We offer an extensive portfolio of certified carbon credits from
               reputable and verified projects Worldwide.
             </div>
             <div className="hero_text_wrap_btn start">
-              <Link to={"/register-company"} className="link" style={{marginRight: "10px"}}>
+              <Link
+                to={"/register-company"}
+                className="link"
+                style={{ marginRight: "10px" }}
+              >
                 <Button text={"Get Started"} className={"hero_text_btn"} />
               </Link>
               <Button text={"Learn More"} className={"hero_text_btn_two"} />
