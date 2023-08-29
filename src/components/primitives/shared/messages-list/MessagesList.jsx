@@ -102,13 +102,14 @@ const MessagesList = () => {
 
             const reciever =
               user?._id === item?.sender?._id
-                ? item.reciever?._id
-                : item.sender?._id;
+                ? item?.reciever?._id
+                : item?.sender?._id;
 
             const unreadCount = item?.message?.filter(
-              (item) => item?.read === false && user?._id === reciever
+              (item) =>
+                item?.read === false && user?._id === item?.reciever?._id
             );
-            
+
             return (
               <a
                 href="#chat"
