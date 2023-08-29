@@ -11,7 +11,7 @@ import {
   orbitsix,
   orbitthree,
   orbittwo,
-  whyfive,
+  // whyfive,
 } from "assets/images";
 import ScrollEffect from "components/animation/ScrollEfect";
 
