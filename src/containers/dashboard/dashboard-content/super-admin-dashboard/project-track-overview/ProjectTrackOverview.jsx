@@ -17,6 +17,8 @@ import { useSendOtpMutation } from "services/transaction.service";
 import { required } from "validations/validations";
 import rtkMutation from "utils/rtkMutation";
 import { certificate } from "assets/images";
+import { formatOptionsList } from "utils/formatList";
+import { countries } from "static/countries";
 
 const ProjectTrackOverview = () => {
   const [amount, setAmount] = useState(0);
@@ -43,6 +45,8 @@ const ProjectTrackOverview = () => {
     newObj.id = id;
     newObj.project_id = project_id;
     setAmount(value.amount);
+    Object.assign(newObj, value)
+
     // refetch()
     rtkMutation(sendOtp, null);
     dispatch(
@@ -185,6 +189,22 @@ const ProjectTrackOverview = () => {
                   disabled={projectData?.progress === "Phase6" ? false : true}
                   placeholder="Enter certificate numer"
                   validate={required("Certificate Number")}
+                />
+                <Field
+                  name="registry"
+                  label="Registry"
+                  component={Input}
+                  disabled={projectData?.progress === "Phase6" ? false : true}
+                  placeholder="Enter name of registry"
+                  validate={required("Registry")}
+                />
+                <Field
+                  name="country"
+                  component={Input}
+                  label={"Country"}
+                  select
+                  options={formatOptionsList(countries)}
+                  validate={required("Country")}
                 />
                 <Button
                   type={"submit"}
