@@ -23,10 +23,9 @@ const EcoSystem = () => {
           <TextList
             heading={"About the <span>Carbonible Ecosystem</span>"}
             list={[
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
-              "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
+              "Built with an unwavering dedication to both effectiveness and reliability. ",
+              "A trusted marketplace where corporate entities can access properly vetted carbon credits",
+              "Secure platform to buy quality carbon credits to offset carbon footprints.",
             ]}
             noButtton
           />
@@ -34,7 +33,7 @@ const EcoSystem = () => {
         <ScrollEffect
           inViewProperties={{
             opacity: [0, 1],
-            scale: [0.7, 1]
+            scale: [0.7, 1],
           }}
           inViewDelay={1.2}
           inViewTransitionTime={1}
