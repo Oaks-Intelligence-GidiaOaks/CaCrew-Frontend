@@ -5,16 +5,19 @@ import { ScrollCtx } from "context/scrollContext";
 
 const StaticRender = ({
   scrollY,
-  style = {},
+  //   style = {},
   properties = {},
   inViewProperties = {},
+  inViewTransitionTime,
+  inViewDelay,
+  runOnce,
   children,
 }) => {
   const [zProps] = React.useState(properties);
   const props = useTransformArray({ properties: zProps, scrollY });
   return (
     <motion.div
-      style={{ ...props, ...style }}
+      //   style={{ ...props, ...style }}
       initial={{
         ...Object.fromEntries(
           Object.entries(inViewProperties).map(([k, v]) => {
@@ -28,7 +31,10 @@ const StaticRender = ({
             return [k, v[1]];
           })
         ),
-        transition: { duration: 1 },
+        transition: { duration: inViewTransitionTime, delay: inViewDelay },
+      }}
+      viewport={{
+        once: runOnce,
       }}
     >
       {children}
@@ -39,9 +45,14 @@ const StaticRender = ({
 const ScrollEffect = ({
   properties = {},
   inViewProperties = {},
+  inViewTransitionTime = 0.4,
+  inViewDelay = 0,
+  runOnce = true,
   pin = false,
   children,
   internalScroller = false,
+  className = "",
+  style = {},
 }) => {
   const ctx = React.useContext(ScrollCtx);
 
@@ -52,10 +63,10 @@ const ScrollEffect = ({
   });
 
   return (
-    <div ref={ref} style={{ width: "100%", height: "100%" }}>
+    <div ref={ref} style={style} className={className}>
       <StaticRender
         key={JSON.stringify(properties)}
-        style={{ width: "100%", height: "100%" }}
+        // style={{ width: "100%", height: "100%" }}
         scrollY={
           (ctx && ctx.progress && internalScroller) === false
             ? ctx.progress
@@ -63,6 +74,9 @@ const ScrollEffect = ({
         }
         properties={properties}
         inViewProperties={inViewProperties}
+        inViewTransitionTime={inViewTransitionTime}
+        inViewDelay={inViewDelay}
+        runOnce={runOnce}
       >
         {children}
       </StaticRender>

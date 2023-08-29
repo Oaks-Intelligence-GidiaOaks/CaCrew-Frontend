@@ -17,29 +17,58 @@ const Hero = () => {
                 y: [30, 0],
                 opacity: [0, 1],
               }}
+              // inViewDelay={0.2}
+              inViewTransitionTime={0.8}
             >
               <div className="hero_text_heading">
                 Buy, Sell and Retire Carbon Credits
               </div>
             </ScrollEffect>
-            <div className="hero_text">
-              We offer an extensive portfolio of certified carbon credits from
-              reputable and verified projects Worldwide.
-            </div>
-            <div className="hero_text_wrap_btn start">
-              <Link
-                to={"/register-company"}
-                className="link"
-                style={{ marginRight: "10px" }}
-              >
-                <Button text={"Get Started"} className={"hero_text_btn"} />
-              </Link>
-              <Button text={"Learn More"} className={"hero_text_btn_two"} />
-            </div>
+            <ScrollEffect
+              inViewProperties={{
+                y: [30, 0],
+                opacity: [0, 1],
+              }}
+              inViewDelay={0.8}
+              inViewTransitionTime={0.8}
+            >
+              <div className="hero_text">
+                We offer an extensive portfolio of certified carbon credits from
+                reputable and verified projects Worldwide.
+              </div>
+            </ScrollEffect>
+            <ScrollEffect
+              inViewProperties={{
+                y: [30, 0],
+                opacity: [0, 1],
+              }}
+              inViewDelay={1.2}
+              inViewTransitionTime={0.8}
+            >
+              <div className="hero_text_wrap_btn start">
+                <Link
+                  to={"/register-company"}
+                  className="link"
+                  style={{ marginRight: "10px" }}
+                >
+                  <Button text={"Get Started"} className={"hero_text_btn"} />
+                </Link>
+                <Button text={"Learn More"} className={"hero_text_btn_two"} />
+              </div>
+            </ScrollEffect>
           </div>
-          <div className="hero_img_wrap center">
-            <img src={demo || dash} alt="demo" className="hero_img" />
-          </div>
+          <ScrollEffect
+            inViewProperties={{
+              opacity: [0, 1],
+            }}
+            inViewDelay={1.6}
+            inViewTransitionTime={0.8}
+            className="hero_img_wrap_anim"
+          >
+            <div className="hero_img_wrap center">
+              <img src={demo || dash} alt="demo" className="hero_img" />
+            </div>
+          </ScrollEffect>
         </div>
         <div className="hero_marquee center col">
           <div className="hero_marquee_grad"></div>
