@@ -46,11 +46,11 @@ const WhatWeOffer = () => {
           <div className="we_offer_img_wrap center">
             <ScrollEffect
               inViewProperties={{
-                scale: [0.7, 1],
+                scale: [0.6, 1],
                 opacity: [0, 1],
               }}
-              inViewDelay={0.8}
-              inViewTransitionTime={0.5}
+              inViewDelay={1.2}
+              inViewTransitionTime={1}
             >
               <div className="we_offer_imges">
                 {Array(9)

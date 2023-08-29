@@ -26,7 +26,7 @@ const ForEnterprise = () => {
           y: [-20, 0],
           opacity: [0, 1],
         }}
-        inViewDelay={0.4}
+        inViewDelay={1}
         inViewTransitionTime={0.5}
         className="for_ent"
       >

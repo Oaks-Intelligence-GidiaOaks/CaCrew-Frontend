@@ -34,9 +34,10 @@ const EcoSystem = () => {
         <ScrollEffect
           inViewProperties={{
             opacity: [0, 1],
+            scale: [0.7, 1]
           }}
-          inViewDelay={0.8}
-          inViewTransitionTime={0.5}
+          inViewDelay={1.2}
+          inViewTransitionTime={1}
           className="eco_system_anim_wrap center"
         >
           <div class="eco_system_anim_circle center">
