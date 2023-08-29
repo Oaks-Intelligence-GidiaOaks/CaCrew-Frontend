@@ -17,12 +17,11 @@ const Hero = () => {
                 y: [30, 0],
                 opacity: [0, 1],
               }}
-              // inViewDelay={0.2}
+              inViewDelay={0.2}
               inViewTransitionTime={0.8}
+              className="hero_text_heading"
             >
-              <div className="hero_text_heading">
-                Buy, Sell and Retire Carbon Credits
-              </div>
+              Buy, Sell and Retire Carbon Credits
             </ScrollEffect>
             <ScrollEffect
               inViewProperties={{
@@ -43,7 +42,7 @@ const Hero = () => {
                 opacity: [0, 1],
               }}
               inViewDelay={1.2}
-              inViewTransitionTime={0.8}
+              inViewTransitionTime={0.7}
             >
               <div className="hero_text_wrap_btn start">
                 <Link
