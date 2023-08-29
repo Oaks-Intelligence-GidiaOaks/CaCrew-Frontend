@@ -28,8 +28,8 @@ const ForEnterprise = () => {
               Assign Employees to Projects
             </div>
             <div className="for_ent_text">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy. Lorem ipsum dolor sit amet, consectetuer.
+              Projects are created and assigned to organization’s staff to
+              supervise and allocate carbon credit.
             </div>
             <Link to={"/register-company"} className="link">
               <Button text={"Get Started"} className={"for_ent_btn"} />

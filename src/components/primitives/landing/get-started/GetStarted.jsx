@@ -8,17 +8,17 @@ const list = [
   {
     image: lapone,
     heading: "Register Organization",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy n",
+    text: "Enter Organization Details to get Registered.",
   },
   {
     image: laptwo,
-    heading: "Buy, Sell or Retire",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy n",
+    heading: "Get Verified",
+    text: "Upload required Documents and get Verified.",
   },
   {
     image: lapthree,
-    heading: "Register Organization",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy n",
+    heading: "Buy, Sell or Retire",
+    text: "Buy, Sell or Retire. Join Carbonible Market place for a Greener world.",
   },
 ];
 
