@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./OrgAdminDashboardHome.scss";
 import {
   OrgAdminDashboardHomeCredit,
@@ -10,6 +10,15 @@ import {
 } from "components";
 
 const OrgAdminDashboardHome = () => {
+  // set state to manage chart filter buttons
+  const [filter, setFilter] = useState({
+    bought: true,
+    sold: true,
+    retired: true,
+  });
+  const handleToggleFilter = (target) => {
+    setFilter((prev) => ({ ...prev, [target]: !filter.target }));
+  };
   return (
     <div className="dashboard_home start col dash_pad">
       <OrgVerifyDashboardBanner />

@@ -319,7 +319,7 @@ function LineChart(props) {
 }
 
 export const ChartFilter = ({ title }) => {
-  const [active, setSctive] = useState(3);
+  const [active, setSctive] = useState(2);
 
   const handleActive = (idx) => {
     setSctive(idx);
@@ -332,7 +332,7 @@ export const ChartFilter = ({ title }) => {
           <div className="filter_chart_text_history">History</div>
         </div>
         <div className="filter_chart_wrap start">
-          {["3M", "6M", "9M", "1Y"].map((item, idx) => (
+          {["bought", "sold", "retired"].map((item, idx) => (
             <div
               className={`filter_chart_item center ${
                 active === idx && "filter_chart_item_active"
