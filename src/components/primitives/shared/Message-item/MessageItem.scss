@@ -2,6 +2,44 @@
 
 .message_item {
   width: 100%;
+  .message_item_file_send {
+    padding: 5px;
+    background: linear-gradient(133deg, #2b5fad 0%, #0b2d60 100%);
+    align-items: center;
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    .message_item_file_text {
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.16px;
+      max-width: 200px;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        height: 0.1px;
+      }
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
+    .message_item_file_img {
+      width: 50px;
+    }
+  }
+  .message_item_file_recieve {
+    @extend .message_item_file_send;
+    background: #fff;
+    .message_item_file_text {
+      color: $blue;
+      font-size: 14px;
+      letter-spacing: 0.16px;
+      max-width: 200px;
+      overflow-x: scroll;
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
+  }
   .message_item_img {
     width: 14px;
     height: 14px;
@@ -24,7 +62,6 @@
       color: #fff;
       font-size: 14px;
       letter-spacing: 0.16px;
-      width: 750%;
       @media (max-width: 991px) {
         font-size: 12px;
       }
@@ -35,19 +72,19 @@
       .message_item_time {
         color: #d0cdcd;
         text-align: right;
-        font-size: 12px;
+        font-size: 10px;
         letter-spacing: 0.12px;
         margin-right: 5px;
-        margin-left: 10px;
-        font-size: 10px;
+        margin-left: 5px;
+        font-size: 8px;
         white-space: nowrap;
         @media (max-width: 991px) {
           font-size: 9px;
         }
       }
       .message_item_read {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background-color: #9f9f9f;
       }
@@ -63,13 +100,13 @@
     background: #fff;
     max-width: 85%;
     width: fit-content;
-    padding: 12px 40px;
+    padding: 12px 20px;
     margin-bottom: 2px;
     .message_item_message {
       color: $blue;
       font-size: 14px;
       letter-spacing: 0.16px;
-      width: 750%;
+      // width: 750%;
       // background-color: red;
       @media (max-width: 991px) {
         font-size: 12px;
@@ -84,17 +121,18 @@
         text-align: right;
         letter-spacing: 0.12px;
         margin-right: 5px;
-        margin-left: 10px;
-        font-size: 10px;
+        margin-left: 5px;
+        font-size: 8px;
         white-space: nowrap;
+        text-align: left;
         @media (max-width: 991px) {
           font-size: 9px;
         }
       }
 
       .message_item_read {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background-color: #9f9f9f;
       }

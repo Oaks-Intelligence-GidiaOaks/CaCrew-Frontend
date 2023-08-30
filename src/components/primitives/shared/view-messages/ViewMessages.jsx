@@ -47,6 +47,7 @@ const ViewMessages = () => {
                       <MessageItem
                         send={user?._id === item?.sender?._id}
                         message={item?.message}
+                        document={item?.document_url}
                         read={item?.read}
                         time={item?.createdAt}
                       />

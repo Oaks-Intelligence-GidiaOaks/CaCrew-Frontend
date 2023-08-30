@@ -9,6 +9,7 @@ const Upload = ({
   isDelete = null,
   setIsDelete = null,
   multiple = false,
+  removeValidation = false
 }) => {
   const [files, setFiles] = useState([]);
   const [progress, setProgress] = useState({});
@@ -16,6 +17,7 @@ const Upload = ({
   const fileRef = useRef(null);
   const form = useForm();
 
+  // handle upload input change
   const handleChange = (uploadedFiles) => {
     const newFiles = [];
     // Create a copy of the progress state
@@ -51,6 +53,7 @@ const Upload = ({
     });
   };
 
+  // handle file deletion
   const handleDelete = (fileToDelete) => {
     const updatedFiles = files.filter((file) => file !== fileToDelete);
     setFiles(updatedFiles);
@@ -74,7 +77,7 @@ const Upload = ({
     <div>
       <Field
         name={documentName}
-        validate={required(`${documentName}`)}
+        validate={removeValidation ? null : required(`${documentName}`)}
         render={({ input, meta }) => (
           <div className="upload center col">
             <div className="upload_image_wrap center">

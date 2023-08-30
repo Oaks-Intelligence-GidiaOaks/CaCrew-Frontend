@@ -40,11 +40,11 @@ const ProjectTrackOverview = () => {
     const id = projectData?.created_by?.organization_id?._id;
     const project_id = projectData?._id;
     const newObj = {};
-    newObj.amount = value.amount;
-    newObj.certificate_number = value.certificate_number;
+    // newObj.amount = value.amount;
+    // newObj.certificate_number = value.certificate_number;
+    setAmount(value.amount);
     newObj.id = id;
     newObj.project_id = project_id;
-    setAmount(value.amount);
     Object.assign(newObj, value)
 
     // refetch()

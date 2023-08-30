@@ -21,8 +21,8 @@ export const messageApiSlice = apiSlice.injectEndpoints({
         { updateCachedData, cacheDataLoaded, cacheEntryRemoved, dispatch }
       ) => {
         console.log(id, "user");
-        const ws = io("https://carbonible-46cc019868d0.herokuapp.com");
-        // const ws = io("http://localhost:5000");
+        // const ws = io("https://carbonible-46cc019868d0.herokuapp.com");
+        const ws = io("http://localhost:5000");
 
         ws.on("connect", () => {
           ws.emit("join", id);
@@ -76,8 +76,8 @@ export const messageApiSlice = apiSlice.injectEndpoints({
         { userId },
         { updateCachedData, cacheDataLoaded, cacheEntryRemoved, dispatch }
       ) => {
-        const ws = io("https://carbonible-46cc019868d0.herokuapp.com");
-        // const ws = io("http://localhost:5000");
+        // const ws = io("https://carbonible-46cc019868d0.herokuapp.com");
+        const ws = io("http://localhost:5000");
 
         ws.on("connect", () => {
           ws.emit("join", userId);

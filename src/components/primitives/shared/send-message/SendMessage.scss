@@ -1,7 +1,8 @@
 @import "base.scss";
 
 .send_message {
-  padding: 20px 25px 10px 20px ;
+  position: relative;
+  padding: 20px 25px 10px 20px;
   @media (max-width: 991px) {
     padding: 20px 10px 10px 10px;
   }
@@ -24,9 +25,23 @@
     }
     .send_message_attach_img {
       z-index: 1;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      @media (max-width: 991px) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
-  .send_message_btn{
+  .send_message_upload {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+  }
+  .send_message_btn {
     width: 20%;
   }
 }
