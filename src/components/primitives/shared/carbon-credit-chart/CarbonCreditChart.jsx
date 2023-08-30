@@ -335,7 +335,7 @@ export const ChartFilter = ({ title, handleToggleFilter }) => {
   const [active, setActive] = useState();
 
   function getItemClassName(idx, activeIdx) {
-    if (idx === activeIdx) return "filter_chart_item_filtered";
+    // if (idx === activeIdx) return "filter_chart_item_filtered";
     if (idx === 0) return "filter_chart_item_0";
     if (idx === 1) return "filter_chart_item_1";
     if (idx === 2) return "filter_chart_item_2";
