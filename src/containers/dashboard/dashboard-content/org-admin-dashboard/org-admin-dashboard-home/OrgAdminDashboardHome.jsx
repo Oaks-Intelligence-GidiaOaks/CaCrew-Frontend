@@ -16,9 +16,12 @@ const OrgAdminDashboardHome = () => {
     sold: true,
     retired: true,
   });
+
+  // Func finds and update target filter parameter
   const handleToggleFilter = (target) => {
-    setFilter((prev) => ({ ...prev, [target]: !filter.target }));
+    setFilter((prev) => ({ ...prev, [target]: !prev[target] }));
   };
+
   return (
     <div className="dashboard_home start col dash_pad">
       <OrgVerifyDashboardBanner />
@@ -32,10 +35,10 @@ const OrgAdminDashboardHome = () => {
         </div>
       </div>
       <div className="dashboard_home_chart_wrap">
-        <ChartFilter title={"Carbon Credit Overview"} />
+        <ChartFilter title={"Carbon Credit Overview"} handleToggleFilter={handleToggleFilter}/>
         <div className="dashboard_home_chart">
           <div className="dashboard_home_chart_width">
-            <CarbonCreditChart />
+            <CarbonCreditChart filter={filter}/>
           </div>
         </div>
       </div>

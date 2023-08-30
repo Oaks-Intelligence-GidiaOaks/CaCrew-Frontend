@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CarbonCreditChart.scss";
 import { scaleBand, scaleTime, scaleLinear, scalePoint } from "@visx/scale";
 import { LinePath } from "@visx/shape";
@@ -55,10 +55,10 @@ const formatValue = (v) => v.toFixed(2);
 // render component
 function LineChart(props) {
   // get parent width and height from props
-  const { parentWidth, parentHeight } = props;
+  const { parentWidth, parentHeight, filter } = props;
   const { data: chartData } = useGetChartDataQuery();
   const usedChartData = chartData || [];
-  // console.log(chartData, "chart");
+  console.log(filter, "chart");
 
   // I create arrays to store the transformed data for each type
   const boughtData = [];
@@ -186,30 +186,36 @@ function LineChart(props) {
           numTicks={4}
           // strokeDasharray="2,2"
         />
-        <LinePath
-          data={boughtData}
-          x={(d) => xScale(d.date)}
-          y={(d) => yScale(d.value)}
-          stroke="#5F41B2"
-          strokeWidth={2}
-          fill="url(#my-gradient)"
-        />
-        <LinePath
-          data={soldData}
-          x={(d) => xScale(d.date)}
-          y={(d) => yScale(d.value)}
-          stroke="#4277FF"
-          strokeWidth={2}
-          fill="url(#my-gradient)"
-        />
-        <LinePath
-          data={retiredData}
-          x={(d) => xScale(d.date)}
-          y={(d) => yScale(d.value)}
-          stroke="#FF5151"
-          strokeWidth={2}
-          fill="url(#my-gradient)"
-        />
+        {filter.bought && (
+          <LinePath
+            data={boughtData}
+            x={(d) => xScale(d.date)}
+            y={(d) => yScale(d.value)}
+            stroke="#5F41B2"
+            strokeWidth={2}
+            fill="url(#my-gradient)"
+          />
+        )}
+        {filter.sold && (
+          <LinePath
+            data={soldData}
+            x={(d) => xScale(d.date)}
+            y={(d) => yScale(d.value)}
+            stroke="#4277FF"
+            strokeWidth={2}
+            fill="url(#my-gradient)"
+          />
+        )}
+        {filter.retired && (
+          <LinePath
+            data={retiredData}
+            x={(d) => xScale(d.date)}
+            y={(d) => yScale(d.value)}
+            stroke="#FF5151"
+            strokeWidth={2}
+            fill="url(#my-gradient)"
+          />
+        )}
         <AxisLeft
           scale={yScale}
           left={margin.left}
@@ -318,12 +324,13 @@ function LineChart(props) {
   );
 }
 
-export const ChartFilter = ({ title }) => {
-  const [active, setSctive] = useState(2);
+export const ChartFilter = ({ title, handleToggleFilter }) => {
+  const [active, setActive] = useState();
 
-  const handleActive = (idx) => {
-    setSctive(idx);
-  };
+  useEffect(() => {
+    handleToggleFilter(active);
+  }, [active]);
+
   return (
     <div className="filter_chart">
       <div className="filter_chart_text_wrap between">
@@ -337,8 +344,8 @@ export const ChartFilter = ({ title }) => {
               className={`filter_chart_item center ${
                 active === idx && "filter_chart_item_active"
               }`}
-              key={item}
-              onClick={() => handleActive(idx)}
+              key={idx}
+              onClick={() => setActive(item)}
             >
               {item}
             </div>
@@ -349,7 +356,7 @@ export const ChartFilter = ({ title }) => {
   );
 };
 
-function CarbonCreditChart() {
+function CarbonCreditChart({ filter }) {
   return (
     <ParentSize>
       {(parent) => (
@@ -360,6 +367,7 @@ function CarbonCreditChart() {
           parentLeft={parent.left}
           parentRef={parent.ref}
           resizeParent={parent.resize}
+          filter={filter}
         />
       )}
     </ParentSize>
