@@ -333,10 +333,6 @@ function LineChart(props) {
 export const ChartFilter = ({ title, handleToggleFilter }) => {
   const [active, setActive] = useState();
 
-  useEffect(() => {
-    handleToggleFilter(active);
-  }, [active]);
-
   return (
     <div className="filter_chart">
       <div className="filter_chart_text_wrap between">
@@ -353,7 +349,7 @@ export const ChartFilter = ({ title, handleToggleFilter }) => {
               key={idx}
               onClick={() => {
                 setActive(item);
-                handleToggleFilter(active);
+                handleToggleFilter(item);
               }}
             >
               {item}
