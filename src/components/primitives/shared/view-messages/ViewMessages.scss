@@ -2,11 +2,22 @@
 
 .view_message {
   padding: 13px;
-  height: 60vh;
   // @media (max-width: 991px) {
   //   height: 100vh;
   // }
-  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  .view_message_cancel {
+    display: none;
+    position: fixed;
+    top: 22%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2px;
+    @media (max-width: 767px) {
+      display: block;
+    }
+  }
   .view_message_banner {
     align-items: center;
     padding: 8px 16px;

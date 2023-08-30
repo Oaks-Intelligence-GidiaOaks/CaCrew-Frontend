@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import timeAgo from "utils/timeAgo";
 import rtkMutation from "utils/rtkMutation";
 
-const MessagesList = () => {
+const MessagesList = ({ setShowMessages, showMessages }) => {
   const user = useSelector((state) => state.user.user);
   // const { data: user } = useGetUserQuery();
   const [markAsRead, { isSuccess }] = useMarkAsReadMutation();
@@ -88,9 +88,9 @@ const MessagesList = () => {
 
   return (
     <div className="messsage_list">
-      <div className="messsage_list_search_wrap">
+      {/* <div className="messsage_list_search_wrap">
         <SearchInput />
-      </div>
+      </div> */}
       <div className="messsage_list_bg">
         <div className="messsage_list_heading sub_heading">All Messages</div>
         {data &&
@@ -124,6 +124,7 @@ const MessagesList = () => {
                   );
                   setTabIndex(idx);
                   updateRead(item?.message);
+                  setShowMessages(!showMessages);
                 }}
                 className={`messsage_list_wrap between ${
                   idx === tabIndex && "messsage_list_wrap_bg"

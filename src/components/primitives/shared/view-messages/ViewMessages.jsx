@@ -1,4 +1,4 @@
-import { support } from "assets/images";
+import { close, support } from "assets/images";
 import "./ViewMessages.scss";
 import React, { useEffect } from "react";
 import { MessageItem, Shimmer } from "components";
@@ -6,7 +6,7 @@ import { useGetMessageQuery } from "services/message.service";
 import { useGetUserQuery } from "services/user.service";
 import { useSelector } from "react-redux";
 
-const ViewMessages = () => {
+const ViewMessages = ({ setShowMessages, showMessages }) => {
   const { data: user } = useGetUserQuery();
   const message = useSelector((store) => store.message);
   const skipQuery =
@@ -30,6 +30,12 @@ const ViewMessages = () => {
 
   return (
     <div className="view_message">
+      <img
+        src={close}
+        alt="close"
+        className="view_message_cancel"
+        onClick={() => setShowMessages(!showMessages)}
+      />
       <div className="view_message_banner start">
         <img src={support} alt="icon" className="view_message_banner_img" />
         <div className="view_message_banner_text">{message.name || " "}</div>

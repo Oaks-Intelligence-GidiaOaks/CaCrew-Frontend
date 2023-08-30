@@ -1,29 +1,50 @@
 @import "base.scss";
 
 .dashboard_message {
-  overflow-x: hidden;
-  min-width: 600px;
   .dashboard_message_wrap {
     width: 100%;
     align-items: flex-start;
 
     .dashboard_message_list {
       width: 40%;
+      height: 70vh;
+      overflow-y: scroll;
       //   background-color: #f8f8f8;
-      @media (max-width: 991px) {
-        // width: 100%;
+      @media (max-width: 767px) {
+        width: 100%;
+        height: 100vh;
+      }
+    }
+    .hide_dashboard_message_list {
+      @media (max-width: 767px) {
+        display: none;
       }
     }
     .dashboard_message_view {
       width: 60%;
-      @media (max-width: 991px) {
-        // display: none;
+      height: 70vh;
+      overflow-y: scroll;
+      margin-bottom: 80px;
+      @media (max-width: 767px) {
+        display: none;
+      }
+      .dashboard_message_view_send {
+        position: fixed;
+        width: 50%;
+        background-color: #fff;
+        bottom: -3%;
+        right: 0;
+        @media (max-width: 767px) {
+          width: 100%;
+        }
       }
     }
     .show_dashboard_message_view {
-      z-index: 2;
-      display: block;
-      width: 100%;
+      @extend .dashboard_message_view;
+      @media (max-width: 767px) {
+        display: block;
+        width: 100%;
+      }
     }
   }
 }
