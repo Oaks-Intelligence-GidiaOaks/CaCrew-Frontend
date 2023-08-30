@@ -341,8 +341,6 @@ export const ChartFilter = ({ title, handleToggleFilter }) => {
     if (idx === 2) return "filter_chart_item_2";
   }
 
-  console.log(getItemClassName(active, active), "idx")
-
   return (
     <div className="filter_chart">
       <div className="filter_chart_text_wrap between">
