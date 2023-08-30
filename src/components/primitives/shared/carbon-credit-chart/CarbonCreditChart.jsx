@@ -246,69 +246,75 @@ function LineChart(props) {
             fontFamily: "DM Sans",
           })}
         />
-        <g>
-          {boughtData.map((d, i) => (
-            <circle
-              key={`point-${i}`}
-              cx={xScale(d.date)}
-              cy={yScale(d.value)}
-              r={3}
-              fill="white"
-              stroke="#5F41B2"
-              strokeWidth={1}
-              onMouseOver={() =>
-                showTooltip({
-                  tooltipData: d,
-                  tooltipLeft: xScale(d.date),
-                  tooltipTop: yScale(d.value),
-                })
-              }
-              onMouseOut={() => hideTooltip()}
-            />
-          ))}
-        </g>
-        <g>
-          {soldData.map((d, i) => (
-            <circle
-              key={`point-${i}`}
-              cx={xScale(d.date)}
-              cy={yScale(d.value)}
-              r={3}
-              fill="white"
-              stroke="#5F41B2"
-              strokeWidth={1}
-              onMouseOver={() =>
-                showTooltip({
-                  tooltipData: d,
-                  tooltipLeft: xScale(d.date),
-                  tooltipTop: yScale(d.value),
-                })
-              }
-              onMouseOut={() => hideTooltip()}
-            />
-          ))}
-        </g>
-        <g>
-          {retiredData.map((d, i) => (
-            <circle
-              key={`point-${i}`}
-              cx={xScale(d.date)}
-              cy={yScale(d.value)}
-              r={3}
-              fill="white"
-              stroke="#5F41B2"
-              strokeWidth={1}
-              onMouseOver={() =>
-                showTooltip({
-                  tooltipData: d,
-                  tooltipLeft: xScale(d.date),
-                  tooltipTop: yScale(d.value),
-                })
-              }
-              onMouseOut={() => hideTooltip()}
-            />
-          ))}
-        </g>
+        {filter.bought && (
+          <g>
+            {boughtData.map((d, i) => (
+              <circle
+                key={`point-${i}`}
+                cx={xScale(d.date)}
+                cy={yScale(d.value)}
+                r={3}
+                fill="white"
+                stroke="#5F41B2"
+                strokeWidth={1}
+                onMouseOver={() =>
+                  showTooltip({
+                    tooltipData: d,
+                    tooltipLeft: xScale(d.date),
+                    tooltipTop: yScale(d.value),
+                  })
+                }
+                onMouseOut={() => hideTooltip()}
+              />
+            ))}
+          </g>
+        )}
+        {filter.sold && (
+          <g>
+            {soldData.map((d, i) => (
+              <circle
+                key={`point-${i}`}
+                cx={xScale(d.date)}
+                cy={yScale(d.value)}
+                r={3}
+                fill="white"
+                stroke="#5F41B2"
+                strokeWidth={1}
+                onMouseOver={() =>
+                  showTooltip({
+                    tooltipData: d,
+                    tooltipLeft: xScale(d.date),
+                    tooltipTop: yScale(d.value),
+                  })
+                }
+                onMouseOut={() => hideTooltip()}
+              />
+            ))}
+          </g>
+        )}
+        {filter.retired && (
+          <g>
+            {retiredData.map((d, i) => (
+              <circle
+                key={`point-${i}`}
+                cx={xScale(d.date)}
+                cy={yScale(d.value)}
+                r={3}
+                fill="white"
+                stroke="#5F41B2"
+                strokeWidth={1}
+                onMouseOver={() =>
+                  showTooltip({
+                    tooltipData: d,
+                    tooltipLeft: xScale(d.date),
+                    tooltipTop: yScale(d.value),
+                  })
+                }
+                onMouseOut={() => hideTooltip()}
+              />
+            ))}
+          </g>
+        )}
       </svg>
       {tooltipOpen && (
         <Tooltip left={tooltipLeft} top={tooltipTop}>
@@ -345,7 +351,10 @@ export const ChartFilter = ({ title, handleToggleFilter }) => {
                 active === idx && "filter_chart_item_active"
               }`}
               key={idx}
-              onClick={() => setActive(item)}
+              onClick={() => {
+                setActive(item);
+                handleToggleFilter(active);
+              }}
             >
               {item}
             </div>

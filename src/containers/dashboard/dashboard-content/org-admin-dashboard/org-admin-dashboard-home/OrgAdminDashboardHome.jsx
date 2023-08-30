@@ -18,8 +18,8 @@ const OrgAdminDashboardHome = () => {
   });
 
   // Func finds and update target filter parameter
-  const handleToggleFilter = (target) => {
-    setFilter((prev) => ({ ...prev, [target]: !prev[target] }));
+   const handleToggleFilter = (target) => {
+    target && setFilter((prev) => ({ ...prev, [target]: prev[target] === true ? false : true }));
   };
 
   return (
