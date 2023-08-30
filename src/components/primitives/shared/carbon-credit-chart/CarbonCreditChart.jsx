@@ -332,7 +332,7 @@ function LineChart(props) {
 }
 
 export const ChartFilter = ({ title, handleToggleFilter }) => {
-  const [active, setActive] = useState();
+  const [active, setActive] = useState(0);
 
   return (
     <div className="filter_chart">
@@ -345,11 +345,15 @@ export const ChartFilter = ({ title, handleToggleFilter }) => {
           {["bought", "sold", "retired"].map((item, idx) => (
             <div
               className={`filter_chart_item center ${
-                active === idx && "filter_chart_item_active"
+                idx === 0
+                  ? "filter_chart_item_0"
+                  : idx === 1
+                  ? "filter_chart_item_1"
+                  : "filter_chart_item_2"
               }`}
               key={idx}
               onClick={() => {
-                setActive(item);
+                setActive(idx);
                 handleToggleFilter(item);
               }}
             >
