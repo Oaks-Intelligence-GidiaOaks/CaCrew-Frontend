@@ -4,13 +4,14 @@
   width: 100%;
   .message_item_file_send {
     padding: 5px;
-    background: linear-gradient(133deg, #2b5fad 0%, #0b2d60 100%);
     align-items: center;
     width: 100%;
     border-radius: 15px;
     margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: #d0cdcd 1px solid;
     .message_item_file_text {
-      color: #fff;
+      color: $blue;
       font-size: 14px;
       letter-spacing: 0.16px;
       max-width: 200px;
@@ -28,7 +29,8 @@
   }
   .message_item_file_recieve {
     @extend .message_item_file_send;
-    background: #fff;
+    // background: #fff;
+    border: #f3f0f0 0px solid;
     .message_item_file_text {
       color: $blue;
       font-size: 14px;
