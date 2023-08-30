@@ -40,7 +40,7 @@ const DashboardProject = () => {
       ? handledProj?.filter((item) => item?.progress !== "Phase6")
       : [];
 
-  console.log(data, "projtesr*******");
+  // console.log(data, "projtesr*******");
 
   const tabItems = {
     // create: <DashboardProjectCreate />,
