@@ -186,16 +186,7 @@ function LineChart(props) {
           numTicks={4}
           // strokeDasharray="2,2"
         />
-        {filter.bought && (
-          <LinePath
-            data={boughtData}
-            x={(d) => xScale(d.date)}
-            y={(d) => yScale(d.value)}
-            stroke="#5F41B2"
-            strokeWidth={2}
-            fill="url(#my-gradient)"
-          />
-        )}
+
         {filter.sold && (
           <LinePath
             data={soldData}
@@ -212,6 +203,16 @@ function LineChart(props) {
             x={(d) => xScale(d.date)}
             y={(d) => yScale(d.value)}
             stroke="#FF5151"
+            strokeWidth={2}
+            fill="url(#my-gradient)"
+          />
+        )}
+        {filter.bought && (
+          <LinePath
+            data={boughtData}
+            x={(d) => xScale(d.date)}
+            y={(d) => yScale(d.value)}
+            stroke="#5F41B2"
             strokeWidth={2}
             fill="url(#my-gradient)"
           />
@@ -246,29 +247,6 @@ function LineChart(props) {
             fontFamily: "DM Sans",
           })}
         />
-        {filter.bought && (
-          <g>
-            {boughtData.map((d, i) => (
-              <circle
-                key={`point-${i}`}
-                cx={xScale(d.date)}
-                cy={yScale(d.value)}
-                r={3}
-                fill="white"
-                stroke="#5F41B2"
-                strokeWidth={1}
-                onMouseOver={() =>
-                  showTooltip({
-                    tooltipData: d,
-                    tooltipLeft: xScale(d.date),
-                    tooltipTop: yScale(d.value),
-                  })
-                }
-                onMouseOut={() => hideTooltip()}
-              />
-            ))}
-          </g>
-        )}
         {filter.sold && (
           <g>
             {soldData.map((d, i) => (
@@ -295,6 +273,29 @@ function LineChart(props) {
         {filter.retired && (
           <g>
             {retiredData.map((d, i) => (
+              <circle
+                key={`point-${i}`}
+                cx={xScale(d.date)}
+                cy={yScale(d.value)}
+                r={3}
+                fill="white"
+                stroke="#5F41B2"
+                strokeWidth={1}
+                onMouseOver={() =>
+                  showTooltip({
+                    tooltipData: d,
+                    tooltipLeft: xScale(d.date),
+                    tooltipTop: yScale(d.value),
+                  })
+                }
+                onMouseOut={() => hideTooltip()}
+              />
+            ))}
+          </g>
+        )}
+        {filter.bought && (
+          <g>
+            {boughtData.map((d, i) => (
               <circle
                 key={`point-${i}`}
                 cx={xScale(d.date)}
