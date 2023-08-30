@@ -46,7 +46,7 @@ const ProjectDetailAccordion = ({ data }) => {
             <div className="project_details_accordion_item_wrap">
               {data?.document_urls?.map((item) => {
                 const { image, name } = getFileDetails(item);
-                const cleanedName = name.replace("%2F", "");
+                // const cleanedName = name.replace("%2F", "");
 
                 return (
                   <div className="project_details_accordion_item">
@@ -61,7 +61,7 @@ const ProjectDetailAccordion = ({ data }) => {
                           className="project_details_accordion_item_value_sm"
                           href={data?.letter_of_authorization_url}
                         >
-                          {cleanedName || "Download"}
+                          {name || "Download"}
                         </a>
                         <span className="project_details_accordion_item_value_sm">
                           Download
