@@ -51,15 +51,15 @@
       .filter_chart_item {
         border-radius: 4px;
         border: 1px solid #dedede;
-        height: 40px;
-        width: 65px;
+        height: 30px;
+        width: 52px;
         color: #4c5563;
         color: #fff;
-        font-size: 15px;
+        font-size: 12px;
         font-weight: 400;
         margin-left: 10px;
         @media (max-width: 991px) {
-          font-size: 12px;
+          font-size: 10px;
         }
       }
       .filter_chart_item_0 {
@@ -73,6 +73,11 @@
       .filter_chart_item_2 {
         @extend .filter_chart_item;
         background-color: rgba(255, 81, 81, 0.8);
+      }
+      .filter_chart_item_filtered {
+        @extend .filter_chart_item;
+        background-color: #fff !important;
+        color: $blue !important;
       }
     }
   }

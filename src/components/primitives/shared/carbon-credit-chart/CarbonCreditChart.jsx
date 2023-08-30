@@ -58,7 +58,7 @@ function LineChart(props) {
   const { parentWidth, parentHeight, filter } = props;
   const { data: chartData } = useGetChartDataQuery();
   const usedChartData = chartData || [];
-  console.log(filter, "chart");
+  // console.log(filter, "chart");
 
   // I create arrays to store the transformed data for each type
   const boughtData = [];
@@ -332,7 +332,16 @@ function LineChart(props) {
 }
 
 export const ChartFilter = ({ title, handleToggleFilter }) => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState();
+
+  function getItemClassName(idx, activeIdx) {
+    if (idx === activeIdx) return "filter_chart_item_filtered";
+    if (idx === 0) return "filter_chart_item_0";
+    if (idx === 1) return "filter_chart_item_1";
+    if (idx === 2) return "filter_chart_item_2";
+  }
+
+  console.log(getItemClassName(active, active), "idx")
 
   return (
     <div className="filter_chart">
@@ -344,13 +353,7 @@ export const ChartFilter = ({ title, handleToggleFilter }) => {
         <div className="filter_chart_wrap start">
           {["bought", "sold", "retired"].map((item, idx) => (
             <div
-              className={`filter_chart_item center ${
-                idx === 0
-                  ? "filter_chart_item_0"
-                  : idx === 1
-                  ? "filter_chart_item_1"
-                  : "filter_chart_item_2"
-              }`}
+              className={`center ${getItemClassName(idx, active)}`}
               key={idx}
               onClick={() => {
                 setActive(idx);
