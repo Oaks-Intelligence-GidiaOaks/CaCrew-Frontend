@@ -86,15 +86,24 @@ export const userApiSlice = apiSlice.injectEndpoints({
         });
 
         // Listen for message events from the server
-        socket.on("sentSuccessful", (data) => {
-          dispatch(
-            openModal({
-              title: "Carbon Credited Status",
-              message: `${data}`,
-              success: true,
-            })
-          );
+        socket.on("sentStaus", (data) => {
           console.log(data, "sendDDt");
+
+          data?.status
+            ? dispatch(
+                openModal({
+                  title: "Carbon Credited Successful",
+                  message: `${data?.info}`,
+                  success: true,
+                })
+              )
+            : dispatch(
+                openModal({
+                  title: "Carbon Credited Failed",
+                  message: `${data?.info}`,
+                  success: false,
+                })
+              );
         });
 
         console.log(socket.hasListeners("sentsuccessful"), "lis");
