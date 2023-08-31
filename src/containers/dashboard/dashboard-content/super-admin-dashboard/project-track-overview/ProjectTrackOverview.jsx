@@ -43,7 +43,7 @@ const ProjectTrackOverview = () => {
     // newObj.amount = value.amount;
     // newObj.certificate_number = value.certificate_number;
     setAmount(value.amount);
-    newObj.id = id;
+    newObj.organization_id = id;
     newObj.project_id = project_id;
     Object.assign(newObj, value)
 

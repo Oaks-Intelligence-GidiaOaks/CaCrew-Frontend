@@ -11,7 +11,11 @@ const DashboardWallet = () => {
 
   const [isVisible, setIsVisible] = useState(false);
 
-  console.log(user, "kk");
+  // console.log(user, "kk");
+  // console.log(
+  //   user?.wallet_id?.open_balance, user?.wallet_id?.close_balance,
+  //   "add"
+  // );
 
   return (
     <div className="dashboard_wallet">
@@ -57,9 +61,10 @@ const DashboardWallet = () => {
               style={{ color: user?.role !== "SuperAdmin" && "#F1F1F1" }}
             >
               {isVisible
-                ? user?.wallet_id?.open_balance +
-                  user?.wallet_id?.close_balance +
-                  " tCO2e"
+                ? `${
+                    data?.wallet_id?.open_balance +
+                    data?.wallet_id?.close_balance
+                  } tCO2e`
                 : "******"}
             </div>
           ) : (

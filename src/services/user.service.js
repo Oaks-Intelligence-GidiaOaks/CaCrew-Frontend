@@ -1,6 +1,13 @@
-import { GETUSER, LOGIN, REGISTER, UPDATE_USER_PASSWORD } from "services/constants";
+import {
+  GETUSER,
+  LOGIN,
+  REGISTER,
+  UPDATE_USER_PASSWORD,
+} from "services/constants";
 import apiSlice from "./api/apiSlice";
 import { updateUser } from "redux/slices/user.slice";
+import { io } from "socket.io-client";
+import { openModal } from "redux/slices/modal.slice";
 // import { SkipToken } from "@reduxjs/toolkit/dist/query";
 
 export const userApiSlice = apiSlice.injectEndpoints({
@@ -56,11 +63,48 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     // send credit
     sendCredit: builder.mutation({
-      query: (data) => ({
+      query: ({ data }) => ({
         url: "superAdmin/send_carbon_credits",
         body: data,
         method: "POST",
       }),
+      transformResponse: (response) => {
+        return response;
+      },
+      async onCacheEntryAdded(
+        { id },
+        { cacheDataLoaded, updateCacheData, dispatch }
+      ) {
+        // Wait for the initial data to be fetched
+        await cacheDataLoaded;
+
+        // Create a socket instance and connect to the server
+        const socket = io("http://localhost:5000");
+
+        socket.on("connect", () => {
+          socket.emit("join", id);
+        });
+
+        // Listen for message events from the server
+        socket.on("sentSuccessful", (data) => {
+          dispatch(
+            openModal({
+              title: "Carbon Credited Status",
+              message: `${data}`,
+              success: true,
+            })
+          );
+          console.log(data, "sendDDt");
+        });
+
+        console.log(socket.hasListeners("sentsuccessful"), "lis");
+
+        // Return a cleanup function that will be called when the cache entry is removed
+        return () => {
+          // Disconnect the socket
+          socket.disconnect();
+        };
+      },
       // invalidatesTags: ["User"],
     }),
 

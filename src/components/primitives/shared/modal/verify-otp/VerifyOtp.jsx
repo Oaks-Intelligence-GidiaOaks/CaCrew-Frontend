@@ -7,6 +7,7 @@ import { openModal } from "redux/slices/modal.slice";
 import { useDispatch } from "react-redux";
 import { useSendCreditMutation } from "services/user.service";
 import { useVerifyOtpMutation } from "services/transaction.service";
+import { useGetUserQuery } from "services/user.service";
 import { formatErrorResponse } from "utils/formatErrorResponse";
 import rtkMutation from "utils/rtkMutation";
 
@@ -20,9 +21,12 @@ const VerifyOtp = ({ data }) => {
     dispatch(closeComponentModal());
   };
 
+  const { data: user } = useGetUserQuery();
+
   const [
     sendCredit,
     {
+      data: carbonData,
       isSuccess: isSuccessCredit,
       isLoading: loading,
       isError: isErrorCredit,
@@ -58,11 +62,13 @@ const VerifyOtp = ({ data }) => {
     isSuccessCredit &&
       dispatch(
         openModal({
-          title: "Carbon Credited Successfuly",
-          message: "carbon credit successfully credited to organization",
+          title: "Carbon Credited Status",
+          message: `${carbonData?.message}`,
           success: true,
         })
       );
+
+    isSuccessCredit && dispatch(closeComponentModal());
 
     isErrorCredit &&
       dispatch(
@@ -96,7 +102,7 @@ const VerifyOtp = ({ data }) => {
 
   useEffect(() => {
     if (isSuccessOtp) {
-      rtkMutation(sendCredit, data?.value);
+      rtkMutation(sendCredit, { data: data?.value, id: user?._id });
     }
   }, [isSuccessOtp]);
 

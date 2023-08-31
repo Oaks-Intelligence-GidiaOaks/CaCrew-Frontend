@@ -20,19 +20,22 @@ export const messageApiSlice = apiSlice.injectEndpoints({
         id,
         { updateCachedData, cacheDataLoaded, cacheEntryRemoved, dispatch }
       ) => {
-        console.log(id, "user");
+        // connect to socket
         const ws = io("https://carbonible-46cc019868d0.herokuapp.com");
         // const ws = io("http://localhost:5000");
 
+        // User id join connection
         ws.on("connect", () => {
           ws.emit("join", id);
         });
 
         try {
+          // wait till cache is populated for first request
           await cacheDataLoaded;
 
+          // set up listener callback for "newMessage" socket emit
           const listener = (event) => {
-            console.log(event, "evn");
+            // console.log(event, "evn");
 
             // dispatch(
             //   apiSlice.util.updateQueryData("getMessage", id, (draft) => {
@@ -45,6 +48,7 @@ export const messageApiSlice = apiSlice.injectEndpoints({
 
             // res();
 
+            // update rtk cache
             updateCachedData((draft) => {
               draft[0].message.unshift(event);
               return draft;
@@ -57,6 +61,7 @@ export const messageApiSlice = apiSlice.injectEndpoints({
         } catch (error) {
           // res.undo()
         }
+        // cleanup, close connection when cache is removed
         await cacheEntryRemoved;
         ws.close();
       },
