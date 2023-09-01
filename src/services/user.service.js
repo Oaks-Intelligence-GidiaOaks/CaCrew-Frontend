@@ -87,7 +87,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         });
 
         // Listen for message events from the server
-        socket.on("sentStaus", (data) => {
+        socket.on("sentStatus", (data) => {
           console.log(data, "sendDDt");
 
           data?.status
