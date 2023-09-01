@@ -79,7 +79,8 @@ export const userApiSlice = apiSlice.injectEndpoints({
         await cacheDataLoaded;
 
         // Create a socket instance and connect to the server
-        const socket = io("http://localhost:5000");
+        // const socket = io("http://localhost:5000");
+        const socket = io("https://carbonible-46cc019868d0.herokuapp.com");
 
         socket.on("connect", () => {
           socket.emit("join", id);

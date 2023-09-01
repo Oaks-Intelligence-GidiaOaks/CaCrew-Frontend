@@ -44,7 +44,8 @@ const VerifyOtp = ({ data }) => {
   ] = useVerifyOtpMutation();
 
   const handleSendCredit = () => {
-    rtkMutation(verifyOtp, { otp: otpValue });
+    // rtkMutation(verifyOtp, { otp: otpValue });
+    rtkMutation(sendCredit, { data: data?.value, id: user?._id });
   };
 
   // Update the otp state when an input changes
