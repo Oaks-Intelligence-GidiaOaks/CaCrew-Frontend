@@ -29,7 +29,7 @@ const LandingFooter = () => {
             <div className="footer_wrap_list_item">Privacy policy</div>
           </div>
           <div className="footer_wrap_list">
-            <div className="footer_wrap_list_item_head">About</div>
+            <div className="footer_wrap_list_item_head">Contact</div>
             <div className="footer_input_wrap between">
               <input type="text" className="footer_input" placeholder="Enter your email"/>
               <Button className={"footer_btn"} text={"Submit"}/>
