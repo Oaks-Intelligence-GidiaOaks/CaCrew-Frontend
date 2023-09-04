@@ -9,12 +9,11 @@ const WhatWeDo = ({ image, background, list, heading, buttonBg, reverse }) => {
       <div className={`what_we_do between ${reverse && "reverse"}`}>
         <div className="what_we_do_img">
           <ScrollEffect
-            inViewProperties={{
+            properties={{
               scale: [1, 1.2, 1],
             }}
-            properties={{scale: 1}}
-            inViewDelay={1.2}
-            inViewTransitionTime={0.5}
+            // inViewDelay={1.2}
+            // inViewTransitionTime={2}
           >
             <img
               src={image}
