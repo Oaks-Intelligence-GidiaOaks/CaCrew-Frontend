@@ -76,6 +76,8 @@ const RoutesConfig = () => {
       <Route path={IDENTITY_DOCUMENT} element={<IdentityDocumentPage />} />
       <Route path={CERTIFICATE_DOCUMENT} element={<CertificatePage />} />
       <Route path={LETTER_AUTH_DOCUMENT} element={<LetterAuthPage />} />
+      <Route path={REGISTRY} element={<RegistryPage/>} />
+      <Route path={REGISTRY_DETAIL} element={<RegistryDetailPage/>} />
       {/* <Route path={DASHBOARD} element={<DashScreen />} /> */}
       {/* Protected Routes */}
       <Route
@@ -137,14 +139,6 @@ const RoutesConfig = () => {
       <Route
         path={TRANSACTION_DATABASE}
         element={<ProtectedRoute component={TransactionDatabasePage} />}
-      />
-      <Route
-        path={REGISTRY}
-        element={<ProtectedRoute component={RegistryPage} />}
-      />
-      <Route
-        path={REGISTRY_DETAIL}
-        element={<ProtectedRoute component={RegistryDetailPage} />}
       />
     </Routes>
   );

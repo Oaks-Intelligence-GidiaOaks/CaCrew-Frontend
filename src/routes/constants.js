@@ -20,7 +20,7 @@ export const MY_ACCOUNT = "/my-account";
 export const MESSAGE = "/messages";
 export const DOCUMENT_CENTER = "/document-center";
 export const TRANSACTION_DATABASE = "/dashboard-transaction-database";
-export const REGISTRY = "/dashboard-registry";
+export const REGISTRY = "/registry";
 export const REGISTRY_DETAIL = "/dashboard-registry/detail/:id";
 
 // landing

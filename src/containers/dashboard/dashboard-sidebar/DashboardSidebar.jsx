@@ -195,7 +195,7 @@ const DashboardSidebar = () => {
           />
           Notification
         </NavLink>
-        {user && user?.role === "SuperAdmin" && (
+        {/* {user && user?.role === "SuperAdmin" && (
           <NavLink
             to={REGISTRY}
             activeclassname="active"
@@ -208,7 +208,7 @@ const DashboardSidebar = () => {
             />
             Registry
           </NavLink>
-        )}
+        )} */}
         <NavLink
           to={"/login"}
           // activeclassname="active"

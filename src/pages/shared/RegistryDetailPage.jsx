@@ -4,7 +4,7 @@ import React from "react";
 const RegistryDetailPage = () => {
   return (
     <>
-      <Dashboard component={RegistryDetail} />
+      <RegistryDetail />
     </>
   );
 };

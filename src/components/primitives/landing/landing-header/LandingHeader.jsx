@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { avartar, logoland } from "assets/images";
 import { Button, MenuBars } from "components";
 import Container from "components/guards/wrapper/Container";
+import { REGISTRY } from "routes/constants";
 
 const LandingHeader = ({ menuIsOpen, setMenuIsOpen }) => {
   const user = useSelector((state) => state.user.user);
@@ -25,7 +26,7 @@ const LandingHeader = ({ menuIsOpen, setMenuIsOpen }) => {
             <div className="landing_logowrap_links start">
               <div className="landing_header_text">Home</div>
               <div className="landing_header_text">About</div>
-              <div className="landing_header_text">Registry</div>
+              <Link to={REGISTRY} className="landing_header_text link">Registry</Link>
             </div>
             {user && (
               <Link
