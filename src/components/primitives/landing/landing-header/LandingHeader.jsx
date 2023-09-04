@@ -24,13 +24,15 @@ const LandingHeader = ({ menuIsOpen, setMenuIsOpen }) => {
           </Link>
           <div className="landing_logowrap center">
             <div className="landing_logowrap_links start">
-              <div className="landing_header_text">Home</div>
-              <div className="landing_header_text">About</div>
-              <Link to={REGISTRY} className="landing_header_text link">Registry</Link>
+              <Link to={"/"} className=" link landing_header_text">Home</Link>
+              <a href="/#about" className="link landing_header_text">About</a>
+              <Link to={REGISTRY} className="landing_header_text link">
+                Registry
+              </Link>
             </div>
             {user && (
               <Link
-              to={"/dashboard"}
+                to={"/dashboard"}
                 className="landing_header_textbtn_wrap center link"
               >
                 <img

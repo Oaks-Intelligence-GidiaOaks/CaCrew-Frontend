@@ -6,7 +6,7 @@ import ScrollEffect from "components/animation/ScrollEfect";
 const WhatWeDo = ({ image, background, list, heading, buttonBg, reverse }) => {
   return (
     <Container>
-      <div className={`what_we_do between ${reverse && "reverse"}`}>
+      <div id="about" className={`what_we_do between ${reverse && "reverse"}`}>
         <div className="what_we_do_img">
           <ScrollEffect
             properties={{
