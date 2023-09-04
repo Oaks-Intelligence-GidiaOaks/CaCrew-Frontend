@@ -1,4 +1,5 @@
 import React from "react";
+import "./Registry.scss"
 import { RegistryBanner, RegistrySearch, RegistryTable } from "components";
 
 const Registry = () => {
