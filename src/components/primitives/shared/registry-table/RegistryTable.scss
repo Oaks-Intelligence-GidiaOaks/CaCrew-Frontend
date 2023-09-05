@@ -83,3 +83,31 @@
     }
   }
 }
+
+.registry_search {
+  padding-bottom: 20px;
+
+  .registry_search_img {
+    margin-bottom: 10px;
+  }
+
+  .registry_search_head {
+    color: #143b76;
+    font-size: 36px;
+    text-align: center;
+
+    @media (max-width: 991px) {
+      font-size: 18px;
+    }
+  }
+
+  .registry_search_text {
+    margin-bottom: 38px;
+    text-align: center;
+  }
+
+  .registry_search_input {
+    max-width: 700px;
+    width: 100%;
+  }
+}

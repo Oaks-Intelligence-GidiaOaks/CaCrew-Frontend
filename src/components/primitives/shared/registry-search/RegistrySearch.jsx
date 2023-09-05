@@ -1,9 +1,11 @@
 import React from "react";
+import "./RegistrySearch.scss";
 import { regimg } from "assets/images";
 import { SearchInput } from "components";
-import "./RegistrySearch.scss";
+import { useGetRegistryQuery } from "services/registry.service";
 
 const RegistrySearch = () => {
+   
   return (
     <div className="registry_search center col">
       <img src={regimg} alt="banner" className="registry_search_img" />
