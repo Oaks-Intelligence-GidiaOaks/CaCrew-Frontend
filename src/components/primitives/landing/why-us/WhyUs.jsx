@@ -7,33 +7,33 @@ import ScrollEffect from "components/animation/ScrollEfect";
 const list = [
   {
     image: whyone,
-    heading: "Easy To Use",
+    heading: "Secured and Trusted",
     text: "We prioritize the security of user data and transactions. Carbonible employs robust security measures to safeguard sensitive information and build trust with our users.",
   },
   {
     image: whytwo,
-    heading: "Verified by Verra and ICR",
+    heading: "Competitive Pricing",
     text: "Competitive rates for buying and selling carbon credits in our dynamic marketplace. Low transaction fees when your Organization ",
   },
   {
     image: whythree,
-    heading: "Easy To Use",
+    heading: "Transparency",
     text: "We prioritize transparency in all our operations. Users can trust that their emissions reductions and carbon credits are accurately tracked and verified",
   },
   {
     image: whyfour,
-    heading: "Verified by Verra and ICR",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
+    heading: "Collaboration",
+    text: "We believe in the power of collective action. That's why we offer organizations the opportunity to add staff members who can actively track and engage in offset projects.",
   },
   {
     image: whyfive,
-    heading: "Verified by Verra and ICR",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
+    heading: "Easy To Use",
+    text: "Carbonible offers a user-friendly platform that makes it easy for organizations to engage in carbon trading and emissions reduction projects.",
   },
   {
     image: whyfive,
-    heading: "Verified by Verra and ICR",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
+    heading: "Compliance",
+    text: "Carbonible helps ensure compliance with emissions regulations and offers robust reporting tools. This simplifies the often complex process of meeting legal requirements.",
   },
 ];
 
