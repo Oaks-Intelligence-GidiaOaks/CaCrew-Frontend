@@ -14,8 +14,8 @@ const LandingFooter = () => {
               <div className="footer_head">Carbonible</div>
             </div>
             <div className="footer_wrap_logo_text">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy. Lorem ipsum dolor sit amet, consectetuer.
+              Join us in the global effort to combat climate change and make a
+              positive impact on our planet. Your Partner in Emissions Reduction
             </div>
           </div>
           <div className="footer_wrap_list">
@@ -31,8 +31,12 @@ const LandingFooter = () => {
           <div className="footer_wrap_list">
             <div className="footer_wrap_list_item_head">Contact</div>
             <div className="footer_input_wrap between">
-              <input type="text" className="footer_input" placeholder="Enter your email"/>
-              <Button className={"footer_btn"} text={"Submit"}/>
+              <input
+                type="text"
+                className="footer_input"
+                placeholder="Enter your email"
+              />
+              <Button className={"footer_btn"} text={"Submit"} />
             </div>
           </div>
         </div>
