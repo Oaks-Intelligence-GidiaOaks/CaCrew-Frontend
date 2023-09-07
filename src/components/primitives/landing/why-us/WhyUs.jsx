@@ -8,17 +8,17 @@ const list = [
   {
     image: whyone,
     heading: "Easy To Use",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
+    text: "We prioritize the security of user data and transactions. Carbonible employs robust security measures to safeguard sensitive information and build trust with our users.",
   },
   {
     image: whytwo,
     heading: "Verified by Verra and ICR",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
+    text: "Competitive rates for buying and selling carbon credits in our dynamic marketplace. Low transaction fees when your Organization ",
   },
   {
     image: whythree,
     heading: "Easy To Use",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy",
+    text: "We prioritize transparency in all our operations. Users can trust that their emissions reductions and carbon credits are accurately tracked and verified",
   },
   {
     image: whyfour,
