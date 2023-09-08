@@ -41,7 +41,12 @@ const RegistryTable = () => {
               <form onSubmit={handleSubmit}>
                 <Field
                   name="search"
-                  render={({ input }) => <SearchInput input={input} />}
+                  render={({ input }) => (
+                    <SearchInput
+                      input={input}
+                      placeholder="Search by registry, location and certificate id..."
+                    />
+                  )}
                 />
                 <FormSpy
                   subscription={{ values: true }}
@@ -60,7 +65,7 @@ const RegistryTable = () => {
           <div className="registry_table_head between">
             <div className="registry_table_head_item">ID</div>
             <div className="registry_table_head_item">Organisation</div>
-            <div className="registry_table_head_item">Country</div>
+            <div className="registry_table_head_item">Location</div>
             <div className="registry_table_head_item">Registry</div>
             <div className="registry_table_head_item">Amount</div>
             <div className="registry_table_head_item">Project</div>
