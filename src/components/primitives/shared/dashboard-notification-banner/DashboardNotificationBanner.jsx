@@ -1,8 +1,8 @@
 import React from "react";
-import "./DashboardMessageBanner.scss";
+import "../dashboard-message-banner/DashboardMessageBanner.scss";
 import { message, notification } from "assets/images";
 
-const DashboardMessageBanner = () => {
+const DashboardNotificationBanner = () => {
   return (
     <div className="dash_message_banner between">
       <div className="sub_heading dash_message_banner_heading">
@@ -32,4 +32,4 @@ const DashboardMessageBanner = () => {
   );
 };
 
-export default DashboardMessageBanner;
+export default DashboardNotificationBanner;

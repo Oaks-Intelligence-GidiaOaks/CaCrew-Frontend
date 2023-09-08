@@ -20,6 +20,7 @@ import {
   TRACK_PROJECT_OVERVIEW,
   MY_ACCOUNT,
   MESSAGE,
+  NOTIFICATION,
   DOCUMENT_CENTER,
   TRANSACTION_DATABASE,
   REGISTRY,
@@ -43,6 +44,7 @@ import {
   DashboardWalletPage,
   BuyCarbonCreditPage,
   DashboardMessagePage,
+  DashboardNotificationPage,
   RegistryPage,
   RegistryDetailPage,
   // super admin dasboard pages
@@ -76,8 +78,8 @@ const RoutesConfig = () => {
       <Route path={IDENTITY_DOCUMENT} element={<IdentityDocumentPage />} />
       <Route path={CERTIFICATE_DOCUMENT} element={<CertificatePage />} />
       <Route path={LETTER_AUTH_DOCUMENT} element={<LetterAuthPage />} />
-      <Route path={REGISTRY} element={<RegistryPage/>} />
-      <Route path={REGISTRY_DETAIL} element={<RegistryDetailPage/>} />
+      <Route path={REGISTRY} element={<RegistryPage />} />
+      <Route path={REGISTRY_DETAIL} element={<RegistryDetailPage />} />
       {/* <Route path={DASHBOARD} element={<DashScreen />} /> */}
       {/* Protected Routes */}
       <Route
@@ -131,6 +133,10 @@ const RoutesConfig = () => {
       <Route
         path={MESSAGE}
         element={<ProtectedRoute component={DashboardMessagePage} />}
+      />
+      <Route
+        path={NOTIFICATION}
+        element={<ProtectedRoute component={DashboardNotificationPage} />}
       />
       <Route
         path={DOCUMENT_CENTER}

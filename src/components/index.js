@@ -31,6 +31,7 @@ export { default as TrackTableComplete } from "components/primitives/super-admin
 export { default as MyAccountBanner } from "components/primitives/shared/my-account-banner/MyAccountBanner";
 export { default as MyAccountInfo } from "components/primitives/shared/my-account-info/MyAccountInfo";
 export { default as DashboardMessageBanner } from "components/primitives/shared/dashboard-message-banner/DashboardMessageBanner";
+export { default as DashboardNotificationBanner } from "components/primitives/shared/dashboard-notification-banner/DashboardNotificationBanner";
 export { default as MessagesList } from "components/primitives/shared/messages-list/MessagesList";
 export { default as ViewMessages } from "components/primitives/shared/view-messages/ViewMessages";
 export { default as MessageItem } from "components/primitives/shared/Message-item/MessageItem";

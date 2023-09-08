@@ -1,4 +1,3 @@
-
 // dashboard
 export { default as Dashboard } from "containers/dashboard/dashboard-container/Dashboard";
 export { default as OrgAdminDashboardHome } from "containers/dashboard/dashboard-content/org-admin-dashboard/org-admin-dashboard-home/OrgAdminDashboardHome";
@@ -14,12 +13,12 @@ export { default as TrackProject } from "containers/dashboard/dashboard-content/
 export { default as ProjectTrackOverview } from "containers/dashboard/dashboard-content/super-admin-dashboard/project-track-overview/ProjectTrackOverview";
 export { default as MyAccount } from "containers/dashboard/dashboard-content/shared/my-account/MyAccount";
 export { default as DashboardMessage } from "containers/dashboard/dashboard-content/shared/dashboard-message/DashboardMessage";
+export { default as DashboardNotification } from "containers/dashboard/dashboard-content/shared/dashboard-notification/DashboardNotification";
 export { default as DocumentCenter } from "containers/dashboard/dashboard-content/shared/dashboard-document-center/DocumentCenter";
 export { default as TransactionDatabase } from "containers/dashboard/dashboard-content/super-admin-dashboard/transaction-database/TransactionDatabase";
 export { default as Registry } from "containers/dashboard/dashboard-content/shared/registry/Registry";
 export { default as RegistryDetail } from "containers/dashboard/dashboard-content/shared/registry-detail/RegistryDetail";
 export { default as OrgStaffDashboard } from "containers/dashboard/dashboard-content/org-staff-dashboard/OrgStaffDashboard";
-
 
 // auth
 export { default as AuthHeader } from "containers/auth/auth-header/AuthHeader";

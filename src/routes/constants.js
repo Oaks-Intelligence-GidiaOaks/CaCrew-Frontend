@@ -18,6 +18,7 @@ export const TRACK_PROJECT_OVERVIEW = "/dashboard-track-project/overview/:id";
 export const BUY_CARBON_CREDIT = "/dashboard-wallet/buy";
 export const MY_ACCOUNT = "/my-account";
 export const MESSAGE = "/messages";
+export const NOTIFICATION = "/notifications";
 export const DOCUMENT_CENTER = "/document-center";
 export const TRANSACTION_DATABASE = "/dashboard-transaction-database";
 export const REGISTRY = "/registry";

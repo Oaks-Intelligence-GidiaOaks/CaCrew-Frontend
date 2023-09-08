@@ -17,6 +17,7 @@ import {
   docublue,
   messagewhte,
   messge,
+  notification,
   dbwhite,
   db,
   regw,
@@ -38,13 +39,11 @@ const DashboardSidebar = () => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     setPathName(location.pathname);
   }, [location]);
 
-  console.log(pathname, "path")
-
+  console.log(pathname, "path");
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -193,7 +192,19 @@ const DashboardSidebar = () => {
             alt="icon"
             className="dashboard_link_item_image"
           />
-          Notification
+          Messages
+        </NavLink>
+        <NavLink
+          to={"/notifications"}
+          activeclassname="active"
+          className={"link dashboard_link_item start"}
+        >
+          <img
+            src={pathname === "/notifications" ? notification : notification}
+            alt="icon"
+            className="dashboard_link_item_image"
+          />
+          Notifications
         </NavLink>
         {/* {user && user?.role === "SuperAdmin" && (
           <NavLink
