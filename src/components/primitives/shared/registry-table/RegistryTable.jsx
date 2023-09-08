@@ -22,7 +22,7 @@ const RegistryTable = () => {
   const onSubmit = (value) => {
     console.log(value);
   };
-  console.log(searchValue, "trans");
+  console.log(dataRegistry, "trans");
 
   return (
     <div className="registry_table">
@@ -60,6 +60,8 @@ const RegistryTable = () => {
           <div className="registry_table_head between">
             <div className="registry_table_head_item">ID</div>
             <div className="registry_table_head_item">Organisation</div>
+            <div className="registry_table_head_item">Country</div>
+            <div className="registry_table_head_item">Registry</div>
             <div className="registry_table_head_item">Amount</div>
             <div className="registry_table_head_item">Project</div>
             <div className="registry_table_head_item">Created</div>
@@ -78,6 +80,12 @@ const RegistryTable = () => {
                 </div>
                 <div className="registry_table_body_item">
                   {row?.organization_id?.organization_name || "------"}
+                </div>
+                <div className="registry_table_body_item">
+                  {row?.country || "------"}
+                </div>
+                <div className="registry_table_body_item">
+                  {row?.registry || "------"}
                 </div>
                 <div className="registry_table_body_item">
                   {row?.amount || "------"}
