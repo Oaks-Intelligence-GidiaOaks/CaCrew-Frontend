@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./ProjectDetails.scss";
 import {
   Button,
@@ -6,11 +6,49 @@ import {
   Shimmer,
   TrackProjectProgress,
 } from "components";
+import { messge } from "assets/images";
 import { convertDateToWord } from "utils/convertToDateFormat";
+import { useSendMessageMutation } from "services/message.service";
+import { useDispatch } from "react-redux";
+import { openModal } from "redux/slices/modal.slice";
+import { updateMessageId } from "redux/slices/message.slice";
+import rtkMutation from "utils/rtkMutation";
+import { useNavigate } from "react-router-dom";
 
 const ProjectDetails = ({ data }) => {
   console.log(data, "proj");
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const [
+    sendMessage,
+    {
+      isSuccess: isSuccessMessage,
+      isLoading: isLoadingMessage,
+      error: errorMessage,
+      isError: isErrorMessage,
+    },
+  ] = useSendMessageMutation();
+
+  const handleSendMessage = async (id) => {
+    console.log(id, "*id")
+    dispatch(updateMessageId({ message_id: null, chat_id: id}));
+    await rtkMutation(sendMessage, { reciever: id, message: " " });
+  };
+
+  useEffect(() => {
+    isErrorMessage &&
+      dispatch(
+        openModal({
+          title: "Failed To Initiate Messaging",
+          message: `${
+            errorMessage?.data?.message || "An error occured, try agiain"
+          }`,
+        })
+      );
+    isSuccessMessage && navigate("/messages");
+  }, [isSuccessMessage, isErrorMessage, errorMessage]);
   return (
     <>
       {data?.length >= 1 ? (
@@ -84,6 +122,18 @@ const ProjectDetails = ({ data }) => {
                   <div className="text project_details_key">End Date</div>
                   <div className="text project_details_value">
                     {item?.progress === "Phase6" ? "27 June 2023" : "Ongoing"}
+                  </div>
+                </div>
+                <div className="project_details_info">
+                  <div className="text project_details_key"></div>
+                  <div
+                    className="make_payment_details_message_seller start"
+                    onClick={() => handleSendMessage(item?.originator?._id)}
+                  >
+                    <img src={messge} alt="icon" />
+                    <span>
+                      {isLoadingMessage ? "Initiating..." : "Message Assignee"}{" "}
+                    </span>
                   </div>
                 </div>
               </div>
