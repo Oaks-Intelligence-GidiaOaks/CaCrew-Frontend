@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "components/guards/ProtectedRoute";
+import PublicRoute from "components/guards/PublicRoute";
 import { useSelector } from "react-redux";
 // Import contants
 import {
@@ -68,16 +69,21 @@ const RoutesConfig = () => {
   return (
     <Routes>
       {/* Public Routes */}
+      <Route path={LOGIN} element={<PublicRoute component={LoginPage} />} />
+      <Route
+        path={REGISTER_COMPANY}
+        element={<PublicRoute component={RegisterCompanyPage} />}
+      />
       {/* <Route path={HOME} element={<HomeScreen />} /> */}
       <Route path={LANDING} element={<LandingPage />} />
-      <Route path={LOGIN} element={<LoginPage />} />
-      <Route path={REGISTER_COMPANY} element={<RegisterCompanyPage />} />
+      {/* <Route path={LOGIN} element={<LoginPage />} /> */}
+      {/* <Route path={REGISTER_COMPANY} element={<RegisterCompanyPage />} /> */}
       <Route path={REGISTER_ADMIN} element={<RegisterAdminPage />} />
       <Route path={IDENTITY_DOCUMENT} element={<IdentityDocumentPage />} />
       <Route path={CERTIFICATE_DOCUMENT} element={<CertificatePage />} />
       <Route path={LETTER_AUTH_DOCUMENT} element={<LetterAuthPage />} />
-      <Route path={REGISTRY} element={<RegistryPage/>} />
-      <Route path={REGISTRY_DETAIL} element={<RegistryDetailPage/>} />
+      <Route path={REGISTRY} element={<RegistryPage />} />
+      <Route path={REGISTRY_DETAIL} element={<RegistryDetailPage />} />
       {/* <Route path={DASHBOARD} element={<DashScreen />} /> */}
       {/* Protected Routes */}
       <Route
