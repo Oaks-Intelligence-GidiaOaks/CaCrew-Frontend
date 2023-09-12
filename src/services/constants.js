@@ -46,6 +46,7 @@ export const VERIFY_OTP = "otp/verify_otp";
 // Messaging constants
 export const MESSAGE = "message";
 export const MARK_AS_READ = "message/mark_as_read";
+export const BROADCAST = "notification";
 
 // Documment center constants
 export const DOCUMENTS = "document";
