@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./DashboardNotification.scss";
 import { DashboardNotificationBanner } from "components";
-import { notificationImg, notif1, notif2 } from "assets/images";
+import { notif2 } from "assets/images";
 import { useGetBroadcastQuery } from "services/broadcast.service";
 import timeAgo from "utils/timeAgo";
 

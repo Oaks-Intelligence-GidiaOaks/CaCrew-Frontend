@@ -5,10 +5,11 @@ import { avartar, carbon, down, message, settings } from "assets/images";
 import { useGetUserQuery } from "services/user.service";
 import { useSelector } from "react-redux";
 import { MenuBars } from "components";
+import Notification from "./Notification";
 // import { openModal } from "redux/slices/modal.slice";
 // import { ModalBuyCarbon, ModalSellCarbon, MakePayment } from "components";
 
-const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
+const DashboardHeader = ({ menuIsOpen, setMenuIsOpen }) => {
   // const {data} = useGetUserQuery();
   // const dispatch = useDispatch();
   // const handle = () => {
@@ -16,7 +17,7 @@ const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
   // };
 
   const data = useSelector((state) => state.user.user);
-  const {data: user} = useGetUserQuery();
+  const { data: user } = useGetUserQuery();
 
   // console.log(isLoading, data, "headers");
 
@@ -32,18 +33,22 @@ const DashboardHeader = ({menuIsOpen, setMenuIsOpen}) => {
           to={"/my-account"}
           className="dashboard_header_textbtn_wrap center link"
         >
-          <img src={user?.photo_url || avartar} alt="icon" className="dashboard_avartar" />
+          <img
+            src={user?.photo_url || avartar}
+            alt="icon"
+            className="dashboard_avartar"
+          />
           <div className="dashboard_header_text">{data?.name}</div>
           <img src={down} alt="icon" className="dashboard_down_icon" />
         </Link>
         <Link to={"/my-account"} className="link">
           <img src={settings} alt="icon" className="dashboard_icon" />
         </Link>
-        <Link to={"/my-account"} className="link">
-          <img src={message} alt="icon" className="dashboard_icon" />
-        </Link>
+        <a className="link">
+          <Notification />
+        </a>
         <div className="dashboard_header_menu">
-          <MenuBars isOpen={menuIsOpen} handleClick={setMenuIsOpen}/>
+          <MenuBars isOpen={menuIsOpen} handleClick={setMenuIsOpen} />
         </div>
         {/* <Link to={"/register_company"} className="link">
           <img src={cart} alt="icon" className="dashboard_icon" />
