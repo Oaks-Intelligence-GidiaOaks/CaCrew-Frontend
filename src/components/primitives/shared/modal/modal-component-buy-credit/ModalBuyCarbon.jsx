@@ -6,9 +6,7 @@ import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { Form, Field, FormSpy } from "react-final-form";
 import { Button, Input } from "components";
 import capitalizeInitials from "utils/capitaliseInitials";
-import {
-  useInitiateBuyMutation,
-} from "services/transaction.service";
+import { useInitiateBuyMutation } from "services/transaction.service";
 import rtkMutation from "utils/rtkMutation";
 import formatPrice from "utils/formatPrice";
 // import { OnChange } from "react-final-form-listeners";
@@ -20,7 +18,6 @@ const ModalBuyCarbon = ({ data }) => {
     { data: dataInitiate, isSuccess, error, isError, isLoading },
   ] = useInitiateBuyMutation();
 
-  
   // carbon credit amount
   const [amount, setAmount] = useState();
   const [activeTab, setActiveTab] = useState("carbon");
@@ -43,6 +40,9 @@ const ModalBuyCarbon = ({ data }) => {
 
   const onSubmit = async (values) => {
     values["organization_id"] = data?.organization_id?._id;
+    if (activeTab === "fiat") {
+      values["amount"] = Math.ceil(amount / data?.amount_per_unit);
+    }
     await rtkMutation(initiateBuy, values);
 
     isSuccessRef.current &&
