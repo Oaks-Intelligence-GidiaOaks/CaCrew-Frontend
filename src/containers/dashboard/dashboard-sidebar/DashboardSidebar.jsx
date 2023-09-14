@@ -206,20 +206,20 @@ const DashboardSidebar = () => {
           />
           Notifications
         </NavLink>
-        {user && user?.role === "SuperAdmin" && (
-          <NavLink
-            to={REGISTRY}
-            activeclassname="active"
-            className={"link dashboard_link_item start"}
-          >
-            <img
-              src={pathname?.includes(REGISTRY) ? regw : regb}
-              alt="icon"
-              className="dashboard_link_item_image"
-            />
-            Registry
-          </NavLink>
-        )}
+        {/* {user && user?.role === "SuperAdmin" && ( */}
+        <NavLink
+          to={REGISTRY}
+          activeclassname="active"
+          className={"link dashboard_link_item start"}
+        >
+          <img
+            src={pathname?.includes(REGISTRY) ? regw : regb}
+            alt="icon"
+            className="dashboard_link_item_image"
+          />
+          Registry
+        </NavLink>
+        {/* )} */}
         <NavLink
           to={"/login"}
           // activeclassname="active"
