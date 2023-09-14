@@ -48,6 +48,7 @@ export const MESSAGE = "message";
 export const MARK_AS_READ = "message/mark_as_read";
 export const BROADCAST = "notification";
 export const GET_NOTIFICATION = "user_notifications";
+export const GET_NOTIFICATION_READ = "user_notifications/read";
 
 // Documment center constants
 export const DOCUMENTS = "document";

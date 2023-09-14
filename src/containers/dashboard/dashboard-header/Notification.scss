@@ -10,6 +10,17 @@
     }
   }
 
+  .unread-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.5rem;
+    padding: 0.2rem;
+  }
+
   .notification-dropdown {
     position: absolute;
     top: 100%;
