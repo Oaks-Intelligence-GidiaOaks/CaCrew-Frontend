@@ -167,7 +167,7 @@ const ProjectTrackOverview = () => {
                   style={{ marginTop: "14px" }}
                 >
                   <Button
-                    text={"Closed Project"}
+                    text={"Close Project"}
                     loading={isLoadingClosed}
                     onClick={() => {
                       rtkMutation(closeProject, id);
