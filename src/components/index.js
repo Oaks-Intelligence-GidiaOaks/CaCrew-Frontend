@@ -55,6 +55,7 @@ export { default as AssignProjectStaff } from "components/primitives/shared/moda
 export { default as StaffDashBanner } from "components/primitives/staff-dashboard/staff-dashboard-home-banner/StaffDashBanner";
 export { default as ChangePassword } from "components/primitives/shared/modal/change-password/ChangePassword";
 
+
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";
 export { default as AutoLogout } from "components/guards/AutoLogout";

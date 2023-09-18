@@ -2,7 +2,7 @@ import React from "react";
 import "./TrackTableComplete.scss";
 import { Link } from "react-router-dom";
 
-const TrackTableComplete = ({ data }) => {
+const TrackTableComplete = ({ data, link }) => {
   return (
     <div className="track_complete">
       <div className="track_table">
@@ -17,7 +17,7 @@ const TrackTableComplete = ({ data }) => {
           <Link
             key={row?._id}
             className={`track_table_body between`}
-            to={`/dashboard-track-project/overview/${row?._id}`}
+            to={`${link}${row?._id}`}
           >
             <div className="track_table_body_item">{row?._id}</div>
             <div className="track_table_body_item">

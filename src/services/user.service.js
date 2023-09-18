@@ -49,6 +49,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         "Message",
         "Document",
         "Registry",
+        "ClosedProjects",
       ],
     }),
 

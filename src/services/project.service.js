@@ -3,6 +3,9 @@ import {
   GET_ALL_PROJECTS,
   GET_HANDLED_PROJECTS,
   UPDATE_PROJECT,
+  CLOSE_PROJECT,
+  CLOSE_PROJECT_DETAIL,
+  ALL_CLOSE_PROJECT,
 } from "services/constants";
 import apiSlice from "./api/apiSlice";
 
@@ -17,11 +20,35 @@ export const projectApiSlice = apiSlice.injectEndpoints({
       transformResponse: (response) => {
         return response;
       },
-      providesTags: ["Projects"]
+      providesTags: ["Projects"],
       // providesTags: (result, error, arg) => [
       //   result?.length > 0 && { type: "Projects", id: "LIST" },
       //    ...result?.map((item) => ({ type: "Projects", id: item?._id })),
       // ],
+    }),
+
+    // Get all closed projects
+    allClosedProjects: builder.query({
+      query: () => ({
+        url: ALL_CLOSE_PROJECT,
+        method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+      providesTags: ["ClosedProjects"],
+    }),
+
+    // Get closed project detail
+    closedProjectDetail: builder.query({
+      query: (id) => ({
+        url: `${CLOSE_PROJECT_DETAIL}/${id}`,
+        method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+      // providesTags: ["Projects"],
     }),
 
     // Get handled project
@@ -57,6 +84,16 @@ export const projectApiSlice = apiSlice.injectEndpoints({
         body: data.body,
       }),
     }),
+
+    // Close Project
+    closeProject: builder.mutation({
+      // invalidatesTags: [{ type: "Projects", id: "LIST" }],
+      invalidatesTags: ["ClosedProjects"],
+      query: (id) => ({
+        url: `${CLOSE_PROJECT}/${id}`,
+        method: "PUT",
+      }),
+    }),
   }),
   // keepUnusedDataFor: 60,
   // refetchOnMountOrArgChange: true,
@@ -67,4 +104,7 @@ export const {
   useUpdateProjectMutation,
   useAllProjectsQuery,
   useGetHandledProjectsQuery,
+  useAllClosedProjectsQuery,
+  useCloseProjectMutation,
+  useClosedProjectDetailQuery,
 } = projectApiSlice;

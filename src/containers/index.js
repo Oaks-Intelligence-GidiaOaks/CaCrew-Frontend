@@ -19,6 +19,7 @@ export { default as TransactionDatabase } from "containers/dashboard/dashboard-c
 export { default as Registry } from "containers/dashboard/dashboard-content/shared/registry/Registry";
 export { default as RegistryDetail } from "containers/dashboard/dashboard-content/shared/registry-detail/RegistryDetail";
 export { default as OrgStaffDashboard } from "containers/dashboard/dashboard-content/org-staff-dashboard/OrgStaffDashboard";
+export { default as CloseProjectOverview } from "containers/dashboard/dashboard-content/super-admin-dashboard/close-project-overview/CloseProjectOverview";
 
 // auth
 export { default as AuthHeader } from "containers/auth/auth-header/AuthHeader";

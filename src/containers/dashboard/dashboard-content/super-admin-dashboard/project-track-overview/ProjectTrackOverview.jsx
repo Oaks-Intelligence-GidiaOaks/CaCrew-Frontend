@@ -10,7 +10,10 @@ import {
 // import { certificate } from "assets/images";
 import { Form, Field } from "react-final-form";
 import { useParams } from "react-router-dom";
-import { useAllProjectsQuery } from "services/project.service";
+import {
+  useAllProjectsQuery,
+  useCloseProjectMutation,
+} from "services/project.service";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 import { useSendOtpMutation } from "services/transaction.service";
@@ -19,6 +22,7 @@ import rtkMutation from "utils/rtkMutation";
 import { certificate } from "assets/images";
 import { formatOptionsList } from "utils/formatList";
 import { countries } from "static/countries";
+import { formatErrorResponse } from "utils/formatErrorResponse";
 
 const ProjectTrackOverview = () => {
   const [amount, setAmount] = useState(0);
@@ -33,6 +37,15 @@ const ProjectTrackOverview = () => {
   const [sendOtp, { data: otpData }] = useSendOtpMutation({
     skip: !isButtonClicked,
   });
+  const [
+    closeProject,
+    {
+      isLoading: isLoadingClosed,
+      isSuccess: isSuccessClosed,
+      isError: isErrorClosed,
+      error: errorClosed,
+    },
+  ] = useCloseProjectMutation();
 
   const projectData = data?.filter((item) => item?._id === id)[0];
 
@@ -45,7 +58,7 @@ const ProjectTrackOverview = () => {
     setAmount(value.amount);
     newObj.organization_id = id;
     newObj.project_id = project_id;
-    Object.assign(newObj, value)
+    Object.assign(newObj, value);
 
     // refetch()
     rtkMutation(sendOtp, null);
@@ -67,6 +80,21 @@ const ProjectTrackOverview = () => {
   // console.log(isButtonClicked, "value");
 
   // console.log(projectData, error, isSuccess, isLoading, "oneProj");
+  useEffect(() => {
+    isSuccessClosed && dispatch(
+      openModal({
+        title: "Project Closed Succesfully",
+        message: `The project with id: ${id} is closed succesfully`,
+        success: true
+      })
+    );
+    isErrorClosed && dispatch(
+      openModal({
+        title: "Project Closed Succesfully",
+        message: formatErrorResponse(errorClosed)
+      })
+    );
+  })
 
   return (
     <div className="proj_track_overview dash_pad">
@@ -133,6 +161,18 @@ const ProjectTrackOverview = () => {
                   style={{ marginTop: "14px" }}
                 >
                   <TrackProjectProgress phase={projectData?.progress} />
+                </div>
+                <div
+                  className="proj_track_overview_info_wrap_item_value"
+                  style={{ marginTop: "14px" }}
+                >
+                  <Button
+                    text={"Closed Project"}
+                    loading={isLoadingClosed}
+                    onClick={() => {
+                      rtkMutation(closeProject, id);
+                    }}
+                  />
                 </div>
               </div>
             </div>

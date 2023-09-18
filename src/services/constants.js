@@ -23,6 +23,9 @@ export const STAFF_ASSIGN_PROJ_HANDLER = "staff/assign_project_handler";
 export const ADD_PROJECT = "project/create";
 export const GET_ALL_PROJECTS = "project";
 export const UPDATE_PROJECT = "project/";
+export const CLOSE_PROJECT = "project/close";
+export const ALL_CLOSE_PROJECT = "project/closed_project";
+export const CLOSE_PROJECT_DETAIL = "project/closed_project";
 export const GET_HANDLED_PROJECTS = "project/project_handled";
 
 // Transaction constants

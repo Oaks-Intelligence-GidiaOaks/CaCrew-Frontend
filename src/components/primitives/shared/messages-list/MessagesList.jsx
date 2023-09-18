@@ -18,7 +18,7 @@ const MessagesList = ({ setShowMessages, showMessages }) => {
   const [markAsRead, { isSuccess }] = useMarkAsReadMutation();
   const id = user?._id;
   const { data } = useGetAllMessagesQuery(id);
-  console.log(data, "****testDa");
+  // console.log(data, "****testDa");
 
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -30,7 +30,6 @@ const MessagesList = ({ setShowMessages, showMessages }) => {
     }
   };
 
-  // const message = useSelector((state) => state.message);
 
   // const filterData = useMemo(() => {
   //   const uniqueIds = new Set();

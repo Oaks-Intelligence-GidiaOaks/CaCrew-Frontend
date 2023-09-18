@@ -27,6 +27,7 @@ import {
   REGISTRY,
   REGISTRY_DETAIL,
   LANDING,
+  CLOSED_PROJECT,
 } from "routes/constants";
 
 // Import auth pages
@@ -55,6 +56,7 @@ import {
   ProjectTrackOverviewPage,
   MyAccountPage,
   TransactionDatabasePage,
+  CloseProjectOverviewPage,
   // organisation admin dasboard pages
   OrgAdminDashboardHomePage,
   // staff
@@ -151,6 +153,10 @@ const RoutesConfig = () => {
       <Route
         path={TRANSACTION_DATABASE}
         element={<ProtectedRoute component={TransactionDatabasePage} />}
+      />
+      <Route
+        path={CLOSED_PROJECT}
+        element={<ProtectedRoute component={CloseProjectOverviewPage} />}
       />
     </Routes>
   );

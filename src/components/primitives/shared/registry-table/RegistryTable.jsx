@@ -22,7 +22,7 @@ const RegistryTable = () => {
   const onSubmit = (value) => {
     console.log(value);
   };
-  console.log(dataRegistry, "trans");
+  // console.log(dataRegistry, "trans");
 
   return (
     <div className="registry_table">

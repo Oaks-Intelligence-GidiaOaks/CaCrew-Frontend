@@ -15,6 +15,7 @@ export const STAFF = "/dashboard-staff";
 export const WALLET = "/dashboard-wallet";
 export const TRACK_PROJECT = "/dashboard-track-project";
 export const TRACK_PROJECT_OVERVIEW = "/dashboard-track-project/overview/:id";
+export const CLOSED_PROJECT = "/dashboard-track-project/closed/:id";
 export const BUY_CARBON_CREDIT = "/dashboard-wallet/buy";
 export const MY_ACCOUNT = "/my-account";
 export const MESSAGE = "/messages";

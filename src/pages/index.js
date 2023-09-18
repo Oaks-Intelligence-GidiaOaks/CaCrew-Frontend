@@ -24,6 +24,7 @@ export { default as SupAdminDashHomePage } from "pages/super-admin-dashboard/Sup
 export { default as TrackProjectPage } from "pages/super-admin-dashboard/TrackProjectPage";
 export { default as ProjectTrackOverviewPage } from "pages/super-admin-dashboard/ProjectTrackOverviewPage";
 export { default as TransactionDatabasePage } from "pages/super-admin-dashboard/TransactionDatabasePage";
+export { default as CloseProjectOverviewPage } from "pages/super-admin-dashboard/CloseProjectOverviewPage";
 
 // Organisation admin pages exports
 export { default as OrgAdminDashboardHomePage } from "pages/org-admin-dashboard/OrgAdminDashboardHomePage";
