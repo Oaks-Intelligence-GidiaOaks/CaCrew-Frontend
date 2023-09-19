@@ -77,28 +77,30 @@
       padding: 20px;
     }
     .proj_track_overview_update_value {
-      width: 45%;
+      width: 47%;
+      // background-color: red;
       @media (max-width: 991px) {
         width: 100%;
         margin-bottom: 30px;
       }
     }
     .proj_track_overview_update_credit {
-      width: 45%;
+      width: 47%;
       @media (max-width: 991px) {
         width: 100%;
       }
     }
   }
-    .validation_proj_select_title {
-      font-size: 16px;
-      color: $blue;
-      margin-bottom: 20px;
-      margin-top: 45px;
-      text-decoration: underline;
-  
-      @media (max-width: 991px) {
-        font-size: 12px;
-      }
+  .validation_proj_select_title {
+    font-size: 16px;
+    color: $blue;
+    margin-bottom: 20px;
+    margin-top: 65px;
+    text-decoration: underline;
+
+    @media (max-width: 991px) {
+      font-size: 12px;
+      margin-top: 35px;
     }
+  }
 }

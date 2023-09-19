@@ -116,7 +116,7 @@ const Input = ({
           </div>
         )}
         {date && (
-          <div className="date center">
+          <div className="date end">
             <img src={calendar} alt="icon" />
           </div>
         )}
