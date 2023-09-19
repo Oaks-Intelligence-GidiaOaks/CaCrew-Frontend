@@ -93,7 +93,7 @@ const Input = ({
             className="datepicker"
             selected={input.value ? new Date(input.value) : null}
             onChange={(date) =>
-              input.onChange(date.toISOString().split("T")[0])
+              input.onChange(date?.toISOString()?.split("T")[0])
             }
             dateFormat="yyyy-MM-dd"
           />

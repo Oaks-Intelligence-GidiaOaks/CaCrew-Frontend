@@ -90,4 +90,15 @@
       }
     }
   }
+    .validation_proj_select_title {
+      font-size: 16px;
+      color: $blue;
+      margin-bottom: 20px;
+      margin-top: 45px;
+      text-decoration: underline;
+  
+      @media (max-width: 991px) {
+        font-size: 12px;
+      }
+    }
 }

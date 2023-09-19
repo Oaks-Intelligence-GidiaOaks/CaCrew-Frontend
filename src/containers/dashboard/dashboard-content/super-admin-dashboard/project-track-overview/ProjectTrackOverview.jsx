@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import {
   useAllProjectsQuery,
   useCloseProjectMutation,
+  useUpdateProjectMutation,
 } from "services/project.service";
 import { useDispatch } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
@@ -37,6 +38,15 @@ const ProjectTrackOverview = () => {
   const [sendOtp, { data: otpData }] = useSendOtpMutation({
     skip: !isButtonClicked,
   });
+  const [
+    updateProject,
+    {
+      isLoading: loadingValidateDate,
+      isError: isErrorValidate,
+      isSuccess: isSuccessValidate,
+      error: errorValidate,
+    },
+  ] = useUpdateProjectMutation();
   const [
     closeProject,
     {
@@ -77,24 +87,51 @@ const ProjectTrackOverview = () => {
     // console.log(value, "val");
   };
 
+  const submitValidationDates = (values) => {
+    values['project_name'] = projectData?.project_name
+    rtkMutation(updateProject, { id, body: values });
+    // console.log(values);
+  };
+
   // console.log(isButtonClicked, "value");
 
   // console.log(projectData, error, isSuccess, isLoading, "oneProj");
   useEffect(() => {
-    isSuccessClosed && dispatch(
-      openModal({
-        title: "Project Closed Succesfully",
-        message: `The project with id: ${id} is closed succesfully`,
-        success: true
-      })
-    );
-    isErrorClosed && dispatch(
-      openModal({
-        title: "Project Closed Succesfully",
-        message: formatErrorResponse(errorClosed)
-      })
-    );
-  })
+    isSuccessClosed &&
+      dispatch(
+        openModal({
+          title: "Project Closed Succesfully",
+          message: `The project with id: ${id} is closed succesfully`,
+          success: true,
+        })
+      );
+    isErrorClosed &&
+      dispatch(
+        openModal({
+          title: "Project Closed Failed",
+          message:
+            formatErrorResponse(errorClosed) ||
+            "An error ocurred, please try again",
+        })
+      );
+    isSuccessValidate &&
+      dispatch(
+        openModal({
+          title: "Project Validation Period",
+          message: `The project with id: ${id} has been updated succesfully`,
+          success: true,
+        })
+      );
+    isErrorValidate &&
+      dispatch(
+        openModal({
+          title: "Project Validation Period",
+          message:
+            formatErrorResponse(errorValidate) ||
+            "An error ocurred, please try again",
+        })
+      );
+  });
 
   return (
     <div className="proj_track_overview dash_pad">
@@ -202,6 +239,39 @@ const ProjectTrackOverview = () => {
             data={projectData}
             amount={amount}
             // isSuccessCredit={isSuccessCredit}
+          />
+          <div className="validation_proj_select_title">
+            Update Project Validation{" "}
+          </div>
+          <Form
+            onSubmit={submitValidationDates}
+            render={({ handleSubmit, valid }) => (
+              <form onSubmit={handleSubmit}>
+                <Field
+                  name="validation_start_date"
+                  label="Validation Start Date"
+                  date
+                  component={Input}
+                  placeholder="Validation Start Date"
+                  validate={required("Validation Start Date")}
+                />
+                <Field
+                  name="validation_end_date"
+                  label="Validation End Date"
+                  date
+                  component={Input}
+                  placeholder="Enter Validation End Date"
+                  validate={required("Validation End Date")}
+                />
+
+                <Button
+                  type={"submit"}
+                  text={"Submit"}
+                  disabled={!valid}
+                  loading={loadingValidateDate}
+                />
+              </form>
+            )}
           />
         </div>
         <div className="proj_track_overview_update_credit">
