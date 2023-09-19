@@ -21,7 +21,7 @@ const GenerateStatementTable = () => {
       transaction_type: "SomeType",
       createdAt: new Date().toISOString(),
       status: "Completed",
-      document_url: "#",
+      total_amount: "100",
     },
     {
       _id: "123456",
@@ -32,7 +32,7 @@ const GenerateStatementTable = () => {
       transaction_type: "SomeType",
       createdAt: new Date().toISOString(),
       status: "Completed",
-      document_url: "#",
+      total_amount: "100",
     },
     {
       _id: "123457",
@@ -43,7 +43,7 @@ const GenerateStatementTable = () => {
       transaction_type: "SomeType",
       createdAt: new Date().toISOString(),
       status: "Completed",
-      document_url: "#",
+      total_amount: "100",
     },
     {
       _id: "123458",
@@ -54,7 +54,18 @@ const GenerateStatementTable = () => {
       transaction_type: "SomeType",
       createdAt: new Date().toISOString(),
       status: "Completed",
-      document_url: "#",
+      total_amount: "100",
+    },
+    {
+      _id: "123458",
+      buyer: { organization_name: "BuyerOrg1" },
+      seller: { organization_name: "SellerOrg1" },
+      amount: 1000,
+      transaction_fee: 50,
+      transaction_type: "SomeType",
+      createdAt: new Date().toISOString(),
+      status: "Completed",
+      total_amount: "100",
     },
   ];
 
@@ -87,12 +98,16 @@ const GenerateStatementTable = () => {
                   <div className="dashboard_table_head_item">Seller</div>
                   <div className="dashboard_table_head_item">Amount</div>
                   <div className="dashboard_table_head_item">
+                    Transaction Fee
+                  </div>
+                  <div className="dashboard_table_head_item">
                     Transaction ID
                   </div>
                   <div className="dashboard_table_head_item">
                     Time of Transaction
                   </div>
                   <div className="dashboard_table_head_item">Status</div>
+                  <div className="dashboard_table_head_item">Total Amount</div>
                 </div>
                 {dummyTransactions.map((row, idx) => (
                   <div
@@ -110,12 +125,18 @@ const GenerateStatementTable = () => {
                     <div className="dashboard_table_body_item">
                       {row.amount}
                     </div>
+                    <div className="dashboard_table_body_item">
+                      {row.transaction_fee}
+                    </div>
                     <div className="dashboard_table_body_item">{row._id}</div>
                     <div className="dashboard_table_body_item">
                       {new Date(row.createdAt).toLocaleString()}
                     </div>
                     <div className="dashboard_table_body_item">
                       {row.status}
+                    </div>
+                    <div className="dashboard_table_body_item">
+                      {row.total_amount}
                     </div>
                   </div>
                 ))}
