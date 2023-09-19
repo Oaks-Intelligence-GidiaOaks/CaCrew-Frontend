@@ -58,6 +58,9 @@ const Notification = () => {
       {unreadCount > 0 && <span className="unread-count">{unreadCount}</span>}
       {showNotifications && (
         <div className="notification-dropdown" ref={dropdownRef}>
+          <div>
+            <h5 className="header">Notifications</h5>
+          </div>
           {unreadCount > 0 ? (
             dataNotification
               .filter((notif) => !notif.isRead)

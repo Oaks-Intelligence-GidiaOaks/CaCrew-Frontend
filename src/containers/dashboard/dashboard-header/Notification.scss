@@ -9,7 +9,12 @@
       transform: scale(1.05);
     }
   }
-
+  .header {
+    background-color: #143b76;
+    color: #fff;
+    padding: 13px;
+    text-align: center;
+  }
   .unread-count {
     position: absolute;
     top: 0;

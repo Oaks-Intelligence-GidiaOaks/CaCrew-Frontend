@@ -25,6 +25,9 @@ const DashboardWalletCon = () => {
     dispatch(openModal({ component: "ModalRetireCredit" }));
   };
 
+  const handleOpenModalStatement = () => {
+    dispatch(openModal({ component: "ModalGenerateStatement" }));
+  };
 
   return (
     <div className="dashboard_wallet_container">
@@ -53,6 +56,7 @@ const DashboardWalletCon = () => {
           <Button
             text={"Generate Statement"}
             className={"dashboard_wallet_con_btntwo"}
+            onClick={handleOpenModalStatement}
           />
         </div>
       </div>

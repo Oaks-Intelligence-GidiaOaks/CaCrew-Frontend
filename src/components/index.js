@@ -22,6 +22,8 @@ export { default as ModalBuyCarbon } from "components/primitives/shared/modal/mo
 export { default as ModalSellCarbon } from "components/primitives/shared/modal/modal-component-sell-credit/ModalSellCarbon";
 export { default as ModalSellOrder } from "components/primitives/shared/modal/modal-component-sell-order/ModalSellOrder";
 export { default as ModalBuyOrder } from "components/primitives/shared/modal/modal-component-buy-order/ModalBuyOrder";
+export { default as ModalGenerateStatement } from "components/primitives/shared/modal/modal-generate-statement/ModalGenerateStatement";
+export { default as GenerateStatementTable } from "components/primitives/shared/modal/statement-table/GenerateStatementTable";
 export { default as ModalRetireCredit } from "components/primitives/shared/modal/modal-retire-credit/ModalRetireCredit";
 export { default as MakePayment } from "components/primitives/shared/modal/make-payment/MakePayment";
 export { default as ConfirmPayment } from "components/primitives/shared/modal/confirm-payment/ConfirmPayment";
@@ -54,7 +56,6 @@ export { default as RegistryCountTable } from "components/primitives/shared/regi
 export { default as AssignProjectStaff } from "components/primitives/shared/modal/assign-project-staff/AssignProjectStaff";
 export { default as StaffDashBanner } from "components/primitives/staff-dashboard/staff-dashboard-home-banner/StaffDashBanner";
 export { default as ChangePassword } from "components/primitives/shared/modal/change-password/ChangePassword";
-
 
 // guards
 export { default as ProtectedRoute } from "components/guards/ProtectedRoute";

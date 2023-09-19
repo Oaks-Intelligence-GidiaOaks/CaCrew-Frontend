@@ -22,6 +22,8 @@ import {
   VerifyOtp,
   AssignProjectStaff,
   ChangePassword,
+  ModalGenerateStatement,
+  GenerateStatementTable,
 } from "components";
 
 const Modal = () => {
@@ -63,6 +65,8 @@ const Modal = () => {
     ModalBuyOrder: <ModalBuyOrder />,
     ChangePassword: <ChangePassword />,
     ModalRetireCredit: <ModalRetireCredit />,
+    ModalGenerateStatement: <ModalGenerateStatement />,
+    GenerateStatementTable: <GenerateStatementTable />,
     ConfirmRetireCredit: <ConfirmRetireCredit data={data} />,
     UpdateOrganisationModal: <UpdateOrganisationModal />,
     UpdateProfileModal: <UpdateProfileModal />,

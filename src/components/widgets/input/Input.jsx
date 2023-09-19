@@ -36,7 +36,10 @@ const Input = ({
       <div className="input_label_wrap between">
         {label && (
           <div className="input_label_wrap_text">
-            {label} {required && <span className="input_label_wrap_text_required">*</span>}
+            {label}{" "}
+            {required && (
+              <span className="input_label_wrap_text_required">*</span>
+            )}
           </div>
         )}
 
@@ -77,13 +80,22 @@ const Input = ({
             rows={4}
           />
         ) : date ? (
+          // <DatePicker
+          //   className="datepicker"
+          //   {...input}
+          //   selected={input.value}
+          //   onChange={input.onChange}
+          //   onChangeRaw={(date) => input.onChange(parseDate(date))}
+          //   dateFormat="dd/MM/yyyy"
+          // />
+
           <DatePicker
             className="datepicker"
-            {...input}
-            selected={input.value}
-            onChange={input.onChange}
-            //  onChangeRaw={(date) => input.onChange(parseDate(date))}
-            dateFormat="dd/MM/yyyy"
+            selected={input.value ? new Date(input.value) : null}
+            onChange={(date) =>
+              input.onChange(date.toISOString().split("T")[0])
+            }
+            dateFormat="yyyy-MM-dd"
           />
         ) : (
           <input
@@ -92,12 +104,15 @@ const Input = ({
             style={{ width: (!date || !password) && "100%" }}
             type={password ? passwordType : type}
             placeholder={placeholder}
-            disabled = {disabled}
+            disabled={disabled}
           />
         )}
         {password && (
           <div className="date center" onClick={togglePasswordType}>
-            <img src={passwordType === "password" ? eyeclose : eye } alt="icon" />
+            <img
+              src={passwordType === "password" ? eyeclose : eye}
+              alt="icon"
+            />
           </div>
         )}
         {date && (
@@ -106,7 +121,9 @@ const Input = ({
           </div>
         )}
       </div>
-      {meta.error && meta.touched && <span className="input_error">{meta.error}</span>}
+      {meta.error && meta.touched && (
+        <span className="input_error">{meta.error}</span>
+      )}
     </div>
   );
 };
