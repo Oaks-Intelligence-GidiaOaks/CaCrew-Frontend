@@ -16,6 +16,7 @@ import {
   GET_CHART_DATA,
   GET_OTP,
   VERIFY_OTP,
+  GET_MY_STATEMENT,
 } from "./constants";
 
 const transactionApiSlice = apiSlice.injectEndpoints({
@@ -36,7 +37,9 @@ const transactionApiSlice = apiSlice.injectEndpoints({
     getMyTransaction: builder.query({
       providesTags: ["Transaction"],
       query: ({ page, type, status }) => ({
-        url: `${GET_MY_TRANSACTIONS}?${page && `page=${page}`}&type=${type}&status=${status}`,
+        url: `${GET_MY_TRANSACTIONS}?${
+          page && `page=${page}`
+        }&type=${type}&status=${status}`,
         method: "GET",
       }),
       transformResponse: (response) => {
@@ -218,6 +221,21 @@ const transactionApiSlice = apiSlice.injectEndpoints({
         return response;
       },
     }),
+
+    // get my statement
+    getMyStatement: builder.mutation({
+      query: (data) => ({
+        url: `${GET_MY_STATEMENT}`,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
   }),
 });
 
@@ -238,4 +256,5 @@ export const {
   useSetBuyOrderMutation,
   useTransactionFailedMutation,
   useTransactionSuccessMutation,
+  useGetMyStatementMutation,
 } = transactionApiSlice;

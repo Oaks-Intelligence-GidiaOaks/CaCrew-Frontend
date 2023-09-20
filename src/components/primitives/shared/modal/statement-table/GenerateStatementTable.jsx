@@ -1,73 +1,28 @@
-import React from "react";
+import { useEffect } from "react";
 import "./GenerateStatementTable.scss";
 import { Form, Field, FormSpy } from "react-final-form";
 import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
 import { close } from "assets/images";
+import { useGetMyStatementMutation } from "services/transaction.service";
 
-const GenerateStatementTable = () => {
+const GenerateStatementTable = ({ data }) => {
   const dispatch = useDispatch();
+
+  const [getMyStatement, { data: statementData, isLoading, isError }] =
+    useGetMyStatementMutation();
+
+  useEffect(() => {
+    getMyStatement(data);
+  }, [data]);
+
   const handleCloseModal = () => {
     dispatch(closeComponentModal());
   };
 
-  const dummyTransactions = [
-    {
-      _id: "123456",
-      buyer: { organization_name: "BuyerOrg1" },
-      seller: { organization_name: "SellerOrg1" },
-      amount: 1000,
-      transaction_fee: 50,
-      transaction_type: "SomeType",
-      createdAt: new Date().toISOString(),
-      status: "Completed",
-      total_amount: "100",
-    },
-    {
-      _id: "123456",
-      buyer: { organization_name: "BuyerOrg1" },
-      seller: { organization_name: "SellerOrg1" },
-      amount: 1000,
-      transaction_fee: 50,
-      transaction_type: "SomeType",
-      createdAt: new Date().toISOString(),
-      status: "Completed",
-      total_amount: "100",
-    },
-    {
-      _id: "123457",
-      buyer: { organization_name: "BuyerOrg1" },
-      seller: { organization_name: "SellerOrg1" },
-      amount: 1000,
-      transaction_fee: 50,
-      transaction_type: "SomeType",
-      createdAt: new Date().toISOString(),
-      status: "Completed",
-      total_amount: "100",
-    },
-    {
-      _id: "123458",
-      buyer: { organization_name: "BuyerOrg1" },
-      seller: { organization_name: "SellerOrg1" },
-      amount: 1000,
-      transaction_fee: 50,
-      transaction_type: "SomeType",
-      createdAt: new Date().toISOString(),
-      status: "Completed",
-      total_amount: "100",
-    },
-    {
-      _id: "123458",
-      buyer: { organization_name: "BuyerOrg1" },
-      seller: { organization_name: "SellerOrg1" },
-      amount: 1000,
-      transaction_fee: 50,
-      transaction_type: "SomeType",
-      createdAt: new Date().toISOString(),
-      status: "Completed",
-      total_amount: "100",
-    },
-  ];
+  const transactions = statementData?.transactions || [];
+
+  console.log("Statement Data: ", statementData);
 
   return (
     <div className="modal_generate_statement-table">
@@ -83,9 +38,11 @@ const GenerateStatementTable = () => {
       <div className="modal_generate_statement_info_wrap ">
         <div className="modal_generate_statement_info_bold between">
           My Statement of Account
-          <span>
-            <button className="export-btn">Export Statement</button>
-          </span>
+          {transactions.length > 0 && (
+            <span>
+              <button className="export-btn">Export Statement</button>
+            </span>
+          )}
         </div>
       </div>
       <div className="modal_generate_statement_input_warp">
@@ -109,37 +66,46 @@ const GenerateStatementTable = () => {
                   <div className="dashboard_table_head_item">Status</div>
                   <div className="dashboard_table_head_item">Total Amount</div>
                 </div>
-                {dummyTransactions.map((row, idx) => (
-                  <div
-                    key={row._id}
-                    className={`dashboard_table_body between ${
-                      (idx + 1) % 2 === 0 && "dashboard_table_body_bg"
-                    }`}
-                  >
-                    <div className="dashboard_table_body_item">
-                      {row.buyer.organization_name}
-                    </div>
-                    <div className="dashboard_table_body_item">
-                      {row.seller.organization_name}
-                    </div>
-                    <div className="dashboard_table_body_item">
-                      {row.amount}
-                    </div>
-                    <div className="dashboard_table_body_item">
-                      {row.transaction_fee}
-                    </div>
-                    <div className="dashboard_table_body_item">{row._id}</div>
-                    <div className="dashboard_table_body_item">
-                      {new Date(row.createdAt).toLocaleString()}
-                    </div>
-                    <div className="dashboard_table_body_item">
-                      {row.status}
-                    </div>
-                    <div className="dashboard_table_body_item">
-                      {row.total_amount}
-                    </div>
+
+                {transactions.length === 0 ? (
+                  <div className="dashboard_table_no_records">
+                    No records found, try a different date.
                   </div>
-                ))}
+                ) : (
+                  transactions &&
+                  transactions.map((row, idx) => (
+                    <div
+                      key={row._id}
+                      className={`dashboard_table_body between ${
+                        (idx + 1) % 2 === 0 && "dashboard_table_body_bg"
+                      }`}
+                    >
+                      <div className="dashboard_table_body_item">
+                        {row.buyer.organization_name}
+                      </div>
+                      <div className="dashboard_table_body_item">
+                        {row.seller.organization_name}
+                      </div>
+                      <div className="dashboard_table_body_item">
+                        {row.amount}
+                      </div>
+                      <div className="dashboard_table_body_item">
+                        {row.transaction_fee || "-"}
+                      </div>
+                      <div className="dashboard_table_body_item">{row._id}</div>
+                      <div className="dashboard_table_body_item">
+                        {new Date(row.transaction_date).toLocaleString()}
+                      </div>
+                      <div className="dashboard_table_body_item">
+                        {row.status}
+                      </div>
+                      <div className="dashboard_table_body_item">
+                        {/* example field: */}
+                        {row.total_amount || row.amount}
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
