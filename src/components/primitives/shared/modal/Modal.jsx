@@ -66,7 +66,7 @@ const Modal = () => {
     ChangePassword: <ChangePassword />,
     ModalRetireCredit: <ModalRetireCredit />,
     ModalGenerateStatement: <ModalGenerateStatement />,
-    GenerateStatementTable: <GenerateStatementTable />,
+    GenerateStatementTable: <GenerateStatementTable data={data} />,
     ConfirmRetireCredit: <ConfirmRetireCredit data={data} />,
     UpdateOrganisationModal: <UpdateOrganisationModal />,
     UpdateProfileModal: <UpdateProfileModal />,

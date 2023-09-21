@@ -227,10 +227,7 @@ const transactionApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${GET_MY_STATEMENT}`,
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: data,
       }),
       transformResponse: (response) => {
         return response;

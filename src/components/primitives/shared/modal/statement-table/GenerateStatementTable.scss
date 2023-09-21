@@ -5,8 +5,10 @@
 .modal_generate_statement-table {
   background-color: #fff;
   padding-top: 78px;
-  padding-left: 91px;
-  padding-right: 91px;
+  // padding-left: 91px;
+  // padding-right: 91px;
+  padding-left: 25px;
+  padding-right: 25px;
   padding-bottom: 29px;
   border-radius: 8px;
   box-shadow: 4px 2px 15px rgba(0, 0, 0, 0.1);
@@ -207,7 +209,7 @@
       width: 100%;
       overflow-x: scroll;
       overflow-y: auto;
-      max-height: 400px;
+      max-height: 500px;
 
       .dashboard_table {
         width: 100%;

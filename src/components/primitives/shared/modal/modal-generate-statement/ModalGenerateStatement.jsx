@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./ModalGenerateStatement.scss";
 import { close } from "assets/images";
 import { useDispatch } from "react-redux";
@@ -13,9 +14,10 @@ const ModalGenerateStatement = () => {
   const handleCloseModal = () => {
     dispatch(closeComponentModal());
   };
+  const modalState = useSelector((state) => state.modal);
+  console.log(modalState);
 
-  const onSubmit = async (values) => {
-    console.log(values);
+  const onSubmit = (values) => {
     dispatch(
       openModal({
         component: "GenerateStatementTable",
