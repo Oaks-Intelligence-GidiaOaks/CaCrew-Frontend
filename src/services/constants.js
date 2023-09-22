@@ -61,3 +61,5 @@ export const GET_REGISTRY = "registry/get_carbon_credit_registry";
 export const GET_REGISTRY_COUNT = "registry/get_carbon_credit_registry_count";
 
 export const GET_MY_STATEMENT = "transaction/generate_statement";
+export const GET_ALL_STATEMENT =
+  "transaction/generate_all_transaction_statement";

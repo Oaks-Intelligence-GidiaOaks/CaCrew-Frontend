@@ -29,6 +29,10 @@ const DashboardWalletCon = () => {
     dispatch(openModal({ component: "ModalGenerateStatement" }));
   };
 
+  const handleOpenModalAllTransactionStatement = () => {
+    dispatch(openModal({ component: "ModalGenerateAllTransactionStatement" }));
+  };
+
   return (
     <div className="dashboard_wallet_container">
       <DashboardWalletBanner />
@@ -54,9 +58,14 @@ const DashboardWalletCon = () => {
             onClick={handleOpenModalRetire}
           />
           <Button
-            text={"Generate Statement"}
+            text={"Generate My Statement"}
             className={"dashboard_wallet_con_btntwo"}
             onClick={handleOpenModalStatement}
+          />
+          <Button
+            text={"Generate All Transaction Statement"}
+            className={"dashboard_wallet_con_btntwo"}
+            onClick={handleOpenModalAllTransactionStatement}
           />
         </div>
       </div>

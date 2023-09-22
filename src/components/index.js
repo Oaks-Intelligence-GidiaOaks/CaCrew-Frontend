@@ -24,6 +24,8 @@ export { default as ModalSellOrder } from "components/primitives/shared/modal/mo
 export { default as ModalBuyOrder } from "components/primitives/shared/modal/modal-component-buy-order/ModalBuyOrder";
 export { default as ModalGenerateStatement } from "components/primitives/shared/modal/modal-generate-statement/ModalGenerateStatement";
 export { default as GenerateStatementTable } from "components/primitives/shared/modal/statement-table/GenerateStatementTable";
+export { default as ModalGenerateAllTransactionStatement } from "components/primitives/shared/modal/modal-all-statement-transaction/ModalGenerateAllTransactionStatement";
+export { default as GenerateAllTransactionStatementTable } from "components/primitives/shared/modal/all-statement-table/GenerateAllTransactionStatementTable";
 export { default as ModalRetireCredit } from "components/primitives/shared/modal/modal-retire-credit/ModalRetireCredit";
 export { default as MakePayment } from "components/primitives/shared/modal/make-payment/MakePayment";
 export { default as ConfirmPayment } from "components/primitives/shared/modal/confirm-payment/ConfirmPayment";

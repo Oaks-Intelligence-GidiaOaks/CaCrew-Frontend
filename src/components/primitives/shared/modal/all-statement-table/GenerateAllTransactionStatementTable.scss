@@ -1,6 +1,6 @@
 @import "base.scss";
 
-.modal_generate_statement-table {
+.GenerateAllTransactionStatementTable-table {
   background-color: #fff;
   padding-top: 78px;
   // padding-left: 91px;
@@ -22,7 +22,7 @@
   @media (max-width: 767px) {
     width: 100%;
   }
-  .modal_generate_statement_title {
+  .GenerateAllTransactionStatementTable_title {
     margin-bottom: 40px;
   }
   .dashboard_table_no_records {
@@ -30,7 +30,7 @@
     text-align: center;
     padding: 15px;
   }
-  .modal_generate_statement_close {
+  .GenerateAllTransactionStatementTable_close {
     width: 46px;
     height: 46px;
     position: absolute;
@@ -54,7 +54,7 @@
     border: 1px solid #115ccd;
   }
 
-  .modal_generate_statement_info_wrap {
+  .GenerateAllTransactionStatementTable_info_wrap {
     background-color: #f2f5ff;
     padding: 16px;
     margin-bottom: 14px;
@@ -62,7 +62,7 @@
     @media (max-width: 767px) {
       flex-direction: column;
     }
-    .modal_generate_statement_info_text {
+    .GenerateAllTransactionStatementTable_info_text {
       align-items: center;
       margin-bottom: 12px;
       color: #4c5563;
@@ -72,7 +72,7 @@
         font-size: 17px;
       }
     }
-    .modal_generate_statement_info_bold {
+    .GenerateAllTransactionStatementTable_info_bold {
       margin-right: 17px;
       color: #212121;
       font-size: 14px;
@@ -83,11 +83,11 @@
     }
   }
 
-  .modal_generate_statement_sale_text {
+  .GenerateAllTransactionStatementTable_sale_text {
     align-items: center;
     margin-bottom: 6px;
 
-    .modal_generate_statement_sale_bold {
+    .GenerateAllTransactionStatementTable_sale_bold {
       margin-right: 17px;
       color: #5f41b2;
       text-align: center;
@@ -98,7 +98,7 @@
       }
     }
 
-    .modal_generate_statement_sale_normal {
+    .GenerateAllTransactionStatementTable_sale_normal {
       color: #4c5563;
       font-size: 15px;
       padding-right: 10px;
@@ -113,11 +113,11 @@
     }
   }
 
-  .modal_generate_statement_input_warp {
+  .GenerateAllTransactionStatementTable_input_warp {
     margin-top: 30px;
-    .modal_generate_statement_input {
-      .modal_generate_statement_input_item {
-        .modal_generate_statement_input_item_fee {
+    .GenerateAllTransactionStatementTable_input {
+      .GenerateAllTransactionStatementTable_input_item {
+        .GenerateAllTransactionStatementTable_input_item_fee {
           margin-top: -20px;
           margin-bottom: 25px;
           color: #4c5563;
@@ -128,7 +128,7 @@
         }
       }
 
-      .modal_generate_statement_input_text {
+      .GenerateAllTransactionStatementTable_input_text {
         color: $blue;
         font-size: 14px;
         margin-bottom: 10px;
@@ -137,14 +137,14 @@
           font-size: 12px;
         }
       }
-      .modal_generate_statement_input_btn_wrap {
-        .modal_generate_statement_input_btn {
+      .GenerateAllTransactionStatementTable_input_btn_wrap {
+        .GenerateAllTransactionStatementTable_input_btn {
           margin-top: 30px;
           max-width: 140px;
           margin-left: 16px;
         }
-        .modal_generate_statement_input_btn_two {
-          @extend .modal_generate_statement_input_btn;
+        .GenerateAllTransactionStatementTable_input_btn_two {
+          @extend .GenerateAllTransactionStatementTable_input_btn;
           background-color: #fff;
           border-radius: 26px;
           border: 1px solid #4c5563;

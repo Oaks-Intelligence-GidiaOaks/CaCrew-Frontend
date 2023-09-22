@@ -17,6 +17,7 @@ import {
   GET_OTP,
   VERIFY_OTP,
   GET_MY_STATEMENT,
+  GET_ALL_STATEMENT,
 } from "./constants";
 
 const transactionApiSlice = apiSlice.injectEndpoints({
@@ -233,6 +234,18 @@ const transactionApiSlice = apiSlice.injectEndpoints({
         return response;
       },
     }),
+
+    // get my statement
+    getAllStatement: builder.mutation({
+      query: (data) => ({
+        url: `${GET_ALL_STATEMENT}`,
+        method: "POST",
+        body: data,
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
   }),
 });
 
@@ -254,4 +267,5 @@ export const {
   useTransactionFailedMutation,
   useTransactionSuccessMutation,
   useGetMyStatementMutation,
+  useGetAllStatementMutation,
 } = transactionApiSlice;

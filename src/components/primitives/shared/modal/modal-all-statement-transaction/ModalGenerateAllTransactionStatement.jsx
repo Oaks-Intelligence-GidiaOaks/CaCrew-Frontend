@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "./ModalGenerateStatement.scss";
+import "./ModalGenerateAllTransactionStatement.scss";
 import { close } from "assets/images";
 import { useDispatch } from "react-redux";
 import { closeComponentModal, openModal } from "redux/slices/modal.slice";
@@ -8,7 +8,7 @@ import { Form, Field } from "react-final-form";
 import { Button, Input } from "components";
 import { required } from "validations/validations";
 
-const ModalGenerateStatement = () => {
+const ModalGenerateAllTransactionStatement = () => {
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
@@ -18,35 +18,35 @@ const ModalGenerateStatement = () => {
   const onSubmit = (values) => {
     dispatch(
       openModal({
-        component: "GenerateStatementTable",
+        component: "GenerateAllTransactionStatementTable",
         data: values,
       })
     );
   };
 
   return (
-    <div className="modal_generate_statement">
-      <div className="modal_generate_statement_title sub_heading">
-        Generate Transaction Statement
+    <div className="ModalGenerateAllTransactionStatement">
+      <div className="ModalGenerateAllTransactionStatement_title sub_heading">
+        Generate All Accounts Transactions Statement
       </div>
       <img
         src={close}
         alt="icon"
-        className="modal_generate_statement_close"
+        className="ModalGenerateAllTransactionStatement_close"
         onClick={handleCloseModal}
       />
-      <div className="modal_generate_statement_info_wrap ">
-        <div className="modal_generate_statement_info_bold">
+      <div className="ModalGenerateAllTransactionStatement_info_wrap ">
+        <div className="ModalGenerateAllTransactionStatement_info_bold">
           Pls Select Start and End Date
         </div>
       </div>
-      <div className="modal_generate_statement_input_warp">
-        <div className="modal_generate_statement_input">
+      <div className="ModalGenerateAllTransactionStatement_input_warp">
+        <div className="ModalGenerateAllTransactionStatement_input">
           <Form
             onSubmit={onSubmit}
             render={({ handleSubmit, valid }) => (
               <form onSubmit={handleSubmit}>
-                <div className="modal_generate_statement_input_item">
+                <div className="ModalGenerateAllTransactionStatement_input_item">
                   <Field
                     name="start"
                     placeholder="Choose Start Date"
@@ -56,7 +56,7 @@ const ModalGenerateStatement = () => {
                     validate={required("Start Date")}
                   />
                 </div>
-                <div className="modal_generate_statement_input_item">
+                <div className="ModalGenerateAllTransactionStatement_input_item">
                   <Field
                     name="end"
                     placeholder="Choose End Date"
@@ -66,15 +66,17 @@ const ModalGenerateStatement = () => {
                     validate={required("End Date")}
                   />
                 </div>
-                <div className="modal_generate_statement_input_btn_wrap end">
+                <div className="ModalGenerateAllTransactionStatement_input_btn_wrap end">
                   <Button
                     text={"Cancel"}
-                    className={"modal_generate_statement_input_btn_two"}
+                    className={
+                      "ModalGenerateAllTransactionStatement_input_btn_two"
+                    }
                     onClick={handleCloseModal}
                   />
                   <Button
                     text={"Generate"}
-                    className={"modal_generate_statement_input_btn"}
+                    className={"ModalGenerateAllTransactionStatement_input_btn"}
                     type={"submit"}
                     disabled={!valid}
                   />
@@ -88,4 +90,4 @@ const ModalGenerateStatement = () => {
   );
 };
 
-export default ModalGenerateStatement;
+export default ModalGenerateAllTransactionStatement;

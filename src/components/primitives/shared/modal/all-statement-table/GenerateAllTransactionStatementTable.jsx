@@ -1,22 +1,22 @@
 import { useEffect } from "react";
-import "./GenerateStatementTable.scss";
+import "./GenerateAllTransactionStatementTable.scss";
 import { useDispatch } from "react-redux";
 import { closeComponentModal } from "redux/slices/modal.slice";
 import { close } from "assets/images";
-import { useGetMyStatementMutation } from "services/transaction.service";
+import { useGetAllStatementMutation } from "services/transaction.service";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { useGetUserQuery } from "services/user.service";
 import { convertDateToWord } from "utils/convertToDateFormat";
 
-const GenerateStatementTable = ({ data }) => {
+const GenerateAllTransactionStatementTable = ({ data }) => {
   const dispatch = useDispatch();
 
-  const [getMyStatement, { data: statementData, isLoading, isError }] =
-    useGetMyStatementMutation();
+  const [getAllStatement, { data: statementData, isLoading, isError }] =
+    useGetAllStatementMutation();
 
   useEffect(() => {
-    getMyStatement(data);
+    getAllStatement(data);
   }, []);
 
   const handleCloseModal = () => {
@@ -66,7 +66,7 @@ const GenerateStatementTable = ({ data }) => {
       pageOrientation: "landscape",
       content: [
         {
-          text: "My Transactions Statement",
+          text: "All Account Transactions Statement",
           fontSize: 16,
           bold: true,
           margin: [0, 0, 0, 8],
@@ -83,19 +83,19 @@ const GenerateStatementTable = ({ data }) => {
   };
 
   return (
-    <div className="modal_generate_statement-table">
-      <div className="modal_generate_statement_title sub_heading">
-        Transaction Statement
+    <div className="GenerateAllTransactionStatementTable-table">
+      <div className="GenerateAllTransactionStatementTable_title sub_heading">
+        All Transactions Statement
       </div>
       <img
         src={close}
         alt="icon"
-        className="modal_generate_statement_close"
+        className="GenerateAllTransactionStatementTable_close"
         onClick={handleCloseModal}
       />
-      <div className="modal_generate_statement_info_wrap">
-        <div className="modal_generate_statement_info_bold between">
-          My Statement of Account
+      <div className="GenerateAllTransactionStatementTable_info_wrap">
+        <div className="GenerateAllTransactionStatementTable_info_bold between">
+          All Statement of Accounts
           {transactions.length > 0 && (
             <span>
               <button className="export-btn" onClick={exportPDF}>
@@ -105,8 +105,11 @@ const GenerateStatementTable = ({ data }) => {
           )}
         </div>
       </div>
-      <div className="modal_generate_statement_input_warp" id="statement-table">
-        <div className="modal_generate_statement_input">
+      <div
+        className="GenerateAllTransactionStatementTable_input_warp"
+        id="statement-table"
+      >
+        <div className="GenerateAllTransactionStatementTable_input">
           <div className="dashboard_table">
             <div className="dashboard_table_wrap">
               <div className="dashboard_table">
@@ -189,4 +192,4 @@ const GenerateStatementTable = ({ data }) => {
   );
 };
 
-export default GenerateStatementTable;
+export default GenerateAllTransactionStatementTable;

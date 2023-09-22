@@ -24,6 +24,8 @@ import {
   ChangePassword,
   ModalGenerateStatement,
   GenerateStatementTable,
+  ModalGenerateAllTransactionStatement,
+  GenerateAllTransactionStatementTable,
 } from "components";
 
 const Modal = () => {
@@ -66,6 +68,12 @@ const Modal = () => {
     ChangePassword: <ChangePassword />,
     ModalRetireCredit: <ModalRetireCredit />,
     ModalGenerateStatement: <ModalGenerateStatement />,
+    ModalGenerateAllTransactionStatement: (
+      <ModalGenerateAllTransactionStatement />
+    ),
+    GenerateAllTransactionStatementTable: (
+      <GenerateAllTransactionStatementTable data={data} />
+    ),
     GenerateStatementTable: <GenerateStatementTable data={data} />,
     ConfirmRetireCredit: <ConfirmRetireCredit data={data} />,
     UpdateOrganisationModal: <UpdateOrganisationModal />,
