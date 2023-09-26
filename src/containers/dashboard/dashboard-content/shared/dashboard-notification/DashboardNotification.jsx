@@ -27,9 +27,9 @@ const DashboardNotification = () => {
     // search: searchValue,
   });
   return (
-    <div className="dashboard_notification">
+    <div className="dashboard_notification ">
       <DashboardNotificationBanner />
-      <div className="dashboard_notification_wrap">
+      <div className="dashboard_notification_wrap dash_pad">
         {dataBroadcast?.length >= 1 ? (
           dataBroadcast.map((row, idx) => (
             <div

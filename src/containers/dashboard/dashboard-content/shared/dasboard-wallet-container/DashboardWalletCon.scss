@@ -34,6 +34,9 @@
         background-color: #fff;
         color: #4c5563;
         border: 1px solid #4c5563;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }

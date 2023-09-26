@@ -26,6 +26,7 @@ const apiSlice = createApi({
   ],
   endpoints: (builder) => ({}),
   // refetchOnMountOrArgChange: true,
+  // refetchOnReconnect
   keepUnusedDataFor: 50000,
 });
 

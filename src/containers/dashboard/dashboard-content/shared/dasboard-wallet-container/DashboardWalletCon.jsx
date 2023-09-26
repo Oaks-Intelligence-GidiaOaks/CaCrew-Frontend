@@ -7,7 +7,7 @@ import {
   DashboardWalletTable,
 } from "components";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
 import {
   useGetSellItemsQuery,
@@ -16,6 +16,8 @@ import {
 
 const DashboardWalletCon = () => {
   const dispatch = useDispatch();
+
+  const user = useSelector(state => state.user.user)
 
   const handleOpenModal = () => {
     dispatch(openModal({ component: "ModalSellOrder" }));
@@ -62,11 +64,11 @@ const DashboardWalletCon = () => {
             className={"dashboard_wallet_con_btntwo"}
             onClick={handleOpenModalStatement}
           />
-          <Button
-            text={"Generate All Transaction Statement"}
+          {user.role === "SuperAdmin" && <Button
+            text={"Generate All Statement"}
             className={"dashboard_wallet_con_btntwo"}
             onClick={handleOpenModalAllTransactionStatement}
-          />
+          />}
         </div>
       </div>
       <div className="dashboard_wallet_con_table dash_pad">
