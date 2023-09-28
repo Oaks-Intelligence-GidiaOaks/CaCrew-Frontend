@@ -18,6 +18,7 @@ import {
   VERIFY_OTP,
   GET_MY_STATEMENT,
   GET_ALL_STATEMENT,
+  ORGANIZATION_NAME,
 } from "./constants";
 
 const transactionApiSlice = apiSlice.injectEndpoints({
@@ -246,6 +247,18 @@ const transactionApiSlice = apiSlice.injectEndpoints({
         return response;
       },
     }),
+
+    // get organisation super admin name
+    getSuperAdmin: builder.query({
+      providesTags: ["Transaction"],
+      query: () => ({
+        url: `${ORGANIZATION_NAME}`,
+        method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
   }),
 });
 
@@ -268,4 +281,5 @@ export const {
   useTransactionSuccessMutation,
   useGetMyStatementMutation,
   useGetAllStatementMutation,
+  useGetSuperAdminQuery,
 } = transactionApiSlice;

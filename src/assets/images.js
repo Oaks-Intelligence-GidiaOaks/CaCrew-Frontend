@@ -117,3 +117,4 @@ export const sphereone = `${PATH}/sphereone.png`;
 export const fade = `${PATH}/fade.png`;
 export const notif1 = `${PATH}/notif1.svg`;
 export const notif2 = `${PATH}/notif2.svg`;
+export const carbonible = `${PATH}/carbonibleLogo.svg`;

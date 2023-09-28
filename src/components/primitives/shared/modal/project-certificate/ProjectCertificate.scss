@@ -1,0 +1,247 @@
+@import "base.scss";
+@font-face {
+  font-family: "Reey";
+  src: local("Reey"), url("./Reey-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ProjectCertificate-table {
+  background-color: #fff;
+  padding-top: 78px;
+  // padding-left: 91px;
+  // padding-right: 91px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 29px;
+  border-radius: 8px;
+  box-shadow: 4px 2px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 90%;
+  @media (max-width: 991px) {
+    padding-top: 28px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 29px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+  .ProjectCertificate_title {
+    margin-bottom: 40px;
+  }
+  .dashboard_table_no_records {
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+  }
+  .ProjectCertificate_close {
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    right: 32px;
+    top: 21px;
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  .export-btn {
+    background-color: #115ccd;
+    width: auto;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #115ccd;
+  }
+
+  .ProjectCertificate_info_wrap {
+    background-color: #f2f5ff;
+    padding: 16px;
+    margin-bottom: 20px;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+    .ProjectCertificate_info_text {
+      align-items: center;
+      margin-bottom: 12px;
+      color: #4c5563;
+      font-size: 20px;
+
+      @media (max-width: 991px) {
+        font-size: 17px;
+      }
+    }
+  }
+
+  .certificate-box {
+    display: flex;
+    min-width: 752px;
+    width: 100%;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border: 2px solid #dfd1be;
+  }
+  .certificate-wrapper {
+    display: flex;
+    min-width: 732px;
+    padding: 26px 46px;
+    flex-direction: column;
+    align-items: center;
+    // gap: 48px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border: 4px solid #dfd1be;
+  }
+
+  .certificate-header {
+    color: #000;
+    font-family: Abhaya Libre;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 3.9px;
+    margin-bottom: 13px;
+  }
+
+  .certificate-subtitle {
+    color: #000;
+    font-family: Abhaya Libre;
+    font-size: 24.167px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 7.733px;
+    margin-bottom: 30px;
+  }
+  .placeholder-text {
+    display: flex;
+    gap: 25px;
+    color: #000;
+    font-family: Reey;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35.763px;
+    margin-bottom: 35px;
+  }
+  .img-logo {
+    margin-bottom: 40px;
+  }
+  .hr-names {
+    width: 277.743px;
+    height: 2.014px;
+    flex-shrink: 0;
+    border: solid #dfd1be;
+    margin-bottom: 25px;
+  }
+  .text-center {
+    text-align: center;
+  }
+
+  .text-name {
+    color: #000;
+    font-family: "Reey";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35.763px;
+  }
+  .buyer-text {
+    color: #212121;
+    font-family: Abhaya Libre;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.3px;
+  }
+  .text-title {
+    color: #212121;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.48px;
+    margin-bottom: 8px;
+  }
+  .doc-id {
+    color: #212121;
+    font-family: Abhaya Libre;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.3px;
+  }
+  .hr-dates {
+    width: 200px;
+    height: 1px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .text-date {
+    color: #212121;
+    font-family: Abhaya Libre;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 3.12px;
+  }
+  .buyer-dates {
+    color: #212121;
+    font-family: Abhaya Libre;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.3px;
+  }
+  .placeholder-dates {
+    display: flex;
+    gap: 100px;
+    color: #000;
+    font-family: Reey;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35.763px;
+    margin-bottom: 35px;
+  }
+  .serial-text {
+    color: #212121;
+    font-family: Abhaya Libre;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 3.12px;
+    margin-bottom: 5px;
+  }
+  .serial-no {
+    color: #212121;
+    font-family: Abhaya Libre;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.3px;
+    margin-bottom: 30px;
+  }
+  .serial-no span {
+    font-weight: 700;
+  }
+}

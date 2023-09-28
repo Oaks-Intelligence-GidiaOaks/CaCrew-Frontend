@@ -19,7 +19,7 @@ const ProjectDetails = ({ data }) => {
   console.log(data, "proj");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [
     sendMessage,
@@ -32,8 +32,8 @@ const ProjectDetails = ({ data }) => {
   ] = useSendMessageMutation();
 
   const handleSendMessage = async (id) => {
-    console.log(id, "*id")
-    dispatch(updateMessageId({ message_id: null, chat_id: id}));
+    console.log(id, "*id");
+    dispatch(updateMessageId({ message_id: null, chat_id: id }));
     await rtkMutation(sendMessage, { reciever: id, message: " " });
   };
 
@@ -49,6 +49,15 @@ const ProjectDetails = ({ data }) => {
       );
     isSuccessMessage && navigate("/messages");
   }, [isSuccessMessage, isErrorMessage, errorMessage]);
+
+  const showCertificate = (values) => {
+    dispatch(
+      openModal({
+        component: "ProjectCertificate",
+        data: values,
+      })
+    );
+  };
   return (
     <>
       {data?.length >= 1 ? (
@@ -67,6 +76,7 @@ const ProjectDetails = ({ data }) => {
                     <Button
                       text={"View Certificate"}
                       className={"project_details_title_btn"}
+                      onClick={() => showCertificate(item)}
                     />
                   </div>
                 )}

@@ -26,6 +26,7 @@ import {
   GenerateStatementTable,
   ModalGenerateAllTransactionStatement,
   GenerateAllTransactionStatementTable,
+  ProjectCertificate,
 } from "components";
 
 const Modal = () => {
@@ -82,6 +83,7 @@ const Modal = () => {
     ConfirmProjectPhase: <ConfirmProjectPhase data={data} />,
     VerifyOtp: <VerifyOtp data={data} />,
     AssignProjectStaff: <AssignProjectStaff data={data} />,
+    ProjectCertificate: <ProjectCertificate data={data} />,
   }[component];
 
   return (
