@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import "./DashboardProject.scss";
-import { Button, ProjectDetails } from "components";
+import { Button, ProjectDetails, ProjectDatabase } from "components";
 // import { DashboardProjectCreate, DashboardProjectReview } from "components";
 import {
   useAllProjectsQuery,
   useGetHandledProjectsQuery,
+  useProjectDatabaseQuery,
 } from "services/project.service";
 import { useGetUserQuery } from "services/user.service";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "redux/slices/modal.slice";
+import useDebounce from "hooks/useDebounce";
 
 const DashboardProject = () => {
   const [active, setActive] = useState("review");
@@ -25,7 +27,16 @@ const DashboardProject = () => {
 
   const { data, isSuccess, error } = useAllProjectsQuery();
   const { data: handledProj } = useGetHandledProjectsQuery();
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState(1);
+
   const { data: userData } = useGetUserQuery();
+  const searchValue = useDebounce(search, 2000);
+
+  const { data: projectDatabase } = useProjectDatabaseQuery({
+    page,
+    search: searchValue,
+  });
 
   const dataInComplete =
     data?.length > 0
@@ -46,6 +57,17 @@ const DashboardProject = () => {
     // create: <DashboardProjectCreate />,
     review: <ProjectDetails data={dataInComplete} />,
     complete: <ProjectDetails data={dataComplete} />,
+    database: (
+      <ProjectDatabase
+        data={projectDatabase}
+        isLoading={data.isLoading}
+        isError={data.isError}
+        page={page}
+        setPage={setPage}
+        search={search}
+        setSearch={setSearch}
+      />
+    ),
   }[active];
 
   return (
@@ -76,6 +98,13 @@ const DashboardProject = () => {
                 active === "complete" && "dashboard_project_btn_active"
               }`}
               onClick={() => handleTabSwitch("complete")}
+            />
+            <Button
+              text={"Project Database " + `(${projectDatabase?.total || 0})`}
+              className={`dashboard_project_btn ${
+                active === "database" && "dashboard_project_btn_active"
+              }`}
+              onClick={() => handleTabSwitch("database")}
             />
           </div>
         </div>

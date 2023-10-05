@@ -27,6 +27,7 @@ export const CLOSE_PROJECT = "project/close";
 export const ALL_CLOSE_PROJECT = "project/closed_project";
 export const CLOSE_PROJECT_DETAIL = "project/closed_project";
 export const GET_HANDLED_PROJECTS = "project/project_handled";
+export const PROJECT_DATABASE = "project/project_database";
 
 // Transaction constants
 export const INITIATE_BUY = "transaction/initiate_buy";

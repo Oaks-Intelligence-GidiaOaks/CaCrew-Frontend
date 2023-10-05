@@ -6,6 +6,7 @@ import {
   CLOSE_PROJECT,
   CLOSE_PROJECT_DETAIL,
   ALL_CLOSE_PROJECT,
+  PROJECT_DATABASE,
 } from "services/constants";
 import apiSlice from "./api/apiSlice";
 
@@ -94,6 +95,16 @@ export const projectApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
       }),
     }),
+
+    projectDatabase: builder.query({
+      query: ({ page = 1, type }) => ({
+        url: `${PROJECT_DATABASE}?page=${page}&type=${type}`,
+        method: "GET",
+      }),
+      transformResponse: (response) => {
+        return response;
+      },
+    }),
   }),
   // keepUnusedDataFor: 60,
   // refetchOnMountOrArgChange: true,
@@ -107,4 +118,5 @@ export const {
   useAllClosedProjectsQuery,
   useCloseProjectMutation,
   useClosedProjectDetailQuery,
+  useProjectDatabaseQuery,
 } = projectApiSlice;
