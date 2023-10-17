@@ -7,11 +7,12 @@ import { Button, Shimmer } from "components";
 const CloseProjectOverview = () => {
   const id = useParams();
   const { data } = useClosedProjectDetailQuery(id.id);
+  
   console.log(data, "*id");
   return (
     <div className="track_complete dash_pad">
       <Link
-        to={"http://localhost:3000/dashboard-track-project"}
+        to={"/dashboard-track-project"}
         className="link"
       >
         <Button
