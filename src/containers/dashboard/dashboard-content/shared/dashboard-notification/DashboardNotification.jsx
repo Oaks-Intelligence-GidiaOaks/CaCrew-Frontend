@@ -39,13 +39,13 @@ const DashboardNotification = () => {
                 maxHeight: expandedIds.includes(row._id) ? "auto" : "auto",
               }}
             >
-              <div className="notification-content">
+              <div className="notification-content between">
                 <img
                   src={row.photo_url || notif2}
                   alt="Icon"
                   className="notification-img"
                 />
-                <div className="notification-text-content">
+                <div className="notification-text-content ">
                   <p className="notification-date">{timeAgo(row?.createdAt)}</p>
                   <p className="notification-title">{row.title}</p>
                   <p className="notification-text">

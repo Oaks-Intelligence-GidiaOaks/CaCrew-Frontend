@@ -50,6 +50,10 @@
       margin: 12px;
       align-items: center;
       gap: 15px;
+      width: 100%;
+      .notification-text-content{
+        width: 70%;
+      }
     }
     .notification-img {
       border-radius: 5px;
