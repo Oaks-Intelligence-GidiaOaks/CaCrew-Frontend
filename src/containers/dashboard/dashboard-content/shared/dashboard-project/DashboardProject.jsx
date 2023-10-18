@@ -28,12 +28,16 @@ const DashboardProject = () => {
   const { data, isSuccess, error } = useAllProjectsQuery();
   const { data: handledProj } = useGetHandledProjectsQuery();
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState(1);
+  const [search, setSearch] = useState();
 
   const { data: userData } = useGetUserQuery();
   const searchValue = useDebounce(search, 2000);
 
-  const { data: projectDatabase } = useProjectDatabaseQuery({
+  const {
+    data: projectDatabase,
+    isLoading: isLoadingProjectDatabase,
+    isError: isErrorProjectDatabase,
+  } = useProjectDatabaseQuery({
     page,
     search: searchValue,
   });
@@ -51,7 +55,7 @@ const DashboardProject = () => {
       ? handledProj?.filter((item) => item?.progress !== "Phase6")
       : [];
 
-  // console.log(data, "projtesr*******");
+  // console.log(searchValue, "projtesr*******");
 
   const tabItems = {
     // create: <DashboardProjectCreate />,
@@ -60,8 +64,8 @@ const DashboardProject = () => {
     database: (
       <ProjectDatabase
         data={projectDatabase}
-        isLoading={data.isLoading}
-        isError={data.isError}
+        isLoading={isLoadingProjectDatabase}
+        isError={isErrorProjectDatabase}
         page={page}
         setPage={setPage}
         search={search}

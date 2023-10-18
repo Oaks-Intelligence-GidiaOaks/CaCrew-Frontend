@@ -83,7 +83,7 @@ const ProjectDatabase = ({
             Export Statement
           </button>
         )}
-        {/* <div className="project_database_search center col">
+        <div className="project_database_search center col">
           <div className="project_database_search_head">
             Search Project Database
           </div>
@@ -115,7 +115,7 @@ const ProjectDatabase = ({
               )}
             />
           </div>
-        </div> */}
+        </div>
         <div className="project_database_table">
           <div className="project_database_table_head between">
             <div className="project_database_table_head_item">S/N</div>

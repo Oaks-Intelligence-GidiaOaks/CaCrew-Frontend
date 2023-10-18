@@ -97,8 +97,8 @@ export const projectApiSlice = apiSlice.injectEndpoints({
     }),
 
     projectDatabase: builder.query({
-      query: ({ page = 1, type }) => ({
-        url: `${PROJECT_DATABASE}?page=${page}&type=${type}`,
+      query: ({ page = 1, search}) => ({
+        url: `${PROJECT_DATABASE}?page=${page}${search && `&search=${search}`}`,
         method: "GET",
       }),
       transformResponse: (response) => {
