@@ -4,6 +4,8 @@ import { logoland } from "assets/images";
 import { Button, Container } from "components";
 
 const LandingFooter = () => {
+
+  const currentYear = new Date().getFullYear();
   return (
     <div className="footer">
       <Container>
@@ -42,7 +44,7 @@ const LandingFooter = () => {
         </div>
       </Container>
       <div className="center footer_terms">
-        Copyright © Escrow-Tech 2023. All Rights Reserved.
+        Copyright © Escrow-Tech {currentYear}. All Rights Reserved.
       </div>
     </div>
   );
